@@ -10,7 +10,26 @@
   <rights>All rights reserved 2026, Syaoran</rights>
   <subtitle>日日新，又日新</subtitle>
   <title>Syaoran's Blog</title>
-  <updated>2026-05-24T13:44:07.076Z</updated>
+  <updated>2026-05-25T04:07:26.006Z</updated>
+  <entry>
+    <author>
+      <name>Syaoran</name>
+    </author>
+    <content>
+      <![CDATA[<h2 id="待办事项"><a href="#待办事项" class="headerlink" title="待办事项"></a>待办事项</h2><ul><li>博客categroy有问题,待修复</li><li>添加工具包网页</li><li>添加vps 查询网页</li><li>添加常用vps </li><li>添加好用的谷歌扩展</li><li>添加近期的game</li><li>搜索一些自己需要的单页应用，可以自己部署</li></ul>]]>
+    </content>
+    <id>https://tsubasa-syaoran.github.io/2026/05/25/blog-todolist20260525/</id>
+    <link href="https://tsubasa-syaoran.github.io/2026/05/25/blog-todolist20260525/"/>
+    <published>2026-05-25T04:01:17.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="待办事项"><a href="#待办事项" class="headerlink" title="待办事项"></a>待办事项</h2><ul>
+<li>博客categroy有问题,待修复</li>
+<li>添加工具包网页</li>
+<li>添加vps 查询网页</]]>
+    </summary>
+    <title>blog_todolist20260525</title>
+    <updated>2026-05-25T04:07:26.006Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Syaoran</name>
@@ -340,27 +359,5 @@
     </summary>
     <title>Cloudflare免费节点优化</title>
     <updated>2026-05-10T12:51:12.720Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Syaoran</name>
-    </author>
-    <category term="域名" scheme="https://tsubasa-syaoran.github.io/tags/%E5%9F%9F%E5%90%8D/"/>
-    <content>
-      <![CDATA[<p>我注册的免费域名：</p><ol><li><a href="https://www.gname.net/">https://www.gname.net/</a></li></ol><ul><li><a href="https://www.gname.net/user#/domain_info/ym=nekomini.eu.cc">nekomini.eu.cc</a></li><li><a href="https://www.gname.net/user#/domain_info/ym=syaoran.eu.cc">syaoran.eu.cc</a></li></ul><ol start="2"><li><a href="https://my.dnshe.com/index.php?m=domain_hub">https://my.dnshe.com/index.php?m=domain_hub</a></li></ol><ul><li><strong>nekomini.ccwu.cc</strong></li><li><strong>syaoran-moon.ccwu.cc</strong></li><li><strong>syaoran.ccwu.cc</strong></li></ul>]]>
-    </content>
-    <id>https://tsubasa-syaoran.github.io/2026/04/24/%E5%85%8D%E8%B4%B9%E5%9F%9F%E5%90%8D%E6%B1%87%E6%80%BB-md/</id>
-    <link href="https://tsubasa-syaoran.github.io/2026/04/24/%E5%85%8D%E8%B4%B9%E5%9F%9F%E5%90%8D%E6%B1%87%E6%80%BB-md/"/>
-    <published>2026-04-24T12:29:39.000Z</published>
-    <summary>
-      <![CDATA[<p>我注册的免费域名：</p>
-<ol>
-<li><a href="https://www.gname.net/">https://www.gname.net/</a></li>
-</ol>
-<ul>
-<li><a href="https://www.gname.net/use]]>
-    </summary>
-    <title>我的域名汇总</title>
-    <updated>2026-05-20T15:43:42.877Z</updated>
   </entry>
 </feed>

@@ -222,7 +222,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">23</div>
+    <div class="sidebar-state-number">25</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -230,7 +230,7 @@
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">12</div>
+    <div class="sidebar-state-number">13</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -284,6 +284,82 @@
 </aside>
 
           <section id="main" aria-label="Main content">      <div class="post-wrapper">
+  <div class="post-wrap left" data-aos="fade-up">
+      <a class="post-link" href="/2026/05/26/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" aria-label="ffmpeg常用命令汇总" title="ffmpeg常用命令汇总"></a>
+    <div class="post-cover left">
+        <img data-src="https://imbed.nekomini.dpdns.org/file/blog/1779758927672_ffmpeg.webp" data-sizes="auto" alt="ffmpeg常用命令汇总" class="lazyload">
+    </div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span><span class="icon-calendar"></span>2026-05-26</span>
+        <span><span class="icon-pencil"></span>962 字</span>
+        <span><span class="icon-clock"></span>5 分钟</span>
+      </div>
+      <h2 class="post-title">ffmpeg常用命令汇总</h2>
+      <article class="post-article">
+          FFmpeg 常用命令汇总（2026最新整理）
+FFmpeg 是功能最强大的音视频处理工具，命令基本格式：
+1ffmpeg [全局选项] &amp;#123;[输入选项] -i 输入文件&amp;#125;... &amp;#123;[输出选项] 输出文件&amp;#125;
+
+1. 基础信息查询
+
+
+命令
+作用
+
+
+
+ffmpeg -version
+查看版本
+
+
+ffmpeg -h
+帮助信息
+
+
+ffmpeg -formats
+支持的封装格式
+
+
+ffmpeg -codecs
+支持的编解码器
+
+
+ffmpeg -encoders
+支持的编码器
+
+
+ffmpeg -decoders
+支持的解码器
+
+
+ffmpeg -filt
+      </article>
+    </div>
+  </div>
+</div>
+      <div class="post-wrapper">
+  <div class="post-wrap right" data-aos="fade-up">
+      <a class="post-link" href="/2026/05/26/ffmpeg%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/" aria-label="ffmpeg将mp3与背景图合并为mp4" title="ffmpeg将mp3与背景图合并为mp4"></a>
+    <div class="post-cover right">
+        <img data-src="https://imbed.nekomini.dpdns.org/file/blog/1779759480876_ffmpeg-use.webp" data-sizes="auto" alt="ffmpeg将mp3与背景图合并为mp4" class="lazyload">
+    </div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span><span class="icon-calendar"></span>2026-05-26</span>
+        <span><span class="icon-pencil"></span>103 字</span>
+        <span><span class="icon-clock"></span>1 分钟</span>
+      </div>
+      <h2 class="post-title">ffmpeg将mp3与背景图合并为mp4</h2>
+      <article class="post-article">
+          使用ffmpeg 将mp3 与 背景图片合并mp3 + 背景图片1ffmpeg -loop 1 -framerate 1 -i cover.jpg -i audio.mp3 -vf &amp;quot;scale=trunc(iw/2)*2:trunc(ih/2)*2,format=yuv420p&amp;quot; -c:v libx264 -tune stillimage -c:a copy -shortest output.mp4
+
+mp3 + 背景图片旋转1ffmpeg -loop 1 -i cover.jpg -i audio.mp3 -filter_complex &amp;quot;[0:v]forma
+      </article>
+    </div>
+  </div>
+</div>
+      <div class="post-wrapper">
   <div class="post-wrap left" data-aos="fade-up">
       <a class="post-link" href="/2026/05/25/blog-todolist20260525/" aria-label="blog_todolist20260525" title="blog_todolist20260525"></a>
     <div class="post-cover left">
@@ -556,78 +632,6 @@ VPS融合怪服务器测评脚本1curl -L https://github.com/spiritLHLS/ecs/raw/
     </div>
   </div>
 </div>
-      <div class="post-wrapper">
-  <div class="post-wrap left" data-aos="fade-up">
-      <a class="post-link" href="/2026/05/15/ip%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" aria-label="ip测试工具" title="ip测试工具"></a>
-    <div class="post-cover left">
-        <img data-src="https://imbed.nekomini.dpdns.org/file/1779290949182_ip_测试工具.webp" data-sizes="auto" alt="ip测试工具" class="lazyload">
-    </div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span><span class="icon-calendar"></span>2026-05-15</span>
-        <span><span class="icon-pencil"></span>210 字</span>
-        <span><span class="icon-clock"></span>1 分钟</span>
-      </div>
-      <h2 class="post-title">ip测试工具</h2>
-      <article class="post-article">
-          原文地址： https://potoh.com/iptest/IP 工具这里整理了常用的 IP 查询、延迟测试、分流检测和网络测速工具，便于直接打开使用。
-工具列表
-whatismyipaddress查询当前网络IP地址，快速查看出口位置与基础网络信息
-
-ping0识别当前IP 类型，适合快速判断住宅、机房或代理特征
-
-ITDOG Ping多地 Ping 与延迟测试工具，可查看不同地区的连接表现。
-
-ITDOG Localhost本地网络环境检测，支持本地IP IPv6 分流与泄露测试。
-
-SCamalytics查询IP 欺诈值，数值越低通常代表IP 质量越干净。
-
-Speedtest测试下载
-      </article>
-    </div>
-  </div>
-</div>
-      <div class="post-wrapper">
-  <div class="post-wrap right" data-aos="fade-up">
-      <a class="post-link" href="/2026/05/15/hexo%E5%85%A5%E9%97%A8/" aria-label="hexo入门" title="hexo入门"></a>
-    <div class="post-cover right">
-        <img data-src="https://imbed.nekomini.dpdns.org/file/1779291939314_hexo_入门.webp" data-sizes="auto" alt="hexo入门" class="lazyload">
-    </div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span><span class="icon-calendar"></span>2026-05-15</span>
-        <span><span class="icon-pencil"></span>644 字</span>
-        <span><span class="icon-clock"></span>3 分钟</span>
-      </div>
-      <h2 class="post-title">hexo入门</h2>
-      <article class="post-article">
-          Hexo 常用命令总结1234567# Hexo 常用命令总结## 一、初始化与安装### 安装 Hexo CLI```bashnpm install -g hexo-cli
-
-创建博客项目1hexo init blog
-
-进入项目目录1cd blog
-
-安装依赖1npm install
-
-
-二、启动与预览启动本地服务器1hexo server
-
-简写：
-1hexo s
-
-默认访问：
-1http://localhost:4000
-
-指定端口启动1hexo server -p 5000
-
-启动并实时监视文件变化1hexo server --watch
-
-
-三、文章与页面管理新建文章创建普通文章1
-      </article>
-    </div>
-  </div>
-</div>
   <nav id="page-nav" aria-label="Pagination navigation" data-aos="fade-up">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
   </nav>
@@ -651,10 +655,10 @@ Speedtest测试下载
       </div>
       <div>
         <span class="icon-brush"></span>
-        10.9k
+        11.9k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:56
+        01:02
       </div>
       <div>
         <span class="icon-eye"></span>
@@ -682,7 +686,7 @@ Speedtest测试下载
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">23</div>
+    <div class="sidebar-state-number">25</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -690,7 +694,7 @@ Speedtest测试下载
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">12</div>
+    <div class="sidebar-state-number">13</div>
   </div>
 </div>
 <div class="sidebar-social" >

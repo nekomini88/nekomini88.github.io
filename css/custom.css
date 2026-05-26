@@ -1,8 +1,9 @@
-/* FlatPaper 移动端加强修复 */
+/* FlatPaper 安卓手机端强制修复 */
 @media (max-width: 960px) {
   .paper-shell {
     display: block !important;
     grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
 
   .paper-sidebar--left,
@@ -12,25 +13,16 @@
 
   .paper-main {
     width: 100% !important;
-    margin: 0 !important;
-    padding: 0 16px;
-  }
-
-  .post-list {
-    gap: 24px;
+    padding: 0 15px !important;
   }
 
   .post-card {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
   .paper-thumb {
     width: 100% !important;
     height: auto !important;
-  }
-
-  .post-card-copy {
-    padding: 16px 0 0;
   }
 }
 
@@ -38,18 +30,8 @@
   .site-header {
     padding: 12px 15px !important;
   }
-
-  .brand-text {
-    font-size: 18px;
+  
+  html, body {
+    overflow-x: hidden !important;
   }
-
-  .post-card h3 {
-    font-size: 1.1rem;
-    line-height: 1.35;
-  }
-}
-
-/* 防止横向滚动 */
-html, body {
-  overflow-x: hidden;
 }

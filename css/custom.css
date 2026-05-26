@@ -1,9 +1,12 @@
-/* === 最终加强版 - 手机强制单栏 === */
+/* === 最高优先级手机强制修复 === */
+
 @media (max-width: 1024px) {
   .paper-shell,
-  .paper-shell--home {
+  .paper-shell--home,
+  main.paper-shell {
     display: block !important;
     grid-template-columns: 1fr !important;
+    grid-template-areas: none !important;
     gap: 0 !important;
   }
 
@@ -17,7 +20,8 @@
     width: 100% !important;
     max-width: 100% !important;
     padding: 0 15px !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
+    float: none !important;
   }
 
   .post-list {
@@ -35,13 +39,9 @@
   }
 }
 
-@media (max-width: 600px) {
-  .site-header {
-    padding: 10px 12px !important;
-  }
-
-  html, body, .page-grain, main {
-    overflow-x: hidden !important;
-    max-width: 100% !important;
-  }
+/* 强制清除横向滚动 */
+html, body, .page-grain, main, .paper-shell {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }

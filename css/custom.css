@@ -1,0 +1,55 @@
+/* FlatPaper 移动端优化 - 解决手机排版问题 */
+@media (max-width: 960px) {
+  .paper-shell {
+    display: block !important;           /* 强制单栏布局 */
+    grid-template-columns: 1fr !important;
+  }
+
+  .paper-sidebar--left,
+  .paper-sidebar--right {
+    display: none !important;            /* 隐藏左右固定侧边栏 */
+  }
+
+  .paper-main {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 15px;
+  }
+
+  .post-list {
+    gap: 20px;
+  }
+
+  .post-card {
+    flex-direction: column;
+  }
+
+  .paper-thumb {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+  }
+
+  .post-card-copy {
+    padding: 15px 0 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 12px 15px !important;
+  }
+
+  .brand-text {
+    font-size: 18px;
+  }
+
+  .post-card h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* 防止横向滚动 */
+body, html {
+  overflow-x: hidden;
+}

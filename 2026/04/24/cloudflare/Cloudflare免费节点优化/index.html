@@ -1,0 +1,734 @@
+<!doctype html>
+
+<html lang="zh-CN" data-fancybox-enabled="1">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f3e9">
+<title>Cloudflare免费节点优化 | Neko&#39;s Blog</title>
+
+  <meta name="description" content="灯就陪他静静读书">
+
+  <link rel="shortcut icon" href="/images/favicon-32x32.png">
+
+<script>
+  (function () {
+    var accents = { green: 1, pink: 1, blue: 1, orange: 1, sakura: 1 };
+    var match = document.cookie.match(/(?:^|;\s*)flatpaper-accent=([^;]+)/);
+    var accent = match ? decodeURIComponent(match[1]) : 'green';
+    if (!accents[accent]) accent = 'green';
+    document.documentElement.setAttribute('data-accent', accent);
+    try {
+      if (localStorage.getItem('flatpaper-mode') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Neko's Blog" type="application/atom+xml">
+</head>
+
+<body
+  class="is-post tag-style-tape"
+  data-default-accent="green"
+  data-code-theme="dark"
+  data-note-style="flat"
+  data-note-icons="on"
+>
+  <div class="page-grain"></div>
+  <header class="site-header">
+  
+  <button class="icon-button js-sidebar-toggle sidebar-toggle" type="button" aria-label="打开侧边栏" aria-controls="paper-sidebar-drawer" aria-expanded="false">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg>
+
+  </button>
+
+  <a class="brand" href="/" aria-label="FlatPaper home">
+    <span class="brand-mark" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96a1 1 0 0 1 1.6.8c0 3-.6 7.74-4.16 11.31-2.66 2.66-6.74 3.99-9.65 3.99"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+</span>
+    <span class="brand-text">Neko&#39;s Blog</span>
+  </a>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    
+      
+        <a class="site-nav-link " href="/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/><path d="M9 21v-6h6v6"/></svg>
+
+          <span>首页</span>
+        </a>
+      
+    
+      
+        <a class="site-nav-link " href="/archives/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+
+          <span>归档</span>
+        </a>
+      
+    
+  </nav>
+
+  <div class="header-tools">
+    <button class="icon-button js-search-open" type="button" aria-label="搜索文章">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+
+    </button>
+    <div class="accent-picker">
+      <button class="icon-button accent-toggle" type="button" aria-label="选择主题色" title="选择主题色" aria-haspopup="true" aria-expanded="false" aria-controls="accent-menu">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 5.9 2 10.8c0 3.3 2.7 6 6 6h1.2c.8 0 1.4.6 1.4 1.4 0 .4-.2.8-.2 1.2 0 .8.6 1.6 1.6 1.6 5.5 0 10-4.2 10-9.4C22 6.3 17.5 2 12 2Z"/></svg>
+
+      </button>
+      <div class="accent-menu" id="accent-menu" role="menu" aria-label="主题色">
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="绿色" aria-checked="false" data-accent-option="green">
+          <span class="accent-swatch accent-swatch--green" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="粉色" aria-checked="false" data-accent-option="pink">
+          <span class="accent-swatch accent-swatch--pink" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="樱花粉" aria-checked="false" data-accent-option="sakura">
+          <span class="accent-swatch accent-swatch--sakura" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="蓝色" aria-checked="false" data-accent-option="blue">
+          <span class="accent-swatch accent-swatch--blue" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="橙色" aria-checked="false" data-accent-option="orange">
+          <span class="accent-swatch accent-swatch--orange" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="切换颜色模式">
+      <span class="theme-icon theme-icon--sun">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+</span>
+      <span class="theme-icon theme-icon--moon">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+</span>
+    </button>
+  </div>
+</header>
+
+
+  
+  <main class="paper-shell paper-shell--article">
+    
+
+<aside id="paper-sidebar-drawer" class="paper-sidebar paper-sidebar--right" aria-label="侧边栏">
+  <button class="icon-button drawer-close js-sidebar-close" type="button" aria-label="关闭侧边栏">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+
+  </button>
+
+  <section class="side-card nav-card">
+    <nav class="site-nav-drawer" aria-label="移动端导航">
+      
+        
+          <a class="" href="/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/><path d="M9 21v-6h6v6"/></svg>
+
+            <span>首页</span>
+          </a>
+        
+      
+        
+          <a class="" href="/archives/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+
+            <span>归档</span>
+          </a>
+        
+      
+    </nav>
+  </section>
+
+  <section class="side-card profile-card">
+    
+      <div class="avatar avatar--image avatar--circle">
+        <img src="https://imbed.nekomini.dpdns.org/file/blog/1779848535311_nekomini88-cream_color3.png" alt="Neko" loading="lazy" referrerpolicy="no-referrer">
+      </div>
+    
+    <h3>Neko</h3>
+    <p class="profile-role">日常记录</p>
+    <p>记录日常，代码，以及想做的事情</p>
+    
+      <div class="site-info" aria-label="站点信息">
+        
+          
+            <a class="site-info__item" href="/archives/">
+              <strong>27</strong>
+              <span>文章</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/categories/">
+              <strong>12</strong>
+              <span>分类</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/tags/">
+              <strong>25</strong>
+              <span>标签</span>
+            </a>
+          
+        
+      </div>
+    
+    <div class="socials">
+      
+        <a href="https://github.com/tsubasa-syaoran" target="_blank" rel="noopener" aria-label="GitHub">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+
+          
+        </a>
+      
+      
+    </div>
+  </section>
+
+  
+    <section class="side-card toc-card">
+      <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-table-of-contents" aria-hidden="true"><path d="M16 12H3"/><path d="M16 18H3"/><path d="M16 6H3"/><path d="M21 12h.01"/><path d="M21 18h.01"/><path d="M21 6h.01"/></svg>
+文章目录</h2>
+      <div class="toc-content">
+        
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%9B%AE%E6%A0%87"><span class="toc-text">主要目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-text">主要内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E6%90%9E%E6%B8%85%E6%A5%9A%EF%BC%9A%E5%BB%B6%E8%BF%9F%E6%90%9E%E5%BE%97%E6%A0%B9%E6%BA%90%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="toc-text">先搞清楚：延迟搞得根源在哪里</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E9%A1%B9"><span class="toc-text">准备项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">操作步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E4%BF%AE%E5%A4%8D-ProxyIP%EF%BC%88%E5%BF%85%E5%81%9A%EF%BC%8C%E6%95%88%E6%9E%9C%E6%9C%80%E6%98%BE%E8%91%97%EF%BC%89"><span class="toc-text">第一步：修复 ProxyIP（必做，效果最显著）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E7%94%A8%E6%9C%AC%E5%9C%B0%E6%B5%8B%E9%80%9F%E6%89%BE%E6%9C%80%E4%BC%98-IP%EF%BC%88%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8C%96%EF%BC%89"><span class="toc-text">第二步：用本地测速找最优 IP（核心优化）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%BC%80%E5%90%AF%E3%80%8C%E4%BC%98%E9%80%89IP%E4%BD%9C%E4%B8%BA%E5%8F%8D%E4%BB%A3IP%E3%80%8D%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-text">第三步：开启「优选IP作为反代IP」（推荐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%BC%80%E5%90%AF-ECH%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-text">第四步：开启 ECH（推荐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E6%B5%8B%E8%AF%95%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-text">第五步：测试不同端口（可选）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%9C%9F%E7%BB%B4%E6%8A%A4"><span class="toc-text">定期维护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E9%80%9F%E5%B7%A5%E5%85%B7%E6%B5%8B%E5%87%BA%E6%9D%A5%E5%BE%88%E5%A5%BD%EF%BC%8C%E4%BD%86-Clash-%E9%87%8C%E8%BF%98%E6%98%AF-Timeout"><span class="toc-text">测速工具测出来很好，但 Clash 里还是 Timeout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ProxyIP-%E5%A1%AB%E4%BA%86%E5%A4%9A%E4%B8%AA%EF%BC%8C%E4%BD%86%E8%8A%82%E7%82%B9%E8%BF%98%E6%98%AF%E5%A4%B1%E8%B4%A5"><span class="toc-text">ProxyIP 填了多个，但节点还是失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E4%BA%86-ECH-%E4%B9%8B%E5%90%8E%E8%8A%82%E7%82%B9%E5%85%A8%E9%83%A8%E4%B8%8D%E9%80%9A"><span class="toc-text">开了 ECH 之后节点全部不通</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E9%80%9F%E4%B9%8B%E5%90%8E%E5%A4%9A%E4%B9%85%E9%9C%80%E8%A6%81%E9%87%8D%E6%B5%8B"><span class="toc-text">测速之后多久需要重测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90"><span class="toc-text">相关资源</span></a></li></ol>
+        
+      </div>
+    </section>
+  
+
+  
+
+</aside>
+
+    <section class="paper-main">
+      
+
+<div class="article-tape-wrap">
+<span class="tape tape--top-right" aria-hidden="true"></span>
+<article class="article-paper">
+  <header class="article-header">
+    
+      <a class="label-pill" href="/categories/cloudfare/">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+
+        cloudfare
+      </a>
+    
+    <h1>Cloudflare免费节点优化</h1>
+    <div class="meta-line meta-line--article">
+      <span class="meta-date">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+2026-04-24</span>
+      
+        <span class="meta-tags">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+
+          <a class="meta-tag-link" href="/tags/cloudfare/">#cloudfare</a>
+        </span>
+      
+    </div>
+  </header>
+
+  
+
+
+  <div class="article-content">
+    <h3 id="主要目标"><a href="#主要目标" class="headerlink" title="主要目标"></a>主要目标</h3><p>使用 Clouflare 搭建的节点，在使用默认功能优选节点时，由于使用的人数较多，导致节点能用但延迟较高、不稳定且大量节点无法连接，本期从根本原因出发，按优先级逐步优化，帮你把延迟从 1000ms+ 降到 500ms 以内，确保秒开4K视频，且播放速度稳定。</p>
+<h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><ul>
+<li>流量链路分析：延迟高的三个根因</li>
+<li>修复 ProxyIP：消除大量连接失败节点（必做）</li>
+<li>CloudflareSpeedTest 本地测速：找到最优 CF IP（必做）</li>
+<li>开启「优选IP作为反代IP」：减少一跳中转（强烈推荐）</li>
+<li>开启 ECH：减少 GFW 干扰，降低延迟抖动（强烈推荐）</li>
+<li>调整优选端口：不同运营商对比测试（可选）</li>
+</ul>
+<h3 id="先搞清楚：延迟搞得根源在哪里"><a href="#先搞清楚：延迟搞得根源在哪里" class="headerlink" title="先搞清楚：延迟搞得根源在哪里"></a>先搞清楚：延迟搞得根源在哪里</h3><p>优化前必须理解流量走的完整路径，每一跳都会叠加延迟：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">你的设备</span><br><span class="line">  ↓ 优选IP 决定入口质量</span><br><span class="line">Cloudflare 边缘节点</span><br><span class="line">  ↓ Worker 运行（10ms CPU 限制）</span><br><span class="line">CF Worker</span><br><span class="line">  ↓ ProxyIP 决定出口质量</span><br><span class="line">ProxyIP 中转节点</span><br><span class="line">  ↓</span><br><span class="line">目标网站</span><br></pre></td></tr></table></figure>
+
+<p>延迟高一般只有三个根因：</p>
+<table>
+<thead>
+<tr>
+<th>根因</th>
+<th>典型现象</th>
+<th>优化方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ProxyIP 失效或质量差</td>
+<td>大量节点连接失败</td>
+<td>更换或自建 ProxyIP</td>
+</tr>
+<tr>
+<td>优选 IP 质量差</td>
+<td>延迟 1000ms+ 且参差不齐</td>
+<td>本地测速找最优 IP</td>
+</tr>
+<tr>
+<td>GFW 干扰或 QoS 限速</td>
+<td>延迟抖动大、时好时坏</td>
+<td>ECH、协议切换、自建出口</td>
+</tr>
+</tbody></table>
+<h2 id="准备项"><a href="#准备项" class="headerlink" title="准备项"></a>准备项</h2><ul>
+<li>edgetunnel 已部署完成，节点可以导入客户端</li>
+<li>绑定了自定义域名（<code>.workers.dev</code> &#x2F; <code>.pages.dev</code> 在国内部分地区被封锁，必须绑自定义域）</li>
+<li>客户端使用 Clash Verge Rev（mihomo&#x2F;Meta 内核）</li>
+</ul>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="第一步：修复-ProxyIP（必做，效果最显著）"><a href="#第一步：修复-ProxyIP（必做，效果最显著）" class="headerlink" title="第一步：修复 ProxyIP（必做，效果最显著）"></a>第一步：修复 ProxyIP（必做，效果最显著）</h3><p><strong>背景</strong>：CF Worker 被 Cloudflare 限制，无法直接访问 Cloudflare 托管的网站，需要 ProxyIP 做中转。ProxyIP 失效是节点大量失败最主要的原因。</p>
+<p>进后台 → 设置 → ProxyIP，填入多个备用地址，用换行分隔，失效时自动切换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">proxyip.cmliussss.net,</span><br><span class="line">cdn-all.xn--b6gac.eu.org,</span><br><span class="line">cdn.xn--b6gac.eu.org,</span><br><span class="line">edgetunnel.anycast.eu.org,</span><br><span class="line">cdn.anycast.eu.org</span><br></pre></td></tr></table></figure>
+
+<p>验证是否有效：<a target="_blank" rel="noopener" href="https://check.proxyip.cmliussss.net/">https://check.proxyip.cmliussss.net/</a></p>
+<p><strong>预期效果</strong>：配置后，连接失败的节点基本消除。</p>
+<h3 id="第二步：用本地测速找最优-IP（核心优化）"><a href="#第二步：用本地测速找最优-IP（核心优化）" class="headerlink" title="第二步：用本地测速找最优 IP（核心优化）"></a>第二步：用本地测速找最优 IP（核心优化）</h3><p>edgetunnel 默认随机抽取 CF IP，质量完全靠运气。通过本地测速找到对你当前网络延迟最低的 IP，是最直接有效的优化。</p>
+<h4 id="下载-CloudflareSpeedTest"><a href="#下载-CloudflareSpeedTest" class="headerlink" title="下载 CloudflareSpeedTest"></a>下载 CloudflareSpeedTest</h4><p><strong>Windows</strong></p>
+<p>前往 <a target="_blank" rel="noopener" href="https://github.com/XIU2/CloudflareSpeedTest/releases">CloudflareSpeedTest Releases</a> 下载 <code>cfst_windows_amd64.zip</code>，解压后得到 <code>cfst.exe</code>，在解压目录打开终端运行。</p>
+<h4 id="关闭代理后测速"><a href="#关闭代理后测速" class="headerlink" title="关闭代理后测速"></a>关闭代理后测速</h4><blockquote>
+<p><strong>必须关闭代理，否则测出的是代理服务器到 CF 的延迟，对本机没有意义。</strong></p>
+</blockquote>
+<p>用 HTTPing 模式测速</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./cfst -httping -tl 150 -sl 5 -p 15</span><br></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-httping</code></td>
+<td>HTTP 测速模式，<strong>必须加</strong>，过滤掉”TCP 通但 HTTP 代理不可用”的假可用 IP</td>
+</tr>
+<tr>
+<td><code>-tl 150</code></td>
+<td>只保留延迟 150ms 以内的 IP</td>
+</tr>
+<tr>
+<td><code>-sl 5</code></td>
+<td>只保留下载速度 5MB&#x2F;s 以上的 IP</td>
+</tr>
+<tr>
+<td><code>-p 15</code></td>
+<td>输出前 15 个结果</td>
+</tr>
+</tbody></table>
+<p>为什么要用 HTTPing 而不是默认 TCP 模式？TCP 测速会有大量”看起来可用、实际在客户端 Timeout”的 IP，而 HTTPing 模式与 Clash 客户端测速逻辑一致，结果更准确。</p>
+<p><strong>实测参考（每次不同，仅示例）：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">IP 地址           延迟(ms)  速度(MB/s)  地区</span><br><span class="line"></span><br><span class="line">162.159.45.46     44.10     13.03       NRT（东京）</span><br><span class="line"></span><br><span class="line">162.159.44.188    45.34     11.82       NRT（东京）</span><br><span class="line"></span><br><span class="line">172.64.53.100     59.02     13.42       NRT（东京）</span><br><span class="line"></span><br><span class="line">172.64.52.232     62.29     13.43       NRT（东京）</span><br><span class="line"></span><br><span class="line">162.159.38.157    64.46     12.82       NRT（东京）</span><br></pre></td></tr></table></figure>
+
+<p>注意：TCP 测速时 SIN（新加坡）节点可用，但在客户端实测时 Timeout。建议在 Clash 里全部测速后，删掉经常 Timeout 的地区节点。</p>
+<h4 id="把测速结果填入后台"><a href="#把测速结果填入后台" class="headerlink" title="把测速结果填入后台"></a>把测速结果填入后台</h4><p>后台 → 优选订阅生成 → 模式选「自定义订阅（支持汇聚订阅）」</p>
+<p>格式为 <code>IP地址:端口#备注名</code>，每行一个：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">162.159.45.46:443#NRT优选1</span><br><span class="line">162.159.44.188:443#NRT优选2</span><br><span class="line">172.64.53.100:443#NRT优选3</span><br><span class="line">172.64.52.232:443#NRT优选4</span><br><span class="line">162.159.38.157:443#NRT优选5</span><br></pre></td></tr></table></figure>
+
+<p><strong>预期效果</strong>：延迟从 1000ms+ 随机分布，降到 400~600ms（NRT 东京段）。</p>
+<h3 id="第三步：开启「优选IP作为反代IP」（推荐）"><a href="#第三步：开启「优选IP作为反代IP」（推荐）" class="headerlink" title="第三步：开启「优选IP作为反代IP」（推荐）"></a>第三步：开启「优选IP作为反代IP」（推荐）</h3><p><strong>原理</strong>：开启后，订阅中的优选 IP 同时也被当作 ProxyIP 使用，入口和出口合并为同一个 IP，<strong>减少一跳中转</strong>，理论上降低 5~30ms 延迟。</p>
+<p>后台 → 优选订阅生成 → 「优选IP作为反代IP」开关 → 开启</p>
+<p>开启后重新拉取订阅即可生效。</p>
+<p>中国移动:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://addressesapi.090227.xyz/cmcc</span><br></pre></td></tr></table></figure>
+
+<p>中国电信:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://addressesapi.090227.xyz/ct</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第四步：开启-ECH（推荐）"><a href="#第四步：开启-ECH（推荐）" class="headerlink" title="第四步：开启 ECH（推荐）"></a>第四步：开启 ECH（推荐）</h3><p><strong>原理</strong>：ECH（Encrypted Client Hello）是 TLS 1.3 的扩展，对握手阶段的 SNI 字段加密。GFW 无法通过 SNI 识别目标域名，从而减少针对性的 QoS 限速和干扰，<strong>降低延迟抖动，提高连接稳定性</strong>。</p>
+<p><strong>前提</strong>：Clash Verge Rev 使用 Meta 内核，已原生支持 ECH，可以直接用。</p>
+<p>后台 → ECH 配置 → 开启，填入：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>推荐值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ECH DNS</td>
+<td><code>cloudflare-ech.com</code></td>
+</tr>
+<tr>
+<td>ECH SNI</td>
+<td>留空，或填你自己的伪装域名</td>
+</tr>
+</tbody></table>
+<p>保存后重新拉取订阅，节点链接中会自动附加 ECH 参数。</p>
+<blockquote>
+<p>如果开启后节点全部不通，先关掉 ECH 验证基础链路是否正常，再重新测试。ECH 应该在基础链路稳定的前提下开启。</p>
+</blockquote>
+<h3 id="第五步：测试不同端口（可选）"><a href="#第五步：测试不同端口（可选）" class="headerlink" title="第五步：测试不同端口（可选）"></a>第五步：测试不同端口（可选）</h3><p>默认端口 443，但不同运营商对不同端口的 QoS 策略不同，可以逐一测试：</p>
+<p>后台 → 优选订阅生成 → 「指定优选端口」</p>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>443</code></td>
+<td>默认，最通用</td>
+</tr>
+<tr>
+<td><code>2053</code></td>
+<td>联通&#x2F;移动可能更快</td>
+</tr>
+<tr>
+<td><code>2083</code></td>
+<td>CF 支持的备用 TLS 端口</td>
+</tr>
+<tr>
+<td><code>2087</code></td>
+<td>CF 支持的备用 TLS 端口</td>
+</tr>
+<tr>
+<td><code>8443</code></td>
+<td>备用</td>
+</tr>
+</tbody></table>
+<p>建议每个端口单独跑一次测速，对比延迟后选最低的固定使用。</p>
+<h2 id="定期维护"><a href="#定期维护" class="headerlink" title="定期维护"></a>定期维护</h2><p>CF IP 质量会随时间变化，建议<strong>每 1~2 周重新测速</strong>一次：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/cfst</span><br><span class="line"><span class="built_in">unset</span> http_proxy https_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY all_proxy</span><br><span class="line">./cfst -httping -tl 150 -sl 5 -p 15</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="测速工具测出来很好，但-Clash-里还是-Timeout"><a href="#测速工具测出来很好，但-Clash-里还是-Timeout" class="headerlink" title="测速工具测出来很好，但 Clash 里还是 Timeout"></a>测速工具测出来很好，但 Clash 里还是 Timeout</h3><p><strong>原因</strong>：TCP 测速会过滤不掉”TCP 可达但 HTTP 代理不可用”的 IP，必须用 HTTPing 模式。</p>
+<p><strong>解决</strong>：测速时加 <code>-httping</code> 参数，再把结果填入自定义订阅。</p>
+<h3 id="ProxyIP-填了多个，但节点还是失败"><a href="#ProxyIP-填了多个，但节点还是失败" class="headerlink" title="ProxyIP 填了多个，但节点还是失败"></a>ProxyIP 填了多个，但节点还是失败</h3><p><strong>原因</strong>：填入的 ProxyIP 本身已经失效，或格式有误。</p>
+<p><strong>解决</strong>：用验证工具 <a target="_blank" rel="noopener" href="https://check.proxyip.cmliussss.net/">check.proxyip.cmliussss.net</a> 逐一测试，只保留验证通过的地址。</p>
+<h3 id="开了-ECH-之后节点全部不通"><a href="#开了-ECH-之后节点全部不通" class="headerlink" title="开了 ECH 之后节点全部不通"></a>开了 ECH 之后节点全部不通</h3><p><strong>原因</strong>：客户端版本、DNS 配置或链路环境不支持 ECH。</p>
+<p><strong>解决</strong>：先关闭 ECH，确认基础链路正常后，再用保守配置（ECH DNS 填 <code>cloudflare-ech.com</code>，ECH SNI 留空）重新测试。</p>
+<h3 id="测速之后多久需要重测"><a href="#测速之后多久需要重测" class="headerlink" title="测速之后多久需要重测"></a>测速之后多久需要重测</h3><p><strong>原因</strong>：CF IP 的路由质量会随时间变化，优选结果不是永久有效的。</p>
+<p><strong>解决</strong>：建议每周重测1-2次，或发现节点明显变慢时重测。</p>
+<h3 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/XIU2/CloudflareSpeedTest">CloudflareSpeedTest 项目</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/cmliu/edgetunnel">cmliu&#x2F;edgetunnel 官方仓库</a></li>
+<li><a target="_blank" rel="noopener" href="https://check.proxyip.cmliussss.net/">ProxyIP 验证工具</a></li>
+</ul>
+
+  </div>
+
+  <footer class="article-reactions">
+    <div class="reaction-group">
+      <button type="button" class="reaction reaction--comment" aria-label="跳转到评论区" data-action="scroll-to-comments">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+
+      </button>
+      <span class="reaction-label">评论</span>
+    </div>
+    <div class="reaction-group reaction-group--right">
+      <button type="button" class="reaction reaction--share" aria-label="分享" data-action="share">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share-2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+
+      </button>
+      <span class="reaction-label">分享</span>
+    </div>
+  </footer>
+
+  
+
+
+  <nav class="article-actions">
+    
+      <a class="article-action article-action--prev" href="/2026/04/27/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB01/">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+
+        <span class="action-label">上一篇</span>
+        <span class="action-title">每周分享01</span>
+      </a>
+    
+    
+      <a class="article-action article-action--next" href="/2026/04/24/%E5%9F%9F%E5%90%8D/%E5%85%8D%E8%B4%B9%E5%9F%9F%E5%90%8D%E6%B1%87%E6%80%BB-md/">
+        <span class="action-label">下一篇</span>
+        <span class="action-title">我的域名汇总</span>
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+
+      </a>
+    
+  </nav>
+</article>
+</div>
+
+
+
+      
+
+
+    </section>
+    
+  </main>
+
+  <div class="sidebar-backdrop js-sidebar-close" aria-hidden="true"></div>
+
+  
+<footer class="site-footer">
+  <span class="site-footer__left">© 2026 By Neko</span>
+  <span class="site-footer__right">Powered by Theme <a href="https://github.com/Homulilly/hexo-theme-flatpaper" target="_blank" rel="noopener">FlatPaper</a></span>
+</footer>
+
+  <div class="search-panel" aria-hidden="true">
+  <div class="search-backdrop js-search-close"></div>
+  <section class="search-dialog" role="dialog" aria-modal="true" aria-label="搜索文章">
+    <span class="tape tape--top-left" aria-hidden="true"></span>
+    <header class="search-head">
+      <h2><span class="green-dot"></span>搜索文章</h2>
+      <button class="icon-button js-search-close" type="button" aria-label="关闭搜索">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+
+      </button>
+    </header>
+    <label class="search-field">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+
+      <input id="flatpaper-search" class="search-input" type="search" placeholder="输入关键词，按 Esc 关闭" autocomplete="off">
+    </label>
+    <div class="search-results" data-empty="输入关键词后显示匹配的文章">
+      <p class="search-empty">输入关键词后显示匹配的文章</p>
+    </div>
+  </section>
+</div>
+
+<script type="application/json" id="flatpaper-post-index">
+[
+
+  {
+    "title": "it.tools",
+    "url": "/2026/05/29/it-tools/",
+    "date": "2026-05-29",
+    "text": "github 项目 it.tools 网页安装 [it tool] (https://github.com/corentinth/it-tools) 1docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest"
+  },
+
+  {
+    "title": "二分搜索法",
+    "url": "/2026/05/27/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E6%B3%95/",
+    "date": "2026-05-27",
+    "text": "letcode 704在一个数组里，找一个target, 判断target 是否在数组中，如果在返回对应的数组下标,没找到返回-1 1 12"
+  },
+
+  {
+    "title": "ffmpeg常用命令汇总",
+    "url": "/2026/05/26/ffmpeg/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/",
+    "date": "2026-05-26",
+    "text": "FFmpeg 常用命令汇总（2026最新整理） FFmpeg 是功能最强大的音视频处理工具，命令基本格式： 1ffmpeg [全局选项] &#123;[输入选项] -i 输入文件&#125;... &#123;[输出选项] 输出文件&#125; 1. 基础信息查询 命令 作用 ffmpeg -version 查看版本 ffmpeg -h 帮助信息 ffmpeg -formats 支持的封装格式 f"
+  },
+
+  {
+    "title": "ffmpeg将mp3与背景图合并为mp4",
+    "url": "/2026/05/26/ffmpeg/ffmpeg%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/",
+    "date": "2026-05-26",
+    "text": "使用ffmpeg 将mp3 与 背景图片合并mp3 + 背景图片1ffmpeg -loop 1 -framerate 1 -i cover.jpg -i audio.mp3 -vf &quot;scale=trunc(iw/2)*2:trunc(ih/2)*2,format=yuv420p&quot; -c:v libx264 -tune stillimage -c:a copy -shortes"
+  },
+
+  {
+    "title": "blog_todolist20260525",
+    "url": "/2026/05/25/blog/blog-todolist20260525/",
+    "date": "2026-05-25",
+    "text": "待办事项 博客categroy有问题,待修复 1已经解决 添加工具包网页 添加vps 查询网页 添加常用vps 添加好用的谷歌扩展 添加近期的game 搜索一些自己需要的单页应用，可以自己部署"
+  },
+
+  {
+    "title": "科学上网",
+    "url": "/2026/05/24/tools/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/",
+    "date": "2026-05-24",
+    "text": "🔰 科学上网软件分享 请大家根据使用的系统下载对应的软件，主流的软件是V2ray、Clash、Shadowrocket 软件使用教程：点击打开>> 🪟 Windows软件下载 v2rayN 点击下载>> Clash 点击下载>> Clash Verge 点击下载>> Clash Party 点击下载>> 📱 安卓APP下载 v2rayNG APP下载>> Clash APP下载>> Clas"
+  },
+
+  {
+    "title": "图解项目",
+    "url": "/2026/05/20/%E5%9B%BE%E8%A7%A3/%E5%9B%BE%E8%A7%A3%E9%A1%B9%E7%9B%AE/",
+    "date": "2026-05-20",
+    "text": "Nginx Proxy Manager gh-proxy edgetunnel 1Panel homepage anchor cloudmail ImgBed blog 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162"
+  },
+
+  {
+    "title": "电子书网站合集",
+    "url": "/2026/05/20/tools/%E7%94%B5%E5%AD%90%E4%B9%A6%E7%BD%91%E7%AB%99%E5%90%88%E9%9B%86/",
+    "date": "2026-05-20",
+    "text": "📚 电子书 &#x2F; 学术资源网站合集 整理时间：2026类型：电子书｜论文｜教材｜漫画｜Kindle｜古籍｜搜书引擎适合：Kindle 用户、程序员、学生、科研党、小说爱好者 🔥 常用核心资源站（推荐收藏） 网站 类型 特点 Z-Library 综合电子书 小说 &#x2F; 畅销书 &#x2F; Kindle 资源丰富 WeLib 综合搜索 类似 Anna’s Archive，中文友好"
+  },
+
+  {
+    "title": "nextcloud网盘",
+    "url": "/2026/05/16/docker%E5%BA%94%E7%94%A8/nextcloud%E7%BD%91%E7%9B%98/",
+    "date": "2026-05-16",
+    "text": "# 小白研究所: 搭建专属私人云盘 Nextcloud ｜解锁 VPS 隐藏玩法｜抛弃限速网盘 安装 Docker1curl -fsSL https://get.docker.com | bash -s docker &amp;&amp; systemctl enable --now docker 创建项目目录1mkdir nextcloud &amp;&amp; cd nextcloud 创建 "
+  },
+
+  {
+    "title": "1Panel搭建",
+    "url": "/2026/05/16/docker%E5%BA%94%E7%94%A8/1Panel%E6%90%AD%E5%BB%BA/",
+    "date": "2026-05-16",
+    "text": "最强 VPS 可视化面板 1Panel｜让你的 VPS 像 Windows 一样好用原文：小白研究所 VPS-1Panel 教程 一、什么是 1Panel 面板？1Panel 是一款现代化、开源免费的 Linux 服务器运维管理面板。 (xbiit.net) 它可以： 通过网页图形界面管理 VPS 不再依赖复杂 Linux 命令 基于 Docker 容器技术 应用彼此隔离 更安全、更轻量 官方： "
+  },
+
+  {
+    "title": "自用服务器脚本大全",
+    "url": "/2026/05/15/linux%E8%BF%90%E7%BB%B4/%E8%87%AA%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/",
+    "date": "2026-05-15",
+    "text": "自用服务器脚本大全：一键测评、工具与部署指南来源：CMLiussss Blog 自用常用脚本汇总 主要是自用备忘，不要当成推荐表单，使用后果自负！ 1apt update &amp;&amp; apt install -y sudo curl unzip 测评类IP质量体检脚本1bash &lt;(curl -Ls IP.Check.Place) VPS融合怪服务器测评脚本1curl -L htt"
+  },
+
+  {
+    "title": "Hexo博客美化",
+    "url": "/2026/05/15/hexo/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/",
+    "date": "2026-05-15",
+    "text": "〖Hexo博客系列〗No.2 美化Hexo博客，教你如何安装和美化Hexo博客 原文：CMLiussss Blog HexoBlogNo2 美化Hexo博客，主题安装配置这期教程演示将使用一款基于 hexo-theme-butterfly 修改的主题 —— 安知鱼（AnZhiYu）。 项目地址：https://github.com/anzhiyu-c/hexo-theme-anzhiyu 官方文档"
+  },
+
+  {
+    "title": "ip测试工具",
+    "url": "/2026/05/15/linux%E8%BF%90%E7%BB%B4/ip%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/",
+    "date": "2026-05-15",
+    "text": "原文地址： https://potoh.com/iptest/IP 工具这里整理了常用的 IP 查询、延迟测试、分流检测和网络测速工具，便于直接打开使用。 工具列表 whatismyipaddress查询当前网络IP地址，快速查看出口位置与基础网络信息 ping0识别当前IP 类型，适合快速判断住宅、机房或代理特征 ITDOG Ping多地 Ping 与延迟测试工具，可查看不同地区的连接表现。 I"
+  },
+
+  {
+    "title": "hexo入门",
+    "url": "/2026/05/15/hexo/hexo%E5%85%A5%E9%97%A8/",
+    "date": "2026-05-15",
+    "text": "Hexo 常用命令总结1234567# Hexo 常用命令总结## 一、初始化与安装### 安装 Hexo CLI```bashnpm install -g hexo-cli 创建博客项目1hexo init blog 进入项目目录1cd blog 安装依赖1npm install 二、启动与预览启动本地服务器1hexo server 简写： 1hexo s 默认访问： 1http://local"
+  },
+
+  {
+    "title": "docker常用命令",
+    "url": "/2026/05/15/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/",
+    "date": "2026-05-15",
+    "text": "Docker 常用命令总结1. Docker 基础概念 名称 说明 Image（镜像） 类似系统模板 Container（容器） 镜像运行后的实例 Volume（数据卷） 持久化数据 Network（网络） 容器通信 2. Docker 信息查看查看 Docker 版本1docker -v 查看 Docker 详细信息1docker info 查看 Docker 帮助1docker --help "
+  },
+
+  {
+    "title": "homepage安装",
+    "url": "/2026/05/15/docker%E5%BA%94%E7%94%A8/homepage%E5%AE%89%E8%A3%85/",
+    "date": "2026-05-15",
+    "text": "找到一个路径，创建homepagestack文件夹，在homepagestack中创建homepage-1，在homepage-1中创建config和docker-compose.yml 粘贴下面的代码，按需进行修改 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748vers"
+  },
+
+  {
+    "title": "5元购买xyz二级域名",
+    "url": "/2026/05/15/%E5%9F%9F%E5%90%8D/5%E5%85%83%E8%B4%AD%E4%B9%B0xyz%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/",
+    "date": "2026-05-15",
+    "text": "每年不到5元，即可购买一个xyz二级域名，可以无限创建子域名低价域名的介绍 xyz域名的介绍：介绍1.111B类.xyz域名 低价域名的格式：长度为6、7、8和9位，从 000000.xyz 到 999999999.xyz 第一步：准备下面的工具 Spaceship域名注册 :点击跳转 域名批量注册查询工具: 点击跳转 Cloudflare官网(需要魔法上网):点击跳转 第二步：注册Spacesh"
+  },
+
+  {
+    "title": "vscode快捷键",
+    "url": "/2026/05/13/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/",
+    "date": "2026-05-13",
+    "text": "VS Code 常用快捷键大全（以 Windows&#x2F;Linux 为主，macOS 对应键已注明） 1. 通用操作 功能 Windows&#x2F;Linux macOS 打开命令面板 Ctrl + Shift + P &#x2F; F1 Cmd + Shift + P 快速打开文件 Ctrl + P Cmd + P 打开设置 Ctrl + , Cmd + , 打开键盘快捷键设置 Ctrl"
+  },
+
+  {
+    "title": "ubuntu系统DHCP节点转换为静态IP",
+    "url": "/2026/05/10/linux%E8%BF%90%E7%BB%B4/ubuntu%E7%B3%BB%E7%BB%9FDHCP%E8%8A%82%E7%82%B9%E8%BD%AC%E6%8D%A2%E4%B8%BA%E9%9D%99%E6%80%81IP/",
+    "date": "2026-05-10",
+    "text": "查看本机的ip 192.168.0.0 - 192.168.255.255 为自己本机ip段，我们只许看192起始的ip 1ip addr 查看本机gateway ip,192.168.164.2 dev ens33 确认192.168.164.2是gateway ip 1ip route 转换为root用户 1sudo su 输入neko 用户的密码（12345678） 修改netplan 配置"
+  },
+
+  {
+    "title": "vmware安装ubuntu虚拟机",
+    "url": "/2026/05/10/linux%E8%BF%90%E7%BB%B4/vmare%E5%AE%89%E8%A3%85ubuntu/",
+    "date": "2026-05-10",
+    "text": "linux系统安装操作准备 vmware 需要自己下载，等待后续补充下载链接，官网：https://www.vmware.com/ ubuntu 系统镜像 （https://releases.ubuntu.com/noble/ubuntu-24.04.4-live-server-amd64.iso） linuxmint 系统镜像 ( https://mirror.clarkson.edu/linu"
+  },
+
+  {
+    "title": "读书-生图",
+    "url": "/2026/05/10/%E5%9B%BE%E8%A7%A3/%E4%B9%A6%E7%B1%8D%E7%94%9F%E5%9B%BE/",
+    "date": "2026-05-10",
+    "text": "苏菲的世界 安德的游戏 蒙台梭利教育法 重新认知学习 反脆弱 黑天鹅 林中雨滴 大自然的日历 力量之源 chatgpt生成图片提示词12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717"
+  },
+
+  {
+    "title": "blog 的待办事项",
+    "url": "/2026/05/10/blog/blog-todolist/",
+    "date": "2026-05-10",
+    "text": "blog 代办事项20260510 每个blog 单独的图片，图片地址指向自己的图床网站 done 背景音乐集设置为自己喜欢的 创建游戏，算法等项目板块 将文章设为不同的板块 专门一篇文章介绍hexo 的使用"
+  },
+
+  {
+    "title": "每周分享01",
+    "url": "/2026/04/27/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB01/",
+    "date": "2026-04-27",
+    "text": "每周分享第 1 期这里记录过去一周，我看到的值得分享的东西。 模仿阮一峰大佬，把它写成文章，共享出来，也许效果更好。 VPS免费的vps免费的vps查找了一周，基本上都需要国外的银行卡，或者虚拟货币，不可行。 付费的vps这个网站有个$7&#x2F;yr 的套餐，支持支付宝支付。可以尝试下。 49一年的vpshttps://ccp.bitsflow.cloud/order/cart/index/7"
+  },
+
+  {
+    "title": "Cloudflare免费节点优化",
+    "url": "/2026/04/24/cloudflare/Cloudflare%E5%85%8D%E8%B4%B9%E8%8A%82%E7%82%B9%E4%BC%98%E5%8C%96/",
+    "date": "2026-04-24",
+    "text": "主要目标使用 Clouflare 搭建的节点，在使用默认功能优选节点时，由于使用的人数较多，导致节点能用但延迟较高、不稳定且大量节点无法连接，本期从根本原因出发，按优先级逐步优化，帮你把延迟从 1000ms+ 降到 500ms 以内，确保秒开4K视频，且播放速度稳定。 主要内容 流量链路分析：延迟高的三个根因 修复 ProxyIP：消除大量连接失败节点（必做） CloudflareSpeedTes"
+  },
+
+  {
+    "title": "我的域名汇总",
+    "url": "/2026/04/24/%E5%9F%9F%E5%90%8D/%E5%85%8D%E8%B4%B9%E5%9F%9F%E5%90%8D%E6%B1%87%E6%80%BB-md/",
+    "date": "2026-04-24",
+    "text": "我注册的免费域名： https://www.gname.net/ nekomini.eu.cc syaoran.eu.cc https://my.dnshe.com/index.php?m=domain_hub nekomini.ccwu.cc syaoran-moon.ccwu.cc syaoran.ccwu.cc"
+  },
+
+  {
+    "title": "算法学习记录",
+    "url": "/2026/04/23/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/",
+    "date": "2026-04-23",
+    "text": "target target1: 把bilibili 卡尔算法170 rush 三遍 数组 5 链表 6 哈希表 6 字符串 6 栈与队列 7 二叉树 29 回溯 16 贪心 17 动态规划 42 单调栈 5 图论 29 target2: 把hello 算法 理论看完 hello-algo target3: 把计算机算法理论+题目做完，记录，讲解"
+  },
+
+  {
+    "title": "Hello World",
+    "url": "/2026/04/19/hexo/hello-world/",
+    "date": "2026-04-19",
+    "text": "Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick"
+  }
+
+]
+</script>
+
+  
+<script src="/js/main.js"></script>
+
+  
+</body>
+</html>

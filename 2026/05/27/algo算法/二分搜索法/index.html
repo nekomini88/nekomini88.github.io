@@ -5,7 +5,7 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f7f3e9">
-<title>算法学习记录 | Neko&#39;s Blog</title>
+<title>二分搜索法 | Neko&#39;s Blog</title>
 
   <meta name="description" content="灯就陪他静静读书">
 
@@ -221,7 +221,7 @@
 文章目录</h2>
       <div class="toc-content">
         
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#target"><span class="toc-text">target</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#letcode-704"><span class="toc-text">letcode 704</span></a></li></ol>
         
       </div>
     </section>
@@ -246,11 +246,11 @@
         算法
       </a>
     
-    <h1>算法学习记录</h1>
+    <h1>二分搜索法</h1>
     <div class="meta-line meta-line--article">
       <span class="meta-date">
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-2026-04-23</span>
+2026-05-27</span>
       
         <span class="meta-tags">
           
@@ -266,24 +266,80 @@
 
 
   <div class="article-content">
-    <h3 id="target"><a href="#target" class="headerlink" title="target"></a>target</h3><ul>
-<li>target1: 把bilibili 卡尔算法170 rush 三遍<ul>
-<li>数组 5  </li>
-<li>链表 6</li>
-<li>哈希表 6</li>
-<li>字符串 6</li>
-<li>栈与队列 7</li>
-<li>二叉树 29</li>
-<li>回溯 16</li>
-<li>贪心 17</li>
-<li>动态规划 42</li>
-<li>单调栈 5</li>
-<li>图论 29</li>
+    <h2 id="letcode-704"><a href="#letcode-704" class="headerlink" title="letcode 704"></a>letcode 704</h2><p>在一个数组里，找一个target, 判断target 是否在数组中，如果在返回对应的数组下标,没找到返回-1</p>
+<p> Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.<br> You must write an algorithm with O(log n) runtime complexity.</p>
+<p> 给定一个按升序排列的整数数组 nums 和一个整数 target，编写一个函数在 nums 中搜索 target。如果 target 存在，则返回其下标；否则返回 -1。<br> 你必须编写一个时间复杂度为 O(log n) 的算法。</p>
+<p>以下是二分查找法的核心算法思想：</p>
+<hr>
+<p>🔍 二分查找法（Binary Search）核心思想</p>
+<ol>
+<li>基本前提</li>
+</ol>
+<ul>
+<li>数组必须是有序的（升序或降序）</li>
+<li>通过不断缩小搜索范围来快速定位目标</li>
 </ul>
-</li>
-<li>target2: 把hello 算法 理论看完<br> <a target="_blank" rel="noopener" href="https://www.hello-algo.com/chapter_hello_algo/">hello-algo</a></li>
-<li>target3: 把计算机算法理论+题目做完，记录，讲解</li>
+<ol start="2">
+<li>核心思路</li>
+</ol>
+<ul>
+<li>每次取中间元素与目标值比较</li>
+<li>如果相等 → 找到目标，返回下标</li>
+<li>如果中间值 &lt; 目标 → 目标在右半部分，舍弃左半部分</li>
+<li>如果中间值 &gt; 目标 → 目标在左半部分，舍弃右半部分</li>
+<li>重复上述过程，直到找到目标或搜索范围为空</li>
 </ul>
+<ol start="3">
+<li>三个关键变量</li>
+</ol>
+<ul>
+<li>left：搜索范围的左边界</li>
+<li>right：搜索范围的右边界</li>
+<li>mid：中间位置，mid &#x3D; left + (right - left) &#x2F; 2</li>
+</ul>
+<ol start="4">
+<li>两种区间写法</li>
+</ol>
+<p>写法一：左闭右闭 [left, right]<br>left &#x3D; 0, right &#x3D; nums.length - 1<br>while (left &lt;&#x3D; right):<br>    mid &#x3D; left + (right - left) &#x2F; 2<br>    if nums[mid] &#x3D;&#x3D; target → return mid<br>    if nums[mid] &lt; target  → left &#x3D; mid + 1<br>    if nums[mid] &gt; target  → right &#x3D; mid - 1</p>
+<p>写法二：左闭右开 [left, right)<br>left &#x3D; 0, right &#x3D; nums.length<br>while (left &lt; right):<br>    mid &#x3D; left + (right - left) &#x2F; 2<br>    if nums[mid] &#x3D;&#x3D; target → return mid<br>    if nums[mid] &lt; target  → left &#x3D; mid + 1<br>    if nums[mid] &gt; target  → right &#x3D; mid</p>
+<ol start="5">
+<li>为什么 mid 不用 (left+right)&#x2F;2？</li>
+</ol>
+<ul>
+<li>防止整数溢出</li>
+<li>left + (right - left) &#x2F; 2 更安全</li>
+</ul>
+<ol start="6">
+<li>时间 &amp; 空间复杂度</li>
+</ol>
+<ul>
+<li>时间：O(log n) — 每次砍掉一半</li>
+<li>空间：O(1) — 只用常数额外空间</li>
+</ul>
+<ol start="7">
+<li>易错点</li>
+</ol>
+<ul>
+<li>循环条件：&lt;&#x3D; 还是 &lt;？取决于区间定义</li>
+<li>边界更新：mid+1&#x2F;mid-1 还是 mid？取决于区间定义</li>
+<li>两种写法不能混用，选定一种就贯彻到底</li>
+</ul>
+<ol start="8">
+<li>适用场景</li>
+</ol>
+<ul>
+<li>有序数组查找</li>
+<li>查找第一个&#x2F;最后一个满足条件的元素</li>
+<li>旋转排序数组查找</li>
+<li>答案具有单调性的问题（二分答案）</li>
+</ul>
+<hr>
+<p>💡 一句话总结：二分查找的本质是每次排除一半不可能的选项，把 O(n) 的暴力搜索优化到 O(log n)。</p>
+<p>区间定义[left,right]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="comment">// 定义当前区间 [left,right]</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">middle</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            middle = (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target) &#123;</span><br><span class="line">                right = middle - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>区间定义[left,right)，这里的有边界取数组lenth </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="comment">// 定义当前区间 [left,right)</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">middle</span> <span class="operator">=</span> <span class="number">0</span> ;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            middle = (left + right) /<span class="number">2</span> ;</span><br><span class="line">            <span class="keyword">if</span>(nums[middle] &gt; target)&#123;</span><br><span class="line">                right = middle;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span> ;</span><br><span class="line">            &#125; <span class="keyword">if</span>(nums[middle] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   </div>
 
@@ -311,18 +367,18 @@
 
   <nav class="article-actions">
     
-      <a class="article-action article-action--prev" href="/2026/04/24/%E5%9F%9F%E5%90%8D/%E5%85%8D%E8%B4%B9%E5%9F%9F%E5%90%8D%E6%B1%87%E6%80%BB-md/">
+      <a class="article-action article-action--prev" href="/2026/05/29/docker%E5%BA%94%E7%94%A8/it-tools/">
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
 
         <span class="action-label">上一篇</span>
-        <span class="action-title">我的域名汇总</span>
+        <span class="action-title">it.tools</span>
       </a>
     
     
-      <a class="article-action article-action--next" href="/2026/04/19/hexo/hello-world/">
+      <a class="article-action article-action--next" href="/2026/05/26/ffmpeg/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/">
         <span class="action-label">下一篇</span>
-        <span class="action-title">Hello World</span>
+        <span class="action-title">ffmpeg常用命令汇总</span>
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 
@@ -347,19 +403,19 @@
     </header>
     <div class="related-paper__grid">
       
-        <a class="related-card" href="/2026/05/27/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E6%B3%95/">
+        <a class="related-card" href="/2026/04/23/algo%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/">
           <span class="related-card__thumb">
             
 <div class="paper-thumb paper-thumb-0 paper-thumb--cover">
   
-    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779291204856_算法与数据结构.webp" alt="二分搜索法" loading="lazy" referrerpolicy="no-referrer">
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779291204856_算法与数据结构.webp" alt="算法学习记录" loading="lazy" referrerpolicy="no-referrer">
   
 </div>
 
           </span>
           <span class="related-card__body">
-            <strong class="related-card__title">二分搜索法</strong>
-            <em class="related-card__date">2026-05-27</em>
+            <strong class="related-card__title">算法学习记录</strong>
+            <em class="related-card__date">2026-04-23</em>
           </span>
         </a>
       
@@ -453,9 +509,9 @@
 
   {
     "title": "二分搜索法",
-    "url": "/2026/05/27/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E6%B3%95/",
+    "url": "/2026/05/27/algo%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E6%B3%95/",
     "date": "2026-05-27",
-    "text": "letcode 704在一个数组里，找一个target, 判断target 是否在数组中，如果在返回对应的数组下标,没找到返回-1 1 12"
+    "text": "letcode 704在一个数组里，找一个target, 判断target 是否在数组中，如果在返回对应的数组下标,没找到返回-1 Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. "
   },
 
   {
@@ -621,7 +677,7 @@
 
   {
     "title": "算法学习记录",
-    "url": "/2026/04/23/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/",
+    "url": "/2026/04/23/algo%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/",
     "date": "2026-04-23",
     "text": "target target1: 把bilibili 卡尔算法170 rush 三遍 数组 5 链表 6 哈希表 6 字符串 6 栈与队列 7 二叉树 29 回溯 16 贪心 17 动态规划 42 单调栈 5 图论 29 target2: 把hello 算法 理论看完 hello-algo target3: 把计算机算法理论+题目做完，记录，讲解"
   },

@@ -179,7 +179,7 @@
         
           
             <a class="site-info__item" href="/archives/">
-              <strong>33</strong>
+              <strong>35</strong>
               <span>文章</span>
             </a>
           
@@ -221,7 +221,7 @@
 文章目录</h2>
       <div class="toc-content">
         
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#letcode-704"><span class="toc-text">letcode 704</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#letcode-704"><span class="toc-text">letcode 704</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode-34"><span class="toc-text">leetcode 34</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode-35"><span class="toc-text">leetcode 35</span></a></li></ol>
         
       </div>
     </section>
@@ -341,6 +341,69 @@
 <p>区间定义[left,right)，这里的有边界取数组lenth </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="comment">// 定义当前区间 [left,right)</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">middle</span> <span class="operator">=</span> <span class="number">0</span> ;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            middle = (left + right) /<span class="number">2</span> ;</span><br><span class="line">            <span class="keyword">if</span>(nums[middle] &gt; target)&#123;</span><br><span class="line">                right = middle;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span> ;</span><br><span class="line">            &#125; <span class="keyword">if</span>(nums[middle] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="leetcode-34"><a href="#leetcode-34" class="headerlink" title="leetcode 34"></a>leetcode 34</h2><p>Find First and Last Position of Element in Sorted Array</p>
+<p>Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.</p>
+<p>If target is not found in the array, return [-1, -1].</p>
+<p>You must write an algorithm with O(log n) runtime complexity.<br>给定一个按非递减顺序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。</p>
+<p>如果数组中不存在目标值，返回 [-1, -1]。</p>
+<p>你必须编写一个时间复杂度为 O(log n) 的算法。<br>我的写法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BinarySearchFindPosition</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] searchRange(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="type">int</span>[] array = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == target) &#123;</span><br><span class="line">                array[count] = i;</span><br><span class="line">                count++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (array.length == <span class="number">0</span> || count== <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;array[<span class="number">0</span>], array[count-<span class="number">1</span>]&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>核心思想总结：</p>
+<p>这是 LeetCode 第 34 题「在排序数组中查找元素的第一个和最后一个位置」，核心是 二分查找的两次变体：</p>
+<ol>
+<li><p>两次二分：</p>
+<ul>
+<li>第一次：找到 target 的 左边界（第一次出现的位置）</li>
+<li>第二次：找到 target 的 右边界（最后一次出现的位置）</li>
+</ul>
+</li>
+<li><p>左边界二分：</p>
+<ul>
+<li>当 nums[mid] &gt;&#x3D; target 时，向左收缩（right &#x3D; mid - 1）</li>
+<li>记录最后满足 nums[mid] &#x3D;&#x3D; target 的位置</li>
+</ul>
+</li>
+<li><p>右边界二分：</p>
+<ul>
+<li>当 nums[mid] &lt;&#x3D; target 时，向右收缩（left &#x3D; mid + 1）</li>
+<li>记录最后满足 nums[mid] &#x3D;&#x3D; target 的位置</li>
+</ul>
+</li>
+<li><p>特殊情况：</p>
+<ul>
+<li>如果左边界不存在（-1），直接返回 [-1, -1]</li>
+<li>空数组自动处理</li>
+</ul>
+</li>
+</ol>
+<p>时间复杂度：两次 O(log n) → 总计 O(log n)<br>空间复杂度：O(1)</p>
+<p>java代码实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BinarySearchFindPosition</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] searchRange(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> findLeft(nums, target);</span><br><span class="line">        <span class="keyword">if</span> (left == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> findRight(nums, target);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;left, right&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">findLeft</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = nums.length - <span class="number">1</span>, ans = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &gt;= target) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                    ans = mid;</span><br><span class="line">                &#125;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">findRight</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = nums.length - <span class="number">1</span>, ans = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt;= target) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                    ans = mid;</span><br><span class="line">                &#125;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">BinarySearchFindPosition</span> <span class="variable">sol</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BinarySearchFindPosition</span>();</span><br><span class="line">        <span class="type">int</span>[] nums1 = &#123;<span class="number">5</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">10</span>&#125;;</span><br><span class="line">        <span class="type">int</span>[] res1 = sol.searchRange(nums1, <span class="number">8</span>);</span><br><span class="line">        System.out.println(java.util.Arrays.toString(res1)); <span class="comment">// [3,4]</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] nums2 = &#123;<span class="number">5</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">10</span>&#125;;</span><br><span class="line">        <span class="type">int</span>[] res2 = sol.searchRange(nums2, <span class="number">6</span>);</span><br><span class="line">        System.out.println(java.util.Arrays.toString(res2)); <span class="comment">// [-1,-1]</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] nums3 = &#123;&#125;;</span><br><span class="line">        <span class="type">int</span>[] res3 = sol.searchRange(nums3, <span class="number">0</span>);</span><br><span class="line">        System.out.println(java.util.Arrays.toString(res3)); <span class="comment">// [-1,-1]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="leetcode-35"><a href="#leetcode-35" class="headerlink" title="leetcode 35"></a>leetcode 35</h2><p>Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You must write an algorithm with O(log n) runtime complexity.</p>
+<p>给定一个由 不同整数 组成的 已排序 数组和一个目标值 target，如果在数组中找到目标值，则返回其索引；否则，返回目标值应该被 按顺序插入 的位置（即保持数组有序的索引）。</p>
+<p>你必须实现一个时间复杂度为 O(log n) 的算法<br>我的实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">searchInsert</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = nums.length - <span class="number">1</span>, mid = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;  nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &lt;= target)&#123;</span><br><span class="line">                ans = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans+<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>核心思想（算法思路）</p>
+<p>这是一道典型的 二分查找 变体 —  —  “搜索插入位置”。<br>数组是 严格递增（distinct + 已排序），因此可以用二分法在 O(log n) 时间内定位目标。</p>
+<ol>
+<li>维护两个指针 left、right，分别表示搜索区间的左右边界（初始为 [0, n‑1]）。  </li>
+<li>每次取中间位置 mid &#x3D; left + (right‑left)&#x2F;2。  <ul>
+<li>如果 nums[mid] &#x3D;&#x3D; target → 直接返回 mid（找到目标）。  </li>
+<li>如果 nums[mid] &lt; target → 目标一定在 mid 右侧，令 left &#x3D; mid + 1。  </li>
+<li>如果 nums[mid] &gt; target → 目标一定在 mid 左侧（或应该插入的位置就在 mid 处），令 right &#x3D; mid - 1。</li>
+</ul>
+</li>
+<li>循环结束时，left 指向第一个 大于 target 的位置，也正是目标应该被插入的索引（若 target 存在的话，之前已经返回了）。  </li>
+<li>返回 left 即可。</li>
+</ol>
+<p>时间复杂度：每轮排除一半 → O(log n)<br>空间复杂度：只用了几个整型变量 → O(1)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * LeetCode 35: Search Insert Position</span></span><br><span class="line"><span class="comment">     * 给定一个无重复元素的升序数组，返回目标值的索引；</span></span><br><span class="line"><span class="comment">     * 若不存在，则返回目标值应该被插入的位置（以保持数组有序）。</span></span><br><span class="line"><span class="comment">     * 时间复杂度 O(log n)，空间复杂度 O(1)。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">searchInsert</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>; <span class="comment">// 防止溢出</span></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;                 <span class="comment">// 找到目标</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;             <span class="comment">// 目标在右半部</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;            <span class="comment">// 目标在左半部（或应插入于 mid）</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 循环结束，left 是第一个大于 target 的位置，也是插入点</span></span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 简单的 main 方法用于演示</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Solution</span> <span class="variable">sol</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Solution</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] nums1 = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line">        System.out.println(sol.searchInsert(nums1, <span class="number">5</span>)); <span class="comment">// 2</span></span><br><span class="line">        System.out.println(sol.searchInsert(nums1, <span class="number">2</span>)); <span class="comment">// 1</span></span><br><span class="line">        System.out.println(sol.searchInsert(nums1, <span class="number">7</span>)); <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] nums2 = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line">        System.out.println(sol.searchInsert(nums2, <span class="number">0</span>)); <span class="comment">// 0</span></span><br><span class="line">        System.out.println(sol.searchInsert(nums2, <span class="number">2</span>)); <span class="comment">// 1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   </div>
 
   <footer class="article-reactions">
@@ -403,10 +466,42 @@
     </header>
     <div class="related-paper__grid">
       
-        <a class="related-card" href="/2026/04/23/algo%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/">
+        <a class="related-card" href="/2026/06/06/algo%E7%AE%97%E6%B3%95/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/">
           <span class="related-card__thumb">
             
 <div class="paper-thumb paper-thumb-0 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779291204856_算法与数据结构.webp" alt="有序数组的平方" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">有序数组的平方</strong>
+            <em class="related-card__date">2026-06-06</em>
+          </span>
+        </a>
+      
+        <a class="related-card" href="/2026/06/06/algo%E7%AE%97%E6%B3%95/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-1 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779291204856_算法与数据结构.webp" alt="移除元素" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">移除元素</strong>
+            <em class="related-card__date">2026-06-06</em>
+          </span>
+        </a>
+      
+        <a class="related-card" href="/2026/04/23/algo%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-2 paper-thumb--cover">
   
     <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779291204856_算法与数据结构.webp" alt="算法学习记录" loading="lazy" referrerpolicy="no-referrer">
   
@@ -464,6 +559,20 @@
 
 <script type="application/json" id="flatpaper-post-index">
 [
+
+  {
+    "title": "有序数组的平方",
+    "url": "/2026/06/06/algo%E7%AE%97%E6%B3%95/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/",
+    "date": "2026-06-06",
+    "text": "Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order. Example 1: Input: nums &#x3D; [-4,-1,0,3,10]Output: [0,1,9,16,"
+  },
+
+  {
+    "title": "移除元素",
+    "url": "/2026/06/06/algo%E7%AE%97%E6%B3%95/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/",
+    "date": "2026-06-06",
+    "text": ""
+  },
 
   {
     "title": "hexo迁移到别的仓库",

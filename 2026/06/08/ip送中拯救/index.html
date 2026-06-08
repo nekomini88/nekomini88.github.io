@@ -5,7 +5,7 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f7f3e9">
-<title>homepage安装 | Neko&#39;s Blog</title>
+<title>ip送中拯救 | Neko&#39;s Blog</title>
 
   <meta name="description" content="灯就陪他静静读书">
 
@@ -239,24 +239,24 @@
 <article class="article-paper">
   <header class="article-header">
     
-      <a class="label-pill" href="/categories/docker%E5%BA%94%E7%94%A8/">
+      <a class="label-pill" href="/categories/ip/">
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
 
-        docker应用
+        ip
       </a>
     
-    <h1>homepage安装</h1>
+    <h1>ip送中拯救</h1>
     <div class="meta-line meta-line--article">
       <span class="meta-date">
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-2026-05-15</span>
+2026-06-08</span>
       
         <span class="meta-tags">
           
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>
 
-          <a class="meta-tag-link" href="/tags/homepage/">#homepage</a>
+          <a class="meta-tag-link" href="/tags/ip%E9%80%81%E4%B8%AD/">#ip送中</a>
         </span>
       
     </div>
@@ -266,14 +266,15 @@
 
 
   <div class="article-content">
-    <p>找到一个路径，创建homepagestack文件夹，在homepagestack中创建homepage-1，在homepage-1中创建config和docker-compose.yml</p>
-<p>粘贴下面的代码，按需进行修改</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.9&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">homepage-network:</span></span><br><span class="line">    <span class="attr">driver:</span> <span class="string">bridge</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">homepage-config-manager-porter:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">kwangyeonc/homepage-config-manager:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">homepage-config-manager-porter</span></span><br><span class="line">    <span class="attr">user:</span> <span class="string">&quot;0:0&quot;</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3001:3001&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">NODE_ENV:</span> <span class="string">production</span></span><br><span class="line">      <span class="attr">ACCESS_PASSWORD:</span> <span class="string">&quot;123123&quot;</span>   <span class="comment"># 建议更改</span></span><br><span class="line">      <span class="attr">CONFIG_PATH:</span> <span class="string">/app/config</span></span><br><span class="line">      <span class="attr">PORT:</span> <span class="number">3001</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./config:/app/config:rw</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock:ro</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">homepage-network</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">homepage-porter</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">homepage-porter:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ghcr.io/gethomepage/homepage:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">homepage-porter</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">HOMEPAGE_ALLOWED_HOSTS:</span> <span class="string">&quot;*&quot;</span></span><br><span class="line">      <span class="attr">PUID:</span> <span class="number">1000</span></span><br><span class="line">      <span class="attr">PGID:</span> <span class="number">1000</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./config:/app/config:rw</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock:ro</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">homepage-network</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">test:</span> [<span class="string">&quot;CMD&quot;</span>, <span class="string">&quot;wget&quot;</span>, <span class="string">&quot;--no-verbose&quot;</span>, <span class="string">&quot;--tries=1&quot;</span>, <span class="string">&quot;--spider&quot;</span>, <span class="string">&quot;https://192.3.193.180:3000&quot;</span>]</span><br><span class="line">      <span class="attr">interval:</span> <span class="string">30s</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="string">10s</span></span><br><span class="line">      <span class="attr">retries:</span> <span class="number">3</span></span><br><span class="line">      <span class="attr">start_period:</span> <span class="string">40s</span></span><br></pre></td></tr></table></figure>
+    <p>from : <a target="_blank" rel="noopener" href="https://www.nodeseek.com/post-503481-1">https://www.nodeseek.com/post-503481-1</a><br>前段时间绿云多个ip段被集体送中，我是其中之一，虽然是集体送中，但也拉回来了，下面是方法。</p>
+<p>第一，先去向谷歌报告IP问题：<a target="_blank" rel="noopener" href="https://support.google.com/websearch/workflow/9308722">https://support.google.com/websearch/workflow/9308722</a></p>
+<p>第二，用插件改定位1.先去Google账号设置页面将 活动记录 打开，如图image<br><img src="https://cdn.nodeimage.com/i/WvKfUJzbLjd10a1jEGPcNFCYGNS8kvVX.webp" alt="image"><br>2.安装Location Guard (V3) <a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/location-guard-v3/hhnhplojcganfmfimkeboiipphklcbih">https://chromewebstore.google.com/detail/location-guard-v3/hhnhplojcganfmfimkeboiipphklcbih</a></p>
+<p>3.打开Location Guard插件，选择Fixed Location，在地图上点击你IP想要拉回去的位置，比如我的原本是日本，就找到日本东京，点击一下地图上的位置。<br><img src="https://cdn.nodeimage.com/i/PUwoCEEiyEnccoD0SHYnHY4hvwABQhqA.webp" alt="image"></p>
+<p>4.来到Options选项，Default level默认设置改为Use fixed locationimage<br><img src="https://cdn.nodeimage.com/i/4SDPGyqhgSl0nf0OnSHdvexgE0wmSVqt.webp" alt="image"></p>
+<p>5.打开Google地图 <a target="_blank" rel="noopener" href="https://www.google.com/maps">https://www.google.com/maps</a> 点击右下角获取定位，此时就会定位到你刚才在插件里所点击的位置，说明成功了image<br><img src="https://cdn.nodeimage.com/i/ECkbix66DvoRb0zZJkLkybeV0DlrZmer.webp" alt="image"></p>
+<p>6.Google随便搜索一下，滑到底部，点击 update location 来更新位置。image<br><img src="https://cdn.nodeimage.com/i/PsdUwQU2GB83u1lOsA8Se1pYeMGuTiWl.webp" alt="image"></p>
+<p>7.之后每天用一下Google搜索和YouTube就行了，我是用了一周就成功了，集体送中的话，最好是人多力量大，发个贴让你那个ip段的人一起参与进来。</p>
 
-<p>打开终端，使用下面的命令启动docker服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
-<p>修改配置文件，重新构建镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose up -d --force-recreate</span><br></pre></td></tr></table></figure>
   </div>
 
   <footer class="article-reactions">
@@ -300,18 +301,18 @@
 
   <nav class="article-actions">
     
-      <a class="article-action article-action--prev" href="/2026/05/15/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+      <span class="article-action article-action--prev is-disabled" aria-disabled="true">
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
 
         <span class="action-label">上一篇</span>
-        <span class="action-title">docker常用命令</span>
-      </a>
+        <span class="action-title">没有更早的文章了</span>
+      </span>
     
     
-      <a class="article-action article-action--next" href="/2026/05/15/%E5%9F%9F%E5%90%8D/5%E5%85%83%E8%B4%AD%E4%B9%B0xyz%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/">
+      <a class="article-action article-action--next" href="/2026/06/06/algo%E7%AE%97%E6%B3%95/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/">
         <span class="action-label">下一篇</span>
-        <span class="action-title">5元购买xyz二级域名</span>
+        <span class="action-title">有序数组的平方</span>
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 
@@ -321,71 +322,6 @@
 </article>
 </div>
 
-
-  <section class="related-paper">
-    <header class="related-paper__head">
-      <h2>
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-相关文章</h2>
-      <a class="related-paper__more" href="/archives/">
-        <span>查看更多</span>
-        
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-
-      </a>
-    </header>
-    <div class="related-paper__grid">
-      
-        <a class="related-card" href="/2026/05/29/docker%E5%BA%94%E7%94%A8/it-tools/">
-          <span class="related-card__thumb">
-            
-<div class="paper-thumb paper-thumb-0 paper-thumb--cover">
-  
-    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/blog/1780152070374_it.tools.png" alt="it.tools" loading="lazy" referrerpolicy="no-referrer">
-  
-</div>
-
-          </span>
-          <span class="related-card__body">
-            <strong class="related-card__title">it.tools</strong>
-            <em class="related-card__date">2026-05-29</em>
-          </span>
-        </a>
-      
-        <a class="related-card" href="/2026/05/16/docker%E5%BA%94%E7%94%A8/nextcloud%E7%BD%91%E7%9B%98/">
-          <span class="related-card__thumb">
-            
-<div class="paper-thumb paper-thumb-1 paper-thumb--cover">
-  
-    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779290287605_nextcloud_网盘.jpg" alt="nextcloud网盘" loading="lazy" referrerpolicy="no-referrer">
-  
-</div>
-
-          </span>
-          <span class="related-card__body">
-            <strong class="related-card__title">nextcloud网盘</strong>
-            <em class="related-card__date">2026-05-16</em>
-          </span>
-        </a>
-      
-        <a class="related-card" href="/2026/05/16/docker%E5%BA%94%E7%94%A8/1Panel%E6%90%AD%E5%BB%BA/">
-          <span class="related-card__thumb">
-            
-<div class="paper-thumb paper-thumb-2 paper-thumb--cover">
-  
-    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779290383378_1Panel_搭建.png" alt="1Panel搭建" loading="lazy" referrerpolicy="no-referrer">
-  
-</div>
-
-          </span>
-          <span class="related-card__body">
-            <strong class="related-card__title">1Panel搭建</strong>
-            <em class="related-card__date">2026-05-16</em>
-          </span>
-        </a>
-      
-    </div>
-  </section>
 
 
       

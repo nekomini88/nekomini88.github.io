@@ -5,7 +5,7 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f7f3e9">
-<title>ip送中拯救 | Neko&#39;s Blog</title>
+<title>世界杯直播源docker部署 | Neko&#39;s Blog</title>
 
   <meta name="description" content="灯就陪他静静读书">
 
@@ -221,7 +221,7 @@
 文章目录</h2>
       <div class="toc-content">
         
-          
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%9C%E5%83%8F"><span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-%E5%90%AF%E5%8A%A8"><span class="toc-text">Docker 启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose"><span class="toc-text">Docker Compose</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E9%81%93%E8%B7%AF%E7%94%B1"><span class="toc-text">频道路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E6%92%AD%E6%94%BE%E5%88%97%E8%A1%A8"><span class="toc-text">聚合播放列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TS-%E4%BB%A3%E7%90%86%E8%B7%AF%E7%94%B1"><span class="toc-text">TS 代理路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%8E%A5%E5%8F%A3"><span class="toc-text">控制接口</span></a></li></ol>
         
       </div>
     </section>
@@ -239,24 +239,24 @@
 <article class="article-paper">
   <header class="article-header">
     
-      <a class="label-pill" href="/categories/ip/">
+      <a class="label-pill" href="/categories/docker%E5%BA%94%E7%94%A8/">
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
 
-        ip
+        docker应用
       </a>
     
-    <h1>ip送中拯救</h1>
+    <h1>世界杯直播源docker部署</h1>
     <div class="meta-line meta-line--article">
       <span class="meta-date">
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-2026-06-08</span>
+2026-06-11</span>
       
         <span class="meta-tags">
           
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>
 
-          <a class="meta-tag-link" href="/tags/ip%E9%80%81%E4%B8%AD/">#ip送中</a>
+          <a class="meta-tag-link" href="/tags/%E4%B8%96%E7%95%8C%E6%9D%AF/">#世界杯</a>
         </span>
       
     </div>
@@ -266,14 +266,51 @@
 
 
   <div class="article-content">
-    <p>from : <a target="_blank" rel="noopener" href="https://www.nodeseek.com/post-503481-1">https://www.nodeseek.com/post-503481-1</a><br>前段时间绿云多个ip段被集体送中，我是其中之一，虽然是集体送中，但也拉回来了，下面是方法。</p>
-<p>第一，先去向谷歌报告IP问题：<a target="_blank" rel="noopener" href="https://support.google.com/websearch/workflow/9308722">https://support.google.com/websearch/workflow/9308722</a></p>
-<p>第二，用插件改定位1.先去Google账号设置页面将 活动记录 打开，如图image<br><img src="https://cdn.nodeimage.com/i/WvKfUJzbLjd10a1jEGPcNFCYGNS8kvVX.webp" alt="image"><br>2.安装Location Guard (V3) <a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/location-guard-v3/hhnhplojcganfmfimkeboiipphklcbih">https://chromewebstore.google.com/detail/location-guard-v3/hhnhplojcganfmfimkeboiipphklcbih</a></p>
-<p>3.打开Location Guard插件，选择Fixed Location，在地图上点击你IP想要拉回去的位置，比如我的原本是日本，就找到日本东京，点击一下地图上的位置。<br><img src="https://cdn.nodeimage.com/i/PUwoCEEiyEnccoD0SHYnHY4hvwABQhqA.webp" alt="image"></p>
-<p>4.来到Options选项，Default level默认设置改为Use fixed locationimage<br><img src="https://cdn.nodeimage.com/i/4SDPGyqhgSl0nf0OnSHdvexgE0wmSVqt.webp" alt="image"></p>
-<p>5.打开Google地图 <a target="_blank" rel="noopener" href="https://www.google.com/maps">https://www.google.com/maps</a> 点击右下角获取定位，此时就会定位到你刚才在插件里所点击的位置，说明成功了image<br><img src="https://cdn.nodeimage.com/i/ECkbix66DvoRb0zZJkLkybeV0DlrZmer.webp" alt="image"></p>
-<p>6.Google随便搜索一下，滑到底部，点击 update location 来更新位置。image<br><img src="https://cdn.nodeimage.com/i/PsdUwQU2GB83u1lOsA8Se1pYeMGuTiWl.webp" alt="image"></p>
-<p>7.之后每天用一下Google搜索和YouTube就行了，我是用了一周就成功了，集体送中的话，最好是人多力量大，发个贴让你那个ip段的人一起参与进来。</p>
+    <h1 id="FIFAUHD-Docker-使用说明"><a href="#FIFAUHD-Docker-使用说明" class="headerlink" title="FIFAUHD Docker 使用说明"></a>FIFAUHD Docker 使用说明</h1><h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptvtop/uhdiptv:latest</span><br></pre></td></tr></table></figure>
+
+<p>支持架构：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linux/amd64</span><br><span class="line">linux/arm/v7</span><br><span class="line">linux/arm64</span><br></pre></td></tr></table></figure>
+
+<p>容器内部端口：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8766</span><br></pre></td></tr></table></figure>
+
+<p>建议对外端口：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">38766</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker-启动"><a href="#Docker-启动" class="headerlink" title="Docker 启动"></a>Docker 启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name uhdiptv --restart=always -p 38766:8766 iptvtop/uhdiptv:latest</span><br></pre></td></tr></table></figure>
+
+<p>如果本机已有旧容器，先执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> -f uhdiptv 2&gt;/dev/null; docker run -d --pull always --name uhdiptv --restart=always -p 38766:8766 iptvtop/uhdiptv:latest</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">uhdiptv:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">iptvtop/uhdiptv:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">uhdiptv</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;38766:8766&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>启动：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
+
+<p>更新：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose pull &amp;&amp; docker compose up -d --force-recreate</span><br></pre></td></tr></table></figure>
+
+<h2 id="频道路由"><a href="#频道路由" class="headerlink" title="频道路由"></a>频道路由</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http://SERVER_IP:38766/cctv5.m3u8</span><br><span class="line">http://SERVER_IP:38766/cctv16.m3u8</span><br><span class="line">http://SERVER_IP:38766/cctv164k.m3u8</span><br><span class="line">http://SERVER_IP:38766/cctv4k.m3u8</span><br><span class="line">http://SERVER_IP:38766/cctv8k.m3u8</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/cctv16.m3u8 是 /cctv164k.m3u8 的别名</span><br></pre></td></tr></table></figure>
+
+<h2 id="聚合播放列表"><a href="#聚合播放列表" class="headerlink" title="聚合播放列表"></a>聚合播放列表</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://SERVER_IP:38766/4kfifa.m3u</span><br></pre></td></tr></table></figure>
+
+<p>带 prefix：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://SERVER_IP:38766/4kfifa.m3u?prefix=https://your.domain</span><br></pre></td></tr></table></figure>
+
+<p>频道单独带 prefix：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://SERVER_IP:38766/cctv4k.m3u8?prefix=https://your.domain</span><br></pre></td></tr></table></figure>
+
+<p>prefix 用于让返回内容中的 TS 代理地址改为指定域名，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://your.domain/proxy?ts=xxxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="TS-代理路由"><a href="#TS-代理路由" class="headerlink" title="TS 代理路由"></a>TS 代理路由</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/proxy?ts=xxxx</span><br><span class="line">/proxy.ts?=xxxx</span><br></pre></td></tr></table></figure>
+
+<p>通常播放器不需要手动访问该路由，它会出现在返回的 m3u8 内容中。</p>
+<h2 id="控制接口"><a href="#控制接口" class="headerlink" title="控制接口"></a>控制接口</h2><p>查看状态：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://SERVER_IP:38766/status?token=iptvofficalgroup</span><br></pre></td></tr></table></figure>
 
   </div>
 
@@ -301,18 +338,18 @@
 
   <nav class="article-actions">
     
-      <a class="article-action article-action--prev" href="/2026/06/08/AI%E8%A7%86%E9%A2%91%E5%A2%9E%E5%BC%BA/">
+      <span class="article-action article-action--prev is-disabled" aria-disabled="true">
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
 
         <span class="action-label">上一篇</span>
-        <span class="action-title">AI视频增强</span>
-      </a>
+        <span class="action-title">没有更早的文章了</span>
+      </span>
     
     
-      <a class="article-action article-action--next" href="/2026/06/06/algo%E7%AE%97%E6%B3%95/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/">
+      <a class="article-action article-action--next" href="/2026/06/09/AIchatgpt-api-key-free/">
         <span class="action-label">下一篇</span>
-        <span class="action-title">有序数组的平方</span>
+        <span class="action-title">AIchatgpt api key free</span>
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 
@@ -322,6 +359,87 @@
 </article>
 </div>
 
+
+  <section class="related-paper">
+    <header class="related-paper__head">
+      <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+相关文章</h2>
+      <a class="related-paper__more" href="/archives/">
+        <span>查看更多</span>
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+
+      </a>
+    </header>
+    <div class="related-paper__grid">
+      
+        <a class="related-card" href="/2026/05/29/docker%E5%BA%94%E7%94%A8/it-tools/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-0 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/blog/1780152070374_it.tools.png" alt="it.tools" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">it.tools</strong>
+            <em class="related-card__date">2026-05-29</em>
+          </span>
+        </a>
+      
+        <a class="related-card" href="/2026/05/16/docker%E5%BA%94%E7%94%A8/nextcloud%E7%BD%91%E7%9B%98/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-1 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779290287605_nextcloud_网盘.jpg" alt="nextcloud网盘" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">nextcloud网盘</strong>
+            <em class="related-card__date">2026-05-16</em>
+          </span>
+        </a>
+      
+        <a class="related-card" href="/2026/05/16/docker%E5%BA%94%E7%94%A8/1Panel%E6%90%AD%E5%BB%BA/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-2 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779290383378_1Panel_搭建.png" alt="1Panel搭建" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">1Panel搭建</strong>
+            <em class="related-card__date">2026-05-16</em>
+          </span>
+        </a>
+      
+        <a class="related-card" href="/2026/05/15/docker%E5%BA%94%E7%94%A8/homepage%E5%AE%89%E8%A3%85/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-0 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/1779291012007_homepage.webp" alt="homepage安装" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">homepage安装</strong>
+            <em class="related-card__date">2026-05-15</em>
+          </span>
+        </a>
+      
+    </div>
+  </section>
 
 
       

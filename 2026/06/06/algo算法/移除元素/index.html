@@ -221,7 +221,7 @@
 文章目录</h2>
       <div class="toc-content">
         
-          
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode-27"><span class="toc-text">leetcode 27</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode-26"><span class="toc-text">leetcode 26</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%88%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%EF%BC%89"><span class="toc-text">核心思想：双指针法（快慢指针）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode-844"><span class="toc-text">leetcode 844</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%8C-%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-text">📌 核心思想</span></a></li></ol></li></ol>
         
       </div>
     </section>
@@ -266,7 +266,178 @@
 
 
   <div class="article-content">
-    
+    <h2 id="leetcode-27"><a href="#leetcode-27" class="headerlink" title="leetcode 27"></a>leetcode 27</h2><ol start="27">
+<li>Remove Element<br>Easy<br>Topics<br>premium lock icon<br>Companies<br>Hint<br>Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.</li>
+</ol>
+<p>Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:</p>
+<p>Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.<br>Return k.<br>Custom Judge:</p>
+<p>The judge will test your solution with the following code:</p>
+<p>int[] nums &#x3D; […]; &#x2F;&#x2F; Input array<br>int val &#x3D; …; &#x2F;&#x2F; Value to remove<br>int[] expectedNums &#x3D; […]; &#x2F;&#x2F; The expected answer with correct length.<br>                            &#x2F;&#x2F; It is sorted with no values equaling val.</p>
+<p>int k &#x3D; removeElement(nums, val); &#x2F;&#x2F; Calls your implementation</p>
+<p>assert k &#x3D;&#x3D; expectedNums.length;<br>sort(nums, 0, k); &#x2F;&#x2F; Sort the first k elements of nums<br>for (int i &#x3D; 0; i &lt; actualLength; i++) {<br>    assert nums[i] &#x3D;&#x3D; expectedNums[i];<br>}<br>If all assertions pass, then your solution will be accepted.</p>
+<p>Example 1:</p>
+<p>Input: nums &#x3D; [3,2,2,3], val &#x3D; 3<br>Output: 2, nums &#x3D; [2,2,<em>,</em>]<br>Explanation: Your function should return k &#x3D; 2, with the first two elements of nums being 2.<br>It does not matter what you leave beyond the returned k (hence they are underscores).<br>Example 2:</p>
+<p>Input: nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2<br>Output: 5, nums &#x3D; [0,1,4,0,3,<em>,</em>,_]<br>Explanation: Your function should return k &#x3D; 5, with the first five elements of nums containing 0, 0, 1, 3, and 4.<br>Note that the five elements can be returned in any order.<br>It does not matter what you leave beyond the returned k (hence they are underscores).</p>
+<ol start="27">
+<li>移除元素</li>
+</ol>
+<p>简单</p>
+<p>相关主题：公司</p>
+<p>提示</p>
+<p>给你一个整数数组 nums 和一个整数 val，请你原地移除 nums 中所有等于 val 的元素。元素的顺序可以改变。然后返回 nums 中不等于 val 的元素个数。</p>
+<p>设 nums 中不等于 val 的元素个数为 k，为了通过判题，你需要完成以下操作：</p>
+<ol>
+<li>修改数组 nums，使 nums 的前 k 个元素包含所有不等于 val 的元素。nums 中超出前 k 个元素的其余元素以及 nums 的长度不重要。</li>
+<li>返回 k。</li>
+</ol>
+<p>自定义判题器：</p>
+<p>判题器将使用以下代码测试你的解法：</p>
+<p>int[] nums &#x3D; […]; &#x2F;&#x2F; 输入数组<br>int val &#x3D; …;      &#x2F;&#x2F; 要移除的值<br>int[] expectedNums &#x3D; […]; &#x2F;&#x2F; 正确答案（已排序，不含等于 val 的元素）</p>
+<p>int k &#x3D; removeElement(nums, val); &#x2F;&#x2F; 调用你的实现</p>
+<p>assert k &#x3D;&#x3D; expectedNums.length;<br>sort(nums, 0, k); &#x2F;&#x2F; 对 nums 的前 k 个元素排序<br>for (int i &#x3D; 0; i &lt; actualLength; i++) {<br>    assert nums[i] &#x3D;&#x3D; expectedNums[i];<br>}</p>
+<p>如果所有断言都通过，则你的解法被接受。</p>
+<hr>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [3,2,2,3], val &#x3D; 3<br>输出：2, nums &#x3D; [2,2,<em>,</em>]<br>解释：你的函数应返回 k &#x3D; 2，且 nums 的前两个元素为 2。<br>超出返回的 k 个元素之后的内容不重要（因此用下划线表示）。</p>
+<p>示例 2：</p>
+<p>输入：nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2<br>输出：5, nums &#x3D; [0,1,4,0,3,<em>,</em>,_]<br>解释：你的函数应返回 k &#x3D; 5，且 nums 的前五个元素包含 0、0、1、3 和 4。<br>注意这五个元素可以按任意顺序返回。<br>超出返回的 k 个元素之后的内容不重要（因此用下划线表示）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RemoveElement</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != val)&#123;</span><br><span class="line">                nums[slow] = nums[i];</span><br><span class="line">                slow++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="leetcode-26"><a href="#leetcode-26" class="headerlink" title="leetcode 26"></a>leetcode 26</h2><ol start="26">
+<li>Remove Duplicates from Sorted Array<br>Easy<br>Topics<br>premium lock icon<br>Companies<br>Hint<br>Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.</li>
+</ol>
+<p>Consider the number of unique elements in nums to be k​​​​​​​​​​​​​​. After removing duplicates, return the number of unique elements k.</p>
+<p>The first k elements of nums should contain the unique numbers in sorted order. The remaining elements beyond index k - 1 can be ignored.</p>
+<p>Custom Judge:</p>
+<p>The judge will test your solution with the following code:</p>
+<p>int[] nums &#x3D; […]; &#x2F;&#x2F; Input array<br>int[] expectedNums &#x3D; […]; &#x2F;&#x2F; The expected answer with correct length</p>
+<p>int k &#x3D; removeDuplicates(nums); &#x2F;&#x2F; Calls your implementation</p>
+<p>assert k &#x3D;&#x3D; expectedNums.length;<br>for (int i &#x3D; 0; i &lt; k; i++) {<br>    assert nums[i] &#x3D;&#x3D; expectedNums[i];<br>}<br>If all assertions pass, then your solution will be accepted.</p>
+<p>Example 1:</p>
+<p>Input: nums &#x3D; [1,1,2]<br>Output: 2, nums &#x3D; [1,2,_]<br>Explanation: Your function should return k &#x3D; 2, with the first two elements of nums being 1 and 2 respectively.<br>It does not matter what you leave beyond the returned k (hence they are underscores).<br>Example 2:</p>
+<p>Input: nums &#x3D; [0,0,1,1,1,2,2,3,3,4]<br>Output: 5, nums &#x3D; [0,1,2,3,4,<em>,</em>,<em>,</em>,_]<br>Explanation: Your function should return k &#x3D; 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.<br>It does not matter what you leave beyond the returned k (hence they are underscores).</p>
+<p>Constraints:</p>
+<p>1 &lt;&#x3D; nums.length &lt;&#x3D; 3 * 104<br>-100 &lt;&#x3D; nums[i] &lt;&#x3D; 100<br>nums is sorted in non-decreasing order.<br>26. 删除有序数组中的重复项</p>
+<p>简单</p>
+<p>相关主题：公司</p>
+<p>提示</p>
+<p>给你一个按非递减顺序排列的整数数组 nums，请原地删除重复元素，使每个唯一元素只出现一次。元素的相对顺序应保持不变。</p>
+<p>将 nums 中唯一元素的个数记为 k。删除唯一元素后，返回唯一元素的个数 k。</p>
+<p>nums 的前 k 个元素应包含按排序顺序排列的唯一数字。超出索引 k - 1 的其余元素可以忽略。</p>
+<p>自定义判题器：</p>
+<p>判题器将使用以下代码测试你的解法：</p>
+<p>int[] nums &#x3D; […]; &#x2F;&#x2F; 输入数组<br>int[] expectedNums &#x3D; […]; &#x2F;&#x2F; 具有正确答案长度的数组</p>
+<p>int k &#x3D; removeDuplicates(nums); &#x2F;&#x2F; 调用你的实现</p>
+<p>assert k &#x3D;&#x3D; expectedNums.length;<br>for (int i &#x3D; 0; i &lt; k; i++) {<br>    assert nums[i] &#x3D;&#x3D; expectedNums[i];<br>}</p>
+<p>如果所有断言都通过，则你的解法被接受。</p>
+<hr>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [1,1,2]<br>输出：2, nums &#x3D; [1,2,_]<br>解释：函数应返回 k &#x3D; 2，其中 nums 的前两个元素分别为 1 和 2。<br>超出返回的 k 之后的内容不重要（因此用下划线表示）。</p>
+<p>示例 2：</p>
+<p>输入：nums &#x3D; [0,0,1,1,1,2,2,3,3,4]<br>输出：5, nums &#x3D; [0,1,2,3,4,<em>,</em>,<em>,</em>,_]<br>解释：函数应返回 k &#x3D; 5，其中 nums 的前五个元素分别为 0、1、2、3 和 4。<br>超出返回的 k 之后的内容不重要（因此用下划线表示）。</p>
+<hr>
+<p>约束条件：</p>
+<ul>
+<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 3 * 10⁴</li>
+<li>-100 &lt;&#x3D; nums[i] &lt;&#x3D; 100</li>
+<li>nums 按非递减顺序排列。</li>
+</ul>
+<p> 自己的写法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(nums.length ==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">fast</span> <span class="operator">=</span> <span class="number">1</span>; fast &lt;= nums.length - <span class="number">1</span>; fast++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[slow] != nums[fast]) &#123;</span><br><span class="line">            slow++;</span><br><span class="line">            nums[slow] = nums[fast];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>AI的写法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * LeetCode 26: 删除有序数组中的重复项</span></span><br><span class="line"><span class="comment">     * 时间复杂度 O(n)，空间复杂度 O(1)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 慢指针：最后一个不重复元素的位置</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">fast</span> <span class="operator">=</span> <span class="number">1</span>; fast &lt; nums.length; fast++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[fast] != nums[slow]) &#123;</span><br><span class="line">                slow++;</span><br><span class="line">                nums[slow] = nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> slow + <span class="number">1</span>; <span class="comment">// 不重复元素的个数</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Solution</span> <span class="variable">sol</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Solution</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 示例 1</span></span><br><span class="line">        <span class="type">int</span>[] nums1 = &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line">        <span class="type">int</span> <span class="variable">k1</span> <span class="operator">=</span> sol.removeDuplicates(nums1);</span><br><span class="line">        System.out.print(<span class="string">&quot;k=&quot;</span> + k1 + <span class="string">&quot;, nums=[&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums1.length; i++) &#123;</span><br><span class="line">            System.out.print(nums1[i] + (i &lt; nums1.length - <span class="number">1</span> ? <span class="string">&quot;,&quot;</span> : <span class="string">&quot;&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;]&quot;</span>);</span><br><span class="line">        <span class="comment">// 输出: k=2, nums=[1,2,_]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 示例 2</span></span><br><span class="line">        <span class="type">int</span>[] nums2 = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="type">int</span> <span class="variable">k2</span> <span class="operator">=</span> sol.removeDuplicates(nums2);</span><br><span class="line">        System.out.print(<span class="string">&quot;k=&quot;</span> + k2 + <span class="string">&quot;, nums=[&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums2.length; i++) &#123;</span><br><span class="line">            System.out.print(nums2[i] + (i &lt; nums2.length - <span class="number">1</span> ? <span class="string">&quot;,&quot;</span> : <span class="string">&quot;&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;]&quot;</span>);</span><br><span class="line">        <span class="comment">// 输出: k=5, nums=[0,1,2,3,4,_,_,_,_,_]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="核心思想：双指针法（快慢指针）"><a href="#核心思想：双指针法（快慢指针）" class="headerlink" title="核心思想：双指针法（快慢指针）"></a>核心思想：双指针法（快慢指针）</h3><p>由于数组已经有序，重复元素一定相邻。用两个指针：</p>
+<ul>
+<li>慢指针 slow：指向当前已处理的不重复部分的最后一个位置</li>
+<li>快指针 fast：遍历数组，寻找下一个不重复的元素</li>
+</ul>
+<p>流程：</p>
+<ol>
+<li>fast 从索引 1 开始遍历</li>
+<li>当 nums[fast] !&#x3D; nums[slow] 时，说明找到了新元素</li>
+<li>将 slow 前进一步，把 nums[fast] 复制到 nums[slow]</li>
+<li>遍历结束，slow + 1 就是不重复元素的个数</li>
+</ol>
+<p>时间复杂度：O(n) — 只遍历一次<br>空间复杂度：O(1) — 原地修改</p>
+<h2 id="leetcode-844"><a href="#leetcode-844" class="headerlink" title="leetcode 844"></a>leetcode 844</h2><ol start="844">
+<li>Backspace String Compare<br>Easy<br>Topics<br>premium lock icon<br>Companies<br>Given two strings s and t, return true if they are equal when both are typed into empty text editors. ‘#’ means a backspace character.</li>
+</ol>
+<p>Note that after backspacing an empty text, the text will continue empty.</p>
+<p>Example 1:</p>
+<p>Input: s &#x3D; “ab#c”, t &#x3D; “ad#c”<br>Output: true<br>Explanation: Both s and t become “ac”.<br>Example 2:</p>
+<p>Input: s &#x3D; “ab##”, t &#x3D; “c#d#”<br>Output: true<br>Explanation: Both s and t become “”.<br>Example 3:</p>
+<p>Input: s &#x3D; “a#c”, t &#x3D; “b”<br>Output: false<br>Explanation: s becomes “c” while t becomes “b”.</p>
+<p>Constraints:</p>
+<p>1 &lt;&#x3D; s.length, t.length &lt;&#x3D; 200<br>s and t only contain lowercase letters and ‘#’ characters.</p>
+<p>Follow up: Can you solve it in O(n) time and O(1) space?</p>
+<ol start="844">
+<li>比较含退格的字符串</li>
+</ol>
+<p>简单</p>
+<p>相关主题：公司</p>
+<p>提示</p>
+<p>给定两个字符串 s 和 t，当它们分别被输入到空白的文本编辑器中时，如果两者相等则返回 true。# 表示退格字符。</p>
+<p>注意：对空文本进行退格操作，文本仍然为空。</p>
+<hr>
+<p>示例 1：</p>
+<p>输入：s &#x3D; “ab#c”, t &#x3D; “ad#c”<br>输出：true<br>解释：s 和 t 都变成 “ac”。</p>
+<p>示例 2：</p>
+<p>输入：s &#x3D; “ab##”, t &#x3D; “c#d#”<br>输出：true<br>解释：s 和 t 都变成 “”。</p>
+<p>示例 3：</p>
+<p>输入：s &#x3D; “a#c”, t &#x3D; “b”<br>输出：false<br>解释：s 变成 “c”，而 t 变成 “b”。</p>
+<hr>
+<p>约束条件：</p>
+<ul>
+<li>1 &lt;&#x3D; s.length, t.length &lt;&#x3D; 200</li>
+<li>s 和 t 只包含小写字母和 # 字符。</li>
+</ul>
+<hr>
+<p>进阶： 你能在 O(n) 时间复杂度和 O(1) 空间复杂度内解决这个问题吗？</p>
+<p>自己的写法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">backspaceCompare</span><span class="params">(String s, String t)</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> getBackSpaceString(s).equals(getBackSpaceString(t));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">private</span> String <span class="title function_">getBackSpaceString</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">StringBuffer</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= s.length() - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) != <span class="string">&#x27;#&#x27;</span>) &#123;</span><br><span class="line">                sb.append(s.charAt(i));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (sb.length() &gt;<span class="number">1</span>) &#123;</span><br><span class="line">                    sb.delete(sb.length() - <span class="number">1</span>, sb.length());</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    sb.delete(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="📌-核心思想"><a href="#📌-核心思想" class="headerlink" title="📌 核心思想"></a>📌 核心思想</h3><p>方法一：栈（直观思路）</p>
+<p>遍历字符串，遇到普通字符就入栈，遇到 # 就出栈（退格）。最后比较两个字符串处理后的结果。</p>
+<ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(n)</li>
+</ul>
+<p>方法二：双指针（进阶 O(1) 空间）</p>
+<p>从后往前遍历，用 skip 计数器记录需要跳过的字符数：</p>
+<ol>
+<li>遇到 # → skip++（表示后面要跳过的字符数增加）</li>
+<li>遇到普通字符：<ul>
+<li>如果 skip &gt; 0 → 跳过该字符（相当于被退格了），skip–</li>
+<li>如果 skip &#x3D;&#x3D; 0 → 该字符保留，参与比较</li>
+</ul>
+</li>
+<li>两个字符串从后往前逐位比较，如果都保留的字符不相等，返回 false</li>
+</ol>
+<p>时间复杂度：O(n)<br>空间复杂度：O(1) ✅</p>
+<hr>
+<p>☕ Java 实现</p>
+<p>方法一：栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * LeetCode 844: 比较含退格的字符串 - 栈方法</span></span><br><span class="line"><span class="comment">     * 时间 O(n)，空间 O(n)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">backspaceCompare</span><span class="params">(String s, String t)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> build(s).equals(build(t));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String <span class="title function_">build</span><span class="params">(String str)</span> &#123;</span><br><span class="line">        Deque&lt;Character&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : str.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;#&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!stack.isEmpty()) &#123;</span><br><span class="line">                    stack.pop(); <span class="comment">// 退格：删除前一个字符</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                stack.push(c); <span class="comment">// 普通字符入栈</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 栈中剩余字符即为结果</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">            sb.append(stack.pop());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：双指针（O(1) 空间）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * LeetCode 844: 比较含退格的字符串 - 双指针法</span></span><br><span class="line"><span class="comment">     * 时间 O(n)，空间 O(1)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">backspaceCompare</span><span class="params">(String s, String t)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> s.length() - <span class="number">1</span>; <span class="comment">// s 的指针（从后往前）</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> t.length() - <span class="number">1</span>; <span class="comment">// t 的指针（从后往前）</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 找到 s 中下一个有效字符的位置</span></span><br><span class="line">            i = getNextValidIndex(s, i);</span><br><span class="line">            <span class="comment">// 找到 t 中下一个有效字符的位置</span></span><br><span class="line">            j = getNextValidIndex(t, j);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果两个指针都越界，说明都处理完了，相等</span></span><br><span class="line">            <span class="keyword">if</span> (i &lt; <span class="number">0</span> &amp;&amp; j &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="comment">// 如果一个越界另一个没越界，不相等</span></span><br><span class="line">            <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="comment">// 比较当前有效字符</span></span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) != t.charAt(j)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 继续往前比较</span></span><br><span class="line">            i--;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从位置 index 往前找，返回下一个有效字符的索引</span></span><br><span class="line"><span class="comment">     * skip 记录需要跳过的字符数（退格抵消）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getNextValidIndex</span><span class="params">(String str, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">skip</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (str.charAt(index) == <span class="string">&#x27;#&#x27;</span>) &#123;</span><br><span class="line">                skip++;       <span class="comment">// 遇到退格，跳过计数+1</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (skip &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                skip--;       <span class="comment">// 普通字符但被退格抵消</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">break</span>;        <span class="comment">// 找到有效字符</span></span><br><span class="line">            &#125;</span><br><span class="line">            index--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Solution</span> <span class="variable">sol</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Solution</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 示例 1</span></span><br><span class="line">        System.out.println(sol.backspaceCompare(<span class="string">&quot;ab#c&quot;</span>, <span class="string">&quot;ad#c&quot;</span>));  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 示例 2</span></span><br><span class="line">        System.out.println(sol.backspaceCompare(<span class="string">&quot;ab##&quot;</span>, <span class="string">&quot;c#d#&quot;</span>));  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 示例 3</span></span><br><span class="line">        System.out.println(sol.backspaceCompare(<span class="string">&quot;a#c&quot;</span>, <span class="string">&quot;b&quot;</span>));      <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 额外测试</span></span><br><span class="line">        System.out.println(sol.backspaceCompare(<span class="string">&quot;a##c&quot;</span>, <span class="string">&quot;#a#c&quot;</span>)); <span class="comment">// true</span></span><br><span class="line">        System.out.println(sol.backspaceCompare(<span class="string">&quot;bxj##tw&quot;</span>, <span class="string">&quot;bxo#j##tw&quot;</span>)); <span class="comment">// true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>🧮 双指针执行过程演示</p>
+<p>以 s &#x3D; “ab#c”, t &#x3D; “ad#c” 为例：</p>
+<p>s: a b # c    t: a d # c<br>   0 1 2 3       0 1 2 3</p>
+<p>第1轮: i&#x3D;3, j&#x3D;3<br>  s[3]&#x3D;’c’ 有效, t[3]&#x3D;’c’ 有效 → ‘c’&#x3D;&#x3D;’c’ ✓<br>  i&#x3D;2, j&#x3D;2</p>
+<p>第2轮: i&#x3D;2, j&#x3D;2<br>  s[2]&#x3D;’#’ → skip&#x3D;1, i&#x3D;1<br>  s[1]&#x3D;’b’, skip&gt;0 → skip&#x3D;0, i&#x3D;0<br>  s[0]&#x3D;’a’ 有效<br>  t[2]&#x3D;’#’ → skip&#x3D;1, j&#x3D;1<br>  t[1]&#x3D;’d’, skip&gt;0 → skip&#x3D;0, j&#x3D;0<br>  t[0]&#x3D;’a’ 有效<br>  ‘a’&#x3D;&#x3D;’a’ ✓<br>  i&#x3D;-1, j&#x3D;-1</p>
+<p>第3轮: i&lt;0 &amp;&amp; j&lt;0 → 返回 true ✅</p>
+<hr>
+<p>💡 方法对比</p>
+<p>栈<br>• 时间: O(n)<br>• 空间: O(n)<br>• 思路: 直观，模拟输入过程</p>
+<p>双指针<br>• 时间: O(n)<br>• 空间: O(1)<br>• 思路: 从后往前，跳过被退格的字符</p>
+
   </div>
 
   <footer class="article-reactions">
@@ -462,14 +633,14 @@
     "title": "有序数组的平方",
     "url": "/2026/06/06/algo%E7%AE%97%E6%B3%95/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/",
     "date": "2026-06-06",
-    "text": "Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order. Example 1: Input: nums &#x3D; [-4,-1,0,3,10]Output: [0,1,9,16,"
+    "text": "leetcode 977Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order. Example 1: Input: nums &#x3D; [-4,-1,0,3,10]Output"
   },
 
   {
     "title": "移除元素",
     "url": "/2026/06/06/algo%E7%AE%97%E6%B3%95/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/",
     "date": "2026-06-06",
-    "text": ""
+    "text": "leetcode 27 Remove ElementEasyTopicspremium lock iconCompaniesHintGiven an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be chang"
   },
 
   {

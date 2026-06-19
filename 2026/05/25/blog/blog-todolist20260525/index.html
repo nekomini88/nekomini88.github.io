@@ -307,7 +307,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
 
         <span class="action-label">上一篇</span>
-        <span class="action-title">ffmpeg将mp3与背景图合并为mp4</span>
+        <span class="action-title">ffmpeg 自用命令</span>
       </a>
     
     
@@ -543,10 +543,10 @@
   },
 
   {
-    "title": "ffmpeg将mp3与背景图合并为mp4",
+    "title": "ffmpeg 自用命令",
     "url": "/2026/05/26/ffmpeg/ffmpeg%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/",
     "date": "2026-05-26",
-    "text": "使用ffmpeg 将mp3 与 背景图片合并mp3 + 背景图片1ffmpeg -loop 1 -framerate 1 -i cover.jpg -i audio.mp3 -vf &quot;scale=trunc(iw/2)*2:trunc(ih/2)*2,format=yuv420p&quot; -c:v libx264 -tune stillimage -c:a copy -shortes"
+    "text": "mp3 + 背景图片1ffmpeg -loop 1 -framerate 1 -i cover.jpg -i audio.mp3 -vf &quot;scale=trunc(iw/2)*2:trunc(ih/2)*2,format=yuv420p&quot; -c:v libx264 -tune stillimage -c:a copy -shortest output.mp4 mp3 + 背景图"
   },
 
   {

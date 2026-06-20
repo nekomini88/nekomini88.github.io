@@ -179,7 +179,7 @@
         
           
             <a class="site-info__item" href="/archives/">
-              <strong>42</strong>
+              <strong>44</strong>
               <span>文章</span>
             </a>
           
@@ -193,7 +193,7 @@
         
           
             <a class="site-info__item" href="/tags/">
-              <strong>31</strong>
+              <strong>33</strong>
               <span>标签</span>
             </a>
           
@@ -221,7 +221,7 @@
 文章目录</h2>
       <div class="toc-content">
         
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mp3-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="toc-text">mp3 + 背景图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mp3-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E6%97%8B%E8%BD%AC"><span class="toc-text">mp3 + 背景图片旋转</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ffmpeg%E5%B0%86%E8%A7%86%E9%A2%91%E4%B8%8E%E9%9F%B3%E9%A2%91%E5%90%88%E5%B9%B6%E4%B8%BA%E6%96%B0%E7%9A%84%E8%A7%86%E9%A2%91"><span class="toc-text">ffmpeg将视频与音频合并为新的视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ffmpeg-%E4%BB%A5%E4%B8%8B%E6%98%AF%E6%9C%80%E9%AB%98%E8%B4%A8%E9%87%8F%E7%9A%84%EF%BC%88%E4%BB%8E-1080p-%E5%8D%87%E7%BA%A7%E5%88%B0-2K%EF%BC%89"><span class="toc-text">ffmpeg 以下是最高质量的（从 1080p 升级到 2K）</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mp3-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="toc-text">mp3 + 背景图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mp3-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E6%97%8B%E8%BD%AC"><span class="toc-text">mp3 + 背景图片旋转</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ffmpeg%E5%B0%86%E8%A7%86%E9%A2%91%E4%B8%8E%E9%9F%B3%E9%A2%91%E5%90%88%E5%B9%B6%E4%B8%BA%E6%96%B0%E7%9A%84%E8%A7%86%E9%A2%91"><span class="toc-text">ffmpeg将视频与音频合并为新的视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ffmpeg-%E4%BB%A5%E4%B8%8B%E6%98%AF%E6%9C%80%E9%AB%98%E8%B4%A8%E9%87%8F%E7%9A%84%EF%BC%88%E4%BB%8E-1080p-%E5%8D%87%E7%BA%A7%E5%88%B0-2K%EF%BC%89"><span class="toc-text">ffmpeg 以下是最高质量的（从 1080p 升级到 2K）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E7%94%BB%E8%B4%A8%E8%A7%86%E9%A2%91%E4%BC%98%E5%8C%96"><span class="toc-text">低画质视频优化</span></a></li></ol></li></ol>
         
       </div>
     </section>
@@ -277,10 +277,12 @@
 <li>unsharp：智能锐化，提升细节清晰度</li>
 <li>scale&#x3D;2560:1440:flags&#x3D;lanczos：升级到 2K（高质量缩放算法）</li>
 <li>crf 16：极高画质（文件会比原视频大一些）</li>
-<li>preset slower：更好压缩效率<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i my.mp4 -vf <span class="string">&quot;hqdn3d=4:3:6:4,unsharp=5:5:1.2:5:5:0.8,scale=2560:1440:flags=lanczos&quot;</span> -c:v libx264 -crf 16 -preset slower  -c:a aac -b:a 192k output_2K_optimized.mp4</span><br></pre></td></tr></table></figure></li>
+<li>preset slower：更好压缩效率<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -vf <span class="string">&quot;hqdn3d=4:3:6:4,unsharp=5:5:1.2:5:5:0.8,scale=2560:1440:flags=lanczos&quot;</span> -c:v libx264 -crf 16 -preset slower  -c:a aac -b:a 192k output_2K_optimized.mp4</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>速度优先</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -vf <span class="string">&quot;scale=2560:1440:flags=lanczos&quot;</span> -c:v libx264 -crf 18 -preset medium  -c:a copy  output_2K_fast.mp4</span><br></pre></td></tr></table></figure>
+
+<h3 id="低画质视频优化"><a href="#低画质视频优化" class="headerlink" title="低画质视频优化"></a>低画质视频优化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -vf <span class="string">&quot;nlmeans=1.5:7:3:3,scale=2560:1440:flags=lanczos&quot;</span>   -c:v libx264 -crf 16 -preset slower  -c:a aac -b:a 192k  output_2K_soft.mp4</span><br></pre></td></tr></table></figure>
   </div>
 
   <footer class="article-reactions">
@@ -436,6 +438,20 @@
 
 <script type="application/json" id="flatpaper-post-index">
 [
+
+  {
+    "title": "nginx proxy manager安装",
+    "url": "/2026/06/20/docker%E5%BA%94%E7%94%A8/nginxproxymanager%E5%AE%89%E8%A3%85/",
+    "date": "2026-06-20",
+    "text": "1.Create a docker-compose.yml file similar to this:1234567891011121314services: app: image: &#x27;jc21/nginx-proxy-manager:2.15.1&#x27; restart: unless-stopped environment: TZ: &quot;Australia/Brisban"
+  },
+
+  {
+    "title": "docker安装",
+    "url": "/2026/06/20/docker%E5%BA%94%E7%94%A8/ubuntudocker%E5%AE%89%E8%A3%85/",
+    "date": "2026-06-20",
+    "text": "Ubuntu Docker 安装（Markdown 版本） 来源：https://www.runoob.com/docker/ubuntu-docker-install.html Ubuntu Docker 安装Docker Engine-Community 支持以下的 Ubuntu 版本： Xenial 16.04 (LTS) Bionic 18.04 (LTS) Cosmic 18.10 Di"
+  },
 
   {
     "title": "chatgpt生图生日",

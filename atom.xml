@@ -10,7 +10,25 @@
   <rights>All rights reserved 2026, Neko</rights>
   <subtitle>日日新，又日新</subtitle>
   <title>Neko's Blog</title>
-  <updated>2026-06-29T08:41:16.505Z</updated>
+  <updated>2026-06-29T09:27:43.193Z</updated>
+  <entry>
+    <author>
+      <name>Neko</name>
+    </author>
+    <category term="docker应用" scheme="https://tsubasa-syaoran.github.io/categories/docker%E5%BA%94%E7%94%A8/"/>
+    <category term="docker" scheme="https://tsubasa-syaoran.github.io/tags/docker/"/>
+    <content>
+      <![CDATA[<h2 id="docker安装脚本"><a href="#docker安装脚本" class="headerlink" title="docker安装脚本"></a>docker安装脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -sSL https://cdn.jsdelivr.net/gh/SuperManito/LinuxMirrors@main/DockerInstallation.sh)</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --version</span><br></pre></td></tr></table></figure><h2 id="docker-compose安装脚本"><a href="#docker-compose安装脚本" class="headerlink" title="docker-compose安装脚本"></a>docker-compose安装脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L <span class="string">&quot;https://github.com/docker/compose/releases/latest/download/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/local/bin/docker-compose &amp;&amp; <span class="built_in">chmod</span> +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>https://tsubasa-syaoran.github.io/2026/06/29/docker%E5%BA%94%E7%94%A8/docker%E4%BB%A5%E5%8F%8Adocker-compose%E5%AE%89%E8%A3%85/</id>
+    <link href="https://tsubasa-syaoran.github.io/2026/06/29/docker%E5%BA%94%E7%94%A8/docker%E4%BB%A5%E5%8F%8Adocker-compose%E5%AE%89%E8%A3%85/"/>
+    <published>2026-06-29T09:21:27.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="docker安装脚本"><a href="#docker安装脚本" class="headerlink" title="docker安装脚本"></a>docker安装脚本</h2><figure class="highlight bash"><table><tr]]>
+    </summary>
+    <title>docker以及docker-compose安装</title>
+    <updated>2026-06-29T09:27:43.193Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Neko</name>
@@ -362,23 +380,5 @@
     </summary>
     <title>chatgpt少儿科幻科普风</title>
     <updated>2026-06-01T15:43:23.522Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Neko</name>
-    </author>
-    <category term="chatgpt生图" scheme="https://tsubasa-syaoran.github.io/categories/chatgpt%E7%94%9F%E5%9B%BE/"/>
-    <category term="图片生成" scheme="https://tsubasa-syaoran.github.io/tags/%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90/"/>
-    <content>
-      <![CDATA[<h2 id="生成证件照，必须在chatgpt中调用生成图片"><a href="#生成证件照，必须在chatgpt中调用生成图片" class="headerlink" title="生成证件照，必须在chatgpt中调用生成图片"></a>生成证件照，必须在chatgpt中调用生成图片</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">你是一个中国证件照生成助手。请严格按照以下流程执行。</span><br><span class="line"></span><br><span class="line">第一步：先根据用户上传的参考照片，询问用户要制作的证件照参数，不要直接生成图片。</span><br><span class="line"></span><br><span class="line">请向用户提问：</span><br><span class="line"></span><br><span class="line">1. 请选择证件照背景颜色：</span><br><span class="line"></span><br><span class="line">- 红底</span><br><span class="line">- 蓝底</span><br><span class="line">- 白底</span><br><span class="line">- 浅灰底</span><br><span class="line"></span><br><span class="line">2. 请选择输出形式：</span><br><span class="line"></span><br><span class="line">- 单张证件照</span><br><span class="line">- 3×3 九宫格排版</span><br><span class="line"></span><br><span class="line">在用户完成选择前，不要生成图片。</span><br><span class="line"></span><br><span class="line">第二步：用户选择完成后，根据用户选择的底色和输出形式，生成中国标准证件照。</span><br><span class="line"></span><br><span class="line">生成要求如下：</span><br><span class="line"></span><br><span class="line">请根据用户上传的参考照片，使用人物真实面部作为身份来源，必须保留人物真实脸型、肤色、五官、眼睛、鼻子、嘴唇、发型、头型和自然气质，不要改变人物身份，不要美颜过度，不要变成另一个人。</span><br><span class="line"></span><br><span class="line">将照片优化为干净、专业、真实的中国证件照风格：</span><br><span class="line"></span><br><span class="line">人物正面朝向镜头，双眼直视前方，表情自然中性，嘴巴自然闭合，头部端正，不歪头，不低头，不仰头。</span><br><span class="line"></span><br><span class="line">画面为正面免冠半身证件照，露出完整头部、脖子和上肩位置，五官清晰，皮肤质感自然，光线均匀柔和，无明显阴影，无夸张修图。</span><br><span class="line"></span><br><span class="line">背景使用用户选择的证件照底色：&#123;&#123;用户选择的底色&#125;&#125;。</span><br><span class="line"></span><br><span class="line">背景必须纯净、平整、无纹理、无杂物。</span><br><span class="line"></span><br><span class="line">如果用户选择“单张证件照”：</span><br><span class="line"></span><br><span class="line">生成一张单独的中国标准证件照。画面只包含一张证件照，不要拼图，不要九宫格，不要多张重复，不要排版到照片纸上。</span><br><span class="line"></span><br><span class="line">如果用户选择“3×3 九宫格排版”：</span><br><span class="line"></span><br><span class="line">先生成一张符合中国标准的证件照，再将同一张证件照排版到一张白色可打印照片纸上，生成 3×3 九宫格排版，共 9 张完全相同的证件照。</span><br><span class="line"></span><br><span class="line">九宫格要求：</span><br><span class="line"></span><br><span class="line">每张照片尺寸一致，排列整齐，间距均匀，四周保留干净白边，照片之间留有清晰裁切间距，方便打印和裁剪。</span><br><span class="line"></span><br><span class="line">整体效果要求：</span><br><span class="line"></span><br><span class="line">真实、清晰、正式、专业、干净、可直接打印使用，不要艺术照风格，不要自拍感，不要夸张磨皮，不要改变人物身份。</span><br></pre></td></tr></table></figure>]]>
-    </content>
-    <id>https://tsubasa-syaoran.github.io/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E8%AF%81%E4%BB%B6%E7%85%A7/</id>
-    <link href="https://tsubasa-syaoran.github.io/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E8%AF%81%E4%BB%B6%E7%85%A7/"/>
-    <published>2026-06-01T15:05:43.000Z</published>
-    <summary>
-      <![CDATA[<h2 id="生成证件照，必须在chatgpt中调用生成图片"><a href="#生成证件照，必须在chatgpt中调用生成图片" class="headerlink" title="生成证件照，必须在chatgpt中调用生成图片"></a>生成证件照，必须在chatgpt中]]>
-    </summary>
-    <title>chatgpt证件照</title>
-    <updated>2026-06-18T09:49:19.513Z</updated>
   </entry>
 </feed>

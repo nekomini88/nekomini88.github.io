@@ -583,7 +583,7 @@
     "title": "komari探针监控",
     "url": "/2026/06/29/vps/komari%E6%8E%A2%E9%92%88%E7%9B%91%E6%8E%A7/",
     "date": "2026-06-29",
-    "text": "1.创建docker-compose.yml 文件1nano docker-compose.yml 2.写入文件12345678910111213141516version: &quot;3.9&quot;services: komari: image: ghcr.io/komari-monitor/komari:latest container_name: komari restart: unl"
+    "text": "1.创建docker-compose.yml 文件1nano docker-compose.yml 2.写入文件1234567891011version: &quot;3.8&quot;services: komari: image: ghcr.io/komari-monitor/komari:latest restart: unless-stopped volumes: - ./data:/ap"
   },
 
   {

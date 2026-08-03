@@ -5,7 +5,7 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f7f3e9">
-<title>hexo迁移到别的仓库 | Neko&#39;s Blog</title>
+<title>hermes命令汇总 | Neko&#39;s Blog</title>
 
   <meta name="description" content="灯就陪他静静读书">
 
@@ -221,7 +221,7 @@
 文章目录</h2>
       <div class="toc-content">
         
-          
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E6%89%93%E4%B8%80%E4%B8%AA%E6%80%BB%E6%AF%94%E5%96%BB"><span class="toc-text">先打一个总比喻</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%EF%BC%88hermes-CLI%EF%BC%89"><span class="toc-text">一、终端命令（hermes CLI）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8-%E5%AF%B9%E8%AF%9D"><span class="toc-text">1. 启动 &amp; 对话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE-%E8%AE%BE%E7%BD%AE"><span class="toc-text">2. 配置 &amp; 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B7%A5%E5%85%B7-%E6%8A%80%E8%83%BD%E7%AE%A1%E7%90%86"><span class="toc-text">3. 工具 &amp; 技能管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%EF%BC%88Cron%EF%BC%89"><span class="toc-text">4. 定时任务（Cron）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%BD%91%E5%85%B3%EF%BC%88%E5%A4%9A%E5%B9%B3%E5%8F%B0%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">5. 网关（多平台连接）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="toc-text">6. 会话管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-MCP-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">7. MCP 服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Profile%EF%BC%88%E5%A4%9A%E5%AE%9E%E4%BE%8B%EF%BC%89"><span class="toc-text">8. Profile（多实例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%87%AD%E8%AF%81%E6%B1%A0"><span class="toc-text">9. 凭证池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Webhook"><span class="toc-text">10. Webhook</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%85%B6%E4%BB%96"><span class="toc-text">11. 其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%81%8A%E5%A4%A9%E5%86%85%E6%96%9C%E6%9D%A0%E5%91%BD%E4%BB%A4%EF%BC%88Slash-Commands%EF%BC%89"><span class="toc-text">二、聊天内斜杠命令（Slash Commands）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%9A%E8%AF%9D%E6%8E%A7%E5%88%B6"><span class="toc-text">会话控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%B0%83%E6%95%B4"><span class="toc-text">配置调整</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7-%E6%8A%80%E8%83%BD"><span class="toc-text">工具 &amp; 技能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E5%85%B3%E4%B8%93%E7%94%A8"><span class="toc-text">网关专用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2"><span class="toc-text">信息查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E5%87%BA"><span class="toc-text">退出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Hermes-%E5%9C%A8-Telegram-%E4%B8%8A%E7%9A%84%E6%9C%80%E6%96%B0%E5%91%BD%E4%BB%A4"><span class="toc-text">三、Hermes 在 Telegram 上的最新命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%85%E8%81%94%E6%96%9C%E6%9D%A0%E5%91%BD%E4%BB%A4%EF%BC%88%E8%81%8A%E5%A4%A9%E6%A1%86-typed%EF%BC%89"><span class="toc-text">1. 内联斜杠命令（聊天框 typed）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Telegram-%E4%B8%93%E5%B1%9E%E5%91%BD%E4%BB%A4"><span class="toc-text">2. Telegram 专属命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Telegram-Bot-Menu%EF%BC%88%E6%8C%89%E9%92%AE%E8%8F%9C%E5%8D%95%EF%BC%89"><span class="toc-text">3. Telegram Bot Menu（按钮菜单）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%87%AA%E5%8A%A8%E6%8A%95%E9%80%92%E6%9C%BA%E5%88%B6%EF%BC%88Cron-%E2%86%92-TG%EF%BC%89"><span class="toc-text">4. 自动投递机制（Cron → TG）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E4%B8%B2%E8%AE%B2"><span class="toc-text">四、核心概念串讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Session%EF%BC%9F"><span class="toc-text">什么是 Session？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Cron%EF%BC%9F"><span class="toc-text">什么是 Cron？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Gateway%EF%BC%9F"><span class="toc-text">什么是 Gateway？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Skill%EF%BC%9F"><span class="toc-text">什么是 Skill？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Profile%EF%BC%9F"><span class="toc-text">什么是 Profile？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%8D%A1"><span class="toc-text">五、常用命令速查卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%B4%B9%E6%9B%BC%E6%80%BB%E7%BB%93"><span class="toc-text">六、费曼总结</span></a></li></ol>
         
       </div>
     </section>
@@ -239,24 +239,24 @@
 <article class="article-paper">
   <header class="article-header">
     
-      <a class="label-pill" href="/categories/hexo/">
+      <a class="label-pill" href="/categories/%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/">
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
 
-        hexo
+        命令汇总
       </a>
     
-    <h1>hexo迁移到别的仓库</h1>
+    <h1>hermes命令汇总</h1>
     <div class="meta-line meta-line--article">
       <span class="meta-date">
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-2026-06-04</span>
+2026-08-04</span>
       
         <span class="meta-tags">
           
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>
 
-          <a class="meta-tag-link" href="/tags/hexo/">#hexo</a>
+          <a class="meta-tag-link" href="/tags/hermes/">#hermes</a>
         </span>
       
     </div>
@@ -266,8 +266,821 @@
 
 
   <div class="article-content">
-    <p>重新部署git </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git</span><br></pre></td></tr></table></figure>
+    <h1 id="Hermes-命令全解-—-费曼学习法版"><a href="#Hermes-命令全解-—-费曼学习法版" class="headerlink" title="Hermes 命令全解 — 费曼学习法版"></a>Hermes 命令全解 — 费曼学习法版</h1><blockquote>
+<p>用最直白的比喻，把 Hermes 的每一类命令讲清楚。<br>读完你不需要背命令，只需要记住：「我在和一家 AI 公司对话，不同的入口做不同的事。」</p>
+</blockquote>
+<hr>
+<h2 id="先打一个总比喻"><a href="#先打一个总比喻" class="headerlink" title="先打一个总比喻"></a>先打一个总比喻</h2><blockquote>
+<p>Hermes 像一家<strong>万能智能助理公司</strong>。<br>你是老板，Hermes 是你的 AI 员工。<br><strong>命令，就是你和这家公司之间的所有沟通方式。</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>沟通方式</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>终端 <code>hermes xxx</code></td>
+<td>你走进公司前台，签个字填个表</td>
+</tr>
+<tr>
+<td>聊天里 <code>/help</code></td>
+<td>你在工位上按铃问秘书”我能干啥”</td>
+</tr>
+<tr>
+<td>Telegram 上的命令</td>
+<td>你在微信&#x2F;钉钉里给助理发消息</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="一、终端命令（hermes-CLI）"><a href="#一、终端命令（hermes-CLI）" class="headerlink" title="一、终端命令（hermes CLI）"></a>一、终端命令（hermes CLI）</h2><p>站在公司大门口，手里拿着<strong>万能遥控器</strong>。</p>
+<h3 id="1-启动-对话"><a href="#1-启动-对话" class="headerlink" title="1. 启动 &amp; 对话"></a>1. 启动 &amp; 对话</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes</code></td>
+<td>打开 Hermes 聊天窗口，开始唠</td>
+</tr>
+<tr>
+<td><code>hermes chat -q &quot;XX&quot;</code></td>
+<td>一次性提问，答完就走</td>
+</tr>
+<tr>
+<td><code>hermes chat -q --yolo</code></td>
+<td>跳过所有安全确认，直接干</td>
+</tr>
+<tr>
+<td><code>hermes --resume 会话ID</code></td>
+<td>捡起上次聊到一半的对话继续</td>
+</tr>
+<tr>
+<td><code>hermes --continue</code></td>
+<td>直接续接最近一次对话</td>
+</tr>
+</tbody></table>
+<h3 id="2-配置-设置"><a href="#2-配置-设置" class="headerlink" title="2. 配置 &amp; 设置"></a>2. 配置 &amp; 设置</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes setup</code></td>
+<td>向导式初始化（选模型、配终端、接网关）</td>
+</tr>
+<tr>
+<td><code>hermes model</code></td>
+<td>换 AI 模型（比如从 Claude 切到 DeepSeek）</td>
+</tr>
+<tr>
+<td><code>hermes config</code></td>
+<td>看看当前所有配置</td>
+</tr>
+<tr>
+<td><code>hermes config edit</code></td>
+<td>打开配置文件手动改</td>
+</tr>
+<tr>
+<td><code>hermes config set 键 值</code></td>
+<td>精确改某一项配置</td>
+</tr>
+<tr>
+<td><code>hermes auth</code></td>
+<td>管理所有 API Key &#x2F; OAuth 登录</td>
+</tr>
+<tr>
+<td><code>hermes doctor</code></td>
+<td>体检：检查配置、依赖有没有问题</td>
+</tr>
+<tr>
+<td><code>hermes status</code></td>
+<td>看看 Hermes 各组件都在线吗</td>
+</tr>
+</tbody></table>
+<h3 id="3-工具-技能管理"><a href="#3-工具-技能管理" class="headerlink" title="3. 工具 &amp; 技能管理"></a>3. 工具 &amp; 技能管理</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes tools</code></td>
+<td>可视化开关各种工具（搜索、终端、文件等）</td>
+</tr>
+<tr>
+<td><code>hermes tools list</code></td>
+<td>列出所有工具和状态</td>
+</tr>
+<tr>
+<td><code>hermes tools enable/disable NAME</code></td>
+<td>启用&#x2F;禁用某个工具集</td>
+</tr>
+<tr>
+<td><code>hermes skills list</code></td>
+<td>列出已安装的技能包</td>
+</tr>
+<tr>
+<td><code>hermes skills search QUERY</code></td>
+<td>去技能商店搜新技能</td>
+</tr>
+<tr>
+<td><code>hermes skills install ID</code></td>
+<td>安装一个技能</td>
+</tr>
+<tr>
+<td><code>hermes skills inspect ID</code></td>
+<td>预览技能内容，不安装</td>
+</tr>
+<tr>
+<td><code>hermes skills update</code></td>
+<td>更新所有过时的技能</td>
+</tr>
+<tr>
+<td><code>hermes skills publish 路径</code></td>
+<td>把自己写的技能发布到商店</td>
+</tr>
+<tr>
+<td><code>hermes skills browse</code></td>
+<td>浏览技能商店全部技能</td>
+</tr>
+<tr>
+<td><code>hermes skills tap add REPO</code></td>
+<td>把 GitHub 仓库加为技能源</td>
+</tr>
+<tr>
+<td><code>hermes curator</code></td>
+<td>自动整理技能（归档、清理、备份）</td>
+</tr>
+</tbody></table>
+<h3 id="4-定时任务（Cron）"><a href="#4-定时任务（Cron）" class="headerlink" title="4. 定时任务（Cron）"></a>4. 定时任务（Cron）</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes cron list</code></td>
+<td>列出所有定时任务（<code>--all</code> 看已禁用的）</td>
+</tr>
+<tr>
+<td><code>hermes cron create &quot;0 9 * * *&quot;</code></td>
+<td>每天早上 9 点自动执行</td>
+</tr>
+<tr>
+<td><code>hermes cron edit ID</code></td>
+<td>编辑任务的调度、提示词、投递目标</td>
+</tr>
+<tr>
+<td><code>hermes cron pause/resume ID</code></td>
+<td>暂停&#x2F;恢复某个定时任务</td>
+</tr>
+<tr>
+<td><code>hermes cron run ID</code></td>
+<td>手动触发一次定时任务</td>
+</tr>
+<tr>
+<td><code>hermes cron remove ID</code></td>
+<td>删除定时任务</td>
+</tr>
+<tr>
+<td><code>hermes cron status</code></td>
+<td>查看调度器状态</td>
+</tr>
+</tbody></table>
+<h3 id="5-网关（多平台连接）"><a href="#5-网关（多平台连接）" class="headerlink" title="5. 网关（多平台连接）"></a>5. 网关（多平台连接）</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes gateway run</code></td>
+<td>前台启动网关（接 Telegram&#x2F;Discord 等）</td>
+</tr>
+<tr>
+<td><code>hermes gateway install</code></td>
+<td>把网关装成后台服务</td>
+</tr>
+<tr>
+<td><code>hermes gateway start/stop/restart</code></td>
+<td>控制网关运行状态</td>
+</tr>
+<tr>
+<td><code>hermes gateway setup</code></td>
+<td>配置你要接的平台</td>
+</tr>
+<tr>
+<td><code>hermes gateway status</code></td>
+<td>网关是否在跑</td>
+</tr>
+</tbody></table>
+<h3 id="6-会话管理"><a href="#6-会话管理" class="headerlink" title="6. 会话管理"></a>6. 会话管理</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes sessions list</code></td>
+<td>列出所有历史对话</td>
+</tr>
+<tr>
+<td><code>hermes sessions browse</code></td>
+<td>交互式选择历史对话</td>
+</tr>
+<tr>
+<td><code>hermes sessions export OUT</code></td>
+<td>把对话导出成 JSONL</td>
+</tr>
+<tr>
+<td><code>hermes sessions rename ID 新名</code></td>
+<td>给某次对话改名</td>
+</tr>
+<tr>
+<td><code>hermes sessions delete ID</code></td>
+<td>删除某次对话</td>
+</tr>
+<tr>
+<td><code>hermes sessions prune</code></td>
+<td>清理过期对话</td>
+</tr>
+<tr>
+<td><code>hermes sessions stats</code></td>
+<td>对话存储统计</td>
+</tr>
+</tbody></table>
+<h3 id="7-MCP-服务器"><a href="#7-MCP-服务器" class="headerlink" title="7. MCP 服务器"></a>7. MCP 服务器</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes mcp add NAME</code></td>
+<td>接入一个 MCP 工具服务器</td>
+</tr>
+<tr>
+<td><code>hermes mcp list</code></td>
+<td>列出已接入的 MCP</td>
+</tr>
+<tr>
+<td><code>hermes mcp remove NAME</code></td>
+<td>断开某个 MCP</td>
+</tr>
+<tr>
+<td><code>hermes mcp test NAME</code></td>
+<td>测试 MCP 连接</td>
+</tr>
+<tr>
+<td><code>hermes mcp serve</code></td>
+<td>把 Hermes 本身变成 MCP 服务器</td>
+</tr>
+<tr>
+<td><code>hermes mcp install 名称</code></td>
+<td>从目录安装 MCP 服务器</td>
+</tr>
+<tr>
+<td><code>hermes mcp configure NAME</code></td>
+<td>切换 MCP 暴露的工具</td>
+</tr>
+</tbody></table>
+<h3 id="8-Profile（多实例）"><a href="#8-Profile（多实例）" class="headerlink" title="8. Profile（多实例）"></a>8. Profile（多实例）</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes profile list</code></td>
+<td>列出所有 Hermes 实例</td>
+</tr>
+<tr>
+<td><code>hermes profile create NAME</code></td>
+<td>创建独立的 Hermes 实例</td>
+</tr>
+<tr>
+<td><code>hermes profile use NAME</code></td>
+<td>切换到某个实例</td>
+</tr>
+<tr>
+<td><code>hermes profile delete NAME</code></td>
+<td>删除某个实例</td>
+</tr>
+<tr>
+<td><code>hermes profile show NAME</code></td>
+<td>查看某个实例详情</td>
+</tr>
+<tr>
+<td><code>hermes profile alias NAME</code></td>
+<td>管理包装脚本别名</td>
+</tr>
+<tr>
+<td><code>hermes profile rename A B</code></td>
+<td>重命名实例</td>
+</tr>
+<tr>
+<td><code>hermes profile export/import</code></td>
+<td>导出&#x2F;导入实例</td>
+</tr>
+</tbody></table>
+<h3 id="9-凭证池"><a href="#9-凭证池" class="headerlink" title="9. 凭证池"></a>9. 凭证池</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes auth list</code></td>
+<td>列出所有存储的凭证</td>
+</tr>
+<tr>
+<td><code>hermes auth add PROVIDER</code></td>
+<td>添加 OAuth 或 API Key</td>
+</tr>
+<tr>
+<td><code>hermes auth remove P INDEX</code></td>
+<td>按提供商+索引删除凭证</td>
+</tr>
+<tr>
+<td><code>hermes auth reset PROVIDER</code></td>
+<td>重置提供商的耗尽状态</td>
+</tr>
+</tbody></table>
+<h3 id="10-Webhook"><a href="#10-Webhook" class="headerlink" title="10. Webhook"></a>10. Webhook</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes webhook subscribe NAME</code></td>
+<td>创建 webhook 路由</td>
+</tr>
+<tr>
+<td><code>hermes webhook list</code></td>
+<td>列出所有订阅</td>
+</tr>
+<tr>
+<td><code>hermes webhook remove NAME</code></td>
+<td>删除订阅</td>
+</tr>
+<tr>
+<td><code>hermes webhook test NAME</code></td>
+<td>发送测试 POST</td>
+</tr>
+</tbody></table>
+<h3 id="11-其他"><a href="#11-其他" class="headerlink" title="11. 其他"></a>11. 其他</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hermes update</code></td>
+<td>升级 Hermes 到最新版</td>
+</tr>
+<tr>
+<td><code>hermes uninstall</code></td>
+<td>卸载 Hermes</td>
+</tr>
+<tr>
+<td><code>hermes insights</code></td>
+<td>用量统计</td>
+</tr>
+<tr>
+<td><code>hermes memory setup/status</code></td>
+<td>配置持久记忆</td>
+</tr>
+<tr>
+<td><code>hermes plugins list/install/remove</code></td>
+<td>插件管理</td>
+</tr>
+<tr>
+<td><code>hermes pairing list/approve/revoke</code></td>
+<td>DM 授权管理</td>
+</tr>
+<tr>
+<td><code>hermes completion bash|zsh</code></td>
+<td>Shell 自动补全脚本</td>
+</tr>
+<tr>
+<td><code>hermes acp</code></td>
+<td>ACP 服务器（IDE 集成）</td>
+</tr>
+<tr>
+<td><code>hermes claw migrate</code></td>
+<td>从 OpenClaw 迁移</td>
+</tr>
+<tr>
+<td><code>hermes honcho setup/status</code></td>
+<td>Honcho 记忆集成</td>
+</tr>
+<tr>
+<td><code>hermes kanban</code></td>
+<td>多任务看板</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="二、聊天内斜杠命令（Slash-Commands）"><a href="#二、聊天内斜杠命令（Slash-Commands）" class="headerlink" title="二、聊天内斜杠命令（Slash Commands）"></a>二、聊天内斜杠命令（Slash Commands）</h2><p>在任何聊天窗口直接 typed，就像微信里发 <code>/help</code>。</p>
+<h3 id="会话控制"><a href="#会话控制" class="headerlink" title="会话控制"></a>会话控制</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/new</code> 或 <code>/reset</code></td>
+<td>开一个新对话，忘掉之前所有内容</td>
+</tr>
+<tr>
+<td><code>/clear</code></td>
+<td>清屏 + 新对话（CLI）</td>
+</tr>
+<tr>
+<td><code>/retry</code></td>
+<td>重新发上一条消息</td>
+</tr>
+<tr>
+<td><code>/undo</code></td>
+<td>撤销上一轮对话</td>
+</tr>
+<tr>
+<td><code>/title [name]</code></td>
+<td>给当前对话起个名字</td>
+</tr>
+<tr>
+<td><code>/compress</code></td>
+<td>手动压缩对话历史，省 token</td>
+</tr>
+<tr>
+<td><code>/stop</code></td>
+<td>停止正在跑的后台任务</td>
+</tr>
+<tr>
+<td><code>/rollback [N]</code></td>
+<td>撤销最近 N 轮文件改动</td>
+</tr>
+<tr>
+<td><code>/snapshot [sub]</code></td>
+<td>创建&#x2F;恢复配置状态快照</td>
+</tr>
+<tr>
+<td><code>/background &lt;prompt&gt;</code></td>
+<td>后台跑一个任务，不等结果</td>
+</tr>
+<tr>
+<td><code>/queue &lt;prompt&gt;</code></td>
+<td>排队，等这轮说完再执行</td>
+</tr>
+<tr>
+<td><code>/steer &lt;prompt&gt;</code></td>
+<td>在下一轮工具调用后注入消息</td>
+</tr>
+<tr>
+<td><code>/agents</code> 或 <code>/tasks</code></td>
+<td>查看活跃 agent 和任务</td>
+</tr>
+<tr>
+<td><code>/resume [name]</code></td>
+<td>恢复一个命名会话</td>
+</tr>
+<tr>
+<td><code>/goal [text|sub]</code></td>
+<td>设定长期目标，跨轮持续跟进</td>
+</tr>
+<tr>
+<td><code>/branch</code> 或 <code>/fork</code></td>
+<td>分支当前会话</td>
+</tr>
+<tr>
+<td><code>/redraw</code></td>
+<td>强制重绘 UI（CLI）</td>
+</tr>
+</tbody></table>
+<h3 id="配置调整"><a href="#配置调整" class="headerlink" title="配置调整"></a>配置调整</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/config</code></td>
+<td>显示当前配置（CLI）</td>
+</tr>
+<tr>
+<td><code>/model [name]</code></td>
+<td>实时切换模型</td>
+</tr>
+<tr>
+<td><code>/personality [name]</code></td>
+<td>切换人格&#x2F;风格</td>
+</tr>
+<tr>
+<td><code>/reasoning [level]</code></td>
+<td>调整思考深度（none → xhigh）</td>
+</tr>
+<tr>
+<td><code>/verbose</code></td>
+<td>切换详细输出模式</td>
+</tr>
+<tr>
+<td><code>/voice on|off|tts</code></td>
+<td>语音模式开关</td>
+</tr>
+<tr>
+<td><code>/yolo</code></td>
+<td>跳过危险命令确认</td>
+</tr>
+<tr>
+<td><code>/busy [sub]</code></td>
+<td>控制 Hermes 工作时 Enter 键行为</td>
+</tr>
+<tr>
+<td><code>/indicator [style]</code></td>
+<td>选择忙碌指示器样式</td>
+</tr>
+<tr>
+<td><code>/footer [on|off]</code></td>
+<td>开关网关元数据页脚</td>
+</tr>
+<tr>
+<td><code>/skin [name]</code></td>
+<td>换终端皮肤</td>
+</tr>
+<tr>
+<td><code>/statusbar</code></td>
+<td>开关状态栏（CLI）</td>
+</tr>
+</tbody></table>
+<h3 id="工具-技能"><a href="#工具-技能" class="headerlink" title="工具 &amp; 技能"></a>工具 &amp; 技能</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/tools</code></td>
+<td>管理可用工具（CLI）</td>
+</tr>
+<tr>
+<td><code>/toolsets</code></td>
+<td>列出工具集（CLI）</td>
+</tr>
+<tr>
+<td><code>/skills</code></td>
+<td>搜索&#x2F;安装技能（CLI）</td>
+</tr>
+<tr>
+<td><code>/skill &lt;name&gt;</code></td>
+<td>加载技能到当前对话</td>
+</tr>
+<tr>
+<td><code>/reload-skills</code></td>
+<td>重新扫描技能目录</td>
+</tr>
+<tr>
+<td><code>/reload</code></td>
+<td>重载 .env 变量（CLI）</td>
+</tr>
+<tr>
+<td><code>/reload-mcp</code></td>
+<td>重载 MCP 服务器</td>
+</tr>
+<tr>
+<td><code>/cron</code></td>
+<td>管理定时任务（CLI）</td>
+</tr>
+<tr>
+<td><code>/curator [sub]</code></td>
+<td>后台技能维护</td>
+</tr>
+<tr>
+<td><code>/kanban [sub]</code></td>
+<td>多任务看板</td>
+</tr>
+<tr>
+<td><code>/plugins</code></td>
+<td>列出插件（CLI）</td>
+</tr>
+</tbody></table>
+<h3 id="网关专用"><a href="#网关专用" class="headerlink" title="网关专用"></a>网关专用</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/approve</code></td>
+<td>批准待执行命令（网关）</td>
+</tr>
+<tr>
+<td><code>/deny</code></td>
+<td>拒绝待执行命令（网关）</td>
+</tr>
+<tr>
+<td><code>/restart</code></td>
+<td>重启网关（网关）</td>
+</tr>
+<tr>
+<td><code>/sethome</code></td>
+<td>把当前聊天设为”家”频道</td>
+</tr>
+<tr>
+<td><code>/update</code></td>
+<td>更新 Hermes（网关）</td>
+</tr>
+<tr>
+<td><code>/topic [sub]</code></td>
+<td>Telegram DM 话题会话管理</td>
+</tr>
+<tr>
+<td><code>/platforms</code> 或 <code>/gateway</code></td>
+<td>查看各平台连接状态</td>
+</tr>
+<tr>
+<td><code>/commands [page]</code></td>
+<td>浏览所有命令（网关）</td>
+</tr>
+</tbody></table>
+<h3 id="信息查询"><a href="#信息查询" class="headerlink" title="信息查询"></a>信息查询</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/help</code></td>
+<td>显示帮助</td>
+</tr>
+<tr>
+<td><code>/status</code></td>
+<td>会话信息（网关）</td>
+</tr>
+<tr>
+<td><code>/profile</code></td>
+<td>当前 profile 信息</td>
+</tr>
+<tr>
+<td><code>/usage</code></td>
+<td>Token 用量</td>
+</tr>
+<tr>
+<td><code>/insights</code></td>
+<td>使用分析</td>
+</tr>
+<tr>
+<td><code>/history</code></td>
+<td>对话历史（CLI）</td>
+</tr>
+<tr>
+<td><code>/save</code></td>
+<td>保存对话到文件（CLI）</td>
+</tr>
+<tr>
+<td><code>/copy [N]</code></td>
+<td>复制第 N 条回复到剪贴板</td>
+</tr>
+<tr>
+<td><code>/paste</code></td>
+<td>附加剪贴板图片</td>
+</tr>
+<tr>
+<td><code>/image</code></td>
+<td>附加本地图片</td>
+</tr>
+<tr>
+<td><code>/debug</code></td>
+<td>上传调试报告</td>
+</tr>
+<tr>
+<td><code>/gquota</code></td>
+<td>Gemini Code Assist 配额（CLI）</td>
+</tr>
+</tbody></table>
+<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>人话翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/quit</code> <code>/exit</code> <code>/q</code></td>
+<td>退出 CLI</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="三、Hermes-在-Telegram-上的最新命令"><a href="#三、Hermes-在-Telegram-上的最新命令" class="headerlink" title="三、Hermes 在 Telegram 上的最新命令"></a>三、Hermes 在 Telegram 上的最新命令</h2><p>Telegram 上的命令分三个层级：<strong>内联斜杠命令</strong>、<strong>TG 专属功能命令</strong>、<strong>自动投递机制</strong>。</p>
+<h3 id="1-内联斜杠命令（聊天框-typed）"><a href="#1-内联斜杠命令（聊天框-typed）" class="headerlink" title="1. 内联斜杠命令（聊天框 typed）"></a>1. 内联斜杠命令（聊天框 typed）</h3><p>就是上面 Slash Commands 的全部内容，Telegram 完全支持。直接在 Telegram 对话框里 typed：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/help         显示帮助</span><br><span class="line">/model xxx    切换 AI 模型</span><br><span class="line">/status       查看状态</span><br><span class="line">/cron         管理定时任务</span><br><span class="line">/restart      重启网关</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Telegram-专属命令"><a href="#2-Telegram-专属命令" class="headerlink" title="2. Telegram 专属命令"></a>2. Telegram 专属命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>最新作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/sethome</code></td>
+<td><strong>把当前 Telegram 聊天设为”家”频道</strong>——之后所有 cron 任务、自动推送默认发往这里</td>
+</tr>
+<tr>
+<td><code>/topic</code></td>
+<td><strong>管理 Telegram 话题会话</strong>——每个话题变成独立 session，互不干扰</td>
+</tr>
+<tr>
+<td><code>/platforms</code> 或 <code>/gateway</code></td>
+<td><strong>实时查看 Hermes 连接了哪些平台</strong>——TG、Discord、Slack、QQ、微信等在线状态一览</td>
+</tr>
+<tr>
+<td><code>/approve</code></td>
+<td><strong>审批危险命令</strong>——Hermes 遇到 rm、git reset 等操作时会在 TG 弹确认，你点 approve</td>
+</tr>
+<tr>
+<td><code>/deny</code></td>
+<td><strong>拒绝执行</strong>——同上，点 deny 取消</td>
+</tr>
+<tr>
+<td><code>/commands</code></td>
+<td><strong>在 TG 里浏览完整命令列表</strong>——带分页</td>
+</tr>
+<tr>
+<td><code>/restart</code></td>
+<td><strong>远程重启 Hermes 网关</strong>——不用 SSH 进服务器，手机直接操作</td>
+</tr>
+<tr>
+<td><code>/update</code></td>
+<td><strong>远程触发 Hermes 更新</strong>——TG 里直接升级</td>
+</tr>
+<tr>
+<td><code>/setcommands</code></td>
+<td><strong>配置 Bot 命令菜单</strong>——设置后 TG 输入框旁会出现命令按钮</td>
+</tr>
+</tbody></table>
+<h3 id="3-Telegram-Bot-Menu（按钮菜单）"><a href="#3-Telegram-Bot-Menu（按钮菜单）" class="headerlink" title="3. Telegram Bot Menu（按钮菜单）"></a>3. Telegram Bot Menu（按钮菜单）</h3><p>Hermes 在 Telegram 上还会暴露一个<strong>命令按钮菜单</strong>（通过 BotFather 的 <code>/setcommands</code> 设置）：</p>
+<ul>
+<li>用户点击输入框左侧 <code>/</code> 按钮或 Bot 菜单</li>
+<li>弹出常用命令列表</li>
+<li>点一下就发送，无需手动 typed</li>
+</ul>
+<h3 id="4-自动投递机制（Cron-→-TG）"><a href="#4-自动投递机制（Cron-→-TG）" class="headerlink" title="4. 自动投递机制（Cron → TG）"></a>4. 自动投递机制（Cron → TG）</h3><p>这不是手动 typed 的命令，但和 TG 关系最紧密：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">定时任务到期 → Hermes 自动执行 → 结果 push 到指定 TG 频道/群</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建时指定 <code>deliver: &quot;telegram:频道ID&quot;</code></li>
+<li>支持多平台同时投递：<code>deliver: &quot;telegram:-100xxx,qqbot:xxx&quot;</code></li>
+<li>支持投递回原聊天：<code>deliver: &quot;origin&quot;</code></li>
+</ul>
+<hr>
+<h2 id="四、核心概念串讲"><a href="#四、核心概念串讲" class="headerlink" title="四、核心概念串讲"></a>四、核心概念串讲</h2><p>用费曼的方式，把几个关键概念串起来：</p>
+<h3 id="什么是-Session？"><a href="#什么是-Session？" class="headerlink" title="什么是 Session？"></a>什么是 Session？</h3><blockquote>
+<p><strong>Session &#x3D; 一次对话的完整记录。</strong><br>就像你和助理坐在会议室里聊，从进门到出门的整段对话，就是一个 Session。<br><code>/new</code> 是”出去再进来，换一间会议室”；<br><code>/resume</code> 是”回到刚才那间会议室继续聊”。</p>
+</blockquote>
+<h3 id="什么是-Cron？"><a href="#什么是-Cron？" class="headerlink" title="什么是 Cron？"></a>什么是 Cron？</h3><blockquote>
+<p><strong>Cron &#x3D; 定时闹钟 + 自动执行器。</strong><br>你告诉 Hermes：”每天早上 9 点帮我查天气，发给我。”<br>Hermes 设个闹钟，到点自动执行，结果 push 到你的 TG。<br>你不必在场，事情照样干。</p>
+</blockquote>
+<h3 id="什么是-Gateway？"><a href="#什么是-Gateway？" class="headerlink" title="什么是 Gateway？"></a>什么是 Gateway？</h3><blockquote>
+<p><strong>Gateway &#x3D; 翻译官 + 前台接待。</strong><br>Telegram、Discord、Slack 发的消息，Gateway 接收后翻译成 Hermes 能懂的语言；<br>Hermes 的回复，Gateway 再翻译成对方平台能显示的消息。<br>它让你在不同平台上都能用上同一个 Hermes。</p>
+</blockquote>
+<h3 id="什么是-Skill？"><a href="#什么是-Skill？" class="headerlink" title="什么是 Skill？"></a>什么是 Skill？</h3><blockquote>
+<p><strong>Skill &#x3D; Hermes 的工作手册。</strong><br>你说”帮我生成美股日报”，Hermes 如果没装过这个技能，就得现想怎么做；<br>装了 <code>us-stock-daily-report</code> 技能后，它打开手册，按步骤执行，又快又稳。<br>技能越多，Hermes 越专业。</p>
+</blockquote>
+<h3 id="什么是-Profile？"><a href="#什么是-Profile？" class="headerlink" title="什么是 Profile？"></a>什么是 Profile？</h3><blockquote>
+<p><strong>Profile &#x3D; 独立的 Hermes 员工档案。</strong><br>默认 Profile 处理你的日常任务；<br>你可以创建 <code>server-a</code> Profile 管理服务器 A，<code>server-b</code> Profile 管理服务器 B。<br>每个 Profile 有独立的配置、记忆、技能，互不干扰。</p>
+</blockquote>
+<hr>
+<h2 id="五、常用命令速查卡"><a href="#五、常用命令速查卡" class="headerlink" title="五、常用命令速查卡"></a>五、常用命令速查卡</h2><p>把下面这张卡存起来，日常够用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 日常高频</span><br><span class="line">hermes                    # 启动对话</span><br><span class="line">/new                      # 新对话</span><br><span class="line">/model xxx                # 切换模型</span><br><span class="line">/hermes config edit       # 改配置</span><br><span class="line">/hermes skills search xx  # 找技能</span><br><span class="line">/hermes cron list         # 看定时任务</span><br><span class="line">/hermes status            # 查状态</span><br><span class="line"></span><br><span class="line"># Telegram 专属</span><br><span class="line">/sethome                  # 设 TG 家频道</span><br><span class="line">/platforms                # 看平台连接</span><br><span class="line">/restart                  # 重启网关</span><br><span class="line">/topic                    # 管理话题会话</span><br><span class="line"></span><br><span class="line"># 排障</span><br><span class="line">hermes doctor             # 体检</span><br><span class="line">hermes config check       # 检查配置</span><br><span class="line">hermes gateway status     # 网关状态</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、费曼总结"><a href="#六、费曼总结" class="headerlink" title="六、费曼总结"></a>六、费曼总结</h2><blockquote>
+<p><strong>Hermes 的全部命令，本质上就是「远程控制一个 AI 员工」的所有方式。</strong><br><strong>终端 CLI</strong> 是签合同的正式入口，用来安装、配置、排障。<br><strong>Slash 命令</strong> 是工位上的快捷按钮，聊天内快速控制。<br><strong>Telegram 网关</strong> 是把这家公司搬到了你手机上，随时发号施令，还能让 AI 自动给你发工作报告。</p>
+</blockquote>
+<p>三条路，一个目的：<strong>让 AI 按你的意愿干活。</strong></p>
+<hr>
+<p><em>文档生成时间：2026-08-04</em><br><em>参考：Hermes Agent 官方文档 &amp; hermes-agent skill</em></p>
+
   </div>
 
   <footer class="article-reactions">
@@ -294,18 +1107,18 @@
 
   <nav class="article-actions">
     
-      <a class="article-action article-action--prev" href="/2026/06/06/algo%E7%AE%97%E6%B3%95/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">
+      <span class="article-action article-action--prev is-disabled" aria-disabled="true">
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
 
         <span class="action-label">上一篇</span>
-        <span class="action-title">移除元素</span>
-      </a>
+        <span class="action-title">没有更早的文章了</span>
+      </span>
     
     
-      <a class="article-action article-action--next" href="/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E8%80%81%E7%85%A7%E7%89%87%E4%BF%AE%E5%A4%8D/">
+      <a class="article-action article-action--next" href="/2026/08/03/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/NodeSeek%20%E8%AE%BA%E5%9D%9B%E8%AF%88%E9%AA%97%E9%A2%84%E9%98%B2%E7%9A%84%E8%AE%A4%E7%9F%A5%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6%E7%A0%94%E7%A9%B6/">
         <span class="action-label">下一篇</span>
-        <span class="action-title">chatgpt老照片修复</span>
+        <span class="action-title">NodeSeek 论坛诈骗预防的认知决策框架研究</span>
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 
@@ -330,51 +1143,67 @@
     </header>
     <div class="related-paper__grid">
       
-        <a class="related-card" href="/2026/05/15/hexo/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">
+        <a class="related-card" href="/2026/05/26/ffmpeg/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/">
           <span class="related-card__thumb">
             
 <div class="paper-thumb paper-thumb-0 paper-thumb--cover">
   
-    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/blog/1779292151994_hexo_博客优化.webp" alt="Hexo博客美化" loading="lazy" referrerpolicy="no-referrer">
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/blog/1779758927672_ffmpeg.webp" alt="ffmpeg常用命令汇总" loading="lazy" referrerpolicy="no-referrer">
   
 </div>
 
           </span>
           <span class="related-card__body">
-            <strong class="related-card__title">Hexo博客美化</strong>
-            <em class="related-card__date">2026-05-15</em>
+            <strong class="related-card__title">ffmpeg常用命令汇总</strong>
+            <em class="related-card__date">2026-05-26</em>
           </span>
         </a>
       
-        <a class="related-card" href="/2026/05/15/hexo/hexo%E5%85%A5%E9%97%A8/">
+        <a class="related-card" href="/2026/05/26/ffmpeg/ffmpeg%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/">
           <span class="related-card__thumb">
             
 <div class="paper-thumb paper-thumb-1 paper-thumb--cover">
   
-    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/blog/1779291939314_hexo_入门.webp" alt="hexo入门" loading="lazy" referrerpolicy="no-referrer">
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/blog/1779759480876_ffmpeg-use.webp" alt="ffmpeg 自用命令" loading="lazy" referrerpolicy="no-referrer">
   
 </div>
 
           </span>
           <span class="related-card__body">
-            <strong class="related-card__title">hexo入门</strong>
-            <em class="related-card__date">2026-05-15</em>
+            <strong class="related-card__title">ffmpeg 自用命令</strong>
+            <em class="related-card__date">2026-05-26</em>
           </span>
         </a>
       
-        <a class="related-card" href="/2026/04/19/hexo/hello-world/">
+        <a class="related-card" href="/2026/05/15/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
           <span class="related-card__thumb">
             
 <div class="paper-thumb paper-thumb-2 paper-thumb--cover">
   
-    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/blog/1779291271066_hello_world.webp" alt="Hello World" loading="lazy" referrerpolicy="no-referrer">
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/blog/1779281240950_docker命令总结.png" alt="docker常用命令" loading="lazy" referrerpolicy="no-referrer">
   
 </div>
 
           </span>
           <span class="related-card__body">
-            <strong class="related-card__title">Hello World</strong>
-            <em class="related-card__date">2026-04-19</em>
+            <strong class="related-card__title">docker常用命令</strong>
+            <em class="related-card__date">2026-05-15</em>
+          </span>
+        </a>
+      
+        <a class="related-card" href="/2026/05/13/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-0 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="https://imbed.nekomini.dpdns.org/file/blog/1779282948952_vscode_快捷键.png" alt="vscode快捷键" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">vscode快捷键</strong>
+            <em class="related-card__date">2026-05-13</em>
           </span>
         </a>
       

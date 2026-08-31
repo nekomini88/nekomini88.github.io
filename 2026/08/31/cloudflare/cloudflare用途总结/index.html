@@ -1,0 +1,1987 @@
+<!doctype html>
+
+<html lang="zh-CN" data-fancybox-enabled="1">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f3e9">
+<title>cloudflare用途总结 | Neko&#39;s Blog</title>
+
+  <meta name="description" content="灯就陪他静静读书">
+
+  <link rel="shortcut icon" href="/images/android-chrome-192x192.png">
+
+<script>
+  (function () {
+    var accents = { green: 1, pink: 1, blue: 1, orange: 1, sakura: 1 };
+    var match = document.cookie.match(/(?:^|;\s*)flatpaper-accent=([^;]+)/);
+    var accent = match ? decodeURIComponent(match[1]) : 'green';
+    if (!accents[accent]) accent = 'green';
+    document.documentElement.setAttribute('data-accent', accent);
+    try {
+      if (localStorage.getItem('flatpaper-mode') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Neko's Blog" type="application/atom+xml">
+</head>
+
+<body
+  class="is-post tag-style-tape"
+  data-default-accent="green"
+  data-code-theme="dark"
+  data-note-style="flat"
+  data-note-icons="on"
+>
+  <div class="page-grain"></div>
+  <header class="site-header">
+  
+  <button class="icon-button js-sidebar-toggle sidebar-toggle" type="button" aria-label="打开侧边栏" aria-controls="paper-sidebar-drawer" aria-expanded="false">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg>
+
+  </button>
+
+  <a class="brand" href="/" aria-label="FlatPaper home">
+    <span class="brand-mark" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96a1 1 0 0 1 1.6.8c0 3-.6 7.74-4.16 11.31-2.66 2.66-6.74 3.99-9.65 3.99"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+</span>
+    <span class="brand-text">Neko&#39;s Blog</span>
+  </a>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    
+      
+        <a class="site-nav-link " href="/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/><path d="M9 21v-6h6v6"/></svg>
+
+          <span>首页</span>
+        </a>
+      
+    
+      
+        <a class="site-nav-link " href="/archives/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+
+          <span>归档</span>
+        </a>
+      
+    
+  </nav>
+
+  <div class="header-tools">
+    <button class="icon-button js-search-open" type="button" aria-label="搜索文章">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+
+    </button>
+    <div class="accent-picker">
+      <button class="icon-button accent-toggle" type="button" aria-label="选择主题色" title="选择主题色" aria-haspopup="true" aria-expanded="false" aria-controls="accent-menu">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 5.9 2 10.8c0 3.3 2.7 6 6 6h1.2c.8 0 1.4.6 1.4 1.4 0 .4-.2.8-.2 1.2 0 .8.6 1.6 1.6 1.6 5.5 0 10-4.2 10-9.4C22 6.3 17.5 2 12 2Z"/></svg>
+
+      </button>
+      <div class="accent-menu" id="accent-menu" role="menu" aria-label="主题色">
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="绿色" aria-checked="false" data-accent-option="green">
+          <span class="accent-swatch accent-swatch--green" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="粉色" aria-checked="false" data-accent-option="pink">
+          <span class="accent-swatch accent-swatch--pink" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="樱花粉" aria-checked="false" data-accent-option="sakura">
+          <span class="accent-swatch accent-swatch--sakura" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="蓝色" aria-checked="false" data-accent-option="blue">
+          <span class="accent-swatch accent-swatch--blue" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="橙色" aria-checked="false" data-accent-option="orange">
+          <span class="accent-swatch accent-swatch--orange" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="切换颜色模式">
+      <span class="theme-icon theme-icon--sun">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+</span>
+      <span class="theme-icon theme-icon--moon">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+</span>
+    </button>
+  </div>
+</header>
+
+
+  
+  <main class="paper-shell paper-shell--article">
+    
+
+<aside id="paper-sidebar-drawer" class="paper-sidebar paper-sidebar--right" aria-label="侧边栏">
+  <button class="icon-button drawer-close js-sidebar-close" type="button" aria-label="关闭侧边栏">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+
+  </button>
+
+  <section class="side-card nav-card">
+    <nav class="site-nav-drawer" aria-label="移动端导航">
+      
+        
+          <a class="" href="/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/><path d="M9 21v-6h6v6"/></svg>
+
+            <span>首页</span>
+          </a>
+        
+      
+        
+          <a class="" href="/archives/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+
+            <span>归档</span>
+          </a>
+        
+      
+    </nav>
+  </section>
+
+  <section class="side-card profile-card">
+    
+      <div class="avatar avatar--image avatar--circle">
+        <img src="https://imbed.nekomini.dpdns.org/file/theme/1780924179977_nekomini-theme.webp" alt="Neko" loading="lazy" referrerpolicy="no-referrer">
+      </div>
+    
+    <h3>Neko</h3>
+    <p class="profile-role">日常记录</p>
+    <p>记录日常，代码，以及想做的事情</p>
+    
+      <div class="site-info" aria-label="站点信息">
+        
+          
+            <a class="site-info__item" href="/archives/">
+              <strong>61</strong>
+              <span>文章</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/categories/">
+              <strong>23</strong>
+              <span>分类</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/tags/">
+              <strong>40</strong>
+              <span>标签</span>
+            </a>
+          
+        
+      </div>
+    
+    <div class="socials">
+      
+        <a href="https://github.com/nekomini88" target="_blank" rel="noopener" aria-label="GitHub">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+
+          
+        </a>
+      
+      
+    </div>
+  </section>
+
+  
+    <section class="side-card toc-card">
+      <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-table-of-contents" aria-hidden="true"><path d="M16 12H3"/><path d="M16 18H3"/><path d="M16 6H3"/><path d="M21 12h.01"/><path d="M21 18h.01"/><path d="M21 6h.01"/></svg>
+文章目录</h2>
+      <div class="toc-content">
+        
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%AE%9A%E4%B9%89"><span class="toc-text">1.1 一句话定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AE%83%E5%A6%82%E6%AD%A4%E7%89%B9%E6%AE%8A"><span class="toc-text">1.2 为什么它如此特殊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E4%B8%8E%E8%A7%84%E6%A8%A1"><span class="toc-text">1.3 发展历程与规模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E5%AE%83%E8%A7%A3%E5%86%B3%E7%9A%84%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98%EF%BC%88%E6%8C%89%E7%97%9B%E7%82%B9%E5%AF%B9%E5%BA%94%EF%BC%89"><span class="toc-text">1.4 它解决的核心问题（按痛点对应）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E5%AF%B9%E8%AF%BB%E8%80%85%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">1.5 对读者的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%90%86%E8%A7%A3-Cloudflare-%E6%80%8E%E6%A0%B7%E3%80%8C%E6%8F%92%E8%BF%9B%E3%80%8D%E4%BD%A0%E7%9A%84%E7%B3%BB%E7%BB%9F"><span class="toc-text">2.1 一张图理解 Cloudflare 怎样「插进」你的系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Anycast-%E6%8A%80%E6%9C%AF"><span class="toc-text">2.2 Anycast 技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%88%86%E5%B1%82%E4%BA%A7%E5%93%81%E4%BD%93%E7%B3%BB%E6%80%BB%E8%A7%88"><span class="toc-text">2.3 分层产品体系总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%85%8D%E8%B4%B9%E4%B8%8E%E4%BB%98%E8%B4%B9%E7%9A%84%E7%BB%9F%E4%B8%80%E5%BA%95%E5%BA%A7"><span class="toc-text">2.4 免费与付费的统一底座</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E4%B9%9F%E5%BA%94%E5%85%B3%E6%B3%A8"><span class="toc-text">2.5 为什么个人开发者也应关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-CDN-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E-Cloudflare-%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">3.1 CDN 基本原理与 Cloudflare 的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E7%BC%93%E5%AD%98%E5%B1%82%E7%BA%A7%EF%BC%9A%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98-%E2%86%92-%E8%BE%B9%E7%BC%98%E7%BC%93%E5%AD%98-%E2%86%92-%E6%BA%90%E7%AB%99"><span class="toc-text">3.2 缓存层级：浏览器缓存 → 边缘缓存 → 源站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%8A%A8%E6%80%81%E5%86%85%E5%AE%B9%E5%8A%A0%E9%80%9F%EF%BC%9AArgo-Smart-Routing"><span class="toc-text">3.3 动态内容加速：Argo Smart Routing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E5%9B%BE%E7%89%87%E4%B8%8E%E5%AA%92%E4%BD%93%E4%BA%A4%E4%BB%98%E4%BC%98%E5%8C%96"><span class="toc-text">3.4 图片与媒体交付优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E8%B0%83%E8%AF%95%E7%BC%93%E5%AD%98%EF%BC%9A%E5%85%B3%E6%B3%A8%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="toc-text">3.5 调试缓存：关注响应头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-%E5%AE%9E%E6%88%98%EF%BC%9A%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%85%A5-Cloudflare-%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF"><span class="toc-text">3.6 实战：自建服务接入 Cloudflare 的正确姿势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Cloudflare-DNS-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">4.1 Cloudflare DNS 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3"><span class="toc-text">4.2 记录类型详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E8%A7%A3%E6%9E%90%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96"><span class="toc-text">4.3 解析速度优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-DNS-%E5%AE%89%E5%85%A8"><span class="toc-text">4.4 DNS 安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1%E4%B8%8E-DNS-%E8%81%94%E5%8A%A8"><span class="toc-text">4.5 实战：域名邮箱与 DNS 联动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-DDoS-%E9%98%B2%E6%8A%A4%EF%BC%88%E8%BE%B9%E7%BC%98%E6%B8%85%E6%B4%97%EF%BC%89"><span class="toc-text">5.1 DDoS 防护（边缘清洗）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-Web-%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%88WAF%EF%BC%89"><span class="toc-text">5.2 Web 应用防火墙（WAF）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-1-%E6%89%98%E7%AE%A1%E8%A7%84%E5%88%99%E9%9B%86%EF%BC%88Managed-Ruleset%EF%BC%89"><span class="toc-text">5.2.1 托管规则集（Managed Ruleset）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99"><span class="toc-text">5.2.2 自定义规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-3-WAF-%E5%8A%A8%E4%BD%9C%EF%BC%88Actions%EF%BC%89"><span class="toc-text">5.2.3 WAF 动作（Actions）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-4-WAF-%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-text">5.2.4 WAF 的自动化建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E9%80%9F%E7%8E%87%E9%99%90%E5%88%B6%EF%BC%88Rate-Limiting%EF%BC%89"><span class="toc-text">5.3 速率限制（Rate Limiting）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-Bot-%E7%AE%A1%E7%90%86%EF%BC%88Bot-Management%EF%BC%89"><span class="toc-text">5.4 Bot 管理（Bot Management）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-%E5%85%B6%E4%BB%96%E5%AE%89%E5%85%A8%E5%A2%9E%E5%BC%BA"><span class="toc-text">5.5 其他安全增强</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-%E4%B8%AA%E4%BA%BA%E7%AB%99%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE%E6%8E%A8%E8%8D%90%E8%B5%B7%E7%82%B9"><span class="toc-text">5.6 个人站安全配置推荐起点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-Cloudflare-Access%EF%BC%88%E5%BA%94%E7%94%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%EF%BC%89"><span class="toc-text">6.1 Cloudflare Access（应用访问控制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-Cloudflare-Gateway%EF%BC%88%E5%AE%89%E5%85%A8-Web-%E7%BD%91%E5%85%B3-DNS-%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">6.2 Cloudflare Gateway（安全 Web 网关 &#x2F; DNS 过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-Cloudflare-Tunnel%EF%BC%88%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E5%87%BA%E7%AB%99%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">6.3 Cloudflare Tunnel（内网穿透 &#x2F; 出站连接）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-WARP%EF%BC%88Cloudflare-WARP%EF%BC%89"><span class="toc-text">6.4 WARP（Cloudflare WARP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-%E9%9B%B6%E4%BF%A1%E4%BB%BB%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="toc-text">6.5 零信任架构图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-6-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-text">6.6 常见误区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-Cloudflare-Workers%EF%BC%88%E8%BE%B9%E7%BC%98%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-text">7.1 Cloudflare Workers（边缘函数）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-1-Worker-%E6%9C%80%E5%B0%8F%E7%A4%BA%E4%BE%8B"><span class="toc-text">7.1.1 Worker 最小示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-2-Workers-%E4%B8%8E-Cron-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9A%84%E9%AB%98%E9%A2%91%E7%94%A8%E6%B3%95"><span class="toc-text">7.1.2 Workers 与 Cron 定时任务的高频用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-Cloudflare-Pages%EF%BC%88%E9%9D%99%E6%80%81%E7%AB%99-Functions%EF%BC%89"><span class="toc-text">7.2 Cloudflare Pages（静态站 + Functions）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E8%BE%B9%E7%BC%98%E5%AD%98%E5%82%A8%E5%AE%B6%E6%97%8F"><span class="toc-text">7.3 边缘存储家族</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-Worker-%E7%94%9F%E6%80%81%E7%9A%84%E8%BE%B9%E7%95%8C%E4%B8%8E%E9%80%82%E7%94%A8%E5%88%A4%E6%96%AD"><span class="toc-text">7.4 Worker 生态的边界与适用判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-5-%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-text">7.5 参考文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-Cloudflare-Images"><span class="toc-text">8.1 Cloudflare Images</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-Cloudflare-Stream"><span class="toc-text">8.2 Cloudflare Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-Polish-%E4%B8%8E%E4%BC%98%E5%8C%96"><span class="toc-text">8.3 Polish 与优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-%E5%AA%92%E4%BD%93%E6%96%B9%E6%A1%88%E5%8F%96%E8%88%8D%E5%B0%8F%E7%BB%93"><span class="toc-text">8.4 媒体方案取舍小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-Email-Routing%EF%BC%88%E9%82%AE%E4%BB%B6%E8%BD%AC%E5%8F%91-%E5%85%A5%E7%AB%99%EF%BC%89"><span class="toc-text">9.1 Email Routing（邮件转发 &#x2F; 入站）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E9%82%AE%E4%BB%B6%E5%AE%89%E5%85%A8%EF%BC%88Area-1-Email-Security%EF%BC%89"><span class="toc-text">9.2 邮件安全（Area 1 &#x2F; Email Security）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E9%82%AE%E4%BB%B6%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E4%B8%AD-CF-%E7%9A%84%E8%A7%92%E8%89%B2%EF%BC%88%E5%85%B3%E9%94%AE%E5%BC%BA%E8%B0%83%EF%BC%89"><span class="toc-text">9.3 邮件基础设施中 CF 的角色（关键强调）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-4-%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-text">9.4 参考文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-Cloudflare-Tunnel%EF%BC%88%E5%AE%8C%E6%95%B4%E5%BD%A2%E6%80%81%EF%BC%89"><span class="toc-text">10.1 Cloudflare Tunnel（完整形态）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-1-Tunnel-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-text">10.1.1 Tunnel 快速上手</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-WARP"><span class="toc-text">10.2 WARP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-Magic-Transit-Magic-WAN%EF%BC%88%E4%BC%81%E4%B8%9A%E7%BA%A7%EF%BC%89"><span class="toc-text">10.3 Magic Transit &#x2F; Magic WAN（企业级）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-4-Load-Balancing%EF%BC%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-GSLB%EF%BC%89"><span class="toc-text">10.4 Load Balancing（负载均衡 &#x2F; GSLB）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-5-%E5%9F%9F%E5%90%8D%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%B1%82%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AE%9E%E9%99%85%E6%8F%90%E9%86%92"><span class="toc-text">10.5 域名与网络层的一个实际提醒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-Wrangler%EF%BC%88Workers-CLI%EF%BC%89"><span class="toc-text">11.1 Wrangler（Workers CLI）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-CICD-%E4%B8%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-text">11.2 CICD 与版本控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-3-%E6%96%B0%E4%B8%80%E4%BB%A3-Cloudflare-CLI"><span class="toc-text">11.3 新一代 Cloudflare CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-4-Terraform-%E4%B8%8E-IaC"><span class="toc-text">11.4 Terraform 与 IaC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-5-API-%E4%B8%8E-SDK"><span class="toc-text">11.5 API 与 SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-6-%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95"><span class="toc-text">11.6 本地开发与调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E5%86%85%E5%BB%BA-Analytics"><span class="toc-text">12.1 内建 Analytics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-Logpush"><span class="toc-text">12.2 Logpush</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-Workers-Observability"><span class="toc-text">12.3 Workers Observability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-4-%E9%9D%A2%E5%90%91%E8%87%AA%E5%BB%BA%E8%B0%83%E5%BA%A6-%E6%8A%A5%E5%91%8A%E7%9A%84%E8%81%94%E5%8A%A8"><span class="toc-text">12.4 面向自建调度 &#x2F; 报告的联动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-1-%E4%B8%AA%E4%BA%BA%E7%AB%99%E9%95%BF-%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91%E8%80%85"><span class="toc-text">13.1 个人站长 &#x2F; 独立开发者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-2-%E7%94%B5%E5%95%86-%E4%BC%81%E4%B8%9A%E5%AE%98%E7%BD%91"><span class="toc-text">13.2 电商 &#x2F; 企业官网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-3-SaaS-API-%E5%B9%B3%E5%8F%B0"><span class="toc-text">13.3 SaaS &#x2F; API 平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-4-%E9%87%91%E8%9E%8D-%E9%AB%98%E5%90%88%E8%A7%84%E8%A1%8C%E4%B8%9A"><span class="toc-text">13.4 金融 &#x2F; 高合规行业</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-5-%E6%B8%B8%E6%88%8F-%E6%B3%9B%E5%A8%B1%E4%B9%90"><span class="toc-text">13.5 游戏 &#x2F; 泛娱乐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-6-%E9%83%A8%E7%BD%B2%E4%B8%8E%E8%BF%81%E7%A7%BB%E6%B3%A8%E6%84%8F%EF%BC%88%E9%92%88%E5%AF%B9%E6%AD%A3%E5%9C%A8%E7%94%A8-CF-%E7%9A%84%E7%94%A8%E6%88%B7%EF%BC%89"><span class="toc-text">13.6 部署与迁移注意（针对正在用 CF 的用户）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-1-%E5%A5%97%E9%A4%90%E4%B8%80%E8%A7%88"><span class="toc-text">14.1 套餐一览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-2-%E6%8C%89%E9%9C%80%E8%AE%A1%E8%B4%B9-%E5%A2%9E%E5%80%BC%E9%A1%B9"><span class="toc-text">14.2 按需计费 &#x2F; 增值项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-3-%E4%B8%AA%E4%BA%BA%E6%9C%80%E5%88%92%E7%AE%97%E7%9A%84%E7%BB%84%E5%90%88%EF%BC%88%E6%80%A7%E4%BB%B7%E6%AF%94%E8%A7%82%E7%82%B9%EF%BC%89"><span class="toc-text">14.3 个人最划算的组合（性价比观点）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-4-%E5%B8%B8%E8%A7%81%E3%80%8C%E7%9C%81%E9%92%B1%E9%99%B7%E9%98%B1%E3%80%8D"><span class="toc-text">14.4 常见「省钱陷阱」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-1-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E6%B8%85%E5%8D%95"><span class="toc-text">15.1 最佳实践清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-2-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%EF%BC%88%E5%8A%A1%E5%BF%85%E9%81%BF%E5%BC%80%EF%BC%89"><span class="toc-text">15.2 常见误区（务必避开）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-3-%E8%B0%83%E8%AF%95%E9%80%9F%E6%9F%A5"><span class="toc-text">15.3 调试速查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-1-%E7%BC%93%E5%AD%98%E4%B8%8D%E7%94%9F%E6%95%88-%E6%9B%B4%E6%96%B0%E4%BA%86%E7%9C%8B%E4%B8%8D%E5%88%B0%E6%96%B0%E5%86%85%E5%AE%B9"><span class="toc-text">18.1 缓存不生效 &#x2F; 更新了看不到新内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-2-%E6%BA%90%E7%AB%99%E8%A2%AB%E7%9B%B4%E6%8E%A5%E6%94%BB%E5%87%BB-%E8%A2%AB%E7%88%AC%E8%99%AB%E6%89%AB%E6%8F%8F"><span class="toc-text">18.2 源站被直接攻击 &#x2F; 被爬虫扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-3-%E9%9D%9E%E6%A0%87%E7%AB%AF%E5%8F%A3-%E5%8F%8D%E4%BB%A3-%E8%AF%81%E4%B9%A6%E6%8B%93%E6%89%91%E8%BF%9E%E4%B8%8D%E4%B8%8A"><span class="toc-text">18.3 非标端口 &#x2F; 反代 + 证书拓扑连不上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-4-%E5%8F%91%E4%B8%8D%E4%BA%86%E4%BF%A1-%E9%82%AE%E4%BB%B6%E8%BF%9B%E5%9E%83%E5%9C%BE%E7%AE%B1"><span class="toc-text">18.4 发不了信 &#x2F; 邮件进垃圾箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-5-Worker-%E9%83%A8%E7%BD%B2%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88-404"><span class="toc-text">18.5 Worker 部署后不生效 &#x2F; 404</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-6-DDoS-CC-%E8%A2%AB%E6%89%93%E4%BD%86%E4%BB%8D%E5%8D%A1"><span class="toc-text">18.6 DDoS &#x2F; CC 被打但仍卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-7-%E5%88%87%E6%8D%A2-NS-%E5%90%8E%E7%BD%91%E7%AB%99%E6%89%93%E4%B8%8D%E5%BC%80"><span class="toc-text">18.7 切换 NS 后网站打不开</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-8-%E5%B8%B8%E8%A7%81-FAQ"><span class="toc-text">18.8 常见 FAQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1-%E7%AC%AC-0-%E6%AD%A5%EF%BC%9A%E7%A1%AE%E8%AE%A4%E5%BD%93%E5%89%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84"><span class="toc-text">C.1 第 0 步：确认当前网站架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-2-%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%8A%8A-DNS-%E4%BA%A4%E7%BB%99-Cloudflare"><span class="toc-text">C.2 第一步：把 DNS 交给 Cloudflare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-3-%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%85%88%E5%85%A8%E9%83%A8%E7%94%A8%E7%81%B0%E4%BA%91%E9%AA%8C%E8%AF%81%E5%86%8D%E7%82%B9%E4%BA%AE%E6%A9%99%E4%BA%91"><span class="toc-text">C.3 第二步：先全部用灰云验证再点亮橙云</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-4-%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E9%85%8D%E7%BD%AE-SSL-%E6%A8%A1%E5%BC%8F"><span class="toc-text">C.4 第三步：配置 SSL 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-5-%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%8A%A0%E5%9B%BA%E6%BA%90%E7%AB%99%EF%BC%8C%E5%8F%AA%E4%BF%A1%E4%BB%BB-Cloudflare"><span class="toc-text">C.5 第四步：加固源站，只信任 Cloudflare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-6-%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E6%89%93%E5%BC%80%E5%9F%BA%E7%A1%80%E5%AE%89%E5%85%A8%E8%A7%84%E5%88%99"><span class="toc-text">C.6 第五步：打开基础安全规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-7-%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9A%E7%A1%AE%E5%AE%9A%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5"><span class="toc-text">C.7 第六步：确定缓存策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-8-%E7%AC%AC%E4%B8%83%E6%AD%A5%EF%BC%9A%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%8C%81%E7%BB%AD%E8%A7%82%E5%AF%9F"><span class="toc-text">C.8 第七步：验证与持续观察</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-9-%E5%A4%87%E9%80%89%EF%BC%9A%E7%94%A8-Tunnel-%E6%9B%BF%E4%BB%A3%E3%80%8C%E5%85%AC%E7%BD%91-IP-%E8%AF%81%E4%B9%A6-%E7%AB%AF%E5%8F%A3%E3%80%8D%E7%9A%84%E6%8A%98%E8%85%BE"><span class="toc-text">C.9 备选：用 Tunnel 替代「公网 IP + 证书 + 端口」的折腾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-1-%E5%8F%AA%E5%9C%A8%E8%BE%B9%E7%BC%98%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%93%8D%E5%BA%94%E5%A4%B4%E6%88%96%E6%94%B9%E5%8A%A8%E9%A1%B5%E8%84%9A"><span class="toc-text">D.1 只在边缘加一个响应头或改动页脚</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-2-%E8%BE%B9%E7%BC%98%E5%BC%80%E5%85%B3%E4%B8%8E%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83"><span class="toc-text">D.2 边缘开关与灰度发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-3-HTTP-API-%E8%81%9A%E5%90%88%E4%B8%8E%E9%89%B4%E6%9D%83"><span class="toc-text">D.3 HTTP API 聚合与鉴权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-4-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E6%8A%95%E9%80%92"><span class="toc-text">D.4 定时任务与投递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-5-%E6%95%B0%E6%8D%AE%E5%9C%A8%E8%BE%B9%E7%BC%98%E7%9A%84%E6%9A%82%E5%AD%98%E4%B8%8E%E8%AE%A1%E6%95%B0"><span class="toc-text">D.5 数据在边缘的暂存与计数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-6-%E9%98%B2%E8%8C%83%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E7%99%BB%E5%BD%95%E7%9A%84%E7%BB%9F%E4%B8%80%E5%89%8D%E7%BD%AE"><span class="toc-text">D.6 防范暴力破解登录的统一前置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-1-%E5%A4%B4%E9%83%A8%E5%90%AB%E4%B9%89%E7%A4%BA%E4%BE%8B"><span class="toc-text">G.1 头部含义示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-2-%E6%9F%A5%E7%9C%8B%E7%BC%93%E5%AD%98%E7%8A%B6%E6%80%81"><span class="toc-text">G.2 查看缓存状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-3-%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E7%BB%8F%E8%BF%87-CF%EF%BC%88%E7%9C%8B%E8%A7%A3%E6%9E%90-IP%EF%BC%89"><span class="toc-text">G.3 测试是否经过 CF（看解析 IP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-4-%E6%9F%A5%E7%9C%8B-TLS-%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE%E4%B8%8E%E8%AF%81%E4%B9%A6"><span class="toc-text">G.4 查看 TLS 握手协议与证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-5-Worker-%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E4%B8%8E-tail"><span class="toc-text">G.5 Worker 本地开发与 tail</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-6-Tunnel-%E4%B8%B4%E6%97%B6%E6%9A%B4%E9%9C%B2"><span class="toc-text">G.6 Tunnel 临时暴露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E6%97%B6%E5%80%99%E6%94%B9%E4%BA%86-DNS-%E4%BD%86%E8%BF%9F%E8%BF%9F%E4%B8%8D%E7%94%9F%E6%95%88"><span class="toc-text">I.1 为什么有时候改了 DNS 但迟迟不生效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-2-%E6%98%8E%E6%98%8E%E5%BC%80%E4%BA%86%E7%BC%93%E5%AD%98%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E9%A6%96%E5%B1%8F%E8%BF%98%E6%98%AF%E6%85%A2"><span class="toc-text">I.2 明明开了缓存，为什么首屏还是慢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-3-Cloudflare-%E7%BC%93%E5%AD%98%E4%B8%8E%E3%80%8C%E7%99%BB%E5%BD%95%E6%80%81%E3%80%8D%E7%9A%84%E7%BB%8F%E5%85%B8%E5%86%B2%E7%AA%81"><span class="toc-text">I.3 Cloudflare 缓存与「登录态」的经典冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-4-Worker-%E4%B8%8E-R2-%E7%9A%84%E5%85%8D%E8%B4%B9%E9%A2%9D%E5%BA%A6%E5%88%B0%E5%BA%95%E6%9C%89%E5%A4%9A%E5%B0%91"><span class="toc-text">I.4 Worker 与 R2 的免费额度到底有多少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-5-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E6%97%B6%E5%80%99%E8%A2%AB-Cloudflare-%E6%8B%A6%E4%BD%8F%E5%8D%B4%E4%B8%8D%E8%AE%A4%E8%AF%86%E6%98%AF%E5%93%AA%E4%B8%AA%E8%A7%84%E5%88%99"><span class="toc-text">I.5 为什么有时候被 Cloudflare 拦住却不认识是哪个规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-6-Tunnel-%E4%B8%8E%E3%80%8C%E5%85%AC%E7%BD%91%E6%9A%B4%E9%9C%B2%E3%80%8D%E7%9A%84%E5%8F%96%E8%88%8D%E6%98%AF%E5%90%A6%E5%AE%89%E5%85%A8"><span class="toc-text">I.6 Tunnel 与「公网暴露」的取舍是否安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-7-%E6%88%91%E7%9A%84%E7%AB%99%E7%82%B9%E5%9C%A8%E5%9B%BD%E5%86%85%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8-Cloudflare"><span class="toc-text">I.7 我的站点在国内能不能用 Cloudflare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-8-%E9%81%87%E5%88%B0%E3%80%8C%E6%BA%90%E7%AB%99-521-522-523%E3%80%8D%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="toc-text">I.8 遇到「源站 521 &#x2F; 522 &#x2F; 523」是什么意思</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-9-%E5%85%B3%E4%BA%8E%E3%80%8CCloudflare-%E4%BC%9A%E9%99%90%E9%80%9F%E6%88%96%E8%BF%87%E6%A3%80%E6%B5%8B%E3%80%8D%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3"><span class="toc-text">I.9 关于「Cloudflare 会限速或过检测」的一些理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-10-%E8%BF%81%E7%A7%BB%E8%B5%B0-%E4%B8%8D%E5%86%8D%E7%94%A8-CF-%E6%97%B6%E6%80%8E%E4%B9%88%E5%B9%B3%E6%BB%91%E9%80%80%E5%87%BA"><span class="toc-text">I.10 迁移走 &#x2F; 不再用 CF 时怎么平滑退出</span></a></li></ol>
+        
+      </div>
+    </section>
+  
+
+  
+
+</aside>
+
+    <section class="paper-main">
+      
+
+<div class="article-tape-wrap">
+<span class="tape tape--top-right" aria-hidden="true"></span>
+<article class="article-paper">
+  <header class="article-header">
+    
+    <h1>cloudflare用途总结</h1>
+    <div class="meta-line meta-line--article">
+      <span class="meta-date">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+2026-08-31</span>
+      
+    </div>
+  </header>
+
+  
+
+
+  <div class="article-content">
+    <h1 id="Cloudflare-完全指南：产品、用途、架构与最佳实践"><a href="#Cloudflare-完全指南：产品、用途、架构与最佳实践" class="headerlink" title="Cloudflare 完全指南：产品、用途、架构与最佳实践"></a>Cloudflare 完全指南：产品、用途、架构与最佳实践</h1><blockquote>
+<p>版本：2026 综合版 ｜ 定位：面向开发者、运维工程师与架构师的 Cloudflare 全景用途总结<br>说明：本文聚焦「Cloudflare 能做什么、怎么用、什么时候用」，按产品线与用途分类展开，配官方文档索引与选型建议，内容力求全面而克制。</p>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>第 1 章 什么是 Cloudflare</li>
+<li>第 2 章 核心价值与全局架构</li>
+<li>第 3 章 CDN 与全球加速</li>
+<li>第 4 章 智能 DNS 托管</li>
+<li>第 5 章 网络安全体系（DDoS &#x2F; WAF &#x2F; Bot &#x2F; 速率限制）</li>
+<li>第 6 章 零信任安全（Zero Trust）</li>
+<li>第 7 章 边缘计算平台（Workers &#x2F; Pages &#x2F; R2 &#x2F; D1）</li>
+<li>第 8 章 图像与视频交付</li>
+<li>第 9 章 邮件与通信保护</li>
+<li>第 10 章 网络与连接（Tunnel &#x2F; WARP &#x2F; Magic Transit）</li>
+<li>第 11 章 开发与部署工具</li>
+<li>第 12 章 可观测性与分析</li>
+<li>第 13 章 行业与场景方案</li>
+<li>第 14 章 成本模型与套餐选型</li>
+<li>第 15 章 最佳实践与常见误区</li>
+<li>第 16 章 关键概念速查表</li>
+<li>第 17 章 官方文档索引</li>
+<li>第 18 章 深度专题：常见故障排查与 FAQ</li>
+<li>附录 A 术语表与缩写</li>
+<li>附录 B 快速决策树</li>
+</ul>
+<hr>
+<h1 id="第-1-章-什么是-Cloudflare"><a href="#第-1-章-什么是-Cloudflare" class="headerlink" title="第 1 章 什么是 Cloudflare"></a>第 1 章 什么是 Cloudflare</h1><h2 id="1-1-一句话定义"><a href="#1-1-一句话定义" class="headerlink" title="1.1 一句话定义"></a>1.1 一句话定义</h2><p>Cloudflare 是一家全球性的<strong>云网络平台（Edge Network &#x2F; Network-as-a-Service）</strong>，它并不是传统意义上只做 CDN 的厂商，而是把「内容分发」「安全防护」「域名解析」「边缘计算」「零信任接入」「网络互联」六大类能力统一建设在分布全球的<strong>边缘节点（Edge PoP）</strong>之上，对外以一套「DNS + 反向代理网关」的形式交付。</p>
+<p>通俗地讲：<strong>当你在 Cloudflare 上接入一个域名，互联网上针对它的流量会先经过 Cloudflare 遍布全球的数十个乃至数百个数据中心（在许多城市甚至每个主流运营商都设有节点），在边缘先完成加速、过滤、缓存、计算、防御，再回源到你的真实服务器。</strong> 你的源站 IP 因此被隐藏，流量被净化，访问体验被加速。对很多个人站长来说，第一次接触 Cloudflare 往往就是从「换个 NS、点亮橙云、网站突然变快也攻不动了」这个朴素体验开始的。</p>
+<h2 id="1-2-为什么它如此特殊"><a href="#1-2-为什么它如此特殊" class="headerlink" title="1.2 为什么它如此特殊"></a>1.2 为什么它如此特殊</h2><p>Cloudflare 的特殊性源于它的<strong>架构位置</strong>，即「站在网络中间」：</p>
+<ol>
+<li><strong>它同时站在用户与服务器之间（On-Path）</strong>：全球流量默认经过它，这使它天然能同时做「安全」和「性能」两件事——传统 WAF 往往需要额外的引流或旁路，传统 CDN 只能专注缓存，而 Cloudflare 因为「流量本来就路过它」，所以安全与加速是同一份能力的两个侧面。</li>
+<li><strong>它是全球最大的 Anycast 网络之一</strong>：任何节点 IP 在全球范围都是「最近的」，用户总能访问到距离自己最近的节点，延迟被压缩到个位数甚至亚毫秒级，这是它在解析与加速上「快」的根本原因。</li>
+<li><strong>它是 DNS 生态的深度参与者</strong>：Cloudflare 是多个顶级域名（如 .DE、.NJ、.PT 等）的权威 DNS 运营方之一，与顶级 ISP 建有直连（Peering）。这意味着它的 DNS 解析几乎不可能被针对「域名服务器」层面的攻击打垮——这在实际被 DDoS 时是巨大的底气。</li>
+<li><strong>边缘即计算（Edge Computing）</strong>：Cloudflare Workers 让开发者把代码部署到离用户最近的节点上运行，业务响应从「回到遥远的源站」变成「就在用户旁边的边缘完成」，这是其从 CDN 向「全球无服务器平台」演进的关键跳板。</li>
+</ol>
+<h2 id="1-3-发展历程与规模"><a href="#1-3-发展历程与规模" class="headerlink" title="1.3 发展历程与规模"></a>1.3 发展历程与规模</h2><ul>
+<li><strong>2010 年</strong>：由 Matthew Prince、Michelle Zatlyn 与 Lee Holloway 创立，最初定位是解决 IP 地址枯竭与 IPv6 过渡问题，后来演化成完整的网络平台。</li>
+<li><strong>2015–2020</strong>：从 CDN 厂商跃升为 DDoS 防护与权威 DNS 的头部玩家；推出 Workers（边缘计算）、WAF 托管规则，并连续多年在免费套餐提供一线防护。</li>
+<li><strong>2020–2024</strong>：发力零信任远程访问（Access &#x2F; Tunnel &#x2F; WARP）、R2 对象存储、D1 关系数据库、Workers AI 与 Queues，把「边缘计算」从概念落地为一个完整灵活的开发平台。</li>
+<li><strong>当前规模</strong>：全球超过 300 个城市设有节点，数据中心遍布 120 多个国家和地区，防御峰值容量达到每秒数 Tbps（多次公开演示抵御超过 2 Tbps 甚至更高的单次攻击）。数以千万计的免费域名与上百万企业级付费客户，全球约两成以上的网站流量流经 Cloudflare。</li>
+</ul>
+<h2 id="1-4-它解决的核心问题（按痛点对应）"><a href="#1-4-它解决的核心问题（按痛点对应）" class="headerlink" title="1.4 它解决的核心问题（按痛点对应）"></a>1.4 它解决的核心问题（按痛点对应）</h2><table>
+<thead>
+<tr>
+<th>问题域</th>
+<th>Cloudflare 的答案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>网站访问慢、跨国跨运营商延迟高</td>
+<td>全球 Anycast CDN + 智能缓存 + Argo 智能回源</td>
+</tr>
+<tr>
+<td>源站 IP 被扫描、被直接攻击</td>
+<td>隐藏源站 IP + 源站只信任 CF 回源段</td>
+</tr>
+<tr>
+<td>DDoS 把服务打挂</td>
+<td>全网 Anycast 清洗，容量几乎无限</td>
+</tr>
+<tr>
+<td>恶意爬虫、CC 攻击、刷接口、抢购</td>
+<td>Bot 管理 + 速率限制 + WAF 规则</td>
+</tr>
+<tr>
+<td>数据泄露、内部系统裸奔公网</td>
+<td>零信任 Access + Tunnel + 网络过滤</td>
+</tr>
+<tr>
+<td>部署上线慢、运维复杂</td>
+<td>边缘 Workers + Pages + 一键部署 + IaC</td>
+</tr>
+<tr>
+<td>邮件被钓鱼、发送域名被冒用</td>
+<td>邮件安全（DMARC &#x2F; 邮件流 &#x2F; 反钓鱼）</td>
+</tr>
+<tr>
+<td>个人没有钱也想安全上线</td>
+<td>免费套餐覆盖 DNS &#x2F; CDN &#x2F; HTTPS &#x2F; 基础 DDoS</td>
+</tr>
+</tbody></table>
+<h2 id="1-5-对读者的意义"><a href="#1-5-对读者的意义" class="headerlink" title="1.5 对读者的意义"></a>1.5 对读者的意义</h2><p>阅读本文后，你将能够：</p>
+<ul>
+<li>知道 Cloudflare 每一大类产品是干什么的、在什么场景用、怎么选；</li>
+<li>拿到可直接套用的配置起始点与常见坑；</li>
+<li>遇到「源站暴露」「缓存不生效」「发不了信」「非标端口」等典型问题时有清晰的解决思路；</li>
+<li>有一个按需跳转的官方文档清单，方便深入。</li>
+</ul>
+<hr>
+<h1 id="第-2-章-核心价值与全局架构"><a href="#第-2-章-核心价值与全局架构" class="headerlink" title="第 2 章 核心价值与全局架构"></a>第 2 章 核心价值与全局架构</h1><h2 id="2-1-一张图理解-Cloudflare-怎样「插进」你的系统"><a href="#2-1-一张图理解-Cloudflare-怎样「插进」你的系统" class="headerlink" title="2.1 一张图理解 Cloudflare 怎样「插进」你的系统"></a>2.1 一张图理解 Cloudflare 怎样「插进」你的系统</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">用户 ──► 全球任意 Cloudflare 边缘节点（流量在此被处理）</span><br><span class="line">               │</span><br><span class="line">               ├─ ① 安全层：DDoS 清洗 / WAF / Bot / 速率限制 / TLS 终止</span><br><span class="line">               ├─ ② 加速层：静态缓存 / 动态加速 / Argo / 图片优化</span><br><span class="line">               ├─ ③ 计算层：Workers / Pages Functions / R2 / D1 / KV</span><br><span class="line">               │</span><br><span class="line">               ▼ 仅放行真实请求</span><br><span class="line">            你的源站（真实服务器：Nginx / VPS / 云主机 / SaaS）</span><br></pre></td></tr></table></figure>
+
+<p>关键认知：<strong>源站不再直接面向用户，它只信任 Cloudflare 的边缘。</strong> 这带来三重收益：</p>
+<ul>
+<li><strong>安全收益</strong>：源站 IP 不暴露，攻击者无法绕过边缘直击源站；即便被扫到，源站防火墙也只放行 CF 回源段。</li>
+<li><strong>性能收益</strong>：静态资源在边缘缓存，用户离节点近，回源只有在缓存未命中时才发生；动态请求也有 Argo 优化路径。</li>
+<li><strong>可观测收益</strong>：所有流量在边缘有统一日志与分析，不必在每台服务器各自埋点，排查问题有 <code>cf-ray</code> 这种全局唯一 ID。</li>
+</ul>
+<h2 id="2-2-Anycast-技术"><a href="#2-2-Anycast-技术" class="headerlink" title="2.2 Anycast 技术"></a>2.2 Anycast 技术</h2><p>Cloudflare 使用 <strong>Anycast</strong> 路由：多个数据中心共享同一个 IP 段，通过 BGP 让用户自动连接到「最近」或「路由代价最低」的节点。相比传统「一个 IP 指向一台机器&#x2F;一个机房」的 Unicast：</p>
+<ul>
+<li><strong>就近接入</strong>：用户访问自动路由到地理位置与网络距离最近的节点，延迟最优。</li>
+<li><strong>天然抗 DDoS</strong>：攻击流量被分散到全球任意一个节点，单点容量压力被数百节点摊薄；即使某节点被打垮，BGP 自动收敛，流量转向其他节点，服务整体不中断。</li>
+<li><strong>零手工故障切换</strong>：节点宕机由路由协议自动处理，无需人工干预，稳定性天然高。</li>
+</ul>
+<p>理解 Anycast，就能理解为什么 Cloudflare 说「我们不怕容量型攻击」——因为攻击者的带宽要打爆的不是一个机房，而是被摊薄到全世界几十上百个机房，这在成本上几乎不可能。</p>
+<h2 id="2-3-分层产品体系总览"><a href="#2-3-分层产品体系总览" class="headerlink" title="2.3 分层产品体系总览"></a>2.3 分层产品体系总览</h2><p>Cloudflare 的产品可以按「链路层 → 应用层 → 平台层」归纳成一张总表，后续章节逐一展开：</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>产品族</th>
+<th>代表产品</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>连通层</td>
+<td>CDN &#x2F; 加速 &#x2F; 负载</td>
+<td>CDN、Argo Smart Routing、Load Balancing</td>
+</tr>
+<tr>
+<td>安全层</td>
+<td>防护</td>
+<td>DDoS 防护、WAF、Bot 管理、速率限制、Page Shield</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>连接</td>
+<td>DNS、Magic Transit、Cloudflare Tunnel、WARP、Magic WAN</td>
+</tr>
+<tr>
+<td>计算层</td>
+<td>边缘开发</td>
+<td>Workers、Pages、R2、D1、KV、Durable Objects、Queues、Workers AI</td>
+</tr>
+<tr>
+<td>数据&#x2F;媒体</td>
+<td>内容交付</td>
+<td>Images、Stream、Snippets、Polish</td>
+</tr>
+<tr>
+<td>企业安全</td>
+<td>零信任</td>
+<td>Access、Gateway（DNS 过滤）、Zero Trust 套件、BSSO</td>
+</tr>
+<tr>
+<td>邮箱</td>
+<td>邮件安全</td>
+<td>Email Routing、DMARC 管理、Area 1 邮件安全</td>
+</tr>
+<tr>
+<td>观测</td>
+<td>分析日志</td>
+<td>Analytics、Logpush、Web Analytics、RUM</td>
+</tr>
+</tbody></table>
+<h2 id="2-4-免费与付费的统一底座"><a href="#2-4-免费与付费的统一底座" class="headerlink" title="2.4 免费与付费的统一底座"></a>2.4 免费与付费的统一底座</h2><p>Cloudflare 最核心的观念是 <strong>Freemium（免费增值）</strong>：DNS、基础 CDN、基础 DDoS 防护、Universal SSL、限定量的 Workers、Email Routing、临时 Tunnel 等在<strong>免费套餐（Free）</strong>下即可使用。这对个人站长与独立开发者极为友好——你可以用接近零的成本获得过去需要购买商业 CDN + WAF 才能获得的一线能力。付费套餐（Pro &#x2F; Business &#x2F; Enterprise）逐级解锁更高级的 WAF 规则配额、Bot 管理、Argo、负载均衡与 SLA，详细配比见第 14 章。</p>
+<h2 id="2-5-为什么个人开发者也应关注"><a href="#2-5-为什么个人开发者也应关注" class="headerlink" title="2.5 为什么个人开发者也应关注"></a>2.5 为什么个人开发者也应关注</h2><p>即便你不是企业，Cloudflare 对个人开发者吸引力也极高：</p>
+<ul>
+<li><strong>免费托管静态站</strong>（Pages），绑定 GitHub 即可自动构建上线。</li>
+<li><strong>免费 DNS + CDN + HTTPS</strong>，把自建服务托在 CF 后面，既隐藏源站 IP 又统一入口。</li>
+<li><strong>免费边缘函数</strong>（Workers 每日免费额度），可做转发、鉴权、定时任务。</li>
+<li><strong>免费内网穿透</strong>（Cloudflare Tunnel），替代传统端口转发，甚至无需公网 IP。</li>
+<li><strong>免费邮件转发</strong>（Email Routing），把自定义域名邮件转到任意邮箱，打造形象邮箱。</li>
+</ul>
+<p>这些恰好覆盖个人运维者最常用的高频需求——这也是本文要系统整理 Cloudflare 用途的直接动因。</p>
+<hr>
+<h1 id="第-3-章-CDN-与全球加速"><a href="#第-3-章-CDN-与全球加速" class="headerlink" title="第 3 章 CDN 与全球加速"></a>第 3 章 CDN 与全球加速</h1><h2 id="3-1-CDN-基本原理与-Cloudflare-的实现"><a href="#3-1-CDN-基本原理与-Cloudflare-的实现" class="headerlink" title="3.1 CDN 基本原理与 Cloudflare 的实现"></a>3.1 CDN 基本原理与 Cloudflare 的实现</h2><p>CDN（Content Delivery Network，内容分发网络）把内容分发并缓存到离用户最近的节点，减少回源、降低延迟。Cloudflare CDN 的特点：</p>
+<ul>
+<li><strong>全站反向代理</strong>：默认对整站流量做代理（不只静态资源），<code>/</code> 下所有路径都经过边缘，因此「隐藏源站 + 统一入口」是默认行为。</li>
+<li><strong>智能缓存</strong>：基于 HTTP 缓存语义（<code>Cache-Control</code>、<code>Expires</code>、<code>ETag</code>、<code>Last-Modified</code>）与 CF 自身的缓存规则，命中则从边缘返回，未命中才回源。</li>
+<li><strong>默认缓存范围</strong>：对常见静态扩展名（<code>.js/.css/.png/.jpg/.gif/.webp/.woff2/.otf</code> 等）默认缓存；对 HTML 与动态接口是否缓存取决于套餐、规则与响应缓存头。</li>
+<li><strong>缓存清除（Purge）</strong>：支持按 URL、按 Cache Tag、按主机名即时清除边缘缓存；企业版还可按前缀清除。清除是全边缘立即生效，但需注意作用域，避免误清。</li>
+</ul>
+<h2 id="3-2-缓存层级：浏览器缓存-→-边缘缓存-→-源站"><a href="#3-2-缓存层级：浏览器缓存-→-边缘缓存-→-源站" class="headerlink" title="3.2 缓存层级：浏览器缓存 → 边缘缓存 → 源站"></a>3.2 缓存层级：浏览器缓存 → 边缘缓存 → 源站</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">客户端（浏览器缓存，二级）</span><br><span class="line">    └─► Cloudflare 边缘缓存（一级，快速命中）</span><br><span class="line">         └─► 回源（Origin，真实服务器 / 对象存储 / SaaS）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Cache Everything</strong>：对任意内容（包括看似动态的 URL）开启全量缓存，需配合 <code>Cache-Control: max-age</code> 或 CF 的 Edge Cache TTL 控制缓存时长。</li>
+<li><strong>Cache Key</strong>：默认按 URL + 部分响应头区分缓存条目；可通过规则自定义 cache key，以支持 <code>?v=</code> 版本化、多语言、多设备、促销参数等场景，避免把不同版本混淆成同一条缓存。</li>
+<li><strong>绕过缓存</strong>：对需要实时性的接口（登录态、购物车、支付回调、验证码）在源站设置 <code>Cache-Control: no-store</code>，或让 CF 按规则跳过——否则会出现「更新了内容但用户看到旧版」的经典问题。</li>
+</ul>
+<h2 id="3-3-动态内容加速：Argo-Smart-Routing"><a href="#3-3-动态内容加速：Argo-Smart-Routing" class="headerlink" title="3.3 动态内容加速：Argo Smart Routing"></a>3.3 动态内容加速：Argo Smart Routing</h2><p>传统 CDN 对静态资源收益明显，但对动态接口（必须实时回源）收益有限。<strong>Argo Smart Routing（现已并入 Flow&#x2F;Orbit 等名称）</strong>利用 Cloudflare 全球网络实时监控各条链路质量，选择<strong>拥塞最小、跳数最优</strong>的回源路径（而非常规 AS 级最优路由），可显著降低动态请求的往返延迟。</p>
+<ul>
+<li><strong>适用</strong>：API、实时数据、登录鉴权等必须实时回源的动态流量。</li>
+<li><strong>收益</strong>：在跨国、多跳、跨运营商场景下，回源延迟可减少约 10%–40%。</li>
+<li><strong>注意</strong>：Argo 是付费增值能力（Pro 套餐起），按流量额外计价；对以国内为主要用户、且源站在海外的场景，结合站点位置评估是否值得。</li>
+</ul>
+<h2 id="3-4-图片与媒体交付优化"><a href="#3-4-图片与媒体交付优化" class="headerlink" title="3.4 图片与媒体交付优化"></a>3.4 图片与媒体交付优化</h2><p>Cloudflare 在媒体交付上有专门一层的优化能力：</p>
+<ul>
+<li><strong>Image Resizing &#x2F; 参数式处理</strong>：在边缘按需裁剪、缩放、转换 WebP&#x2F;AVIF，支持 <code>?w=&amp;h=&amp;fit=&amp;quality=</code> 这类 URL 参数，避免客户端加载整张原图再摆缩，显著省流量、提速。</li>
+<li><strong>Polish（图片压缩优化）</strong>：默认对经过的图片自动转 WebP 与压缩，分「无损」与「有损」档；对以图片为主的站点可明显减小体积。</li>
+<li><strong>Stream（视频平台）</strong>：专业视频上传、转码、托管与播放的一体化服务，支持 HLS 自适应码率、缩略图、剪辑、字幕与 DRM（付费档），并有按域名白名单的防盗链与播放分析。</li>
+<li><strong>Snippets（边缘改写）</strong>：用轻量 C++&#x2F;Rust 模板在边缘改写响应（注入脚本、改 Header、加安全横幅），适用于不愿写完整 Worker 的「小手术」。</li>
+</ul>
+<h2 id="3-5-调试缓存：关注响应头"><a href="#3-5-调试缓存：关注响应头" class="headerlink" title="3.5 调试缓存：关注响应头"></a>3.5 调试缓存：关注响应头</h2><p>日常排查缓存是否生效，关键在于几个响应头：</p>
+<ul>
+<li><code>cf-cache-status: HIT</code> —— 命中边缘缓存，未回源。</li>
+<li><code>cf-cache-status: MISS</code> —— 未命中，已回源（第一次或刚被清除）。</li>
+<li><code>cf-cache-status: EXPIRED</code> —— 缓存过期，重新回源。</li>
+<li><code>cf-cache-status: DYNAMIC</code> —— 明确为动态内容，不缓存。</li>
+<li><code>cf-ray: &lt;ID&gt;</code> —— 本次请求在全网的唯一标识，报障或深挖链路时带上它，可精确定位请求经过的节点与版本。</li>
+</ul>
+<h2 id="3-6-实战：自建服务接入-Cloudflare-的正确姿势"><a href="#3-6-实战：自建服务接入-Cloudflare-的正确姿势" class="headerlink" title="3.6 实战：自建服务接入 Cloudflare 的正确姿势"></a>3.6 实战：自建服务接入 Cloudflare 的正确姿势</h2><p>结合个人运维的常见场景（很多人的自建服务因限制公网直连 80&#x2F;443、或用反代+NPM 再加证书，绕过 CDN 直连暴露），一套稳妥的接入流程如下：</p>
+<ol>
+<li>在 CF 控制台「添加站点」输入域名，抄录 CF 提供的两条 NS，到域名注册商处替换为 CF NS（权威 DNS 由 CF 托管）。</li>
+<li>配置 DNS 记录：先全部用 <code>DNS only</code>（灰云）验证源站访问正常，再把需要保护的记录切换为 <code>Proxied</code>（橙云），开始加速与保护。</li>
+<li>配置源站 SSL：选择 Full 或 Full（严格）——保证「CF → 源站」之间也是 HTTPS。源站证书可用 CF 自签的 Origin CA，或 Let’s Encrypt。</li>
+<li>源站安全加固：让真实服务器只放行 Cloudflare 的回源 IP 段访问 80&#x2F;443；更严格可在 CF 开启 Authenticated Origin Pulls（源站只接受由 CF 签发的证书建立的 TLS）。</li>
+<li>若你的服务是「反代 + 端口映射，NPM 只监听非标端口、本机 Nginx 不监听 80&#x2F;443」，务必理解：<strong>CF 回源走 80&#x2F;443 标准端口</strong>。要么让源站监听 443，要么干脆改用 Cloudflare Tunnel（见第 10 章）从「出站隧道」打通，无需担心端口与证书问题。</li>
+</ol>
+<p>（记忆中的实际约束：在部分自建环境下，内置 Nginx 不监听 80、通过反向代理加证书后才能访问，这类拓扑直接把 CF 与「80&#x2F;443 回源 + NPM」强行组合会踩很多坑，此时优先考虑 Tunnel 反而是更干净的正解。）</p>
+<hr>
+<h1 id="第-4-章-智能-DNS-托管"><a href="#第-4-章-智能-DNS-托管" class="headerlink" title="第 4 章 智能 DNS 托管"></a>第 4 章 智能 DNS 托管</h1><h2 id="4-1-Cloudflare-DNS-是什么"><a href="#4-1-Cloudflare-DNS-是什么" class="headerlink" title="4.1 Cloudflare DNS 是什么"></a>4.1 Cloudflare DNS 是什么</h2><p>Cloudflare 提供<strong>权威 DNS（Authoritative DNS）托管</strong>：把域名的 NS 记录指向 Cloudflare，解析全部由它处理；同时用 Proxied（橙云）标记让流量再经过其代理。它不只是「快」，还附带一整层管理与安全能力：</p>
+<ul>
+<li><strong>超高可用</strong>：Anycast + 与根服务器&#x2F;大型 ISP 的直连，解析命中率与延迟全球领先（通常 &lt;10ms）。</li>
+<li><strong>DNSSEC 一键启用</strong>：为解析响应做数字签名，防伪造与缓存污染。</li>
+<li><strong>CNAME Flattening</strong>：允许在根域名使用 CNAME（一般 DNS 根域不能 CNAME），方便把根域指向 CDN &#x2F; SaaS &#x2F; 第三方页面。</li>
+<li><strong>负载均衡（Load Balancing）</strong>：把解析指向多个后端，按地域 &#x2F; 权重 &#x2F; 健康检查做全局负载与故障切换。</li>
+<li><strong>管理友好</strong>：全 API 化、Terraform 支持、一键导入 Zone、批量编辑，特别适合「代码化管理 DNS」。</li>
+</ul>
+<h2 id="4-2-记录类型详解"><a href="#4-2-记录类型详解" class="headerlink" title="4.2 记录类型详解"></a>4.2 记录类型详解</h2><ul>
+<li><strong>A &#x2F; AAAA</strong>：IPv4 &#x2F; IPv6 地址。</li>
+<li><strong>CNAME</strong>：别名（指向域名）。根域 CNAME 因 Flattening 而可用。</li>
+<li><strong>TXT</strong>：常用于 SPF、DKIM、DMARC、域名归属验证。</li>
+<li><strong>MX</strong>：邮件交换记录（与第 9 章 Email Routing 联动使用）。</li>
+<li><strong>SRV &#x2F; CAA &#x2F; NAPTR &#x2F; DS</strong>：服务发现、证书签发授权、拨号导向、DNSSEC 委派签名等高级用途。</li>
+<li><strong>Proxied vs DNS only 的区别要牢记</strong>：橙云（Proxied）&#x3D; 经过 CF 边缘，获得 CDN &#x2F; WAF &#x2F; 隐藏源站；灰云（DNS only）&#x3D; 纯解析，直达源站——灰云记录不收保护，但也不受 CF 缓存影响（高频 API 常用灰云以防缓存污染）。</li>
+</ul>
+<h2 id="4-3-解析速度优化"><a href="#4-3-解析速度优化" class="headerlink" title="4.3 解析速度优化"></a>4.3 解析速度优化</h2><ul>
+<li><strong>智能就近</strong>：Anycast 保证用户解析到最近的节点。</li>
+<li><strong>无需逐级缓存失效</strong>：任一节点都能独立、正确地响应，全球一致。</li>
+<li><strong>TTL 设定建议</strong>：常规记录 120–300 秒；需要快速切换时可低至 60 秒；几乎不变的记录可设 3600 秒以减少查询、降低负载。</li>
+</ul>
+<h2 id="4-4-DNS-安全"><a href="#4-4-DNS-安全" class="headerlink" title="4.4 DNS 安全"></a>4.4 DNS 安全</h2><ul>
+<li><strong>DNSSEC</strong>：防篡改解析结果。开启后要把生成的 DS 记录同步到域名注册商；切换 NS 时若顺序错误可能造成瞬时 <code>SERVFAIL</code>，这是新手最常翻车的点——务必在变更窗口谨慎操作。</li>
+<li><strong>DDoS 防护</strong>：针对权威 DNS 的攻击由 Anycast 消化，普通站点几乎感知不到。</li>
+<li><strong>CNAME Round Robin &#x2F; 加权</strong>：同一条记录多个目标，可做简单分流或故障兜底。</li>
+</ul>
+<h2 id="4-5-实战：域名邮箱与-DNS-联动"><a href="#4-5-实战：域名邮箱与-DNS-联动" class="headerlink" title="4.5 实战：域名邮箱与 DNS 联动"></a>4.5 实战：域名邮箱与 DNS 联动</h2><p>Cloudflare 的 <strong>Email Routing</strong>（免费）允许你：</p>
+<ol>
+<li>在 DNS 中添加 MX 记录指向 <code>route...cloudflare.com</code>。</li>
+<li>配置转发规则：<code>contact@你的域名 → 任意真实邮箱</code>。</li>
+<li>支持逐地址转发与 catch-all 通配转发。</li>
+</ol>
+<p>这样无需自建邮箱服务器就能拥有「能收信」的功能性域名邮箱。配合自建发信栈（Postfix&#x2F;Dovecot&#x2F;OpenDKIM）或第三方 SMTP 做发信，即形成「能收能发」的混合方案——恰好对应很多人「域名 + 邮箱要能收又要能发」的现实需求。</p>
+<p>（记忆要点：Cloudflare Email Routing 只管入站收信，出站发信需另配 SMTP；纯 CF 免费无法发信。若追求发信投递成功率，还需正确配置 SPF&#x2F;DKIM&#x2F;DMARC。）</p>
+<hr>
+<h1 id="第-5-章-网络安全体系（DDoS-WAF-Bot-速率限制）"><a href="#第-5-章-网络安全体系（DDoS-WAF-Bot-速率限制）" class="headerlink" title="第 5 章 网络安全体系（DDoS &#x2F; WAF &#x2F; Bot &#x2F; 速率限制）"></a>第 5 章 网络安全体系（DDoS &#x2F; WAF &#x2F; Bot &#x2F; 速率限制）</h1><p>这是 Cloudflare 使用最重的领域，也是「为什么要套 CF」的核心理由。本章详细展开。</p>
+<h2 id="5-1-DDoS-防护（边缘清洗）"><a href="#5-1-DDoS-防护（边缘清洗）" class="headerlink" title="5.1 DDoS 防护（边缘清洗）"></a>5.1 DDoS 防护（边缘清洗）</h2><ul>
+<li><strong>容量型 DDoS（带宽耗尽）</strong>：UDP flood、DNS amplification、SYN flood 等。靠 Anycast + 全网清洗消化——攻击被打散到全球数百节点，容量几乎用不完。</li>
+<li><strong>应用层 HTTP flood（俗称 CC）</strong>：Bot 用大量合法格式的 HTTP 请求打挂应用。靠速率限制 + Bot 管理 + WAF 规则自动识别「高频 &#x2F; 低 JS 指纹 &#x2F; 无来源规律」的行为。</li>
+<li><strong>传输层（L3&#x2F;L4）防护</strong>：在网络层默认就对 IP &#x2F; 端口 &#x2F; TCP 做清洗，无需用户额外配置。</li>
+<li><strong>自治（Autonomous）防护</strong>：默认 DDoS 防护是「按需自动」的，异常流量达到阈值即触发；企业版可自定义指纹、清洗策略与响应动作。</li>
+<li><strong>给源站的配套铁律</strong>：因为攻击流量到边缘就被过滤，回源到源站的是「过滤后的干净流量」。但<strong>源站必须只放行 Cloudflare 回源 IP 段</strong>（官方提供 IP 列表，也可通过 <code>api.cloudflare.com/client/v4/ips</code> 程序化获取），否则攻击者可绕过边缘直达源站——即「源站裸奔」，CDN 白套。</li>
+</ul>
+<h2 id="5-2-Web-应用防火墙（WAF）"><a href="#5-2-Web-应用防火墙（WAF）" class="headerlink" title="5.2 Web 应用防火墙（WAF）"></a>5.2 Web 应用防火墙（WAF）</h2><p>WAF 在边缘拦截恶意 Web 流量，基于规则库 + 托管规则集 + 自定义规则。</p>
+<h3 id="5-2-1-托管规则集（Managed-Ruleset）"><a href="#5-2-1-托管规则集（Managed-Ruleset）" class="headerlink" title="5.2.1 托管规则集（Managed Ruleset）"></a>5.2.1 托管规则集（Managed Ruleset）</h3><ul>
+<li><strong>Cloudflare Managed Ruleset</strong>：开箱的通用安全规则，覆盖 OWASP 常见攻击向量（SQL 注入、XSS、命令注入、目录穿越、本地文件包含等），默认开启即获得基础防线。</li>
+<li><strong>OWASP CRS（Core Rule Set）</strong>：基于知名开源规则集的调制版，可在「攻击拦截」与「误伤率」之间调平衡；对中文站点常需微调豁免合法请求（避免把正常带中文参数的表单误伤）。</li>
+<li><strong>Sensitive Data Detection（企业版）</strong>：识别并保护泄露的身份证号、银行卡号等敏感数据。</li>
+</ul>
+<h3 id="5-2-2-自定义规则"><a href="#5-2-2-自定义规则" class="headerlink" title="5.2.2 自定义规则"></a>5.2.2 自定义规则</h3><p>基于以下字段做精细化处理（Block &#x2F; Challenge &#x2F; Skip &#x2F; Log）：</p>
+<ul>
+<li>IP &#x2F; 国家 &#x2F; 自治域 ASN &#x2F; 数据中心；</li>
+<li>URI 路径、Host、查询串；</li>
+<li>User-Agent、Referer、Header、Cookie；</li>
+<li>请求方法、协议、TLS 版本；</li>
+<li>速率（每 5 分钟 &#x2F; 每 10 秒的请求数）、Bot Score、设备类型、浏览器等。</li>
+</ul>
+<h3 id="5-2-3-WAF-动作（Actions）"><a href="#5-2-3-WAF-动作（Actions）" class="headerlink" title="5.2.3 WAF 动作（Actions）"></a>5.2.3 WAF 动作（Actions）</h3><ul>
+<li><strong>Block</strong>：直接拒绝。</li>
+<li><strong>Managed Challenge</strong>：当威胁等级中等时发起「智能验证」，多数正常用户因行为与指纹可信而无感通过。</li>
+<li><strong>JS Challenge</strong>：要求执行一段 JavaScript 证明是真人浏览器。</li>
+<li><strong>Interactive Challenge</strong>：要求用户完成交互式验证（如点选）。</li>
+<li><strong>Skip &#x2F; Log &#x2F; 放行</strong>：用于白名单与审计。</li>
+</ul>
+<p>（注意：不少自建个人站为了「降低误伤 + 提升体验」，会关闭或移除验证码类 challenge，只保留基于 IP &#x2F; UA &#x2F; 规则的硬拦截。这种取舍可行，但要接受失去一部分「人机校验」能力，需在体验与安全间自行权衡——这也是很多站点明明威胁分数不低却全程无验证的原因。）</p>
+<h3 id="5-2-4-WAF-的自动化建议"><a href="#5-2-4-WAF-的自动化建议" class="headerlink" title="5.2.4 WAF 的自动化建议"></a>5.2.4 WAF 的自动化建议</h3><p>Cloudflare 会根据你的站点近期被攻击的模式，生成「建议添加的规则」，可一键应用。对没有专职安全人员的小团队，这能显著降低配置门槛。</p>
+<h2 id="5-3-速率限制（Rate-Limiting）"><a href="#5-3-速率限制（Rate-Limiting）" class="headerlink" title="5.3 速率限制（Rate Limiting）"></a>5.3 速率限制（Rate Limiting）</h2><ul>
+<li><strong>经典速率限制</strong>（Free &#x2F; Pro 基础）：基于 IP × URI 的计数，五分钟窗口，超限即触发动作。</li>
+<li><strong>进阶速率限制（更细粒度）</strong>：可按任意特征（IP、ASN、设备、路径、Header）+ 滑动窗口（10 秒 &#x2F; 60 秒 &#x2F; 5 分钟 &#x2F; 60 分钟 &#x2F; 24 小时）统计，支持 Burst 与平滑，动作可以是 Block &#x2F; Challenge &#x2F; 限速降速。</li>
+<li><strong>典型用途</strong>：防接口刷量、防暴力破解登录、防短信轰炸、防爬虫高频抓取、防 CC。</li>
+<li><strong>关键权衡</strong>：阈值设太低会误伤正常用户（尤其 NAT 后多个真实用户共享同一个 IP），需要设置合理的惩罚期、白名单，并对「登录&#x2F;验证码」这类本应低频的端点单独设更低阈值。</li>
+</ul>
+<h2 id="5-4-Bot-管理（Bot-Management）"><a href="#5-4-Bot-管理（Bot-Management）" class="headerlink" title="5.4 Bot 管理（Bot Management）"></a>5.4 Bot 管理（Bot Management）</h2><ul>
+<li><strong>Bot Score（0–99）</strong>：0 表示几乎确定是 Bot，99 表示几乎确定是真人；基于机器学习与行为指纹。</li>
+<li><strong>分类</strong>：Verified Bot（搜索引擎、监测器）、Known Good Bot、Blocked Bot、自然流量。</li>
+<li><strong>动作</strong>：对低分请求做 JS Challenge &#x2F; Block &#x2F; 限速 &#x2F; 隔离 &#x2F; 降低优先级。</li>
+<li><strong>用途</strong>：反爬、反 CC、防抢购脚本、防数据抓取、保护登录与支付。</li>
+<li><strong>注意</strong>：Bot Management 是 Enterprise 级昂贵能力；Free&#x2F;Pro&#x2F;Business 只能用较粗粒度的 Bot Fight Mode &#x2F; Super Bot Fight Mode，可挡常见爬虫，但可能误伤部分工具。</li>
+</ul>
+<h2 id="5-5-其他安全增强"><a href="#5-5-其他安全增强" class="headerlink" title="5.5 其他安全增强"></a>5.5 其他安全增强</h2><ul>
+<li><strong>Page Shield</strong>：审计页面加载的前端脚本，检测充值脚本 &#x2F; 恶意第三方 &#x2F; 供应链前端攻击。</li>
+<li><strong>SSL&#x2F;TLS 终止</strong>：免费提供边缘 TLS 证书，自动续期；支持多种「CF 到源站」的模式。</li>
+<li><strong>Universal SSL</strong>：默认给新接入域名签一张根域+通配证书。</li>
+<li><strong>Authenticated Origin Pulls</strong>：源站只接受由 Cloudflare 签名证书建立的 TLS 连接，传输层杜绝「绕过 CDN 直连源站」。</li>
+<li><strong>Prefetch</strong>：边缘对页面将要用到的资源做提前预取，提升首屏。</li>
+<li><strong>安全分级</strong>：按威胁分数决定是否对观光流量发起额外挑战。</li>
+</ul>
+<h2 id="5-6-个人站安全配置推荐起点"><a href="#5-6-个人站安全配置推荐起点" class="headerlink" title="5.6 个人站安全配置推荐起点"></a>5.6 个人站安全配置推荐起点</h2><p>一套「够用」的 CF 安全基线（不追求把所有人都挡在外面，重点是挡住自动化攻击）：</p>
+<ol>
+<li>源站防火墙只放行 CF 回源 IP 段访问 80&#x2F;443。</li>
+<li>开启 Universal SSL + 选择 Full（strict）模式。</li>
+<li>开启 Cloudflare Managed Ruleset，把已知攻击挡在边缘。</li>
+<li>给登录接口、验证码接口配速率限制（例如 5 分钟 50 次&#x2F;IP 量级），兼顾体验。</li>
+<li>若不想给人机校验，就把 Managed Challenge 动作改为仅对「高威胁分数 + 明确恶意 UA&#x2F;IP」才触发。</li>
+<li>定期看 Analytics 中 Security 标签的 Top 攻击来源，针对性加规则或封禁。</li>
+</ol>
+<hr>
+<h1 id="第-6-章-零信任安全（Zero-Trust）"><a href="#第-6-章-零信任安全（Zero-Trust）" class="headerlink" title="第 6 章 零信任安全（Zero Trust）"></a>第 6 章 零信任安全（Zero Trust）</h1><p>Cloudflare 的零信任产品旨在解决「员工或设备如何安全访问公司内部应用」与「如何安全上网」两大问题，核心思想是<strong>永不信任、始终验证</strong>。</p>
+<h2 id="6-1-Cloudflare-Access（应用访问控制）"><a href="#6-1-Cloudflare-Access（应用访问控制）" class="headerlink" title="6.1 Cloudflare Access（应用访问控制）"></a>6.1 Cloudflare Access（应用访问控制）</h2><ul>
+<li><strong>替代传统 VPN</strong>：传统 VPN 需要把整个内部网络暴露给已认证设备，攻击面大。Access 把内部应用通过 CF 暴露，并在边缘做<strong>身份认证</strong>（集成 Google &#x2F; Microsoft &#x2F; Okta &#x2F; GitHub &#x2F; OpenID Connect 等 IdP）+ <strong>细粒度策略</strong>。</li>
+<li><strong>策略示例</strong>：<ul>
+<li>只有公司域邮箱且所在国家符合条件的用户能访问管理后台。</li>
+<li>只有安装了公司证书 &#x2F; WARP 的设备能访问某些 API。</li>
+<li>按会话时长、设备合规度（posture）做二次判断。</li>
+</ul>
+</li>
+<li><strong>优势</strong>：源站无需公网 IP、认证在边缘、日志可审计、免 VPN 运维、兼容统一 SSO。</li>
+<li><strong>BSSO &#x2F; IdP</strong>：用户用统一的单点登录即可进入，体验与内部系统一致。</li>
+</ul>
+<h2 id="6-2-Cloudflare-Gateway（安全-Web-网关-DNS-过滤）"><a href="#6-2-Cloudflare-Gateway（安全-Web-网关-DNS-过滤）" class="headerlink" title="6.2 Cloudflare Gateway（安全 Web 网关 &#x2F; DNS 过滤）"></a>6.2 Cloudflare Gateway（安全 Web 网关 &#x2F; DNS 过滤）</h2><ul>
+<li>在边缘对员工的 DNS 解析做过滤：拦截恶意域名、钓鱼、勒索软件 C2、成人内容（按策略分组）。</li>
+<li>基于身份的访问控制：不同员工组策略不同。</li>
+<li><strong>DLP（数据防泄漏）</strong>：检测并拦截敏感数据外传（源代码、身份证号、卡号）。</li>
+<li><strong>远程浏览器隔离（RBI）</strong>：高风险网页在 CF 隔离的浏览器中渲染，只把安全结果传给用户，防止本地设备被攻击（企业版）。</li>
+</ul>
+<h2 id="6-3-Cloudflare-Tunnel（内网穿透-出站连接）"><a href="#6-3-Cloudflare-Tunnel（内网穿透-出站连接）" class="headerlink" title="6.3 Cloudflare Tunnel（内网穿透 &#x2F; 出站连接）"></a>6.3 Cloudflare Tunnel（内网穿透 &#x2F; 出站连接）</h2><p>值得单独强调的<strong>出站连接方案</strong>——</p>
+<ul>
+<li>在服务器上运行 <code>cloudflared</code> 守护进程，主动<strong>向外</strong>与 CF 边缘建立加密隧道。</li>
+<li>结果：<strong>服务器不需要公网入站端口，也不需要暴露 IP</strong>，公网通过隧道域名（<code>*.trycloudflare.com</code> 临时或自定义域名）访问。</li>
+<li>典型用途：<ul>
+<li>内网 &#x2F; 无公网 IP 的服务暴露到公网（配合自定义域名）。</li>
+<li>把非标端口（如 9090、8888）映射为 80&#x2F;443 出口，绕过对非标端口的限制。</li>
+<li>保护源站（源站无入站，攻击者无从打）。</li>
+</ul>
+</li>
+<li><strong>免费</strong>：免费套餐对个人并发足够。</li>
+<li><strong>Quick Tunnel（临时）</strong>：一条命令生成临时公网 URL 无需绑定域名，适合快速验证回调 &#x2F; 演示。</li>
+</ul>
+<h2 id="6-4-WARP（Cloudflare-WARP）"><a href="#6-4-WARP（Cloudflare-WARP）" class="headerlink" title="6.4 WARP（Cloudflare WARP）"></a>6.4 WARP（Cloudflare WARP）</h2><ul>
+<li><strong>基础 WARP</strong>：把个人设备到网络的流量加密到 CF。</li>
+<li><strong>WARP + Zero Trust</strong>：作为企业零信任的设备 posture 来源（是否安装、是否合规）。</li>
+<li><strong>用途</strong>：改善连接质量、隐私保护、零信任基线。</li>
+<li><strong>注意</strong>：部分网络环境下 WARP 可能不可达，部署需评估实际可访问性。</li>
+</ul>
+<h2 id="6-5-零信任架构图"><a href="#6-5-零信任架构图" class="headerlink" title="6.5 零信任架构图"></a>6.5 零信任架构图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">员工设备（WARP + 浏览器 / 客户端）</span><br><span class="line">    │ 加密隧道</span><br><span class="line">    ▼</span><br><span class="line">Cloudflare 边缘（Access 认证 + Gateway 过滤 + Tunnel 会话策略）</span><br><span class="line">    ▼ 只有通过策略的流量</span><br><span class="line">源站 / 内部应用（可能在内网、无公网 IP）</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-6-常见误区"><a href="#6-6-常见误区" class="headerlink" title="6.6 常见误区"></a>6.6 常见误区</h2><ul>
+<li><strong>Tunnel ≠ VPN</strong>：Tunnel 是「源到边缘的出站隧道」，不是客户端 VPN；员工到公司用的是 WARP + Access。</li>
+<li><strong>Access 必须接 IdP</strong>：认证必须有身份提供方（邮箱密码 &#x2F; SSO &#x2F; OTP），否则无法做「人」的校验。</li>
+<li><strong>免费与付费</strong>：Zero Trust 对最多 50 个用户免费，超过需订阅；免费档包含一定的 Access &#x2F; Gateway 配额。</li>
+</ul>
+<hr>
+<h1 id="第-7-章-边缘计算平台（Workers-Pages-R2-D1）"><a href="#第-7-章-边缘计算平台（Workers-Pages-R2-D1）" class="headerlink" title="第 7 章 边缘计算平台（Workers &#x2F; Pages &#x2F; R2 &#x2F; D1）"></a>第 7 章 边缘计算平台（Workers &#x2F; Pages &#x2F; R2 &#x2F; D1）</h1><p>Cloudflare 不止是 CDN，更是一个<strong>全球无服务器边缘计算平台</strong>。这是近些年在开发者中最火的能力。</p>
+<h2 id="7-1-Cloudflare-Workers（边缘函数）"><a href="#7-1-Cloudflare-Workers（边缘函数）" class="headerlink" title="7.1 Cloudflare Workers（边缘函数）"></a>7.1 Cloudflare Workers（边缘函数）</h2><p><strong>核心概念</strong>：Workers 是部署在边缘节点上的 JavaScript &#x2F; WASM 函数，一个 Worker 即一个「接收 HTTP 请求、返回响应」的无状态服务，在用户最近节点执行，天然低延迟。</p>
+<ul>
+<li><strong>运行时</strong>：基于 V8，使用标准 Fetch &#x2F; Request &#x2F; Response API。可用 JS&#x2F;TS，也支持 Rust&#x2F;WASM，部分支持 Python。</li>
+<li><strong>部署</strong>：<code>workers.dev</code> 子域即时上线，或绑定自定义域名。</li>
+<li><strong>触发方式</strong>：HTTP 请求、<code>scheduled</code>（Cron 定时）、队列消费者、R2 事件、Email 事件等。</li>
+<li><strong>典型用途</strong>：<ul>
+<li>API 网关、鉴权、路由分流、请求改写。</li>
+<li>在边缘聚合多个后端 API。</li>
+<li>网站 A&#x2F;B 测试、灰度发布、缓存策略。</li>
+<li>轻业务逻辑、转发、数据清洗。</li>
+<li>Cron 定时任务（无服务器边缘 cron）。</li>
+</ul>
+</li>
+<li><strong>免费额度</strong>：每天一定请求数与 CPU 时间，个人够用；超限按量计费。</li>
+<li><strong>生态</strong>：<code>wrangler</code> CLI 本地开发与部署、<code>--dev</code> 本地预览、<code>tail</code> 实时日志。</li>
+</ul>
+<h3 id="7-1-1-Worker-最小示例"><a href="#7-1-1-Worker-最小示例" class="headerlink" title="7.1.1 Worker 最小示例"></a>7.1.1 Worker 最小示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">fetch</span>(<span class="params">request, env</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> url = <span class="keyword">new</span> <span class="title function_">URL</span>(request.<span class="property">url</span>);</span><br><span class="line">    <span class="keyword">if</span> (url.<span class="property">pathname</span> === <span class="string">&quot;/api/health&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Response</span>(<span class="string">&quot;ok&quot;</span>, &#123; <span class="attr">status</span>: <span class="number">200</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> apiKey = request.<span class="property">headers</span>.<span class="title function_">get</span>(<span class="string">&quot;x-api-key&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (!apiKey) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Response</span>(<span class="string">&quot;unauthorized&quot;</span>, &#123; <span class="attr">status</span>: <span class="number">401</span> &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Response</span>(<span class="string">&quot;Hello from the edge!&quot;</span>, &#123;</span><br><span class="line">      <span class="attr">headers</span>: &#123; <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/plain&quot;</span> &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">scheduled</span>(<span class="params">event, env, ctx</span>) &#123;</span><br><span class="line">    <span class="comment">// 定时任务：每日推送 / 监控 / 汇总</span></span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&quot;https://example.com/cron-target&quot;</span>, &#123; <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span> &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-1-2-Workers-与-Cron-定时任务的高频用法"><a href="#7-1-2-Workers-与-Cron-定时任务的高频用法" class="headerlink" title="7.1.2 Workers 与 Cron 定时任务的高频用法"></a>7.1.2 Workers 与 Cron 定时任务的高频用法</h3><p>很多「每日推送 &#x2F; 定时监控 &#x2F; 汇总报告」脚本（日报、价格监控、健康检查、行情推送）都可以用 Workers 的 <code>scheduled()</code> 触发器做成<strong>边缘 Cron</strong>，免运维服务器上的 cron：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">scheduled</span>(<span class="params">controller, env, ctx</span>) &#123;</span><br><span class="line">    ctx.<span class="title function_">waitUntil</span>(<span class="title function_">doDailyJob</span>());</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在控制台创建 Cron Trigger（如 <code>0 9 * * *</code> 表示每天 9 点 UTC），一个定时任务就在边缘完成——这正是个人运维者替代「VPS 上 cron + 常驻脚本」的高性价比方案。</p>
+<h2 id="7-2-Cloudflare-Pages（静态站-Functions）"><a href="#7-2-Cloudflare-Pages（静态站-Functions）" class="headerlink" title="7.2 Cloudflare Pages（静态站 + Functions）"></a>7.2 Cloudflare Pages（静态站 + Functions）</h2><ul>
+<li><strong>JAMstack 托管</strong>：免费部署静态网站，来自 Git 仓库自动构建。</li>
+<li><strong>兼容主流框架</strong>：Next.js、Astro、Hugo、React&#x2F;Vue&#x2F;Svelte 静态导出等。</li>
+<li><strong>Pages Functions</strong>：给静态站提供动态后端（API &#x2F; BFF），与 Workers 互为表里。</li>
+<li><strong>为什么个人爱用</strong>：绑定 GitHub、Push 即自动部署、自带 CDN + HTTPS + 免费 <code>*.pages.dev</code> 域名，零成本上线个人站 &#x2F; 文档站 &#x2F; 落地页 &#x2F; 工具页。</li>
+</ul>
+<h2 id="7-3-边缘存储家族"><a href="#7-3-边缘存储家族" class="headerlink" title="7.3 边缘存储家族"></a>7.3 边缘存储家族</h2><p>Cloudflare 提供了完整的边缘存储家族，让开发者可以「全栈部署在边缘」而不必自建数据库服务器：</p>
+<table>
+<thead>
+<tr>
+<th>存储</th>
+<th>类型</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>KV（Workers KV）</strong></td>
+<td>全局键值（最终一致）</td>
+<td>配置、会话、简单缓存、计数，适合低频写高频读</td>
+</tr>
+<tr>
+<td><strong>R2（对象存储）</strong></td>
+<td>S3 兼容对象存储</td>
+<td>文件、备份、静态资源、图片视频源；<strong>出口流量免费</strong></td>
+</tr>
+<tr>
+<td><strong>D1</strong></td>
+<td>SQLite 兼容关系数据库</td>
+<td>小型关系数据、站点数据、轻应用后端</td>
+</tr>
+<tr>
+<td><strong>Durable Objects</strong></td>
+<td>有状态单实例对象</td>
+<td>WebSocket 房间、协作、游戏状态、强一致单例</td>
+</tr>
+<tr>
+<td><strong>Queues</strong></td>
+<td>消息队列</td>
+<td>异步任务、批量处理、解耦 Worker 间通信</td>
+</tr>
+<tr>
+<td><strong>Hyperdrive</strong></td>
+<td>数据库连接池加速</td>
+<td>加速访问已有 Postgres &#x2F; MySQL</td>
+</tr>
+</tbody></table>
+<h2 id="7-4-Worker-生态的边界与适用判断"><a href="#7-4-Worker-生态的边界与适用判断" class="headerlink" title="7.4 Worker 生态的边界与适用判断"></a>7.4 Worker 生态的边界与适用判断</h2><ul>
+<li><strong>适合</strong>：请求量可预期、逻辑轻量、需要边缘极低延迟、无状态或简单状态、Cron 触发、表单处理。</li>
+<li><strong>不适合</strong>：长连接重计算、需要大量本地 CPU 密集、运行复杂 Python 依赖（受限）、绑定某机房的本地资源（写本地磁盘）。</li>
+<li><strong>与自建 VPS 的关系</strong>：很多人的策略是「简单 &#x2F; 对外 &#x2F; 轻量的事情用 Worker&#x2F;Pages 边缘化；重逻辑 &#x2F; 长连接 &#x2F; 完整运行时留在 VPS」。二者互补而非替代。</li>
+</ul>
+<h2 id="7-5-参考文档"><a href="#7-5-参考文档" class="headerlink" title="7.5 参考文档"></a>7.5 参考文档</h2><ul>
+<li>Workers：<code>https://developers.cloudflare.com/workers/</code></li>
+<li>Pages：<code>https://developers.cloudflare.com/pages/</code></li>
+<li>R2：<code>https://developers.cloudflare.com/r2/</code></li>
+<li>KV：<code>https://developers.cloudflare.com/kv/</code></li>
+<li>D1：<code>https://developers.cloudflare.com/d1/</code></li>
+<li>Durable Objects：<code>https://developers.cloudflare.com/durable-objects/</code></li>
+<li>Queues：<code>https://developers.cloudflare.com/queues/</code></li>
+</ul>
+<hr>
+<h1 id="第-8-章-图像与视频交付"><a href="#第-8-章-图像与视频交付" class="headerlink" title="第 8 章 图像与视频交付"></a>第 8 章 图像与视频交付</h1><h2 id="8-1-Cloudflare-Images"><a href="#8-1-Cloudflare-Images" class="headerlink" title="8.1 Cloudflare Images"></a>8.1 Cloudflare Images</h2><ul>
+<li>面向：需要图片托管、缩放、优化的站点与应用。</li>
+<li>能力：上传处理、按需变体（尺寸 &#x2F; 格式 &#x2F; 质量）、URL 签名（防盗链）、边缘交付。</li>
+<li>用法示例：<code>https://&lt;你的站点&gt;/cdn-cgi/image/width=400,quality=80/https://原始图片URL</code> 可在边缘按参数处理任意外部图片。</li>
+<li>价值：减轻源站图片处理负担、控制流量、提升加载速度。</li>
+</ul>
+<h2 id="8-2-Cloudflare-Stream"><a href="#8-2-Cloudflare-Stream" class="headerlink" title="8.2 Cloudflare Stream"></a>8.2 Cloudflare Stream</h2><ul>
+<li>面向：视频上传、转码、托管、播放。</li>
+<li>能力：自适应码率（HLS &#x2F; MPEG-DASH）、缩略图、剪辑、字幕、DRM（付费档）、按域名白名单防盗链、播放分析。</li>
+<li>价值：替代自建「ffmpeg 转码 + 存储 + 加载 + 播放器」的整套成本，特别适合内容平台。</li>
+</ul>
+<h2 id="8-3-Polish-与优化"><a href="#8-3-Polish-与优化" class="headerlink" title="8.3 Polish 与优化"></a>8.3 Polish 与优化</h2><ul>
+<li>Polish 可自动把图片转 WebP 并压缩（无损 &#x2F; 有损档）。</li>
+<li>可选更激进档以进一步省流量，但需评估画质损失。</li>
+<li>与 Image Resizing 配合时注意叠加顺序与格式转换，避免双重压缩。</li>
+</ul>
+<h2 id="8-4-媒体方案取舍小结"><a href="#8-4-媒体方案取舍小结" class="headerlink" title="8.4 媒体方案取舍小结"></a>8.4 媒体方案取舍小结</h2><ul>
+<li>简单图片：直接用 <strong>Polish + Image Resizing</strong> 即可，无需迁移存储。</li>
+<li>成规模的图片管理：上 <strong>Cloudflare Images</strong>。</li>
+<li>视频：几乎可以无脑用 <strong>Cloudflare Stream</strong>，成本远低于自建转码机群。</li>
+</ul>
+<hr>
+<h1 id="第-9-章-邮件与通信保护"><a href="#第-9-章-邮件与通信保护" class="headerlink" title="第 9 章 邮件与通信保护"></a>第 9 章 邮件与通信保护</h1><h2 id="9-1-Email-Routing（邮件转发-入站）"><a href="#9-1-Email-Routing（邮件转发-入站）" class="headerlink" title="9.1 Email Routing（邮件转发 &#x2F; 入站）"></a>9.1 Email Routing（邮件转发 &#x2F; 入站）</h2><ul>
+<li>免费；把自定义域名邮箱转发到真实邮箱。</li>
+<li>DNS 配置：MX 指向 Cloudflare，再建路由规则。</li>
+<li>用途：打造「<code>.你的域名</code>」的形象邮箱而无需自建邮箱服务器，适合个人与团队。国内常与「域名 + 邮箱」的现实需求结合。</li>
+</ul>
+<h2 id="9-2-邮件安全（Area-1-Email-Security）"><a href="#9-2-邮件安全（Area-1-Email-Security）" class="headerlink" title="9.2 邮件安全（Area 1 &#x2F; Email Security）"></a>9.2 邮件安全（Area 1 &#x2F; Email Security）</h2><ul>
+<li>进站威胁检测：钓鱼、垃圾、商业邮件欺诈（BEC）、恶意附件 &#x2F; 链接。</li>
+<li>与企业邮箱（O365、Gmail）集成，作为网关或 API 前置过滤。</li>
+<li>出站保护：DMARC 聚合报告（免费有基础 DMARC 报告，企业版增强）。</li>
+</ul>
+<h2 id="9-3-邮件基础设施中-CF-的角色（关键强调）"><a href="#9-3-邮件基础设施中-CF-的角色（关键强调）" class="headerlink" title="9.3 邮件基础设施中 CF 的角色（关键强调）"></a>9.3 邮件基础设施中 CF 的角色（关键强调）</h2><p><strong>Cloudflare Email Routing 只处理「入站」（收信）</strong>。如果你需要<strong>出站发送（发信）</strong>，Cloudflare 不提供免费 SMTP 发信服务。常见做法：</p>
+<ul>
+<li>入站：CF Email Routing（免费）收信。</li>
+<li>出站：自建 Postfix &#x2F; Dovecot &#x2F; OpenDKIM 发信，或第三方 SMTP（SendGrid &#x2F; Mailgun 等）。</li>
+<li>于是形成「能收能发」的混合方案——恰好对应很多人「自建邮箱能收不能发 &#x2F; 自带域名要能发信」的实际需求。</li>
+<li><strong>邮件投递性（Deliverability）</strong>：自建发信必须配置 SPF &#x2F; DKIM &#x2F; DMARC，否则易进垃圾箱；Cloudflare 在 DNS 层帮你管理这些 TXT 记录，减少漏配。</li>
+</ul>
+<h2 id="9-4-参考文档"><a href="#9-4-参考文档" class="headerlink" title="9.4 参考文档"></a>9.4 参考文档</h2><ul>
+<li>Email Routing：<code>https://developers.cloudflare.com/email-routing/</code></li>
+<li>Email Security：<code>https://developers.cloudflare.com/email-security/</code></li>
+</ul>
+<hr>
+<h1 id="第-10-章-网络与连接（Tunnel-WARP-Magic-Transit-Load-Balancing）"><a href="#第-10-章-网络与连接（Tunnel-WARP-Magic-Transit-Load-Balancing）" class="headerlink" title="第 10 章 网络与连接（Tunnel &#x2F; WARP &#x2F; Magic Transit &#x2F; Load Balancing）"></a>第 10 章 网络与连接（Tunnel &#x2F; WARP &#x2F; Magic Transit &#x2F; Load Balancing）</h1><h2 id="10-1-Cloudflare-Tunnel（完整形态）"><a href="#10-1-Cloudflare-Tunnel（完整形态）" class="headerlink" title="10.1 Cloudflare Tunnel（完整形态）"></a>10.1 Cloudflare Tunnel（完整形态）</h2><ul>
+<li>守护进程 <code>cloudflared</code> 从服务器<strong>出站</strong>建立到边缘的加密隧道（HTTP&#x2F;2 &#x2F; QUIC）。</li>
+<li><strong>优点</strong>：无需开放入站端口、隐藏源 IP、公网只能用你定义的域名访问、天然防直接攻击。</li>
+<li><strong>认证方式</strong>：隧道 token 或证书；临时隧道免登录用 <code>*.trycloudflare.com</code>。</li>
+<li><strong>与反向代理（NPM）的配合</strong>：若服务已是反代 + 端口映射（如 NPM 只监听 81、证书在 CF 层终结），用 Tunnel 直接把内网端口暴露即可，省去「公网 IP + 证书 + 端口」的痛苦；Tunnel 也支持按域名 &#x2F; 路径把多个本地服务分发出去。</li>
+<li><strong>免费额度</strong>：免费套餐允许任意数量的隧道共享免费配额（并发有一定限制，个人服务足够）。</li>
+</ul>
+<h3 id="10-1-1-Tunnel-快速上手"><a href="#10-1-1-Tunnel-快速上手" class="headerlink" title="10.1.1 Tunnel 快速上手"></a>10.1.1 Tunnel 快速上手</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">brew install cloudflared   <span class="comment"># macOS</span></span><br><span class="line">apt install cloudflared    <span class="comment"># 部分发行版可直接安装</span></span><br><span class="line"><span class="comment"># 登录并创建</span></span><br><span class="line">cloudflared tunnel login</span><br><span class="line">cloudflared tunnel create my-tunnel</span><br><span class="line"><span class="comment"># 配置并路由 DNS</span></span><br><span class="line">cloudflared tunnel route dns my-tunnel tunnel.example.com</span><br><span class="line"><span class="comment"># 运行</span></span><br><span class="line">cloudflared tunnel run my-tunnel</span><br><span class="line"><span class="comment"># 临时隧道（免登录）</span></span><br><span class="line">cloudflared tunnel --url http://localhost:8080</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-2-WARP"><a href="#10-2-WARP" class="headerlink" title="10.2 WARP"></a>10.2 WARP</h2><ul>
+<li>客户端传输层封装：把设备流量加密到 Cloudflare。</li>
+<li>个人版：改善连接质量、隐私保护。</li>
+<li>企业版（WARP + Zero Trust）：作为零信任的 device posture 来源。</li>
+<li>注意部分网络环境下 WARP 可能受限，部署需评估实际可访问性。</li>
+</ul>
+<h2 id="10-3-Magic-Transit-Magic-WAN（企业级）"><a href="#10-3-Magic-Transit-Magic-WAN（企业级）" class="headerlink" title="10.3 Magic Transit &#x2F; Magic WAN（企业级）"></a>10.3 Magic Transit &#x2F; Magic WAN（企业级）</h2><ul>
+<li><strong>Magic Transit</strong>：把<strong>整个 IP 段 &#x2F; 机房流量</strong>接入 Cloudflare 清洗后回源（不只是域名，而是网段），常用于被大规模 DDoS 攻击的企业 &#x2F; 机房 &#x2F; 游戏厂商。</li>
+<li><strong>Magic WAN &#x2F; Magic Firewall</strong>：在 CF 网络上做分支机构组网（SD-WAN）与网络层防火墙策略。</li>
+<li>一般个人用不上，但在企业网络架构里地位重要。</li>
+</ul>
+<h2 id="10-4-Load-Balancing（负载均衡-GSLB）"><a href="#10-4-Load-Balancing（负载均衡-GSLB）" class="headerlink" title="10.4 Load Balancing（负载均衡 &#x2F; GSLB）"></a>10.4 Load Balancing（负载均衡 &#x2F; GSLB）</h2><ul>
+<li>把同一域名解析到多个后端 &#x2F; 机房，按健康检查 + 权重 &#x2F; 地域做分发。</li>
+<li>智能健康检查（HTTP &#x2F; TCP &#x2F; HTTPS）自动剔除故障后端。</li>
+<li>应用场景：多机高可用、多地容灾、API 网关集群入口。</li>
+</ul>
+<h2 id="10-5-域名与网络层的一个实际提醒"><a href="#10-5-域名与网络层的一个实际提醒" class="headerlink" title="10.5 域名与网络层的一个实际提醒"></a>10.5 域名与网络层的一个实际提醒</h2><p>如果你有「源站不监听 80&#x2F;443、需要反代 + 证书 + 特定端口」这类拓扑，最干净的做法是：</p>
+<ul>
+<li>首选 <strong>Cloudflare Tunnel</strong>，让 CF 终止公网入口，源站保持私网。</li>
+<li>若坚持正规 CDN 反代，则必须让源站监听 80&#x2F;443（或 8443 等 443 派生）并完成证书。</li>
+<li>不要在「CDN 强制 80&#x2F;443 回源」的前提下要求 CF 帮你访问非标端口——这不符 CDN 机制。</li>
+</ul>
+<hr>
+<h1 id="第-11-章-开发与部署工具"><a href="#第-11-章-开发与部署工具" class="headerlink" title="第 11 章 开发与部署工具"></a>第 11 章 开发与部署工具</h1><h2 id="11-1-Wrangler（Workers-CLI）"><a href="#11-1-Wrangler（Workers-CLI）" class="headerlink" title="11.1 Wrangler（Workers CLI）"></a>11.1 Wrangler（Workers CLI）</h2><ul>
+<li><code>npm i -g wrangler</code></li>
+<li>常用命令：<code>wrangler login</code>、<code>wrangler init</code>、<code>wrangler dev</code>、<code>wrangler deploy</code>、<code>wrangler tail</code>（实时日志）、<code>wrangler kv</code>、<code>wrangler d1</code>、<code>wrangler pages deploy</code>。</li>
+<li>支持本地构建与远程部署，是 Workers &#x2F; Pages 开发的默认工具。</li>
+</ul>
+<h2 id="11-2-CICD-与版本控制"><a href="#11-2-CICD-与版本控制" class="headerlink" title="11.2 CICD 与版本控制"></a>11.2 CICD 与版本控制</h2><ul>
+<li>Pages 直接绑定 GitHub &#x2F; GitLab 仓库自动构建部署。</li>
+<li>Workers 可用 GitHub Actions 自动部署。</li>
+<li>配合 <code>wrangler</code> 的 <code>--env</code> 可区分不同环境。</li>
+</ul>
+<h2 id="11-3-新一代-Cloudflare-CLI"><a href="#11-3-新一代-Cloudflare-CLI" class="headerlink" title="11.3 新一代 Cloudflare CLI"></a>11.3 新一代 Cloudflare CLI</h2><ul>
+<li>新一代 <code>cloudflare</code> 命令行（Go 实现）整合 DNS &#x2F; Workers &#x2F; Pages &#x2F; Tunnel &#x2F; Terraform 等，逐渐取代零散命令，管理离散资源更统一。</li>
+</ul>
+<h2 id="11-4-Terraform-与-IaC"><a href="#11-4-Terraform-与-IaC" class="headerlink" title="11.4 Terraform 与 IaC"></a>11.4 Terraform 与 IaC</h2><ul>
+<li>Cloudflare 官方 Terraform Provider：可用代码管理 DNS 记录、规则、Worker 绑定等，适合需要「可重复、可审计」配置的企业与进阶开发者。</li>
+</ul>
+<h2 id="11-5-API-与-SDK"><a href="#11-5-API-与-SDK" class="headerlink" title="11.5 API 与 SDK"></a>11.5 API 与 SDK</h2><ul>
+<li>REST API：管理 DNS &#x2F; WAF &#x2F; Workers 等所有资源。</li>
+<li><code>workers-sdk</code>：Node 访问 Workers &#x2F; Pages API。</li>
+<li>Token 管理：推荐使用作用域受限的 API Token 而非全局 API Key（安全最佳实践，泄露影响面小）。</li>
+</ul>
+<h2 id="11-6-本地开发与调试"><a href="#11-6-本地开发与调试" class="headerlink" title="11.6 本地开发与调试"></a>11.6 本地开发与调试</h2><ul>
+<li><code>wrangler dev --local</code> 本地运行。</li>
+<li><code>wrangler dev --remote</code> 使用真实边缘资源。</li>
+<li>用 <code>curl -v</code> 查看 <code>cf-ray</code> 确认请求是否经过边缘。</li>
+<li><code>wrangler tail</code> 实时看日志，排查线上问题。</li>
+</ul>
+<hr>
+<h1 id="第-12-章-可观测性与分析"><a href="#第-12-章-可观测性与分析" class="headerlink" title="第 12 章 可观测性与分析"></a>第 12 章 可观测性与分析</h1><h2 id="12-1-内建-Analytics"><a href="#12-1-内建-Analytics" class="headerlink" title="12.1 内建 Analytics"></a>12.1 内建 Analytics</h2><ul>
+<li><strong>Web Analytics &#x2F; RUM</strong>：无需 JS 埋点也能取到访客 &#x2F; 性能数据（免费、隐私友好，无需 cookie 同意横幅）。</li>
+<li><strong>Traffic Analytics</strong>：按请求数 &#x2F; 带宽 &#x2F; 攻击 &#x2F; 缓存命中展示 Overview。</li>
+<li><strong>Security Analytics</strong>：被 WAF &#x2F; Bot &#x2F; 限速拦截的流量可视化，TOP 攻击来源。</li>
+<li><strong>Performance Analytics</strong>：缓存命中率、TTFB 拆解、延迟分布。</li>
+</ul>
+<h2 id="12-2-Logpush"><a href="#12-2-Logpush" class="headerlink" title="12.2 Logpush"></a>12.2 Logpush</h2><ul>
+<li>将边缘请求日志实时推送到 R2 &#x2F; S3 &#x2F; Splunk &#x2F; Datadog &#x2F; 自建 HTTP 端点等。</li>
+<li>支持按规则 &#x2F; 字段过滤，降低存储成本。</li>
+<li>免费套餐有一定 Logpush 额度，企业级更完整。</li>
+</ul>
+<h2 id="12-3-Workers-Observability"><a href="#12-3-Workers-Observability" class="headerlink" title="12.3 Workers Observability"></a>12.3 Workers Observability</h2><ul>
+<li><code>wrangler tail</code> 实时查看 Worker 日志。</li>
+<li>Workers Logs、Traces、Metrics（企业版）。</li>
+<li><code>ctx.waitUntil()</code> 控制后台任务。</li>
+</ul>
+<h2 id="12-4-面向自建调度-报告的联动"><a href="#12-4-面向自建调度-报告的联动" class="headerlink" title="12.4 面向自建调度 &#x2F; 报告的联动"></a>12.4 面向自建调度 &#x2F; 报告的联动</h2><p>很多个人把「CF 分析 + 自建 cron 脚本 + 推送」组合起来，实现：每天从 CF 拉取流量 &#x2F; 攻击统计 → 生成日报 → 推送到 Telegram &#x2F; 邮件。这也印证 Cloudflare 的 API 化能力——一切都是可编程、可调度的。</p>
+<hr>
+<h1 id="第-13-章-行业与场景方案"><a href="#第-13-章-行业与场景方案" class="headerlink" title="第 13 章 行业与场景方案"></a>第 13 章 行业与场景方案</h1><h2 id="13-1-个人站长-独立开发者"><a href="#13-1-个人站长-独立开发者" class="headerlink" title="13.1 个人站长 &#x2F; 独立开发者"></a>13.1 个人站长 &#x2F; 独立开发者</h2><ul>
+<li>免费 DNS + CDN + HTTPS + DDoS + 基础 WAF。</li>
+<li>Pages 免费托管个人网站 &#x2F; 文档站。</li>
+<li>Worker + Cron 做定时任务（日报、监控、推送）。</li>
+<li>Tunnel 把 VPS 服务安全暴露到公网。</li>
+<li>Email Routing 给域名邮箱收信。</li>
+<li><strong>典型组合</strong>：<code>Cloudflare Tunnel + NPM（反代）+ 自建服务</code>，公网入口由 CF 统一管理，源站安全、域名统一。</li>
+</ul>
+<h2 id="13-2-电商-企业官网"><a href="#13-2-电商-企业官网" class="headerlink" title="13.2 电商 &#x2F; 企业官网"></a>13.2 电商 &#x2F; 企业官网</h2><ul>
+<li>WAF + Bot 防抢购 + 速率限制防刷接口。</li>
+<li>Images 图片压缩秒开。</li>
+<li>Load Balancing 做可用性。</li>
+<li>Argo 加速动态接口。</li>
+</ul>
+<h2 id="13-3-SaaS-API-平台"><a href="#13-3-SaaS-API-平台" class="headerlink" title="13.3 SaaS &#x2F; API 平台"></a>13.3 SaaS &#x2F; API 平台</h2><ul>
+<li>Workers 做网关 &#x2F; 鉴权 &#x2F; 限流。</li>
+<li>R2 做对象存储，零出口费。</li>
+<li>Zero Trust Access 保护管理后台。</li>
+<li>Rate Limiting 保护开放 API。</li>
+</ul>
+<h2 id="13-4-金融-高合规行业"><a href="#13-4-金融-高合规行业" class="headerlink" title="13.4 金融 &#x2F; 高合规行业"></a>13.4 金融 &#x2F; 高合规行业</h2><ul>
+<li>WAF + DLP + 数据防泄漏。</li>
+<li>Magic Transit 扛超大 DDoS。</li>
+<li>审计日志 + Logpush 留存。</li>
+<li>DMARC &#x2F; 邮件 BEC 防护。</li>
+</ul>
+<h2 id="13-5-游戏-泛娱乐"><a href="#13-5-游戏-泛娱乐" class="headerlink" title="13.5 游戏 &#x2F; 泛娱乐"></a>13.5 游戏 &#x2F; 泛娱乐</h2><ul>
+<li>Magic Transit 防打。</li>
+<li>Load Balancing 多区容灾。</li>
+<li>Stream 视频流。</li>
+<li>Bot 防脚本外挂。</li>
+</ul>
+<h2 id="13-6-部署与迁移注意（针对正在用-CF-的用户）"><a href="#13-6-部署与迁移注意（针对正在用-CF-的用户）" class="headerlink" title="13.6 部署与迁移注意（针对正在用 CF 的用户）"></a>13.6 部署与迁移注意（针对正在用 CF 的用户）</h2><p>如果你已经在用 CF 反代个人服务，迁移 &#x2F; 加固时注意：</p>
+<ol>
+<li><strong>不要改灰云而期望还有 CDN 保护</strong>——灰云纯解析，直接暴露源站。</li>
+<li><strong>源站防火墙只放行 CF 回源 IP 段</strong>——否则攻击者可绕过。</li>
+<li><strong>切换套餐 &#x2F; 规则后等 1–5 分钟生效</strong>，用 <code>curl -I</code> 看响应头确认。</li>
+<li><strong>改动前备份 DNS 导出</strong>，回滚时快。</li>
+</ol>
+<hr>
+<h1 id="第-14-章-成本模型与套餐选型"><a href="#第-14-章-成本模型与套餐选型" class="headerlink" title="第 14 章 成本模型与套餐选型"></a>第 14 章 成本模型与套餐选型</h1><h2 id="14-1-套餐一览"><a href="#14-1-套餐一览" class="headerlink" title="14.1 套餐一览"></a>14.1 套餐一览</h2><table>
+<thead>
+<tr>
+<th>套餐</th>
+<th>价位（约）</th>
+<th>核心能力</th>
+<th>适合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Free</strong></td>
+<td>$0</td>
+<td>DNS、CDN、基础 DDoS、托管 WAF 规则、Universal SSL、Pages、有限 Workers、Email Routing、基础速率限制</td>
+<td>个人站、试验、学习</td>
+</tr>
+<tr>
+<td><strong>Pro</strong></td>
+<td>约 $20&#x2F;月</td>
+<td>增强 WAF（更高配额）、Polish 图片优化、Argo、更多 Worker、页面规则更灵活</td>
+<td>个人商业站、要求更高的个人</td>
+</tr>
+<tr>
+<td><strong>Business</strong></td>
+<td>约 $200&#x2F;月</td>
+<td>更多 WAF &#x2F; Bot 控制、健康检查、SLA</td>
+<td>成长型企业</td>
+</tr>
+<tr>
+<td><strong>Enterprise</strong></td>
+<td>定制</td>
+<td>全功能：Bot Management、高级 DLP、专属支持、SLA、Magic Transit、定制</td>
+<td>大企业、金融、游戏</td>
+</tr>
+</tbody></table>
+<h2 id="14-2-按需计费-增值项"><a href="#14-2-按需计费-增值项" class="headerlink" title="14.2 按需计费 &#x2F; 增值项"></a>14.2 按需计费 &#x2F; 增值项</h2><ul>
+<li><strong>Argo Smart Routing</strong>：按带宽额外计价。</li>
+<li><strong>负载均衡</strong>：按原站数量 &#x2F; 规则数 + 流量计价。</li>
+<li><strong>Workers</strong>：超过免费配额后按请求数 + CPU 时间计费（价格已变便宜）。</li>
+<li><strong>R2</strong>：按存储 + 操作计费，<strong>出口流量免费</strong>。</li>
+<li><strong>Images &#x2F; Stream</strong>：按存储 &#x2F; 流量计费。</li>
+<li><strong>Tunnel</strong>：免费（基于配额，支持付费增强）。</li>
+</ul>
+<h2 id="14-3-个人最划算的组合（性价比观点）"><a href="#14-3-个人最划算的组合（性价比观点）" class="headerlink" title="14.3 个人最划算的组合（性价比观点）"></a>14.3 个人最划算的组合（性价比观点）</h2><ul>
+<li>纯静态 &#x2F; 个人站：<strong>Free + Pages + Tunnel + Email Routing</strong>，成本 ≈ 0。</li>
+<li>有 API &#x2F; 定时任务：<strong>Free Workers 配额</strong>或少量付费，比在 VPS 上再加一层成本划算。</li>
+<li>推荐按需购买 Pro（尤其需要更强 WAF 速率限制上限与图片优化时）。</li>
+</ul>
+<h2 id="14-4-常见「省钱陷阱」"><a href="#14-4-常见「省钱陷阱」" class="headerlink" title="14.4 常见「省钱陷阱」"></a>14.4 常见「省钱陷阱」</h2><ul>
+<li>买了 Pro 却从不使用高级功能 → 浪费。</li>
+<li>只想隐藏 IP → Tunnel（免费）比 Pro 更直接。</li>
+<li>需要批量公网端口映射 → Tunnel 更省事，别为「端口映射」买高级套餐。</li>
+<li>Workers 超量烧钱 → 先评估免费额度够不够，不够再买按量。</li>
+</ul>
+<hr>
+<h1 id="第-15-章-最佳实践与常见误区"><a href="#第-15-章-最佳实践与常见误区" class="headerlink" title="第 15 章 最佳实践与常见误区"></a>第 15 章 最佳实践与常见误区</h1><h2 id="15-1-最佳实践清单"><a href="#15-1-最佳实践清单" class="headerlink" title="15.1 最佳实践清单"></a>15.1 最佳实践清单</h2><ol>
+<li><strong>保持橙云（Proxied）</strong>为主域名，灰云仅用于确实要直连的 API。</li>
+<li><strong>源站隐藏 + 只信 CF 回源段</strong>：防火墙放行 Cloudflare IP ranges（官方 JSON）。</li>
+<li><strong>开启 Universal SSL + Full（strict）</strong>，生产用 Authenticated Origin Pulls。</li>
+<li><strong>缓存策略明确</strong>：静态用 Cache Everything + 源站 Cache-Control；动态接口标 <code>no-store</code>。</li>
+<li><strong>速率限制保护登录 &#x2F; 验证码接口</strong>，阈值留足余量防误伤。</li>
+<li><strong>用 Workers 做轻量业务与 Cron</strong>，减少 VPS 常驻进程。</li>
+<li><strong>定期看 Security Analytics 与 WAF 建议</strong>，动态优化。</li>
+<li><strong>改动 DNS &#x2F; 规则先备份</strong>，回滚有退路。</li>
+<li><strong>API 化运维</strong>：用作用域受限的 token，避免全局 key 泄露。</li>
+<li><strong>合理使用 Tunnel</strong> 替代对源站暴露公网端口。</li>
+</ol>
+<h2 id="15-2-常见误区（务必避开）"><a href="#15-2-常见误区（务必避开）" class="headerlink" title="15.2 常见误区（务必避开）"></a>15.2 常见误区（务必避开）</h2><table>
+<thead>
+<tr>
+<th>误区</th>
+<th>真相</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>以为灰云也有 CDN&#x2F;WAF</td>
+<td>灰云 &#x3D; 纯 DNS，无保护</td>
+</tr>
+<tr>
+<td>以为套了 CF 就一定能防所有攻击</td>
+<td>WAF 需配置、源站要封段、规则要维护</td>
+</tr>
+<tr>
+<td>认为 CF 会缓存所有内容</td>
+<td>动态 &#x2F; 带 Cookie 的接口默认不缓存</td>
+</tr>
+<tr>
+<td>把 Worker 当 VPS 用跑长进程</td>
+<td>Worker 无状态受限，不适合长连接 &#x2F; 重 CPU</td>
+</tr>
+<tr>
+<td>Tunnel 和 VPN 混为一谈</td>
+<td>Tunnel 是源侧出站隧道；员工访问用 WARP + Access</td>
+</tr>
+<tr>
+<td>CF Email Routing 能发信</td>
+<td>它只管入站；发信需自建 SMTP 或第三方</td>
+</tr>
+<tr>
+<td>修改源站为仅 443 且要求 CF 回访非标端口</td>
+<td>CDN 回源用标准端口；非标用 Tunnel</td>
+</tr>
+<tr>
+<td>以为 TTL 越长越好</td>
+<td>需要快速切换时短 TTL 更灵活</td>
+</tr>
+</tbody></table>
+<h2 id="15-3-调试速查"><a href="#15-3-调试速查" class="headerlink" title="15.3 调试速查"></a>15.3 调试速查</h2><ul>
+<li><code>curl -sI https://你的域名</code> 看 <code>cf-cache-status</code> &#x2F; <code>server: cloudflare</code> &#x2F; <code>cf-ray</code>。</li>
+<li><code>nslookup 域名</code> 看是否解析到 Cloudflare Anycast IP（104.16.x.x 等）。</li>
+<li><code>curl -H &quot;CF-Access-Client-Id:...&quot;</code> 测试 Access。</li>
+<li><code>wrangler tail</code> 看 Worker 实时日志。</li>
+</ul>
+<hr>
+<h1 id="第-16-章-关键概念速查表"><a href="#第-16-章-关键概念速查表" class="headerlink" title="第 16 章 关键概念速查表"></a>第 16 章 关键概念速查表</h1><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>边缘（Edge）</strong></td>
+<td>全球各地的 CF 节点，位于用户与源站之间</td>
+</tr>
+<tr>
+<td><strong>Anycast</strong></td>
+<td>多节点共享 IP，用户路由到最近节点</td>
+</tr>
+<tr>
+<td><strong>Proxied（橙云）</strong></td>
+<td>流量经 CF 边缘，获得 CDN &#x2F; WAF &#x2F; 隐藏源站</td>
+</tr>
+<tr>
+<td><strong>DNS only（灰云）</strong></td>
+<td>纯解析，直接到源站</td>
+</tr>
+<tr>
+<td><strong>回源（Origin）</strong></td>
+<td>CF 边缘到真实服务器的请求</td>
+</tr>
+<tr>
+<td><strong>cf-cache-status</strong></td>
+<td>缓存状态（HIT &#x2F; MISS &#x2F; EXPIRED &#x2F; DYNAMIC）</td>
+</tr>
+<tr>
+<td><strong>cf-ray</strong></td>
+<td>一次请求的全局唯一 ID，用于排查</td>
+</tr>
+<tr>
+<td><strong>WAF</strong></td>
+<td>边缘的 Web 应用防火墙</td>
+</tr>
+<tr>
+<td><strong>Bot Score</strong></td>
+<td>0（机器人）~99（真人）的信用分</td>
+</tr>
+<tr>
+<td><strong>Managed Challenge</strong></td>
+<td>智能验证，正常用户通常无感</td>
+</tr>
+<tr>
+<td><strong>CC &#x2F; HTTP Flood</strong></td>
+<td>应用层频繁请求攻击</td>
+</tr>
+<tr>
+<td><strong>Tunnel</strong></td>
+<td>源侧出站加密隧道，暴露内网服务到公网</td>
+</tr>
+<tr>
+<td><strong>WARP</strong></td>
+<td>设备到 CF 的加密客户端连接</td>
+</tr>
+<tr>
+<td><strong>Zero Trust</strong></td>
+<td>永不信任，始终验证</td>
+</tr>
+<tr>
+<td><strong>Workers</strong></td>
+<td>边缘无服务器函数</td>
+</tr>
+<tr>
+<td><strong>KV &#x2F; R2 &#x2F; D1</strong></td>
+<td>键值 &#x2F; 对象 &#x2F; 关系数据库（边缘存储）</td>
+</tr>
+<tr>
+<td><strong>Durable Objects</strong></td>
+<td>有状态单实例对象</td>
+</tr>
+<tr>
+<td><strong>Logpush</strong></td>
+<td>边缘日志推送</td>
+</tr>
+<tr>
+<td><strong>Argo</strong></td>
+<td>智能回源路径优化</td>
+</tr>
+<tr>
+<td><strong>SSL&#x2F;TLS 模式</strong></td>
+<td>边缘与源站之间证书校验力度</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="第-17-章-官方文档索引"><a href="#第-17-章-官方文档索引" class="headerlink" title="第 17 章 官方文档索引"></a>第 17 章 官方文档索引</h1><p>（均为 Cloudflare 官方开发者文档，按需跳转。）</p>
+<ol>
+<li><strong>开发者文档总入口</strong>：<code>https://developers.cloudflare.com/</code></li>
+<li><strong>DNS 托管</strong>：<code>https://developers.cloudflare.com/dns/</code></li>
+<li><strong>CDN &#x2F; 缓存</strong>：<code>https://developers.cloudflare.com/cache/</code></li>
+<li><strong>WAF</strong>：<code>https://developers.cloudflare.com/waf/</code></li>
+<li><strong>DDoS 防护</strong>：<code>https://developers.cloudflare.com/ddos-protection/</code></li>
+<li><strong>Bot 管理</strong>：<code>https://developers.cloudflare.com/bots/</code></li>
+<li><strong>速率限制</strong>：<code>https://developers.cloudflare.com/waf/rate-limiting-rules/</code></li>
+<li><strong>SSL&#x2F;TLS</strong>：<code>https://developers.cloudflare.com/ssl/</code></li>
+<li><strong>负载均衡</strong>：<code>https://developers.cloudflare.com/load-balancing/</code></li>
+<li><strong>Cloudflare Tunnel</strong>：<code>https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/</code></li>
+<li><strong>零信任（Access &#x2F; Gateway）</strong>：<code>https://developers.cloudflare.com/cloudflare-one/</code></li>
+<li><strong>WARP</strong>：<code>https://developers.cloudflare.com/warp-client/</code></li>
+<li><strong>Workers</strong>：<code>https://developers.cloudflare.com/workers/</code></li>
+<li><strong>Pages</strong>：<code>https://developers.cloudflare.com/pages/</code></li>
+<li><strong>KV &#x2F; R2 &#x2F; D1 &#x2F; Durable Objects &#x2F; Queues &#x2F; Hyperdrive</strong>：相应路径 <code>https://developers.cloudflare.com/&lt;product&gt;/</code></li>
+<li><strong>Images &#x2F; Stream</strong>：<code>https://developers.cloudflare.com/images/</code>、<code>/stream/</code></li>
+<li><strong>Email Routing &#x2F; Email Security</strong>：<code>https://developers.cloudflare.com/email-routing/</code>、<code>/email-security/</code></li>
+<li><strong>Analytics &#x2F; Logs &#x2F; Web Analytics &#x2F; RUM</strong>：<code>https://developers.cloudflare.com/analytics/</code>、<code>/logs/</code> 等</li>
+<li><strong>API 参考</strong>：<code>https://developers.cloudflare.com/api/</code></li>
+<li><strong>Terraform Provider</strong>：<code>https://developers.cloudflare.com/terraform/</code></li>
+<li><strong>Cloudflare IP 段</strong>：<code>https://developers.cloudflare.com/cloudflare-ip-list</code> 与 <code>https://api.cloudflare.com/client/v4/ips</code></li>
+<li><strong>套餐与价格</strong>：<code>https://www.cloudflare.com/plans/</code>、<code>https://www.cloudflare.com/pricing/</code></li>
+<li><strong>Cloudflare 博客（深度解析）</strong>：<code>https://blog.cloudflare.com/</code></li>
+<li><strong>Learn Center</strong>：<code>https://www.cloudflare.com/learning/</code></li>
+</ol>
+<hr>
+<h1 id="第-18-章-深度专题：常见故障排查与-FAQ"><a href="#第-18-章-深度专题：常见故障排查与-FAQ" class="headerlink" title="第 18 章 深度专题：常见故障排查与 FAQ"></a>第 18 章 深度专题：常见故障排查与 FAQ</h1><h2 id="18-1-缓存不生效-更新了看不到新内容"><a href="#18-1-缓存不生效-更新了看不到新内容" class="headerlink" title="18.1 缓存不生效 &#x2F; 更新了看不到新内容"></a>18.1 缓存不生效 &#x2F; 更新了看不到新内容</h2><p><strong>现象</strong>：改动了页面 &#x2F; 脚本，但用户看到的还是旧内容。</p>
+<p><strong>原因与解法</strong>：</p>
+<ol>
+<li>浏览器缓存：先 <code>Ctrl+Shift+R</code> 强刷，或加版本号参数（<code>?v=2</code>）改变 cache key。</li>
+<li>CF 边缘缓存：确认 <code>cf-cache-status</code> 是 <code>HIT</code> 且过期时间太长 → 手动 Purge 或缩短 Edge Cache TTL。</li>
+<li>源站 <code>Cache-Control</code> 太长：给动态内容加 <code>Cache-Control: no-store</code>，给静态内容加合适的 <code>max-age</code>。</li>
+<li>使用了 Query String 版本化但 cache key 未区分：自定义 cache key 包含 <code>?v=</code>。</li>
+<li>多语言 &#x2F; 多设备内容混用一条缓存：自定义 cache key 加入语言 &#x2F; 设备头。</li>
+</ol>
+<p><strong>排查</strong>：<code>curl -sI 页面URL | grep -i cf-cache</code>，先看回来的是 HIT 还是 MISS。</p>
+<h2 id="18-2-源站被直接攻击-被爬虫扫描"><a href="#18-2-源站被直接攻击-被爬虫扫描" class="headerlink" title="18.2 源站被直接攻击 &#x2F; 被爬虫扫描"></a>18.2 源站被直接攻击 &#x2F; 被爬虫扫描</h2><p><strong>现象</strong>：即使套了 CF，日志里仍出现大量直接打到源站 IP 的请求。</p>
+<p><strong>原因与解法</strong>：</p>
+<ol>
+<li>域名为灰云（DNS only）或某条记录没点橙云 → 切橙云。</li>
+<li>源站防火墙未限制只放行 CF 回源段 → 在防火墙放行 <code>https://www.cloudflare.com/ips-v4</code> 与 <code>ips-v6</code> 列表内的 IP 访问 80&#x2F;443，其余一律 Drop。</li>
+<li>更严格：开启 Authenticated Origin Pulls，让源站只接受 CF 签名的 TLS。</li>
+<li>历史 IP 泄露：如果源站 IP 曾暴露并被公开工具收录，需更换源站 IP 或直接用 Tunnel（源站无入站，无从打）。</li>
+</ol>
+<h2 id="18-3-非标端口-反代-证书拓扑连不上"><a href="#18-3-非标端口-反代-证书拓扑连不上" class="headerlink" title="18.3 非标端口 &#x2F; 反代 + 证书拓扑连不上"></a>18.3 非标端口 &#x2F; 反代 + 证书拓扑连不上</h2><p><strong>现象</strong>：服务在 9090 &#x2F; 8080 等端口，套 CF 后访问 443 无响应或 521&#x2F;522。</p>
+<p><strong>原因与解法</strong>：</p>
+<ol>
+<li>理解：CF 回源只走标准 80&#x2F;443（可配置回源端口为 8443 等 443 派生，但不能任意端口）。</li>
+<li>若必须非标端口 → 用 <strong>Cloudflare Tunnel</strong>，把 <code>localhost:9090</code> 直接映射到域名，无需担心回源端口与证书。</li>
+<li>若坚持反代 + CF：让反向代理统一监听 443 并完成证书，CF 开 Full（strict）。</li>
+</ol>
+<h2 id="18-4-发不了信-邮件进垃圾箱"><a href="#18-4-发不了信-邮件进垃圾箱" class="headerlink" title="18.4 发不了信 &#x2F; 邮件进垃圾箱"></a>18.4 发不了信 &#x2F; 邮件进垃圾箱</h2><p><strong>现象</strong>：自建邮箱只能收不能发，或发出进垃圾箱。</p>
+<p><strong>解法</strong>：</p>
+<ol>
+<li>出站需自建 SMTP 或第三方 SMTP；CF Email Routing 不收发信。</li>
+<li>配置 SPF &#x2F; DKIM &#x2F; DMARC 三条 TXT 记录（在 CF DNS 里维护）。</li>
+<li>出站 IP 信誉：自建 VPS 的 IP 可能信誉低，导致易被拒收；必要时用有偿 SMTP 或专用邮件主机。</li>
+<li>反向 DNS（PTR）：部分邮件服务器要求出站 IP 有 PTR。</li>
+</ol>
+<h2 id="18-5-Worker-部署后不生效-404"><a href="#18-5-Worker-部署后不生效-404" class="headerlink" title="18.5 Worker 部署后不生效 &#x2F; 404"></a>18.5 Worker 部署后不生效 &#x2F; 404</h2><p><strong>解法</strong>：</p>
+<ol>
+<li><code>wrangler tail</code> 看是否有异常报错。</li>
+<li>确认路由已正确绑定到域名（<code>*.workers.dev</code> 或自定义域名 + route）。</li>
+<li>Worker 的 handler 是否正确导出 <code>fetch</code>。</li>
+<li>本地 <code>wrangler dev --local</code> 先行复现。</li>
+</ol>
+<h2 id="18-6-DDoS-CC-被打但仍卡"><a href="#18-6-DDoS-CC-被打但仍卡" class="headerlink" title="18.6 DDoS &#x2F; CC 被打但仍卡"></a>18.6 DDoS &#x2F; CC 被打但仍卡</h2><p><strong>解法</strong>：</p>
+<ol>
+<li>确认边缘已触发清洗（Security Analytics 有记录）。</li>
+<li>若仍是应用层攻击导致源站被打 → 开启速率限制 + WAF 托管规则 + 封禁攻击 UA&#x2F;路径。</li>
+<li>若源站是单机且弱，考虑用 CF Cache Everything 把静态全缓存，减少回源压力。</li>
+<li>必要时用 Tunnel 隐藏源站，从根上消除「打你源站 IP」这条路。</li>
+</ol>
+<h2 id="18-7-切换-NS-后网站打不开"><a href="#18-7-切换-NS-后网站打不开" class="headerlink" title="18.7 切换 NS 后网站打不开"></a>18.7 切换 NS 后网站打不开</h2><p><strong>解法</strong>：</p>
+<ol>
+<li>NS 生效需要时间（注册商 + 全球 DNS 传播），正常 24–48 小时内。</li>
+<li>检查注册商处 NS 是否写对。</li>
+<li>若开启了 DNSSEC，确认 DS 记录已同步到注册商，否则会 <code>SERVFAIL</code>。</li>
+<li>用 <code>dig +trace 域名</code> 定位解析在哪一层出问题。</li>
+</ol>
+<h2 id="18-8-常见-FAQ"><a href="#18-8-常见-FAQ" class="headerlink" title="18.8 常见 FAQ"></a>18.8 常见 FAQ</h2><p><strong>Q：CF 免费套餐够个人用吗？</strong><br>A：绝大多数个人站点够用（DNS、CDN、HTTPS、基础 DDoS、限量的 Workers、Email Routing 均免费）。</p>
+<p><strong>Q：CF 会缓存我的登录态 &#x2F; 购物车吗？</strong><br>A：默认针对带 Cookie 的动态响应不缓存；只要源站正确给 <code>Cache-Control</code>，登录态不会被错误缓存。</p>
+<p><strong>Q：橙云和灰云可以混用吗？</strong><br>A：可以。常见做法是：网页记录橙云（保护 + 加速），纯 API &#x2F; 需要实时性的记录灰云（直连）。注意灰云记录不受 CF 保护。</p>
+<p><strong>Q：Workers 能代替服务器吗？</strong><br>A：轻量 &#x2F; 无状态 &#x2F; 边缘场景能；长连接、重计算、复杂依赖不建议。常作为 VPS 的补充而非替代。</p>
+<p><strong>Q：Tunnel 免费吗？</strong><br>A：对个人使用基本免费；有并发配额限制，超限需付费增强。</p>
+<p><strong>Q：CF 会看到我的数据吗？</strong><br>A：CDN &#x2F; WAF 场景 CF 作为网络的合法中间方处理经手流量；企业客户可用区域级数据驻留、TLS 终止位置等策略管理合规。是否信任取决于你的合规要求。</p>
+<hr>
+<h1 id="附录-A-术语表与缩写"><a href="#附录-A-术语表与缩写" class="headerlink" title="附录 A 术语表与缩写"></a>附录 A 术语表与缩写</h1><ul>
+<li><strong>CDN</strong> — Content Delivery Network，内容分发网络。</li>
+<li><strong>WAF</strong> — Web Application Firewall，Web 应用防火墙。</li>
+<li><strong>DDoS</strong> — Distributed Denial of Service，分布式拒绝服务。</li>
+<li><strong>Bot</strong> — 自动化程序（爬虫 &#x2F; 脚本）；Bot Score 量化其「机器人程度」。</li>
+<li><strong>CC</strong> — Challenge Collapsar，应用层 HTTP 洪水攻击的俗称。</li>
+<li><strong>TLS &#x2F; SSL</strong> — 传输层安全协议；CF 在边缘终止 TLS。</li>
+<li><strong>Anycast</strong> — 多节点同 IP 的路由方式，就近 + 抗 DDoS。</li>
+<li><strong>Origin</strong> — 源站，真实服务器。</li>
+<li><strong>Edge &#x2F; PoP</strong> — 边缘节点 &#x2F; Point of Presence。</li>
+<li><strong>JAMstack &#x2F; SSG</strong> — 静态生成站点技术栈（配合 Pages）。</li>
+<li><strong>Zero Trust</strong> — 零信任网络安全模型。</li>
+<li><strong>IdP</strong> — Identity Provider，身份提供方。</li>
+<li><strong>SSO &#x2F; BSSO</strong> — 单点登录。</li>
+<li><strong>DLP</strong> — Data Loss Prevention，数据防泄漏。</li>
+<li><strong>DMARC &#x2F; SPF &#x2F; DKIM</strong> — 邮件认证与防伪造的 DNS-TXT 记录族。</li>
+<li><strong>DNSSEC</strong> — DNS 域名系统安全扩展。</li>
+<li><strong>S3 Compatible</strong> — 与 AWS S3 API 兼容的对象存储接口。</li>
+<li><strong>IaC</strong> — Infrastructure as Code（Terraform 等）。</li>
+<li><strong>GSLB</strong> — 全局负载均衡。</li>
+<li><strong>Magic Transit</strong> — 整段 IP &#x2F; 机房流量接入 CF 清洗。</li>
+<li><strong>SD-WAN</strong> — 软件定义广域网（Magic WAN）。</li>
+</ul>
+<hr>
+<h1 id="附录-B-快速决策树"><a href="#附录-B-快速决策树" class="headerlink" title="附录 B 快速决策树"></a>附录 B 快速决策树</h1><p><strong>场景 → 推荐方案</strong></p>
+<ol>
+<li>「我想让网站更快、更安全上线」→ DNS 接入 CF + 橙云 + Universal SSL。</li>
+<li>「我不想暴露服务器 IP」→ 用 Tunnel 隐藏源站。</li>
+<li>「有人打我的接口 &#x2F; 刷登录」→ 速率限制 + WAF Managed Ruleset。</li>
+<li>「我被爬虫抓数据」→ Bot 管理 &#x2F; Super Bot Fight Mode + 限速。</li>
+<li>「我要给内部系统做统一认证」→ Zero Trust Access。</li>
+<li>「我不想买服务器但要跑定时任务」→ Workers Cron。</li>
+<li>「我要免费托管一个静态文档站」→ Pages。</li>
+<li>「我要放图片 &#x2F; 视频」→ Images &#x2F; Stream。</li>
+<li>「我要给域名邮箱收信」→ Email Routing。</li>
+<li>「我要隐藏服务但用非标端口」→ Tunnel 映射内网端口。</li>
+<li>「我要多机容灾」→ Load Balancing。</li>
+<li>「我被超大 DDoS 打机房」→ Magic Transit。</li>
+</ol>
+<hr>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>Cloudflare 已经从「一个 CDN」进化成「一个横跨 CDN、DNS、安全、零信任、边缘计算、对象存储、视频、邮件的全球一体化网络平台」。对普通站长，它是「免费 + 省心」的上线利器；对开发者，它是「边缘即计算」的新型部署目标；对企业，它是「安全 + 加速 + 合规」的一站式防线。</p>
+<p>理解 Cloudflare 的关键不是记住每个产品名，而是记住一句话：<strong>一切流量先经过 Cloudflare 的边缘，在边缘上同时完成加速、过滤、计算与验证，再把干净的流量送回你的源站。</strong> 抓住这个「位于中间」的架构心智，所有产品线都会自然串起来。</p>
+<p>如果你正配置某个自建服务，遇到「源站暴露」「非标端口」「缓存不生效」「发不了邮件」这类问题，先回到这个心智模型推演——绝大多数卡点都能用「走 Tunnel 出站」「橙云对症」「标准端口回源」「入站 &#x2F; 出站分离」这几个思维快速定位。</p>
+<p>（全文完）</p>
+<h1 id="附录-C-深度专题：从零配置一个「安全且快」的网站（完整实操）"><a href="#附录-C-深度专题：从零配置一个「安全且快」的网站（完整实操）" class="headerlink" title="附录 C 深度专题：从零配置一个「安全且快」的网站（完整实操）"></a>附录 C 深度专题：从零配置一个「安全且快」的网站（完整实操）</h1><p>为了把前面各章串成一条可落地的路径，这里给出一个从零开始、把任意一个网站安全接上 Cloudflare 并加速的完整实操流程。假设你的网站运行在一台 Linux VPS 上，域名已经可以在某个注册商处管理。</p>
+<h2 id="C-1-第-0-步：确认当前网站架构"><a href="#C-1-第-0-步：确认当前网站架构" class="headerlink" title="C.1 第 0 步：确认当前网站架构"></a>C.1 第 0 步：确认当前网站架构</h2><p>在动手之前，先画清楚当前拓扑：</p>
+<ul>
+<li>你的网站监听哪个端口？如果是 80&#x2F;443，说明可以直接套 CDN；如果监听的是 8080、9090 这类非标准端口，或者前面还有一个反向代理（比如 Nginx Proxy Manager 只监听 81），那么拓扑会比较复杂，优先考虑 Tunnel。</li>
+<li>你当前有没有拿到合法证书？如果是自签证书，套 CDN 时记得选择「Full」模式（而非 Full 严格），因为自签证书默认不被 CF 信任；如果要用「Full 严格」，则要用 CF 的 Origin CA 签一张源站证书，或者使用 Let’s Encrypt。</li>
+<li>你的源站有没有暴露在公网？如果反代和源站都在同一台机器或同一内网，Tunnel 会是更省心的选择。</li>
+</ul>
+<p>把这些记下来，接下来的每一步就有清晰的判断依据。</p>
+<h2 id="C-2-第一步：把-DNS-交给-Cloudflare"><a href="#C-2-第一步：把-DNS-交给-Cloudflare" class="headerlink" title="C.2 第一步：把 DNS 交给 Cloudflare"></a>C.2 第一步：把 DNS 交给 Cloudflare</h2><ol>
+<li>在 Cloudflare 控制台点击「添加站点」，输入你的域名。</li>
+<li>Cloudflare 会提示你两条 Name Server（形如 <code>xxx.ns.cloudflare.com</code>）。</li>
+<li>回到域名注册商，找到「修改 DNS &#x2F; 修改 NS」的位置，把这两条 NS 填进去，保存。</li>
+<li>回到 CF，稍等片刻（通常几分钟到几十分钟）等待 NS 生效，然后在 CF 里「完成激活」。</li>
+</ol>
+<p>注意：很多授权（例如国内某些注册商）刚切换 NS 时需要时间生效，全球 DNS 的解析变更一般需要最长 48 小时。期间如果开启过 DNSSEC，必须把 CF 生成的 DS 记录同步到注册商，否则可能出现解析不了（SERVFAIL）的情况。</p>
+<h2 id="C-3-第二步：先全部用灰云验证再点亮橙云"><a href="#C-3-第二步：先全部用灰云验证再点亮橙云" class="headerlink" title="C.3 第二步：先全部用灰云验证再点亮橙云"></a>C.3 第二步：先全部用灰云验证再点亮橙云</h2><p>在 CF 的「DNS」页面：</p>
+<ol>
+<li>先把你现有的 A&#x2F;AAAA&#x2F;CNAME 记录照抄进去，保持状态为「仅 DNS」（灰云）。</li>
+<li>用灰云状态验证：<code>curl -I http://你的域名</code> 应该能正常返回你源站的内容，且响应里没有 <code>server: cloudflare</code> 字样（因为还没代理）。</li>
+<li>确认灰云正常后，逐条把需要保护的记录切到「已代理」（橙云）。一般网页域名、API 域名都建议橙云；如果某条记录是给内部工具用的高频 API，也可以保留灰云，但要清楚灰云不享受 CDN 和 WAF 保护。</li>
+</ol>
+<h2 id="C-4-第三步：配置-SSL-模式"><a href="#C-4-第三步：配置-SSL-模式" class="headerlink" title="C.4 第三步：配置 SSL 模式"></a>C.4 第三步：配置 SSL 模式</h2><p>在 CF 的「SSL&#x2F;TLS」页面：</p>
+<ul>
+<li>选择「完整」或「完整（严格）」。多数自建站点选「完整」即可，前提是源站也开了 443 且有证书。</li>
+<li>如果源站只有自签证书，选「完整」；若想让「完整（严格）」也能通过，去 CF 的「源站服务器」里签一张 Origin CA 证书装到源站。</li>
+<li>开启「始终使用 HTTPS」，让访问 http 的用户自动跳到 https。</li>
+</ul>
+<h2 id="C-5-第四步：加固源站，只信任-Cloudflare"><a href="#C-5-第四步：加固源站，只信任-Cloudflare" class="headerlink" title="C.5 第四步：加固源站，只信任 Cloudflare"></a>C.5 第四步：加固源站，只信任 Cloudflare</h2><p>这一步很多人会忽略，但却是「套了 CF 还是被攻」的头号原因：</p>
+<ol>
+<li>打开源站的防火墙（比如 iptables、firewalld、云安全组）。</li>
+<li>仅放行 Cloudflare 回源 IP 段对 80&#x2F;443 的访问。官方 IP 列表在 <code>https://www.cloudflare.com/ips-v4</code> 和 <code>https://www.cloudflare.com/ips-v6</code>。</li>
+<li>更严格的做法：在 CF 开启「验证源站拉取（Authenticated Origin Pulls）」，让源站只在 TLS 握手时出示 CF 签发的客户端证书才放行。</li>
+</ol>
+<p>做完这步之后，从外部直接访问你的源站 IP 应该无法得到内容，只有经过 CF 的回源流量能到达源站。</p>
+<h2 id="C-6-第五步：打开基础安全规则"><a href="#C-6-第五步：打开基础安全规则" class="headerlink" title="C.6 第五步：打开基础安全规则"></a>C.6 第五步：打开基础安全规则</h2><p>在 CF 的「安全」页面：</p>
+<ol>
+<li>打开「Cloudflare 托管规则集」（WAF），把常见攻击挡在边缘。</li>
+<li>在「速率限制」给登录、验证码、注册这类敏感接口单独加规则（例如每 5 分钟最多 20 次，超过则质询或封禁 10 分钟）。</li>
+<li>如果站点是公开内容，也不介意爬虫，可以只靠速率限制防刷；如果想要更强反爬，就需要了解 Bot 管理与免费版的 Bot Fight Mode。</li>
+</ol>
+<h2 id="C-7-第六步：确定缓存策略"><a href="#C-7-第六步：确定缓存策略" class="headerlink" title="C.7 第六步：确定缓存策略"></a>C.7 第六步：确定缓存策略</h2><ul>
+<li>静态资源（图片、CSS、JS、字体）让 CF 缓存，通常源站给出合理的 <code>Cache-Control: max-age</code> 就够了。</li>
+<li>页面 HTML 如果要缓存，需要考虑是否包含登录态、个性化内容。如果含登录态，建议不缓存或按是否登录区分 cache key。</li>
+<li>接口一定要即时性的话，源站给 <code>Cache-Control: no-store</code>。</li>
+<li>如果想强制对某些 URL 全缓存，可以用缓存规则（Cache Rules）或页面规则（Page Rules）的「Cache Everything」。</li>
+</ul>
+<h2 id="C-8-第七步：验证与持续观察"><a href="#C-8-第七步：验证与持续观察" class="headerlink" title="C.8 第七步：验证与持续观察"></a>C.8 第七步：验证与持续观察</h2><ol>
+<li>用 <code>curl -sI https://你的域名</code> 看响应头，确认 <code>server: cloudflare</code>、有 <code>cf-ray</code>，<code>cf-cache-status</code> 符合预期。</li>
+<li>打开 CF 的「分析」看流量与攻击分布。</li>
+<li>定期查看「安全」—「事件」，根据被拦截的类型微调规则。</li>
+<li>若接入后出现误伤（正常用户被拦截），检查挑战动作是否过严，必要时把 Managed Challenge 降为 Log 或放行白名单。</li>
+</ol>
+<h2 id="C-9-备选：用-Tunnel-替代「公网-IP-证书-端口」的折腾"><a href="#C-9-备选：用-Tunnel-替代「公网-IP-证书-端口」的折腾" class="headerlink" title="C.9 备选：用 Tunnel 替代「公网 IP + 证书 + 端口」的折腾"></a>C.9 备选：用 Tunnel 替代「公网 IP + 证书 + 端口」的折腾</h2><p>如果你嫌上面「开端口、装证书、配防火墙」太麻烦，或者源站根本在内网、没有公网 IP，可以直接走 Tunnel：</p>
+<ol>
+<li>在 VPS 上装 <code>cloudflared</code>。</li>
+<li><code>cloudflared tunnel login</code> 登录你的 CF 账号。</li>
+<li><code>cloudflared tunnel create my-tunnel</code> 建隧道。</li>
+<li>配置一条映射：把 <code>https://app.你的域名</code> 指向 <code>http://localhost:8080</code>。</li>
+<li><code>cloudflared tunnel route dns my-tunnel app.你的域名</code> 自动把 DNS 指向隧道。</li>
+<li>运行 <code>cloudflared tunnel run my-tunnel</code>。</li>
+</ol>
+<p>这样你的公网入口完全由 CF 接管，源站不出公网、不暴露任何端口，证书也由 CF 自动处理。对个人开发者做内网穿透、把本地服务临时对外演示，这是最省心的一条路。</p>
+<hr>
+<h1 id="附录-D-进阶：源码级边缘改造的几种模式"><a href="#附录-D-进阶：源码级边缘改造的几种模式" class="headerlink" title="附录 D 进阶：源码级边缘改造的几种模式"></a>附录 D 进阶：源码级边缘改造的几种模式</h1><p>很多「高级玩法」本质是在边缘写一点逻辑。这里归纳几种常见模式以及对应的实现载体。</p>
+<h2 id="D-1-只在边缘加一个响应头或改动页脚"><a href="#D-1-只在边缘加一个响应头或改动页脚" class="headerlink" title="D.1 只在边缘加一个响应头或改动页脚"></a>D.1 只在边缘加一个响应头或改动页脚</h2><p>需求：不想改源站，但希望所有响应都带一个安全头（比如 <code>Content-Security-Policy</code>），或者在页面注入一段统计脚本。</p>
+<ul>
+<li>载体：轻量的 Snippets 或一个 Worker 的 <code>fetch</code> handler 里 <code>new Response(body, &#123;headers&#125;)</code>。</li>
+<li>原理：Worker 拦截请求，请求源站拿到响应后，改写 header 或 body 再返回。</li>
+<li>注意：改写 body 会增加 CPU 开销；对超大响应，尽量只在入口页做，避免全站都改。</li>
+</ul>
+<h2 id="D-2-边缘开关与灰度发布"><a href="#D-2-边缘开关与灰度发布" class="headerlink" title="D.2 边缘开关与灰度发布"></a>D.2 边缘开关与灰度发布</h2><p>需求：新版本想先给 10% 用户看，或者按国家 &#x2F; 设备区别对待。</p>
+<ul>
+<li>载体：Worker 根据 <code>request.headers.get(&#39;CF-IPCountry&#39;)</code>、User-Agent，或 cookie 里的 A&#x2F;B 分组，路由到不同源站或返回不同版本。</li>
+<li>与 Load Balancing 的权重配合，可做精细的灰度。</li>
+</ul>
+<h2 id="D-3-HTTP-API-聚合与鉴权"><a href="#D-3-HTTP-API-聚合与鉴权" class="headerlink" title="D.3 HTTP API 聚合与鉴权"></a>D.3 HTTP API 聚合与鉴权</h2><p>需求：客户端一个请求，回源要拼好几个后端接口；或者要在边缘统一校验 token，别打到底层数据库。</p>
+<ul>
+<li>载体：Worker 做 BFF（后端前置），在边缘聚合多个 <code>fetch</code> 的结果，做一个 <code>Promise.all</code> 后再返回。</li>
+<li>鉴权：Worker 校验 <code>Authorization</code> &#x2F; API Key &#x2F; JWT，未通过直接 401，减轻源站与数据库压力。</li>
+</ul>
+<h2 id="D-4-定时任务与投递"><a href="#D-4-定时任务与投递" class="headerlink" title="D.4 定时任务与投递"></a>D.4 定时任务与投递</h2><p>需求：每天固定时间生成日报、检查服务健康、拉取数据并推送到指定频道（Telegram &#x2F; 邮件 &#x2F; webhook）。</p>
+<ul>
+<li>载体：Worker 的 <code>scheduled()</code> + <code>ctx.waitUntil()</code>，绑定 Cron Trigger。</li>
+<li>配合外部 API（如 Telegram Bot API、邮件 API）即可完成推送。</li>
+<li>相比 VPS 上常驻脚本的优点是：无服务器、无常驻进程、天然抗单机宕机。</li>
+</ul>
+<h2 id="D-5-数据在边缘的暂存与计数"><a href="#D-5-数据在边缘的暂存与计数" class="headerlink" title="D.5 数据在边缘的暂存与计数"></a>D.5 数据在边缘的暂存与计数</h2><p>需求：需要一个简单的计数器、去重集合、或缓存一份跨节点共享的配置。</p>
+<ul>
+<li>载体：Worker + KV（读多写少的键值）、或 D1（轻量关系数据）、或 Durable Objects（需要单实例状态）。</li>
+<li>场景举例：点赞计数、访客去重、配置中心、短链存储。</li>
+</ul>
+<h2 id="D-6-防范暴力破解登录的统一前置"><a href="#D-6-防范暴力破解登录的统一前置" class="headerlink" title="D.6 防范暴力破解登录的统一前置"></a>D.6 防范暴力破解登录的统一前置</h2><p>需求：给 N 个后端应用统一加一层登录防暴力破解，不必每个应用各自实现。</p>
+<ul>
+<li>载体：CF 的速率限制 + 一个 Worker（在边缘对登录端点做 IP + 账号维度的计数与封禁）。</li>
+<li>优点：改动全部在边缘，源站应用零改动。</li>
+</ul>
+<hr>
+<h1 id="附录-E-一些容易混淆的产品对比（避坑）"><a href="#附录-E-一些容易混淆的产品对比（避坑）" class="headerlink" title="附录 E 一些容易混淆的产品对比（避坑）"></a>附录 E 一些容易混淆的产品对比（避坑）</h1><table>
+<thead>
+<tr>
+<th>你想要的</th>
+<th>别选</th>
+<th>该选</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>隐藏源站 IP</td>
+<td>（把源站 IP 公开在 DNS 灰云）</td>
+<td>Tunnel &#x2F; 橙云 + 源站封段</td>
+</tr>
+<tr>
+<td>给内网服务开个公网口</td>
+<td>反复改防火墙开放端口</td>
+<td>Cloudflare Tunnel</td>
+</tr>
+<tr>
+<td>免费给域名邮箱收信</td>
+<td>自建整套邮箱</td>
+<td>Email Routing（入站）+ 第三方 SMTP（出站）</td>
+</tr>
+<tr>
+<td>免费托管静态网站</td>
+<td>买 VPS 自建 Nginx</td>
+<td>Cloudflare Pages</td>
+</tr>
+<tr>
+<td>定时执行一段脚本</td>
+<td>常驻 VPS cron 脚本</td>
+<td>Workers Cron</td>
+</tr>
+<tr>
+<td>给 API 加鉴权限流</td>
+<td>每个后端写死</td>
+<td>Worker + Rate Limiting</td>
+</tr>
+<tr>
+<td>缓存已登录的个性化页面</td>
+<td>Cache Everything 无脑缓存</td>
+<td>按 cookie 区分 cache key &#x2F; 不缓存登录态</td>
+</tr>
+<tr>
+<td>防超大 DDoS 打机房</td>
+<td>只靠单机 CDN</td>
+<td>Magic Transit（企业）</td>
+</tr>
+<tr>
+<td>想更懂网络层面</td>
+<td>只看业务日志</td>
+<td>看 Cloudflare 博客与 Learn Center</td>
+</tr>
+</tbody></table>
+<p>这类对比能帮助你在动手前就选对工具，少走弯路。</p>
+<hr>
+<h1 id="附录-F-小改怡情：把-Cloudflare-用到「妙」处的几个点子"><a href="#附录-F-小改怡情：把-Cloudflare-用到「妙」处的几个点子" class="headerlink" title="附录 F 小改怡情：把 Cloudflare 用到「妙」处的几个点子"></a>附录 F 小改怡情：把 Cloudflare 用到「妙」处的几个点子</h1><ul>
+<li>**用 Email Routing 给自己域名造一个 <code>hi@你的域名</code>**，无论网站还是对外名片都能用它。</li>
+<li><strong>用 Tunnel 把本机正在开发的 Web 应用临时暴露给朋友预览</strong>，一条 <code>cloudflared tunnel --url http://localhost:3000</code> 就够。</li>
+<li><strong>用 Worker 做短链服务</strong>：<code>/s/abc123</code> 在边缘 302 到目标 URL，配合 KV 存储，不占服务器。</li>
+<li><strong>用 Worker + KV 做一个简易访客计数器</strong>，展示在个人博客首页。</li>
+<li><strong>用 Pages 托管个人文档 &#x2F; 简历 &#x2F; 落地页</strong>，绑定 GitHub 后 push 即更新。</li>
+<li><strong>用 Workers Cron 每天拉取服务器状态并推送到 Telegram</strong>，常驻监控不求人。</li>
+<li><strong>用 R2 做对象存储 + 自建备份上传</strong>，避免依赖某个云存储厂商被限流。</li>
+<li><strong>用 CF DNS 的批量编辑与 Terraform</strong> 让域名配置进 Git，团队协作更规范。</li>
+<li><strong>用 Web Analytics（无需 cookie 横幅）</strong>给个人站点做轻量访客统计，兼顾隐私。</li>
+<li><strong>用 Page Shield 盯住页面第三方脚本</strong>，防止被插恶意代码而不自知。</li>
+</ul>
+<p>这些「小闭环」正好是个人开发者最容易即插即用的点，也是很多人持续使用 Cloudflare 的理由——不是因为它多强大，而是因为许多高频需求它都在免费层就给了答案。</p>
+<hr>
+<h1 id="附录-G-常见报文示例（速查）"><a href="#附录-G-常见报文示例（速查）" class="headerlink" title="附录 G 常见报文示例（速查）"></a>附录 G 常见报文示例（速查）</h1><p>以下是一些对接排错时常用的报文与命令，方便复制即用。</p>
+<h2 id="G-1-头部含义示例"><a href="#G-1-头部含义示例" class="headerlink" title="G.1 头部含义示例"></a>G.1 头部含义示例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/2 200</span><br><span class="line">server: cloudflare</span><br><span class="line">cf-ray: 1a2b3c4d5e6f7-PEK</span><br><span class="line">cf-cache-status: HIT</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>server: cloudflare</code>：请求确实经过了 CF 边缘。</li>
+<li><code>cf-ray</code> 末尾的区域码（如 <code>PEK</code>）表示命中的最近节点。</li>
+<li><code>cf-cache-status: HIT</code>：命中边缘缓存。</li>
+</ul>
+<h2 id="G-2-查看缓存状态"><a href="#G-2-查看缓存状态" class="headerlink" title="G.2 查看缓存状态"></a>G.2 查看缓存状态</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sI https://example.com | grep -i &#x27;cf-cache-status&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="G-3-测试是否经过-CF（看解析-IP）"><a href="#G-3-测试是否经过-CF（看解析-IP）" class="headerlink" title="G.3 测试是否经过 CF（看解析 IP）"></a>G.3 测试是否经过 CF（看解析 IP）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dig +short example.com</span><br><span class="line"># 若返回 104.16.x.x / 104.17.x.x / 172.67.x.x 等 CF 段，说明走了 CF</span><br></pre></td></tr></table></figure>
+
+<h2 id="G-4-查看-TLS-握手协议与证书"><a href="#G-4-查看-TLS-握手协议与证书" class="headerlink" title="G.4 查看 TLS 握手协议与证书"></a>G.4 查看 TLS 握手协议与证书</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl s_client -connect example.com:443 -servername example.com 2&gt;/dev/null | head</span><br></pre></td></tr></table></figure>
+
+<h2 id="G-5-Worker-本地开发与-tail"><a href="#G-5-Worker-本地开发与-tail" class="headerlink" title="G.5 Worker 本地开发与 tail"></a>G.5 Worker 本地开发与 tail</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrangler dev --local</span><br><span class="line">wrangler tail</span><br></pre></td></tr></table></figure>
+
+<h2 id="G-6-Tunnel-临时暴露"><a href="#G-6-Tunnel-临时暴露" class="headerlink" title="G.6 Tunnel 临时暴露"></a>G.6 Tunnel 临时暴露</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cloudflared tunnel --url http://localhost:8080</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="附录-H-接下来的学习路线"><a href="#附录-H-接下来的学习路线" class="headerlink" title="附录 H 接下来的学习路线"></a>附录 H 接下来的学习路线</h1><ol>
+<li>先把你手头的站点 &#x2F; 自建服务安全、稳定地接入 CF（本文附录 C 就是完整探路）。</li>
+<li>接着用免费能力把「个性化的小工具」搬到边缘：Pages 托管、Worker Cron、Tunnel 暴露。</li>
+<li>需要动态后端时，尝试 Worker + KV &#x2F; D1 &#x2F; R2 的小项目。</li>
+<li>有余力再看 Cloudflare 博客的深度文章，理解它背后是如何做到「又快又稳」的。</li>
+<li>需要正规安全合规的企业，研究 Zero Trust、Magic Transit 与相关认证（如 FedRAMP &#x2F; SOC 2 相关文档，在 Cloudflare Trust Hub 可查）。</li>
+</ol>
+<p>本书到此，希望你对 Cloudflare 的「用途」有了成体系的认知。真正把知识变成能力的关键，是在自己的小项目上动手一遍——把域名接进来、点亮橙云、加一条速率限制、写一个 Worker 定时任务，你会比读过一百遍文档更快地理解这个平台。</p>
+<hr>
+<p>（全书完）</p>
+<h1 id="附录-I-面向运维实战的常见问题速答"><a href="#附录-I-面向运维实战的常见问题速答" class="headerlink" title="附录 I 面向运维实战的常见问题速答"></a>附录 I 面向运维实战的常见问题速答</h1><h2 id="I-1-为什么有时候改了-DNS-但迟迟不生效"><a href="#I-1-为什么有时候改了-DNS-但迟迟不生效" class="headerlink" title="I.1 为什么有时候改了 DNS 但迟迟不生效"></a>I.1 为什么有时候改了 DNS 但迟迟不生效</h2><p>权威 DNS 由 Cloudflare 托管后，解析通常秒级生效，但用户侧递归服务器有自己的缓存。常见情况：</p>
+<ul>
+<li>浏览器缓存：强刷或换无痕窗口。</li>
+<li>系统 DNS 缓存：刷新本地 DNS 缓存。</li>
+<li>运营商递归缓存：等待 TTL 过期（一般几分钟到几十分钟）。</li>
+<li>如果切换过 NS，最长需要等待全球缓存自然过期，最长约 48 小时。</li>
+</ul>
+<p>排查时用 <code>dig @8.8.8.8 域名 A</code> 与本地 <code>dig 域名 A</code> 对比，通常能定位是「还差在哪里」。</p>
+<h2 id="I-2-明明开了缓存，为什么首屏还是慢"><a href="#I-2-明明开了缓存，为什么首屏还是慢" class="headerlink" title="I.2 明明开了缓存，为什么首屏还是慢"></a>I.2 明明开了缓存，为什么首屏还是慢</h2><p>缓存只解决静态资源与可缓存页面的重复请求。首屏第一次访问必然要经历 DNS → TCP → TLS → 回源全链路，原始延迟无法完全消除。</p>
+<ul>
+<li>如果回源链路本身很慢（例如跨境、跨运营商），首屏优化要靠：图片压缩、资源合并、开启 HTTP&#x2F;2&#x2F;3、使用 Argo 优化回源、或把源站放到更靠近用户的区域。</li>
+<li>如果源站响应很慢，CF 只能等到源站多久才能返回多久。先优化源站数据库查询、加缓存层等，再谈 CDN 收益。</li>
+</ul>
+<h2 id="I-3-Cloudflare-缓存与「登录态」的经典冲突"><a href="#I-3-Cloudflare-缓存与「登录态」的经典冲突" class="headerlink" title="I.3 Cloudflare 缓存与「登录态」的经典冲突"></a>I.3 Cloudflare 缓存与「登录态」的经典冲突</h2><p>很多开发者遇到过「改了代码用户还看旧页」的困境，常见原因：</p>
+<ul>
+<li>源站返回了 <code>Cache-Control: public, max-age=3600</code> 且 CF 开了 Cache Everything，导致登录态 &#x2F; 个性化内容被缓存。</li>
+<li>解法：对含登录态的页面，要么不开缓存，要么按 cookie（有没有登录）区分 cache key，要么响应头用 <code>Cache-Control: private, no-store</code>。</li>
+</ul>
+<h2 id="I-4-Worker-与-R2-的免费额度到底有多少"><a href="#I-4-Worker-与-R2-的免费额度到底有多少" class="headerlink" title="I.4 Worker 与 R2 的免费额度到底有多少"></a>I.4 Worker 与 R2 的免费额度到底有多少</h2><p>免费额度会随政策调整，应以官方定价页为准。大致的理解是：</p>
+<ul>
+<li>Workers：每天有一定数量的免费请求与 CPU 时间，超过后按量计费。</li>
+<li>R2：有免费的存储量与操作次数，超过后按量计费。</li>
+<li>KV &#x2F; D1 也有免费层与按量层。</li>
+</ul>
+<p>个人小项目通常在免费层内运行；规模化后会产生少量费用，但仍比自建一套边缘基础设施便宜得多。选型时把「免费额度是否够」作为是否进付费的基础，再结合你的流量预期来评估。</p>
+<h2 id="I-5-为什么有时候被-Cloudflare-拦住却不认识是哪个规则"><a href="#I-5-为什么有时候被-Cloudflare-拦住却不认识是哪个规则" class="headerlink" title="I.5 为什么有时候被 Cloudflare 拦住却不认识是哪个规则"></a>I.5 为什么有时候被 Cloudflare 拦住却不认识是哪个规则</h2><ul>
+<li>去「安全」—「事件」里按时间查看拦截记录，每次拦截都会标明命中的规则 ID。</li>
+<li>如果是 Managed Challenge 拦了，会显示威胁分数来源。</li>
+<li>如果规则太严想放行某类请求，用白名单或调整动作（从 Block 改为 Log）先观察。</li>
+</ul>
+<h2 id="I-6-Tunnel-与「公网暴露」的取舍是否安全"><a href="#I-6-Tunnel-与「公网暴露」的取舍是否安全" class="headerlink" title="I.6 Tunnel 与「公网暴露」的取舍是否安全"></a>I.6 Tunnel 与「公网暴露」的取舍是否安全</h2><p>Tunnel 让源站没有公网入站端口，攻击者少了一条直达源站的路径。但这不是「绝对安全」：</p>
+<ul>
+<li>只要定义了域名 + 认证（特别是 Access），才真正控制了谁能访问。</li>
+<li>若只是裸跑一个 <code>trycloudflare</code> 临时隧道且不做访问控制，任何拿到 URL 的人都能访问，所以要给重要的 Tunnel 域名接上 Access 策略。</li>
+<li>安全的组合是：Tunnel 暴露 + Access 认证 + Gateway 过滤，形成完整的零信任。</li>
+</ul>
+<h2 id="I-7-我的站点在国内能不能用-Cloudflare"><a href="#I-7-我的站点在国内能不能用-Cloudflare" class="headerlink" title="I.7 我的站点在国内能不能用 Cloudflare"></a>I.7 我的站点在国内能不能用 Cloudflare</h2><p>这个问题需要分情况：</p>
+<ul>
+<li>Cloudflare 的边缘节点在大陆地区没有广泛部署，多数用户会走海外节点，延迟和可用性可能波动；国内访问体验有时不如国内厂商。</li>
+<li>如果你的主要用户在国内，需要权衡：Cloudflare 的免费中国路线（或与本地厂商合作）可能需要额外条件与备案；若主要用户在国外，CF 反而是极佳选择。</li>
+<li>结合你业务的实际访客与合规需求，再决定是否用 CF 作为唯一入口，还是用 CF 做海外 &#x2F; 境外加速，国内另配云接入。</li>
+</ul>
+<h2 id="I-8-遇到「源站-521-522-523」是什么意思"><a href="#I-8-遇到「源站-521-522-523」是什么意思" class="headerlink" title="I.8 遇到「源站 521 &#x2F; 522 &#x2F; 523」是什么意思"></a>I.8 遇到「源站 521 &#x2F; 522 &#x2F; 523」是什么意思</h2><ul>
+<li><strong>521</strong>：源站拒绝连接（源站没在监听，或端口不对，或防火墙挡了 CF 回源段）。</li>
+<li><strong>522</strong>：链接超时（源站响应太慢，TCP 握手没完成）。</li>
+<li><strong>523</strong>：源站 IP 无法解析（回源域名解析失败）。</li>
+<li><strong>524</strong>：源站响应超时（源站处理超过了 CF 回源超时时间）。</li>
+</ul>
+<p>排查顺序：先确认源站实际健康（<code>curl http://127.0.0.1:80</code>），再看源站防火墙是否放行 CF 段，再看端口与域名指向是否正确，最后由慢到快逐层优化源站性能。</p>
+<h2 id="I-9-关于「Cloudflare-会限速或过检测」的一些理解"><a href="#I-9-关于「Cloudflare-会限速或过检测」的一些理解" class="headerlink" title="I.9 关于「Cloudflare 会限速或过检测」的一些理解"></a>I.9 关于「Cloudflare 会限速或过检测」的一些理解</h2><p>Cloudflare 对 CDN 流量并不会主动限制正常业务；但如果你的流量模式异常（如瞬间超高并发、疑似 Bot、或明显违反服务条款的内容），它可能触发挑战或流量限制。健康、合规、正常速率的站点基本不受影响。</p>
+<p>如果你是个人站点，关键是把返回码、缓存、源站性能这些基础项做好，不必担心「CF 会无缘无故查我」。CF 的价值在于：多数风险在边缘就被挡掉了，而不是让你自己去直面攻击。</p>
+<h2 id="I-10-迁移走-不再用-CF-时怎么平滑退出"><a href="#I-10-迁移走-不再用-CF-时怎么平滑退出" class="headerlink" title="I.10 迁移走 &#x2F; 不再用 CF 时怎么平滑退出"></a>I.10 迁移走 &#x2F; 不再用 CF 时怎么平滑退出</h2><ul>
+<li>先把需要直连的 DNS 记录改成灰云（DNS only），让流量不再经过 CF。</li>
+<li>或者直接把 NS 改回你自己的 DNS 或云厂商 DNS。改 NS 前先在自己的新 DNS 里把全部记录建好，避免解析真空。</li>
+<li>若要彻底下线，记得清理第三方对 CF 的依赖（比如 Tunnel、Worker 路由、R2 绑定、Email Routing 的 MX）。</li>
+<li>谨慎操作，逐步验证：先灰云，再改 NS，最后删除 CF 站点。</li>
+</ul>
+<hr>
+<h1 id="附录-J-术语里的常用「高频缩写」补充"><a href="#附录-J-术语里的常用「高频缩写」补充" class="headerlink" title="附录 J 术语里的常用「高频缩写」补充"></a>附录 J 术语里的常用「高频缩写」补充</h1><ul>
+<li><strong>TFO</strong> — Original IP 隐藏（源自 CDN 常用）。</li>
+<li><strong>PoP</strong> — Point of Presence，接入节点。</li>
+<li><strong>ASN</strong> — Autonomous System Number，自治域编号，用于按运营商&#x2F;网络做地理或路径判断。</li>
+<li><strong>OWASP CRS</strong> — OWASP 核心规则集，Web 攻击检测规则库。</li>
+<li><strong>BFF</strong> — Backend For Frontend，面向前端聚合后端的一种架构，可放在边缘实现。</li>
+<li><strong>BGP</strong> — Border Gateway Protocol，边界网关协议，Anycast 依赖它。</li>
+<li><strong>RUM</strong> — Real User Monitoring，真实用户监控。</li>
+<li><strong>RBI</strong> — Remote Browser Isolation，远程浏览器隔离。</li>
+<li><strong>Fetch 标准</strong> — Web 平台用于请求&#x2F;响应的标准 API，Worker 与浏览器一致。</li>
+<li><strong>Cache Key</strong> — 决定一条缓存如何被区分的一组请求特征。</li>
+<li><strong>Origin CA</strong> — Cloudflare 签发的源站证书，用来在「完整（严格）」模式下认证源站。</li>
+<li><strong>Authenticated Origin Pulls</strong> — 验证源站拉取，源站验证 CF 连接的机制。</li>
+</ul>
+<hr>
+<p>到这里，这份 Cloudflare 用途总结就完整了。愿你用它把网站、接口与自建服务打理得又快又稳、源站安全。如果你有任何具体的接入或排错需求，随时可以把现状发来，我们一起定位。</p>
+<p>（全书完）</p>
+
+  </div>
+
+  <footer class="article-reactions">
+    <div class="reaction-group">
+      <button type="button" class="reaction reaction--comment" aria-label="跳转到评论区" data-action="scroll-to-comments">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+
+      </button>
+      <span class="reaction-label">评论</span>
+    </div>
+    <div class="reaction-group reaction-group--right">
+      <button type="button" class="reaction reaction--share" aria-label="分享" data-action="share">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share-2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+
+      </button>
+      <span class="reaction-label">分享</span>
+    </div>
+  </footer>
+
+  
+
+
+  <nav class="article-actions">
+    
+      <span class="article-action article-action--prev is-disabled" aria-disabled="true">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+
+        <span class="action-label">上一篇</span>
+        <span class="action-title">没有更早的文章了</span>
+      </span>
+    
+    
+      <a class="article-action article-action--next" href="/2026/08/06/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/codex%E5%91%BD%E4%BB%A4%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95%E8%AF%A6%E8%A7%A3/">
+        <span class="action-label">下一篇</span>
+        <span class="action-title">codex命令费曼学习法详解</span>
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+
+      </a>
+    
+  </nav>
+</article>
+</div>
+
+
+
+      
+
+
+    </section>
+    
+  </main>
+
+  <div class="sidebar-backdrop js-sidebar-close" aria-hidden="true"></div>
+
+  
+<footer class="site-footer">
+  <span class="site-footer__left">© 2026 By Neko</span>
+  <span class="site-footer__right">Powered by Theme <a href="https://github.com/Homulilly/hexo-theme-flatpaper" target="_blank" rel="noopener">FlatPaper</a></span>
+</footer>
+
+  <div class="search-panel" aria-hidden="true">
+  <div class="search-backdrop js-search-close"></div>
+  <section class="search-dialog" role="dialog" aria-modal="true" aria-label="搜索文章">
+    <span class="tape tape--top-left" aria-hidden="true"></span>
+    <header class="search-head">
+      <h2><span class="green-dot"></span>搜索文章</h2>
+      <button class="icon-button js-search-close" type="button" aria-label="关闭搜索">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+
+      </button>
+    </header>
+    <label class="search-field">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+
+      <input id="flatpaper-search" class="search-input" type="search" placeholder="输入关键词，按 Esc 关闭" autocomplete="off">
+    </label>
+    <div class="search-results" data-empty="输入关键词后显示匹配的文章">
+      <p class="search-empty">输入关键词后显示匹配的文章</p>
+    </div>
+  </section>
+</div>
+
+<script type="application/json" id="flatpaper-post-index">
+[
+
+  {
+    "title": "cloudflare用途总结",
+    "url": "/2026/08/31/cloudflare/cloudflare%E7%94%A8%E9%80%94%E6%80%BB%E7%BB%93/",
+    "date": "2026-08-31",
+    "text": "Cloudflare 完全指南：产品、用途、架构与最佳实践 版本：2026 综合版 ｜ 定位：面向开发者、运维工程师与架构师的 Cloudflare 全景用途总结说明：本文聚焦「Cloudflare 能做什么、怎么用、什么时候用」，按产品线与用途分类展开，配官方文档索引与选型建议，内容力求全面而克制。 目录 第 1 章 什么是 Cloudflare 第 2 章 核心价值与全局架构 第 3 章 CD"
+  },
+
+  {
+    "title": "codex命令费曼学习法详解",
+    "url": "/2026/08/06/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/codex%E5%91%BD%E4%BB%A4%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95%E8%AF%A6%E8%A7%A3/",
+    "date": "2026-08-06",
+    "text": "Codex CLI 命令汇总：费曼学习法版 写作原则： 先讲”它是什么”，再讲”怎么用”，最后给” cheat sheet “。目标读者： 听说过 Codex 但还没用过的人。核心隐喻： Codex 就像一个”外包程序员”，你只要用自然语言告诉它要做什么，它就会自己改代码、跑测试、提交 commit。 第一部分：Codex 到底是什么？一句话解释Codex 是 OpenAI 做的一个命令行 AI "
+  },
+
+  {
+    "title": "Hermes Agent Skills 精选费曼详解",
+    "url": "/2026/08/04/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/Hermes%20Agent%20Skills%20%E7%B2%BE%E9%80%89%E8%B4%B9%E6%9B%BC%E8%AF%A6%E8%A7%A3/",
+    "date": "2026-08-04",
+    "text": "Hermes Agent Skills 精选费曼详解 说明：Skills Hub 当前可见约 17 个类别，总库约 96,883 个 skills。本章节从每个类别中精选 3 个 最具代表性的 skill，用费曼学习法讲透。目标：每个 skill 都让你“原来如此”，而不是“又背了一个术语”。方法：先给一个生活化类比，再讲它到底能干什么，最后给多个真实使用场景，并附上费曼学习法实践指南。 一、AI"
+  },
+
+  {
+    "title": "Hermes Agent Skills 用途详解（费曼学习法）",
+    "url": "/2026/08/04/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/Hermes%20Agent%20Skills%20%E7%94%A8%E9%80%94%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95%EF%BC%89/",
+    "date": "2026-08-04",
+    "text": "Hermes Agent Skills 用途详解（费曼学习法） 目标：把每个 Skill 都讲得像给小孩讲故事一样清楚。方法：先给一个生活化类比，再说它到底能干什么，最后给一个“什么时候你会需要它”的例子。说明：以下主要覆盖当前页面可见的内置 Skill，按类别分组，总字数超过 15000 字。 一、AI Agents（让 AI 帮你干活）1. apple-notes费曼类比：就像你有一个私人秘书"
+  },
+
+  {
+    "title": "hermes命令汇总",
+    "url": "/2026/08/04/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/hermes%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/",
+    "date": "2026-08-04",
+    "text": "Hermes 命令全解 — 费曼学习法版 用最直白的比喻，把 Hermes 的每一类命令讲清楚。读完你不需要背命令，只需要记住：「我在和一家 AI 公司对话，不同的入口做不同的事。」 先打一个总比喻 Hermes 像一家万能智能助理公司。你是老板，Hermes 是你的 AI 员工。命令，就是你和这家公司之间的所有沟通方式。 沟通方式 类比 终端 hermes xxx 你走进公司前台，签个字填个表 "
+  },
+
+  {
+    "title": "NodeSeek 论坛诈骗预防的认知决策框架研究",
+    "url": "/2026/08/03/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/NodeSeek%20%E8%AE%BA%E5%9D%9B%E8%AF%88%E9%AA%97%E9%A2%84%E9%98%B2%E7%9A%84%E8%AE%A4%E7%9F%A5%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6%E7%A0%94%E7%A9%B6/",
+    "date": "2026-08-03",
+    "text": "NodeSeek 论坛诈骗预防的认知决策框架研究——基于加里·克莱因自然istic决策理论的系统性分析摘要： 本文以加里·克莱因（Gary A. Klein）的自然istic决策理论（Naturalistic Decision Making, NDM）为核心框架，以 NodeSeek 论坛 21 起真实诈骗案例为经验基础，系统分析论坛交易环境中受害者的决策崩溃机制与骗子的模式利用策略。研究发现，诈"
+  },
+
+  {
+    "title": "NodeSeek 论坛诈骗的助推机制与防范架构研究",
+    "url": "/2026/08/03/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/NodeSeek%20%E8%AE%BA%E5%9D%9B%E8%AF%88%E9%AA%97%E7%9A%84%E5%8A%A9%E6%8E%A8%E6%9C%BA%E5%88%B6%E4%B8%8E%E9%98%B2%E8%8C%83%E6%9E%B6%E6%9E%84%E7%A0%94%E7%A9%B6/",
+    "date": "2026-08-03",
+    "text": "NodeSeek 论坛诈骗的助推机制与防范架构研究——基于理查德·泰勒「助推」理论的系统性分析摘要： 本文以理查德·泰勒与卡斯·桑斯坦《助推》理论为核心框架，以 NodeSeek 论坛 21 起真实诈骗案例为经验基础，系统分析论坛交易环境中骗子的”助推”行为与平台”逆向选择架构”之间的因果关系。研究发现，骗子的成功并非源于技术漏洞，而是利用平台默认设置、认知捷径和社会心理效应，对受害者的 Syst"
+  },
+
+  {
+    "title": "NodeSeek 论坛及关联 TG 频道诈骗案例深度分析报告",
+    "url": "/2026/08/03/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/NodeSeek%20%E8%AE%BA%E5%9D%9B%E5%8F%8A%E5%85%B3%E8%81%94%20TG%20%E9%A2%91%E9%81%93%E8%AF%88%E9%AA%97%E6%A1%88%E4%BE%8B%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/",
+    "date": "2026-08-03",
+    "text": "NodeSeek 论坛及关联 TG 频道诈骗案例深度分析报告——基于福尔摩斯演绎法的行为模式、心理操控与防范体系研究生成时间: 2026-08-13（更新）样本数量: 34 起真实案例（原始 21 起 + 新增 13 起）数据来源: NodeSeek 论坛完整正文 + 关联 TG 频道分析方法: 福尔摩斯演绎法（观察→假设→验证） 摘要本文以 NodeSeek 论坛 34 起真实诈骗案例为样本（原"
+  },
+
+  {
+    "title": "测试rabisu de",
+    "url": "/2026/07/03/vps/%E6%B5%8B%E8%AF%95rabisu/",
+    "date": "2026-07-03",
+    "text": "💻基本信息 🎬IP质量 🌐网络质量 📍回程路由 NodeQuality链接"
+  },
+
+  {
+    "title": "美股日报定时任务解析",
+    "url": "/2026/07/01/%E7%BE%8E%E8%82%A1/%E7%BE%8E%E8%82%A1%E6%97%A5%E6%8A%A5%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A7%A3%E6%9E%90/",
+    "date": "2026-07-01",
+    "text": "Cron Job: 美股收盘日报Job ID: e66994714786Run Time: 2026-06-27 07:35:54Schedule: 30 7 * * 2-6 Prompt[IMPORTANT: You are running as a scheduled cron job. DELIVERY: Your final response will be automatically d"
+  },
+
+  {
+    "title": "ai定时报告",
+    "url": "/2026/07/01/%E7%BE%8E%E8%82%A1/ai%E5%AE%9A%E6%97%B6%E6%8A%A5%E5%91%8A/",
+    "date": "2026-07-01",
+    "text": "123456789101112131415**① 数据采集脚本**• 关键文件: /root/.hermes/scripts/market_data_collector.py• 说明: 使用 Yahoo Finance 的公开 API（https://query1.finance.yahoo.com/v8/finance/chart/&lt;symbol&gt;）抓取最近 5 天的行情数据。脚本会"
+  },
+
+  {
+    "title": "docker以及docker-compose安装",
+    "url": "/2026/06/29/docker%E5%BA%94%E7%94%A8/docker%E4%BB%A5%E5%8F%8Adocker-compose%E5%AE%89%E8%A3%85/",
+    "date": "2026-06-29",
+    "text": "docker安装脚本1bash &lt;(curl -sSL https://cdn.jsdelivr.net/gh/SuperManito/LinuxMirrors@main/DockerInstallation.sh) 1docker --version docker-compose安装脚本1curl -L &quot;https://github.com/docker/compose/rel"
+  },
+
+  {
+    "title": "komari探针监控",
+    "url": "/2026/06/29/vps/komari%E6%8E%A2%E9%92%88%E7%9B%91%E6%8E%A7/",
+    "date": "2026-06-29",
+    "text": "1.创建docker-compose.yml 文件1nano docker-compose.yml 2.写入文件1234567891011121314version: &quot;3.8&quot;services: komari: image: ghcr.io/komari-monitor/komari:latest restart: unless-stopped volumes: - ./da"
+  },
+
+  {
+    "title": "动漫日报",
+    "url": "/2026/06/24/%E6%97%A5%E6%8A%A5/%E5%8A%A8%E6%BC%AB%E6%97%A5%E6%8A%A5/",
+    "date": "2026-06-24",
+    "text": "12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210"
+  },
+
+  {
+    "title": "美股收盘日报",
+    "url": "/2026/06/23/%E7%BE%8E%E8%82%A1/%E7%BE%8E%E8%82%A1%E6%94%B6%E7%9B%98%E6%97%A5%E6%8A%A5/",
+    "date": "2026-06-23",
+    "text": "12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210"
+  },
+
+  {
+    "title": "测试 nosla us",
+    "url": "/2026/06/22/vps/%E6%B5%8B%E8%AF%95nosla%20us/",
+    "date": "2026-06-22",
+    "text": "💻基本信息 🎬IP质量 🌐网络质量 📍回程路由 NodeQuality链接"
+  },
+
+  {
+    "title": "测试 zrouter.io jp",
+    "url": "/2026/06/20/vps/%E6%B5%8B%E8%AF%95zrouter.io%20jp/",
+    "date": "2026-06-20",
+    "text": "已经投稿到nodeseek https://www.nodeseek.com/post-785575-1 💻基本信息 🎬IP质量 🌐网络质量 📍回程路由 NodeQuality链接"
+  },
+
+  {
+    "title": "nginx proxy manager安装",
+    "url": "/2026/06/20/docker%E5%BA%94%E7%94%A8/nginxproxymanager%E5%AE%89%E8%A3%85/",
+    "date": "2026-06-20",
+    "text": "1.Create a docker-compose.yml file similar to this:1234567891011121314services: app: image: &#x27;jc21/nginx-proxy-manager:2.15.1&#x27; restart: unless-stopped environment: TZ: &quot;Australia/Brisban"
+  },
+
+  {
+    "title": "docker安装",
+    "url": "/2026/06/20/docker%E5%BA%94%E7%94%A8/ubuntudocker%E5%AE%89%E8%A3%85/",
+    "date": "2026-06-20",
+    "text": "Ubuntu Docker 安装（Markdown 版本） 来源：https://www.runoob.com/docker/ubuntu-docker-install.html Ubuntu Docker 安装Docker Engine-Community 支持以下的 Ubuntu 版本： Xenial 16.04 (LTS) Bionic 18.04 (LTS) Cosmic 18.10 Di"
+  },
+
+  {
+    "title": "chatgpt生图生日",
+    "url": "/2026/06/18/%E5%9B%BE%E8%A7%A3/chatgpt%E7%94%9F%E5%9B%BE%E7%94%9F%E6%97%A5/",
+    "date": "2026-06-18",
+    "text": "1234将用户提供的生日人物照片转化为精致纪念封面式视觉，保留人物的真实相貌、年龄气质、发型、主要服装特征和自然表情，让人物坐入或倚靠在一个巨型年龄数字形成的立体墙面凹槽中。年龄数字是画面的第一视觉锚点，像被干净浅色墙体切出的厚实雕塑空间，内侧有明确深度、柔和阴影和细腻石膏肌理；人物身体与数字边缘产生真实接触，局部手脚或衣摆轻微越出凹槽，让数字既是背景也是座位和舞台。数字内部由生日主题派生的庆祝物"
+  },
+
+  {
+    "title": "chatgpt涂鸦板",
+    "url": "/2026/06/18/%E5%9B%BE%E8%A7%A3/chatgpt%E6%B6%82%E9%B8%A6%E6%9D%BF/",
+    "date": "2026-06-18",
+    "text": "1请将整个图像转化为单一的装饰性民间平面插图，融入涂鸦元素。使用大胆而俏皮的色彩调色板，与原图像完全不同。将所有细节简化为干净、平面的形状，带有手工制作、略显不完美的感觉，仿佛画在一张白纸上。整体风格应显得可爱、童趣十足且异想天开"
+  },
+
+  {
+    "title": "世界杯直播源docker部署",
+    "url": "/2026/06/11/docker%E5%BA%94%E7%94%A8/%E4%B8%96%E7%95%8C%E6%9D%AF%E7%9B%B4%E6%92%AD%E6%BA%90docker%E9%83%A8%E7%BD%B2/",
+    "date": "2026-06-11",
+    "text": "FIFAUHD Docker 使用说明镜像1iptvtop/uhdiptv:latest 支持架构： 123linux/amd64linux/arm/v7linux/arm64 容器内部端口： 18766 建议对外端口： 138766 Docker 启动1docker run -d --name uhdiptv --restart=always -p 38766:8766 iptvtop/uhdi"
+  },
+
+  {
+    "title": "AIchatgpt api key free",
+    "url": "/2026/06/09/chatgpt%20%E4%B8%AD%E8%BD%AC/AIchatgpt-api-key-free/",
+    "date": "2026-06-09",
+    "text": "10000刀Codex福利URL：https://qianxing-ai.cc.cd/v1 https://qianxing-ai.cc.cdAPI Key：sk-jMbbEkoGR51dBRmx91qyuXieZhdkWplkcoZLDqLs9N0YkCX4q群：https://qm.qq.com/q/NWDvL5vlGa 端点：https://688.qzz.io/ 500刀key：sk-kZ"
+  },
+
+  {
+    "title": "机场",
+    "url": "/2026/06/09/%E6%9C%BA%E5%9C%BA/%E6%9C%BA%E5%9C%BA/",
+    "date": "2026-06-09",
+    "text": "warnging养号还是使用自己的vpsip 魔戒 良心云 精灵学院 红杏云 虎云"
+  },
+
+  {
+    "title": "AI视频增强",
+    "url": "/2026/06/08/AI%E8%A7%86%E9%A2%91/AI%E8%A7%86%E9%A2%91%E5%A2%9E%E5%BC%BA/",
+    "date": "2026-06-08",
+    "text": "你想提升视频分辨率，也就是做 AI 视频超分辨率（Upscaling &#x2F; Super-Resolution），现在有几种免费工具和方案可以使用。下面我按类型给你整理，方便快速选择： 1. 在线 AI 视频增强网站（无需安装） 工具 特点 限制 VEED AI 简单在线操作，支持放大至1080p或4K 免费版视频长度有限制、水印 Pixop 支持视频AI去噪和超分辨率 免费体验有限 Dee"
+  },
+
+  {
+    "title": "ip送中拯救",
+    "url": "/2026/06/08/ip/ip%E9%80%81%E4%B8%AD%E6%8B%AF%E6%95%91/",
+    "date": "2026-06-08",
+    "text": "from : https://www.nodeseek.com/post-503481-1前段时间绿云多个ip段被集体送中，我是其中之一，虽然是集体送中，但也拉回来了，下面是方法。 第一，先去向谷歌报告IP问题：https://support.google.com/websearch/workflow/9308722 第二，用插件改定位1.先去Google账号设置页面将 活动记录 打开，如图ima"
+  },
+
+  {
+    "title": "有序数组的平方",
+    "url": "/2026/06/06/algo%E7%AE%97%E6%B3%95/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/",
+    "date": "2026-06-06",
+    "text": "leetcode 977Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order. Example 1: Input: nums &#x3D; [-4,-1,0,3,10]Output"
+  },
+
+  {
+    "title": "移除元素",
+    "url": "/2026/06/06/algo%E7%AE%97%E6%B3%95/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/",
+    "date": "2026-06-06",
+    "text": "leetcode 27 Remove ElementEasyTopicspremium lock iconCompaniesHintGiven an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be chang"
+  },
+
+  {
+    "title": "hexo迁移到别的仓库",
+    "url": "/2026/06/04/hexo/hexo%E8%BF%81%E7%A7%BB%E5%88%B0%E5%88%AB%E7%9A%84%E4%BB%93%E5%BA%93/",
+    "date": "2026-06-04",
+    "text": "重新部署git 1npm i hexo-deployer-git"
+  },
+
+  {
+    "title": "chatgpt老照片修复",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E8%80%81%E7%85%A7%E7%89%87%E4%BF%AE%E5%A4%8D/",
+    "date": "2026-06-01",
+    "text": "1234567891011121314151617181920212223242526272829303132333435请对我提供的这张老照片进行“档案级高保真修复 + 现代高端 Sony 全画幅相机质感重建”。核心目标：不是把它重新画一遍，也不是简单美颜翻新，而是在严格忠于原始照片内容的前提下，最大程度修复老照片中的损伤、模糊、过曝和细节缺失，使最终效果尽可能接近：如果同一瞬间由现代高端 So"
+  },
+
+  {
+    "title": "chatgpt少儿科幻科普风",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E5%B0%91%E5%84%BF%E7%A7%91%E5%B9%BB%E7%A7%91%E6%99%AE%E9%A3%8E/",
+    "date": "2026-06-01",
+    "text": "不通用，太过固定12345678910111213141516171819202122232425262728用 ChatGPT-Image2 生成一张【少儿科幻科普风】水果剖面分析图，主题为：苹果【剖面图】。画面比例参考竖版科普海报，整体风格干净、高级、信息密集但不杂乱，类似儿童科学百科插画 + 3D写实剖面图 + 信息图表排版。主体画面：中心放置一个巨大红苹果，一半展示完整外部形态，一半展示清"
+  },
+
+  {
+    "title": "chatgpt证件照",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E8%AF%81%E4%BB%B6%E7%85%A7/",
+    "date": "2026-06-01",
+    "text": "生成证件照，必须在chatgpt中调用生成图片123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051你是一个中国证件照生成助手。请严格按照以下流程执行。第一步：先根据用户上传的参考照片，询问用户要制作的证件照参数，不要直接生成图片。请向用户提问：1. 请选择证件照背景"
+  },
+
+  {
+    "title": "chatgpt菜谱",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E8%8F%9C%E8%B0%B1/",
+    "date": "2026-06-01",
+    "text": "chatgpt菜谱123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899生成"
+  },
+
+  {
+    "title": "chatgpt海报",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E6%B5%B7%E6%8A%A5/",
+    "date": "2026-06-01",
+    "text": "chatgpt毕业照12345根据我的人物肖像自动生成一张收藏版史诗叙事海报(毕业照:巨大的我的侧脸剪影作为外轮廓，剪影内部自动生长出最契合该主题的完整世界观、标志性场景、角色关系、象征符号、关键建筑、生物、道具与氛围(校园+毕业)。整体不是普通拼贴，而是高级的剪影轮廓填充式叙事合成，带有双重曝光式联想，但更偏电影海报与梦幻水彩插画融合格;柔和空气透视，轻雾化过波，纸张颗粒，边缘白与刷痕，大面积留"
+  },
+
+  {
+    "title": "it.tools",
+    "url": "/2026/05/29/docker%E5%BA%94%E7%94%A8/it-tools/",
+    "date": "2026-05-29",
+    "text": "github 项目 it.tools 网页安装 [it tool] (https://github.com/corentinth/it-tools) 1docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest"
+  },
+
+  {
+    "title": "二分搜索法",
+    "url": "/2026/05/27/algo%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E6%B3%95/",
+    "date": "2026-05-27",
+    "text": "letcode 704在一个数组里，找一个target, 判断target 是否在数组中，如果在返回对应的数组下标,没找到返回-1 Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. "
+  },
+
+  {
+    "title": "ffmpeg常用命令汇总",
+    "url": "/2026/05/26/ffmpeg/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/",
+    "date": "2026-05-26",
+    "text": "FFmpeg 常用命令汇总（2026最新整理） FFmpeg 是功能最强大的音视频处理工具，命令基本格式： 1ffmpeg [全局选项] &#123;[输入选项] -i 输入文件&#125;... &#123;[输出选项] 输出文件&#125; 1. 基础信息查询 命令 作用 ffmpeg -version 查看版本 ffmpeg -h 帮助信息 ffmpeg -formats 支持的封装格式 f"
+  },
+
+  {
+    "title": "ffmpeg 自用命令",
+    "url": "/2026/05/26/ffmpeg/ffmpeg%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/",
+    "date": "2026-05-26",
+    "text": "mp3 + 背景图片1ffmpeg -loop 1 -framerate 1 -i cover.jpg -i audio.mp3 -vf &quot;scale=trunc(iw/2)*2:trunc(ih/2)*2,format=yuv420p&quot; -c:v libx264 -tune stillimage -c:a copy -shortest output.mp4 mp3 + 背景图"
+  },
+
+  {
+    "title": "blog_todolist20260525",
+    "url": "/2026/05/25/blog/blog-todolist20260525/",
+    "date": "2026-05-25",
+    "text": "待办事项 博客categroy有问题,待修复 1已经解决 添加工具包网页 添加vps 查询网页 添加常用vps 添加好用的谷歌扩展 添加近期的game 搜索一些自己需要的单页应用，可以自己部署"
+  },
+
+  {
+    "title": "科学上网",
+    "url": "/2026/05/24/tools/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/",
+    "date": "2026-05-24",
+    "text": "🔰 科学上网软件分享 请大家根据使用的系统下载对应的软件，主流的软件是V2ray、Clash、Shadowrocket 软件使用教程：点击打开>> 🪟 Windows软件下载 v2rayN 点击下载>> Clash 点击下载>> Clash Verge 点击下载>> Clash Party 点击下载>> 📱 安卓APP下载 v2rayNG APP下载>> Clash APP下载>> Clas"
+  },
+
+  {
+    "title": "图解项目",
+    "url": "/2026/05/20/%E5%9B%BE%E8%A7%A3/%E5%9B%BE%E8%A7%A3%E9%A1%B9%E7%9B%AE/",
+    "date": "2026-05-20",
+    "text": "Nginx Proxy Manager gh-proxy edgetunnel 1Panel homepage anchor cloudmail ImgBed blog 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162"
+  },
+
+  {
+    "title": "电子书网站合集",
+    "url": "/2026/05/20/tools/%E7%94%B5%E5%AD%90%E4%B9%A6%E7%BD%91%E7%AB%99%E5%90%88%E9%9B%86/",
+    "date": "2026-05-20",
+    "text": "📚 电子书 &#x2F; 学术资源网站合集 整理时间：2026类型：电子书｜论文｜教材｜漫画｜Kindle｜古籍｜搜书引擎适合：Kindle 用户、程序员、学生、科研党、小说爱好者 🔥 常用核心资源站（推荐收藏） 网站 类型 特点 Z-Library 综合电子书 小说 &#x2F; 畅销书 &#x2F; Kindle 资源丰富 WeLib 综合搜索 类似 Anna’s Archive，中文友好"
+  },
+
+  {
+    "title": "nextcloud网盘",
+    "url": "/2026/05/16/docker%E5%BA%94%E7%94%A8/nextcloud%E7%BD%91%E7%9B%98/",
+    "date": "2026-05-16",
+    "text": "# 小白研究所: 搭建专属私人云盘 Nextcloud ｜解锁 VPS 隐藏玩法｜抛弃限速网盘 安装 Docker1curl -fsSL https://get.docker.com | bash -s docker &amp;&amp; systemctl enable --now docker 创建项目目录1mkdir nextcloud &amp;&amp; cd nextcloud 创建 "
+  },
+
+  {
+    "title": "1Panel搭建",
+    "url": "/2026/05/16/docker%E5%BA%94%E7%94%A8/1Panel%E6%90%AD%E5%BB%BA/",
+    "date": "2026-05-16",
+    "text": "最强 VPS 可视化面板 1Panel｜让你的 VPS 像 Windows 一样好用原文：小白研究所 VPS-1Panel 教程 一、什么是 1Panel 面板？1Panel 是一款现代化、开源免费的 Linux 服务器运维管理面板。 (xbiit.net) 它可以： 通过网页图形界面管理 VPS 不再依赖复杂 Linux 命令 基于 Docker 容器技术 应用彼此隔离 更安全、更轻量 官方： "
+  },
+
+  {
+    "title": "自用服务器脚本大全",
+    "url": "/2026/05/15/linux%E8%BF%90%E7%BB%B4/%E8%87%AA%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/",
+    "date": "2026-05-15",
+    "text": "自用服务器脚本大全：一键测评、工具与部署指南来源：CMLiussss Blog 自用常用脚本汇总 主要是自用备忘，不要当成推荐表单，使用后果自负！ 1apt update &amp;&amp; apt install -y sudo curl unzip 测评类IP质量体检脚本1bash &lt;(curl -Ls IP.Check.Place) VPS融合怪服务器测评脚本1curl -L htt"
+  },
+
+  {
+    "title": "Hexo博客美化",
+    "url": "/2026/05/15/hexo/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/",
+    "date": "2026-05-15",
+    "text": "〖Hexo博客系列〗No.2 美化Hexo博客，教你如何安装和美化Hexo博客 原文：CMLiussss Blog HexoBlogNo2 美化Hexo博客，主题安装配置这期教程演示将使用一款基于 hexo-theme-butterfly 修改的主题 —— 安知鱼（AnZhiYu）。 项目地址：https://github.com/anzhiyu-c/hexo-theme-anzhiyu 官方文档"
+  },
+
+  {
+    "title": "ip测试工具",
+    "url": "/2026/05/15/linux%E8%BF%90%E7%BB%B4/ip%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/",
+    "date": "2026-05-15",
+    "text": "原文地址： https://potoh.com/iptest/IP 工具这里整理了常用的 IP 查询、延迟测试、分流检测和网络测速工具，便于直接打开使用。 工具列表 whatismyipaddress查询当前网络IP地址，快速查看出口位置与基础网络信息 ping0识别当前IP 类型，适合快速判断住宅、机房或代理特征 ITDOG Ping多地 Ping 与延迟测试工具，可查看不同地区的连接表现。 I"
+  },
+
+  {
+    "title": "hexo入门",
+    "url": "/2026/05/15/hexo/hexo%E5%85%A5%E9%97%A8/",
+    "date": "2026-05-15",
+    "text": "Hexo 常用命令总结1234567# Hexo 常用命令总结## 一、初始化与安装### 安装 Hexo CLI```bashnpm install -g hexo-cli 创建博客项目1hexo init blog 进入项目目录1cd blog 安装依赖1npm install 二、启动与预览启动本地服务器1hexo server 简写： 1hexo s 默认访问： 1http://local"
+  },
+
+  {
+    "title": "docker常用命令",
+    "url": "/2026/05/15/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/",
+    "date": "2026-05-15",
+    "text": "Docker 常用命令总结1. Docker 基础概念 名称 说明 Image（镜像） 类似系统模板 Container（容器） 镜像运行后的实例 Volume（数据卷） 持久化数据 Network（网络） 容器通信 2. Docker 信息查看查看 Docker 版本1docker -v 查看 Docker 详细信息1docker info 查看 Docker 帮助1docker --help "
+  },
+
+  {
+    "title": "homepage安装",
+    "url": "/2026/05/15/docker%E5%BA%94%E7%94%A8/homepage%E5%AE%89%E8%A3%85/",
+    "date": "2026-05-15",
+    "text": "找到一个路径，创建homepagestack文件夹，在homepagestack中创建homepage-1，在homepage-1中创建config和docker-compose.yml 粘贴下面的代码，按需进行修改 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748vers"
+  },
+
+  {
+    "title": "5元购买xyz二级域名",
+    "url": "/2026/05/15/%E5%9F%9F%E5%90%8D/5%E5%85%83%E8%B4%AD%E4%B9%B0xyz%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/",
+    "date": "2026-05-15",
+    "text": "每年不到5元，即可购买一个xyz二级域名，可以无限创建子域名低价域名的介绍 xyz域名的介绍：介绍1.111B类.xyz域名 低价域名的格式：长度为6、7、8和9位，从 000000.xyz 到 999999999.xyz 第一步：准备下面的工具 Spaceship域名注册 :点击跳转 域名批量注册查询工具: 点击跳转 Cloudflare官网(需要魔法上网):点击跳转 第二步：注册Spacesh"
+  },
+
+  {
+    "title": "vscode快捷键",
+    "url": "/2026/05/13/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/",
+    "date": "2026-05-13",
+    "text": "VS Code 常用快捷键大全（以 Windows&#x2F;Linux 为主，macOS 对应键已注明） 1. 通用操作 功能 Windows&#x2F;Linux macOS 打开命令面板 Ctrl + Shift + P &#x2F; F1 Cmd + Shift + P 快速打开文件 Ctrl + P Cmd + P 打开设置 Ctrl + , Cmd + , 打开键盘快捷键设置 Ctrl"
+  },
+
+  {
+    "title": "ubuntu系统DHCP节点转换为静态IP",
+    "url": "/2026/05/10/linux%E8%BF%90%E7%BB%B4/ubuntu%E7%B3%BB%E7%BB%9FDHCP%E8%8A%82%E7%82%B9%E8%BD%AC%E6%8D%A2%E4%B8%BA%E9%9D%99%E6%80%81IP/",
+    "date": "2026-05-10",
+    "text": "查看本机的ip 192.168.0.0 - 192.168.255.255 为自己本机ip段，我们只许看192起始的ip 1ip addr 查看本机gateway ip,192.168.164.2 dev ens33 确认192.168.164.2是gateway ip 1ip route 转换为root用户 1sudo su 输入neko 用户的密码（12345678） 修改netplan 配置"
+  },
+
+  {
+    "title": "vmware安装ubuntu虚拟机",
+    "url": "/2026/05/10/linux%E8%BF%90%E7%BB%B4/vmare%E5%AE%89%E8%A3%85ubuntu/",
+    "date": "2026-05-10",
+    "text": "linux系统安装操作准备 vmware 需要自己下载，等待后续补充下载链接，官网：https://www.vmware.com/ ubuntu 系统镜像 （https://releases.ubuntu.com/noble/ubuntu-24.04.4-live-server-amd64.iso） linuxmint 系统镜像 ( https://mirror.clarkson.edu/linu"
+  },
+
+  {
+    "title": "读书-生图",
+    "url": "/2026/05/10/%E5%9B%BE%E8%A7%A3/%E4%B9%A6%E7%B1%8D%E7%94%9F%E5%9B%BE/",
+    "date": "2026-05-10",
+    "text": "苏菲的世界 安德的游戏 蒙台梭利教育法 重新认知学习 反脆弱 黑天鹅 林中雨滴 大自然的日历 力量之源 chatgpt生成图片提示词12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717"
+  },
+
+  {
+    "title": "blog 的待办事项",
+    "url": "/2026/05/10/blog/blog-todolist/",
+    "date": "2026-05-10",
+    "text": "blog 代办事项20260510 每个blog 单独的图片，图片地址指向自己的图床网站 done 背景音乐集设置为自己喜欢的 创建游戏，算法等项目板块 将文章设为不同的板块 专门一篇文章介绍hexo 的使用"
+  },
+
+  {
+    "title": "每周分享01",
+    "url": "/2026/04/27/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB01/",
+    "date": "2026-04-27",
+    "text": "每周分享第 1 期这里记录过去一周，我看到的值得分享的东西。 模仿阮一峰大佬，把它写成文章，共享出来，也许效果更好。 VPS免费的vps免费的vps查找了一周，基本上都需要国外的银行卡，或者虚拟货币，不可行。 付费的vps这个网站有个$7&#x2F;yr 的套餐，支持支付宝支付。可以尝试下。 49一年的vpshttps://ccp.bitsflow.cloud/order/cart/index/7"
+  },
+
+  {
+    "title": "Cloudflare免费节点优化",
+    "url": "/2026/04/24/cloudflare/Cloudflare%E5%85%8D%E8%B4%B9%E8%8A%82%E7%82%B9%E4%BC%98%E5%8C%96/",
+    "date": "2026-04-24",
+    "text": "主要目标使用 Clouflare 搭建的节点，在使用默认功能优选节点时，由于使用的人数较多，导致节点能用但延迟较高、不稳定且大量节点无法连接，本期从根本原因出发，按优先级逐步优化，帮你把延迟从 1000ms+ 降到 500ms 以内，确保秒开4K视频，且播放速度稳定。 主要内容 流量链路分析：延迟高的三个根因 修复 ProxyIP：消除大量连接失败节点（必做） CloudflareSpeedTes"
+  },
+
+  {
+    "title": "我的域名汇总",
+    "url": "/2026/04/24/%E5%9F%9F%E5%90%8D/%E5%85%8D%E8%B4%B9%E5%9F%9F%E5%90%8D%E6%B1%87%E6%80%BB-md/",
+    "date": "2026-04-24",
+    "text": "我注册的免费域名： https://www.gname.net/ nekomini.eu.cc syaoran.eu.cc https://my.dnshe.com/index.php?m=domain_hub nekomini.ccwu.cc syaoran-moon.ccwu.cc syaoran.ccwu.cc"
+  },
+
+  {
+    "title": "算法学习记录",
+    "url": "/2026/04/23/algo%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/",
+    "date": "2026-04-23",
+    "text": "target target1: 把bilibili 卡尔算法170 rush 三遍 数组 5 链表 6 哈希表 6 字符串 6 栈与队列 7 二叉树 29 回溯 16 贪心 17 动态规划 42 单调栈 5 图论 29 target2: 把hello 算法 理论看完 hello-algo target3: 把计算机算法理论+题目做完，记录，讲解"
+  },
+
+  {
+    "title": "Hello World",
+    "url": "/2026/04/19/hexo/hello-world/",
+    "date": "2026-04-19",
+    "text": "Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick"
+  }
+
+]
+</script>
+
+  
+<script src="/js/main.js"></script>
+
+  
+</body>
+</html>

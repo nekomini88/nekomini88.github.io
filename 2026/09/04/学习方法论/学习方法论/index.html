@@ -1,0 +1,930 @@
+<!doctype html>
+
+<html lang="zh-CN" data-fancybox-enabled="1">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f3e9">
+<title>学习方法论 | Neko&#39;s Blog</title>
+
+  <meta name="description" content="灯就陪他静静读书">
+
+  <link rel="shortcut icon" href="/images/android-chrome-192x192.png">
+
+<script>
+  (function () {
+    var accents = { green: 1, pink: 1, blue: 1, orange: 1, sakura: 1 };
+    var match = document.cookie.match(/(?:^|;\s*)flatpaper-accent=([^;]+)/);
+    var accent = match ? decodeURIComponent(match[1]) : 'green';
+    if (!accents[accent]) accent = 'green';
+    document.documentElement.setAttribute('data-accent', accent);
+    try {
+      if (localStorage.getItem('flatpaper-mode') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Neko's Blog" type="application/atom+xml">
+</head>
+
+<body
+  class="is-post tag-style-tape"
+  data-default-accent="green"
+  data-code-theme="dark"
+  data-note-style="flat"
+  data-note-icons="on"
+>
+  <div class="page-grain"></div>
+  <header class="site-header">
+  
+  <button class="icon-button js-sidebar-toggle sidebar-toggle" type="button" aria-label="打开侧边栏" aria-controls="paper-sidebar-drawer" aria-expanded="false">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg>
+
+  </button>
+
+  <a class="brand" href="/" aria-label="FlatPaper home">
+    <span class="brand-mark" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96a1 1 0 0 1 1.6.8c0 3-.6 7.74-4.16 11.31-2.66 2.66-6.74 3.99-9.65 3.99"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+</span>
+    <span class="brand-text">Neko&#39;s Blog</span>
+  </a>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    
+      
+        <a class="site-nav-link " href="/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/><path d="M9 21v-6h6v6"/></svg>
+
+          <span>首页</span>
+        </a>
+      
+    
+      
+        <a class="site-nav-link " href="/archives/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+
+          <span>归档</span>
+        </a>
+      
+    
+  </nav>
+
+  <div class="header-tools">
+    <button class="icon-button js-search-open" type="button" aria-label="搜索文章">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+
+    </button>
+    <div class="accent-picker">
+      <button class="icon-button accent-toggle" type="button" aria-label="选择主题色" title="选择主题色" aria-haspopup="true" aria-expanded="false" aria-controls="accent-menu">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 5.9 2 10.8c0 3.3 2.7 6 6 6h1.2c.8 0 1.4.6 1.4 1.4 0 .4-.2.8-.2 1.2 0 .8.6 1.6 1.6 1.6 5.5 0 10-4.2 10-9.4C22 6.3 17.5 2 12 2Z"/></svg>
+
+      </button>
+      <div class="accent-menu" id="accent-menu" role="menu" aria-label="主题色">
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="绿色" aria-checked="false" data-accent-option="green">
+          <span class="accent-swatch accent-swatch--green" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="粉色" aria-checked="false" data-accent-option="pink">
+          <span class="accent-swatch accent-swatch--pink" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="樱花粉" aria-checked="false" data-accent-option="sakura">
+          <span class="accent-swatch accent-swatch--sakura" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="蓝色" aria-checked="false" data-accent-option="blue">
+          <span class="accent-swatch accent-swatch--blue" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="橙色" aria-checked="false" data-accent-option="orange">
+          <span class="accent-swatch accent-swatch--orange" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="切换颜色模式">
+      <span class="theme-icon theme-icon--sun">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+</span>
+      <span class="theme-icon theme-icon--moon">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+</span>
+    </button>
+  </div>
+</header>
+
+
+  
+  <main class="paper-shell paper-shell--article">
+    
+
+<aside id="paper-sidebar-drawer" class="paper-sidebar paper-sidebar--right" aria-label="侧边栏">
+  <button class="icon-button drawer-close js-sidebar-close" type="button" aria-label="关闭侧边栏">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+
+  </button>
+
+  <section class="side-card nav-card">
+    <nav class="site-nav-drawer" aria-label="移动端导航">
+      
+        
+          <a class="" href="/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/><path d="M9 21v-6h6v6"/></svg>
+
+            <span>首页</span>
+          </a>
+        
+      
+        
+          <a class="" href="/archives/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+
+            <span>归档</span>
+          </a>
+        
+      
+    </nav>
+  </section>
+
+  <section class="side-card profile-card">
+    
+      <div class="avatar avatar--image avatar--circle">
+        <img src="https://imbed.nekomini.dpdns.org/file/theme/1780924179977_nekomini-theme.webp" alt="Neko" loading="lazy" referrerpolicy="no-referrer">
+      </div>
+    
+    <h3>Neko</h3>
+    <p class="profile-role">日常记录</p>
+    <p>记录日常，代码，以及想做的事情</p>
+    
+      <div class="site-info" aria-label="站点信息">
+        
+          
+            <a class="site-info__item" href="/archives/">
+              <strong>64</strong>
+              <span>文章</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/categories/">
+              <strong>23</strong>
+              <span>分类</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/tags/">
+              <strong>40</strong>
+              <span>标签</span>
+            </a>
+          
+        
+      </div>
+    
+    <div class="socials">
+      
+        <a href="https://github.com/nekomini88" target="_blank" rel="noopener" aria-label="GitHub">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+
+          
+        </a>
+      
+      
+    </div>
+  </section>
+
+  
+    <section class="side-card toc-card">
+      <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-table-of-contents" aria-hidden="true"><path d="M16 12H3"/><path d="M16 18H3"/><path d="M16 6H3"/><path d="M21 12h.01"/><path d="M21 18h.01"/><path d="M21 6h.01"/></svg>
+文章目录</h2>
+      <div class="toc-content">
+        
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BA%B2%EF%BC%9A%E5%A5%B9%E5%88%B0%E5%BA%95%E5%9C%A8%E4%B8%BB%E5%BC%A0%E4%BB%80%E4%B9%88"><span class="toc-text">总纲：她到底在主张什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%9F%94%E6%80%A7%E7%94%9F%E4%BA%A7%E5%8A%9B%E4%B8%89%E5%8E%9F%E5%88%99%EF%BC%88%E7%AB%8B%E5%9C%BA%E5%B1%82%EF%BC%89"><span class="toc-text">方法一：柔性生产力三原则（立场层）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%B3%BB%E7%BB%9F%E5%8F%AA%E7%AE%A1%E4%B8%89%E4%BB%B6%E4%BA%8B%EF%BC%9A%E7%9F%A5%E8%AF%86%E3%80%81%E4%BB%BB%E5%8A%A1%E3%80%81%E4%BA%8B%E4%BB%B6"><span class="toc-text">1. 系统只管三件事：知识、任务、事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%94%A8%E2%80%9D%E5%BF%83%E6%B5%81%E6%A1%86%E2%80%9D%E4%BB%A3%E6%9B%BF-rigid-%E6%97%A5%E7%A8%8B"><span class="toc-text">2. 用”心流框”代替 rigid 日程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8A%8A%E2%80%9D%E5%BF%85%E9%A1%BB%E5%81%9A%E2%80%9D%E4%B8%8E%E2%80%9D%E5%8F%AF%E4%BB%A5%E5%81%9A%E2%80%9D%E5%88%86%E5%BC%80%EF%BC%8C%E4%BC%91%E6%81%AF%E4%B8%8D%E7%AE%97%E5%A0%95%E8%90%BD"><span class="toc-text">3. 把”必须做”与”可以做”分开，休息不算堕落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E6%9E%81%E7%AE%80%E5%B7%A5%E5%85%B7%E8%A7%82"><span class="toc-text">附：极简工具观</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E6%97%B6%E9%97%B4%E4%B8%89%E6%94%AF%E6%9F%B1%EF%BC%88%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89"><span class="toc-text">方法二：时间三支柱（日常操作系统）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%9F%B1%E4%B8%80%EF%BC%9A%E4%BC%98%E5%85%88%E7%BA%A7%E2%80%94%E2%80%94%E6%8A%8A%E2%80%9D%E6%97%B6%E9%97%B4%E9%97%AE%E9%A2%98%E2%80%9D%E7%BF%BB%E8%AF%91%E6%88%90%E2%80%9D%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98%E2%80%9D"><span class="toc-text">支柱一：优先级——把”时间问题”翻译成”排序问题”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%9F%B1%E4%BA%8C%EF%BC%9A%E6%9C%9F%E6%9C%9B%E5%80%BC%E2%80%94%E2%80%94%E4%B8%8D%E6%98%AF%E6%AF%8F%E5%A4%A9%E9%83%BD%E8%A6%81%E6%8B%A5%E6%9C%89%E4%B8%80%E5%88%87"><span class="toc-text">支柱二：期望值——不是每天都要拥有一切</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%9F%B1%E4%B8%89%EF%BC%9A%E6%83%AF%E4%BE%8B%E2%80%94%E2%80%94%E5%B0%91%E8%80%8C%E7%A8%B3%E7%9A%84%E6%97%A5%E5%B8%B8%E8%8A%82%E5%A5%8F"><span class="toc-text">支柱三：惯例——少而稳的日常节奏</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A%E6%9C%88%E6%9C%AB%E5%8D%81%E9%97%AE%EF%BC%88%E8%BD%BB%E9%87%8F%E5%A4%8D%E7%9B%98%E6%B8%85%E5%8D%95%EF%BC%89"><span class="toc-text">方法三：月末十问（轻量复盘清单）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%9B%9B%EF%BC%9A%E5%BE%85%E5%8A%9E%E6%B8%85%E5%8D%95%E5%9B%9B%E6%AD%A5%E6%B3%95%EF%BC%88GTD-%E8%BD%BB%E9%87%8F%E7%89%88%EF%BC%89"><span class="toc-text">方法四：待办清单四步法（GTD 轻量版）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%94%EF%BC%9A%E9%82%AE%E4%BB%B6%E5%9B%9B%E6%AD%A5%E6%B3%95%EF%BC%88%E9%82%AE%E7%AE%B1%E5%8D%B3%E4%BB%BB%E5%8A%A1%EF%BC%89"><span class="toc-text">方法五：邮件四步法（邮箱即任务）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%85%AD%EF%BC%9ADeadline-%E4%BA%94%E4%BB%B6%E5%A5%97"><span class="toc-text">方法六：Deadline 五件套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%83%EF%BC%9A%E7%9B%AE%E6%A0%87%E7%AE%A1%E7%BA%BF%EF%BC%88five-whys-%E2%86%92-%E6%97%A5%E5%8E%86%EF%BC%89"><span class="toc-text">方法七：目标管线（five whys → 日历）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%85%AB%EF%BC%9ANotion-Board-%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A0%87%E6%B3%95%EF%BC%88%E4%B8%A4%E7%A7%8D%E6%91%86%E6%B3%95%EF%BC%89"><span class="toc-text">方法八：Notion Board 年度目标法（两种摆法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B9%9D%EF%BC%9A%E9%95%BF%E5%88%9B%E4%BD%9C%E4%B8%A4%E9%98%B6%E6%AE%B5%EF%BC%88%E5%85%88%E6%B7%B7%E6%B2%8C%E5%90%8E%E6%94%B6%E6%95%9B%EF%BC%89"><span class="toc-text">方法九：长创作两阶段（先混沌后收敛）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8D%81%EF%BC%9A%E5%8F%8C%E8%BD%A8%E5%86%99%E4%BD%9C%EF%BC%88%E5%BF%99%E7%A2%8C%E6%9C%AC%E8%81%8C%EF%BC%8B%E6%AF%8F%E5%A4%A9-1000-%E8%AF%8D%EF%BC%89"><span class="toc-text">方法十：双轨写作（忙碌本职＋每天 1000 词）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8D%81%E4%B8%80%EF%BC%9A%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7%E9%93%BE%EF%BC%88%E7%AA%84%E8%80%8C%E6%B7%B1%E7%9A%84%E4%B8%80%E5%A5%97%E5%A4%B9%E5%85%B7%EF%BC%89"><span class="toc-text">方法十一：写作工具链（窄而深的一套夹具）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8D%81%E4%BA%8C%EF%BC%9A%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%B8%83%E6%9D%A1%EF%BC%88%E8%81%8C%E4%B8%9A%E9%A2%84%E5%A4%87%E8%AE%AD%E7%BB%83%EF%BC%89"><span class="toc-text">方法十二：大学生七条（职业预备训练）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%90%BD%E5%9C%B0%E9%A1%BA%E5%BA%8F%EF%BC%88%E4%B8%80%E9%A1%B5%E6%89%A7%E8%A1%8C%E5%9B%BE%EF%BC%89"><span class="toc-text">落地顺序（一页执行图）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E8%AF%80"><span class="toc-text">一句话总诀</span></a></li></ol>
+        
+      </div>
+    </section>
+  
+
+  
+
+</aside>
+
+    <section class="paper-main">
+      
+
+<div class="article-tape-wrap">
+<span class="tape tape--top-right" aria-hidden="true"></span>
+<article class="article-paper">
+  <header class="article-header">
+    
+    <h1>学习方法论</h1>
+    <div class="meta-line meta-line--article">
+      <span class="meta-date">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+2026-09-04</span>
+      
+    </div>
+  </header>
+
+  
+
+
+  <div class="article-content">
+    <h1 id="Mariana-Vieira-方法论总结：柔性生产力实战手册"><a href="#Mariana-Vieira-方法论总结：柔性生产力实战手册" class="headerlink" title="Mariana Vieira 方法论总结：柔性生产力实战手册"></a>Mariana Vieira 方法论总结：柔性生产力实战手册</h1><blockquote>
+<p>提炼自其 30 条最新视频转写精读（2026 年 9 月）。每条保留”原理 → 做法 → 适用边界”，可直接执行。<br>完整考证见《从宿舍书桌到书稿：Mariana Vieira 内容体系研究》（3.6 万字论文）。</p>
+</blockquote>
+<h2 id="总纲：她到底在主张什么"><a href="#总纲：她到底在主张什么" class="headerlink" title="总纲：她到底在主张什么"></a>总纲：她到底在主张什么</h2><p>一句话：<strong>反对把生产力变成短跑，主张用低摩擦系统夺回时间，再把时间投入长周期创作。</strong></p>
+<p>她的核心诊断有三条：</p>
+<ol>
+<li>硬核生产力（hustle 文化：更快更多、rigid 日程、无尽清单）必然”猛冲到崩溃”，且摧毁自我信任——让人不再相信自己知道什么对自己有效。</li>
+<li>现代生产力悖论：二十年工具大爆炸，宏观生产率增长反而放缓。工具与技巧不是魔法，更根本的是专注、排序与休息的能力。</li>
+<li>多数人以为缺时间，实为缺排序；以为缺方法，实为缺信任。</li>
+</ol>
+<p>整套方法论呈三层同心结构：<strong>价值观层</strong>（以什么姿态对待学习与职业）→ <strong>框架层</strong>（柔性红线＋日常操作系统）→ <strong>执行层</strong>（创作两阶段＋月度复盘）。贯穿线只有一条：信任自己——在该管处（must-do、截稿、职业知识）管住，在其余处松手。</p>
+<hr>
+<h2 id="方法一：柔性生产力三原则（立场层）"><a href="#方法一：柔性生产力三原则（立场层）" class="headerlink" title="方法一：柔性生产力三原则（立场层）"></a>方法一：柔性生产力三原则（立场层）</h2><p>出处：《DITCH Hard Productivity → Do this Instead》。开篇即批判 hustle 文化，博主自陈三十岁已多次倦怠。</p>
+<h3 id="1-系统只管三件事：知识、任务、事件"><a href="#1-系统只管三件事：知识、任务、事件" class="headerlink" title="1. 系统只管三件事：知识、任务、事件"></a>1. 系统只管三件事：知识、任务、事件</h3><p>原理：生产力系统的目的是”把任务存进可靠系统以释放心智空间”，而非维护系统本身。系统覆盖不全，就逼得人用脑子记事，产生心智杂物与疲劳。</p>
+<p>做法：检查自己的系统是否同时接住——知识（信息、笔记、参考资料）、任务（产生输出的可执行项）、事件（必须出席的日程承诺）。缺一，就补一，而不是换软件。</p>
+<p>边界：同时管几十个项目、几十号人的复杂岗位，可能确实需要复杂系统；其余多数人更适合简化。</p>
+<h3 id="2-用”心流框”代替-rigid-日程"><a href="#2-用”心流框”代替-rigid-日程" class="headerlink" title="2. 用”心流框”代替 rigid 日程"></a>2. 用”心流框”代替 rigid 日程</h3><p>原理：心流不等于混乱，而是在时间框内按自身节律做决定。硬核日程把”几点几分干什么”写死，无视个人能量曲线。</p>
+<p>做法：设定目标柱（goalposts）——“上午创造力高就安排创作，下午放缓就安排轻量事务”；框内具体做什么、做多少，按当天节奏临场决定。先观察自己的能量分布，再反向安排任务类型。</p>
+<p>边界：坐班、排课等强外部约束下，只能在缝隙中应用；自由职业者应用空间最大。</p>
+<h3 id="3-把”必须做”与”可以做”分开，休息不算堕落"><a href="#3-把”必须做”与”可以做”分开，休息不算堕落" class="headerlink" title="3. 把”必须做”与”可以做”分开，休息不算堕落"></a>3. 把”必须做”与”可以做”分开，休息不算堕落</h3><p>原理：清单上真正有硬截止的”必须”（must-do）只占一到两成，其余多是自己报名的”可以做”（could-do）。混在一起，每完不成一条都是自我定罪。</p>
+<p>做法：标注清单，承认 could-do 完不成的正常性——“我本可以做，但没排上，这不是失败”。在专注段之间主动安排暂停；休息后能否满格投入，就是休息有效性的检验。</p>
+<p>边界：考试周、交付周等 must-do 畸高时段，保证交付优先，事后补休而非事中豁免。</p>
+<h3 id="附：极简工具观"><a href="#附：极简工具观" class="headerlink" title="附：极简工具观"></a>附：极简工具观</h3><p>默认选择最简单的载体，只在证明需要时才升级复杂度。她的判据是”便利贴测试”：记下来、做掉、勾掉、从脑中删除，本来只需要一句话。连”给植物浇水”都能被异化为十步流程——建系统、维护系统、被系统压垮、生病断供一次就全盘崩塌。误用边界：为极简而极简，把本需协同的大项目硬塞进便利贴。</p>
+<hr>
+<h2 id="方法二：时间三支柱（日常操作系统）"><a href="#方法二：时间三支柱（日常操作系统）" class="headerlink" title="方法二：时间三支柱（日常操作系统）"></a>方法二：时间三支柱（日常操作系统）</h2><p>出处：《How I Find Time for Everything》。先破题：没人真正”有时间做一切”，她有的是一套决定”什么重要、什么可等、什么可放下”的框架。反对”懒惰叙事”与”拖延症”标签——落后感多半来自目标不清、对自己期望过高、缺少节奏。</p>
+<h3 id="支柱一：优先级——把”时间问题”翻译成”排序问题”"><a href="#支柱一：优先级——把”时间问题”翻译成”排序问题”" class="headerlink" title="支柱一：优先级——把”时间问题”翻译成”排序问题”"></a>支柱一：优先级——把”时间问题”翻译成”排序问题”</h3><p>做法：至少每月做一次清点——写下盘中所有事项，圈出真正推动指针的三件，划掉可等、可无之事，标出让自己兴奋之事；观察模式（是否长期被耗能事项占据、是否因久未说”不”而过载、是否在追别人的目标）。她做生产力教练接手大项目，第一步也是先把数月尺度的全部任务摊开成图，再谈执行——图在手，就不再为生产力而生产力，也更容易拒绝。</p>
+<p>边界：每月一次是最低频率；圈三件是启发式，”划掉”指本月不排，不是永久放弃。</p>
+<h3 id="支柱二：期望值——不是每天都要拥有一切"><a href="#支柱二：期望值——不是每天都要拥有一切" class="headerlink" title="支柱二：期望值——不是每天都要拥有一切"></a>支柱二：期望值——不是每天都要拥有一切</h3><p>做法：接受节奏（rhythm）而非机器运转：有些天&#x2F;周是创作模式（如截稿冲刺），有些周就是休息、发呆、打扫、晒太阳——那不是失败，是生活。配套日末小仪式，每天问自己”今天什么做得好？什么可以放下？”，从完美主义转向进步主义；用对朋友家人的宽容度量自己，允许”进行中”状态。</p>
+<p>边界：调节的是自我评价，不豁免外部承诺；截稿、抚育等硬责任仍需履约，只是不再附加”我还应该同时完美”的自我攻击。</p>
+<h3 id="支柱三：惯例——少而稳的日常节奏"><a href="#支柱三：惯例——少而稳的日常节奏" class="headerlink" title="支柱三：惯例——少而稳的日常节奏"></a>支柱三：惯例——少而稳的日常节奏</h3><p>做法（她的个人版本，可直接抄）：缓慢的早晨（咖啡、不看手机、与家人共处，给大脑”今日有整天工作”的缓冲）；开工前的大脑倾倒（brain dump）；一天分三段规划（早、中、晚，不按小时切分，只定每段想完成什么）；日末快速复盘闭环。另配微小仪式：专注时放同一歌单、每天煮茶。</p>
+<p>边界：三段规划适合日程自主度中等以上的人；倒班、带婴等碎片化生活压缩为”一段一事”；仪式贵在少而稳，贪多即回到硬核老路。</p>
+<hr>
+<h2 id="方法三：月末十问（轻量复盘清单）"><a href="#方法三：月末十问（轻量复盘清单）" class="headerlink" title="方法三：月末十问（轻量复盘清单）"></a>方法三：月末十问（轻量复盘清单）</h2><p>出处：《10 Questions to Ask Yourself at the End of Each Month》。诊断：人们从一月滑到下月不停，年末惊觉时间无踪。每月花几分钟，追踪进展、识别模式、校准方向。载体不限：笔记本、笔记应用或纯思考。</p>
+<ol>
+<li>这个月什么进展顺利？——从积极处开场，大小胜利都算；有日志者以记录为准（防近因效应）。</li>
+<li>什么不太顺利？——复盘不是自责，而是定位原因；追问一层”为什么”即可，过度归因会滑向反刍；情绪很差的月份，允许只记录、不处方。</li>
+<li>时间实际花在了哪里？——无追踪工具可用探针法：”我是真没时间，还是把时间给了更低价值的事”。关乎觉察而非内疚。</li>
+<li>哪些习惯帮了我？——只收录本月验证有效的，不抄别人的清单；一次保留一到两个。”找出有效的，然后保持。”</li>
+<li>哪些习惯拖了我后腿？——不搞整夜人生改造，下月只挑一个小习惯开刀（如社媒限时、睡前手机放别屋），每天抠一点。</li>
+<li>我为自己骄傲的是什么？——比较对象只能是过去的自己；结果输了但姿态对了，仍可骄傲。</li>
+<li>什么最让我有压力？——溯源并区分可变与不可变；可变的下月动手改，不可变的接纳并设缓冲。关系类压力不要求一月解决，只要求下月有一步动作。</li>
+<li>生活中需要更多什么？——休息、玩乐、独处、创造、运动、联结，选最缺的一样下月留位。若每月答案都是”休息”，说明总盘过载，需回方法二删任务。</li>
+<li>下个月只聚焦一件事，那是什么？——她自称”最爱的一问”，整个复盘的收口。十个目标等于没有目标。”一件事”指主题级聚焦，不否定日常杂务。</li>
+<li>下个月有什么可期待的？——人都需要盼头；若无，就主动造一件小的有趣的事。期待项要小而确定，低能量月份越小越好。</li>
+</ol>
+<p>诚实注记：复盘是”剩余时间”的消费。十问预设了可支配的独处时间、可回顾的材料、下个月可以不一样的能动性。对于一天下来没有整块可支配时间的人，答案会坍缩成”时间都花在了生存上”——这不是方法的失败，而是它的应用门槛：服务于”时间碎但有”的人。</p>
+<hr>
+<h2 id="方法四：待办清单四步法（GTD-轻量版）"><a href="#方法四：待办清单四步法（GTD-轻量版）" class="headerlink" title="方法四：待办清单四步法（GTD 轻量版）"></a>方法四：待办清单四步法（GTD 轻量版）</h2><p>出处：《4 Steps to Create a To-Do List》。理论背书是蔡加尼克效应（Zeigarnik effect）：未完成的任务会在脑中挥之不去，写下来则让大脑持续惦记、从而推着人去完成。</p>
+<ol>
+<li>大脑倾倒（brain dump）：把占据心智的一切事项不经审查地写入任务管理器的收件箱。</li>
+<li>按项目归类拆小：把”完成项目”之类的大任务拆成”查资料、列提纲、写初稿”式的可执行小步。</li>
+<li>排期：分配现实的截止日期并做时间块安排，同时尊重个人节律（晨型人把硬仗放在上午）；任务之间留缓冲；按紧急重要排序；同类任务打包（batching）减少上下文切换。</li>
+<li>每周维持：早晚各做一次每日复盘；每天只保留 5 到 7 个关键任务（可压缩到 3 到 5 个）；用肯定句式表述任务；庆祝微小胜利。</li>
+</ol>
+<p>三个隐含前提（决定你适不适合用）：一是工作自主权——“限制任务数、按节律排硬仗、留缓冲”都预设你对时间有实质支配权，对”时间贫困且不自主”的人（流水线、排班制、被即时通讯切碎的一天）近乎空谈。二是数字基建——收件箱若无跨平台聚合能力，很容易变成只进不出的第二个垃圾场。三是情绪安全系于”真的砍到 3 到 7 项”——砍不下去的人，学的不是她的方法，而是她的焦虑。</p>
+<hr>
+<h2 id="方法五：邮件四步法（邮箱即任务）"><a href="#方法五：邮件四步法（邮箱即任务）" class="headerlink" title="方法五：邮件四步法（邮箱即任务）"></a>方法五：邮件四步法（邮箱即任务）</h2><p>出处：邮件管理专期。诊断：收件箱是杂物抽屉，触发战逃反应。</p>
+<ol>
+<li>清空起步（clean slate）：归档&#x2F;删除历史积压，从零开始，而不是整理旧山。</li>
+<li>极简文件夹体系：能少则少，文件夹是例外通道，不是分类癖。</li>
+<li>邮件转任务（emails are tasks in disguise）：每封邮件的结局只有”转任务排期”或”归档删除”，不许在收件箱里养老。</li>
+<li>定时查收与复盘：固定时段处理，而非全天在线救火。</li>
+</ol>
+<p>工具观注记：她用 Notion—Akiflow 管线承载（通用收件箱聚合多处任务，拖拽式时间块排日历，按习惯自动分派，统计时间去向）——工具是惯例的仆人：颜色、晨间仪式皆可定制，适配个人而非反之。</p>
+<hr>
+<h2 id="方法六：Deadline-五件套"><a href="#方法六：Deadline-五件套" class="headerlink" title="方法六：Deadline 五件套"></a>方法六：Deadline 五件套</h2><p>出处：《Master your Deadlines in 2025》。开篇比喻：deadline 像”让你负责的朋友，一分钟激励你，下一分钟吓死你”。核心诊断：只盯最终 deadline 是最常见的错。</p>
+<ol>
+<li>阶段化（phased deadlines）：大截止拆成小截止，每阶段独立 deadline（可外约、可自约）。机制有三：定期 checkpoint 保责保质、终期变不吓人、每小胜一次多巴胺促继续。</li>
+<li>蔡加尼克清单化：拆分必须配”某处记录”——milestone 落日历、多 deadline 同处可视化、checklist 逐项消，以 regular wins 保 momentum。示例：50,000 词书稿拆 outline／research／drafting／editing，每阶段再拆”日写 X 词””周研人物背景 2 小时”。</li>
+<li>提醒要早：提前数天，而非数小时——人系统性低估耗时，提前量即心理缓冲。</li>
+<li>能量三阶段着色：晨间 deep work 配 peak，邮件会议配 dip；任务倾倒时即按认知负荷颜色编码，拖进日历时”对色入座”。（她称有研究支持峰谷节律，但未给具体文献，应视为博主转述。）</li>
+<li>缓冲＋冲刺奖励：排期留缓冲，冲刺后给奖励，让系统可持续而非一次性。</li>
+</ol>
+<hr>
+<h2 id="方法七：目标管线（five-whys-→-日历）"><a href="#方法七：目标管线（five-whys-→-日历）" class="headerlink" title="方法七：目标管线（five whys → 日历）"></a>方法七：目标管线（five whys → 日历）</h2><p>出处：《How to Set Achievable Goals in 2025》。命题：目标是艺术＋科学，数字工具简化流程。全篇按 brainstorm—organize—execute 三段展开。</p>
+<ol>
+<li>Five whys：从宽泛目标（”我要写完一本书”）连问五次为什么，钻到价值内核。没有 intrinsic motivation，”目标无法以对你有意义的方式达成”；先有 why，how 才有 substance 与 commitment。</li>
+<li>思维导图：以写书为例三分支——类型与主题 brainstorming、世界与人物、情节（情节为人服务还是人为情节服务、关键场面 brain dump）。初期”不必有意义、不必连得上”，最有趣的概念恰生于混乱；导图的价值是 big picture，每个部分自然长成下一步的小目标（如人物分支长出人物卡）。</li>
+<li>Notion 组织中枢：从导图到项目计划。书稿两种排法：按块排章节（timeline 切块、定每块写几章），或按日排量（每天 X 词／X 页／X 小时）；”没有对错，关键是上 timeline”。skeleton 期可排”两周定人物、一个半月定大纲、一两个月做调研”。</li>
+<li>日历 time blocking＋冲刺：把 subgoals 先倒进任务程序，再按槽位拖进日历——“排进日历的才真正发生”。需时变化即拖拽调。特别推荐 sprint App 做 deep work（引《Deep Work》）：锁机 20—50 分钟专注 bursts，”坐下敲起来灵感才来”，累计时长本身是 motivator。</li>
+</ol>
+<hr>
+<h2 id="方法八：Notion-Board-年度目标法（两种摆法）"><a href="#方法八：Notion-Board-年度目标法（两种摆法）" class="headerlink" title="方法八：Notion Board 年度目标法（两种摆法）"></a>方法八：Notion Board 年度目标法（两种摆法）</h2><p>出处：《How to Set 2026 Goals in Notion Using Board View》（实时录屏教程）。贯穿”极简压倒复杂”：年度目标是项目管理的骨架层，不必买复杂模板，10—15 分钟、用最朴素的结构即可搭完。</p>
+<p>方案一：列为季度，卡片为人生领域。四个纵列 Q1—Q4，卡片按领域划分（writing、social media、home and family、work、finances、personal and health，图标＋颜色编码一眼区分），每季度复制同一套领域卡片，卡片正文用 checkbox 写该领域本季度具体目标。卡片预览设为 page content、大尺寸，获得鸟瞰图。</p>
+<p>方案二（更推荐）：列仍为季度，卡片直接为单个目标。目标本身就是卡片，可随手拖拽换季度、延期或删除，”不必推倒重排整块板”。配 status 属性（not started &#x2F; in progress &#x2F; complete）与图标颜色系统，可用条件着色（如名称含 draft 自动标红）、过滤器隐藏无关卡片，甚至把纵列从”季度”切换为”状态”。每张目标卡内部再用 checklist 拆小任务。</p>
+<p>元论点：结构必须匹配心智空间——生活越是 reactive（高反应性、计划赶不上变化），越需要”拖拽式”的物理自由度，让 workspace 对应 mental space。新手面对 Notion 空白页的最大障碍是”功能太多、无从下手”，而年份目标恰恰是最适合练手的最小项目。结尾教训：系统越复杂维护成本越高，忙碌的生活撑不起，最终只会被抛弃。</p>
+<hr>
+<h2 id="方法九：长创作两阶段（先混沌后收敛）"><a href="#方法九：长创作两阶段（先混沌后收敛）" class="headerlink" title="方法九：长创作两阶段（先混沌后收敛）"></a>方法九：长创作两阶段（先混沌后收敛）</h2><p>出处：《What Writing 2 Books Taught Me》（围绕奇幻新作《Truth Teller》）。人格限定的方法，只适用于”规划时造不出魔法、只能在行文中撞见魔法”的混沌型创作者。</p>
+<p>教训：她曾刻意”做一次有条理的人”——通读情节节拍理论、列大纲严格执行、章节十到十二页、节拍一个不落，结果第一稿”和预想的一模一样”，却”毫无灵魂”。经纪人一小时半反馈点醒：各部件单独成立，但彼此不咬合。于是推倒重来，允许人物”接管稿子”——写到中途人物做出计划外举动，哪怕意味着从第一章起重写二百五十页，也跟随人物走。正是行文至第二幕末尾时撞见的那个扭转，让全书有了灵魂——在规划桌前永远想不到它。</p>
+<p>两阶段纪律：起草期不自我审查，大胆写怪人物、大胆反转，先拿到”零稿&#x2F;心之书”；成稿期再回头适配市场与行业标准（可提交、可出版、可售卖）。顺序不可倒置：先有灵魂，再谈标准；切忌在第一页就用”卖不卖得掉”枪毙想法。</p>
+<p>点睛：她学生产力恰恰因为大脑本质高度混沌、无序，不得不发明工具与机制才能读书、工作、生活；但创作中混沌是矿藏而非缺陷。二十岁时厌恶的自我特质，三十岁看都是超能力。</p>
+<hr>
+<h2 id="方法十：双轨写作（忙碌本职＋每天-1000-词）"><a href="#方法十：双轨写作（忙碌本职＋每天-1000-词）" class="headerlink" title="方法十：双轨写作（忙碌本职＋每天 1000 词）"></a>方法十：双轨写作（忙碌本职＋每天 1000 词）</h2><p>出处：《How I Write and Work a Busy Job》。核心事实：重返全职工作约 8 个月后，保持每天至少写 1000 词、连续至少 248 天，完成第一本书（进入投稿查询阶段）并写到第二本书中段。支撑方法五条：</p>
+<ol>
+<li>明确优先级：为写作牺牲其他爱好，精简追剧读书，大幅退出社交媒体。</li>
+<li>配齐顺手工具：自认 pantser（不列细纲、跟着感觉走），必须用 Scrivener 这类可随意拖拽场景的软件。</li>
+<li>全天写作块＋弹性：上班前 9:00–9:30、午休 10–45 分钟、下班后至少 30 分钟，灵感爆发时加深夜第四块（曾创单晚 4000 到 7000 词）。</li>
+<li>从极小目标起步：每 session 只要求写一句话，先养成”每天有个时刻必须坐下”，再加码到一段、一页、1000 词。</li>
+<li>初稿”词语呕吐”（word vomit）：容忍错字、标点与情节矛盾，把修改留给之后数轮编辑。</li>
+</ol>
+<p>价格标签（必须一起看）：时间账——每天 1 到 2 小时写作块，外加牺牲大多数爱好与社交的机会成本，兑换率公开透明，没有奇迹。能量账——248 天的连续是”每天都出现”（show up）的连续，其中包含只写一句话也算数的一天；把”出现”偷换成”高产”，第三周就会崩盘。技能前置账——工具熟练度、出版知识、多轮修改能力都是存量；零存量新手复制”深夜第四块”，大概率复制到的是熬夜。支持结构账——全职工作给经济底气，频道本身既是公开承诺也是收入来源。</p>
+<p>她亲口免责：这些只是对她个人有效的方法，每个写作者都不同。</p>
+<hr>
+<h2 id="方法十一：写作工具链（窄而深的一套夹具）"><a href="#方法十一：写作工具链（窄而深的一套夹具）" class="headerlink" title="方法十一：写作工具链（窄而深的一套夹具）"></a>方法十一：写作工具链（窄而深的一套夹具）</h2><p>出处：手稿编辑与写作工具专期。链条：Scrivener 起草（场景拖拽、pantser 之友）— Word 定稿（投稿阶段确实重要）— Kindle 终读（像读者一样读最后一遍，纸感设备：好屏、长续航、手写批注感）。Plottr 做节拍拖拽，查询信流程走传统出版投稿，Skillshare 做写作课精进。</p>
+<p>提醒：这是为英语通俗小说→传统出版投稿这条特定流水线定制的夹具，不假装普适。搬运前先做”流水线对齐”：问自己的终点（中文网文按章节日更、期刊按格式与匿名评审）是什么，再倒推需要什么样的中转工具，而不是先买她的装备再找自己的仗打。记住传播规律：观众记住的是名词（Scrivener、Plottr），而不是动词（每天坐下、字数呕吐、改四五遍）——而真正制造产出的是动词。</p>
+<hr>
+<h2 id="方法十二：大学生七条（职业预备训练）"><a href="#方法十二：大学生七条（职业预备训练）" class="headerlink" title="方法十二：大学生七条（职业预备训练）"></a>方法十二：大学生七条（职业预备训练）</h2><p>出处：《Controversial (but honest!) Advice for College Students》。定位：笔记术、主动学习等”技术细节”频道里已有且仍然有效，本期只讲离开校园后仍然管用的”金子般的东西”。</p>
+<ol>
+<li>不走捷径，尤其不用生成式 AI 代写——损害的不是成绩，是职业可用性（职场大量场合要求即时作答，不可能先问聊天机器人）。</li>
+<li>专通平衡——深挖一孔，同时懂周边如何协同（专攻金融法，不等于不懂其他部门法如何联动）。</li>
+<li>经营社交——大学人际会溢出校园围墙；不必与所有人做朋友，但不要交恶、不要失联。</li>
+<li>把提问练成肌肉记忆——大学提问是低风险的，职场提问是高风险的；低风险期不练，高风险期更不敢问。</li>
+<li>对吓到你的机会说”是”——大学是最便宜的试错游乐场，有明确时间窗口；进全职高负荷期后切换为筛选逻辑。</li>
+<li>像管钱一样管时间——关键不是更快，而是可预测、可沟通、可兑现；记录真实耗时，了解个人节奏系数。</li>
+<li>记住”没人知道自己在干什么”——冒名顶替感是普遍经验；区分”装”与”成”，坚持走向”真学会”（有真实能力缺口仍需补基本功，而非只调心态）。</li>
+</ol>
+<hr>
+<h2 id="落地顺序（一页执行图）"><a href="#落地顺序（一页执行图）" class="headerlink" title="落地顺序（一页执行图）"></a>落地顺序（一页执行图）</h2><ol>
+<li>先做一次方法二的月度清点（圈三件事）。</li>
+<li>按方法一搭三领域系统并砍掉一半小流程。</li>
+<li>按方法八搭年度 Board（方案二），把圈出的三件事变成卡片。</li>
+<li>照方法三跑第一次月末十问（重点只取第九问的”一件事”）。</li>
+<li>日常按方法二的三段规划＋日末两问运转；待办按方法四走四步；邮件按方法五清零；截稿按方法六拆阶段。</li>
+<li>长创作按方法九两阶段推进；双轨写作抄方法十的”先出现、再加码”。</li>
+<li>全程以方法十二的七条为价值校准；掉进低谷时切”锚习惯＋周日审计”自救模式。</li>
+</ol>
+<h2 id="一句话总诀"><a href="#一句话总诀" class="headerlink" title="一句话总诀"></a>一句话总诀</h2><p><strong>先靠系统夺回时间，再靠时间长出作品；该管处管住，其余处松手。</strong></p>
+
+  </div>
+
+  <footer class="article-reactions">
+    <div class="reaction-group">
+      <button type="button" class="reaction reaction--comment" aria-label="跳转到评论区" data-action="scroll-to-comments">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+
+      </button>
+      <span class="reaction-label">评论</span>
+    </div>
+    <div class="reaction-group reaction-group--right">
+      <button type="button" class="reaction reaction--share" aria-label="分享" data-action="share">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share-2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+
+      </button>
+      <span class="reaction-label">分享</span>
+    </div>
+  </footer>
+
+  
+
+
+  <nav class="article-actions">
+    
+      <a class="article-action article-action--prev" href="/2026/10/02/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA/%E4%BB%A5%E7%BB%8F%E5%85%B8%E6%96%87%E5%AD%A6%E6%9C%97%E8%AF%BB%E4%B8%BA%E8%BD%BD%E4%BD%93%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA/">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+
+        <span class="action-label">上一篇</span>
+        <span class="action-title">以经典文学朗读为载体的学习方法论</span>
+      </a>
+    
+    
+      <a class="article-action article-action--next" href="/2026/08/31/cloudflare/cloudflare%E7%94%A8%E9%80%94%E6%80%BB%E7%BB%93/">
+        <span class="action-label">下一篇</span>
+        <span class="action-title">cloudflare用途总结</span>
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+
+      </a>
+    
+  </nav>
+</article>
+</div>
+
+
+
+      
+
+
+    </section>
+    
+  </main>
+
+  <div class="sidebar-backdrop js-sidebar-close" aria-hidden="true"></div>
+
+  
+<footer class="site-footer">
+  <span class="site-footer__left">© 2026 By Neko</span>
+  <span class="site-footer__right">Powered by Theme <a href="https://github.com/Homulilly/hexo-theme-flatpaper" target="_blank" rel="noopener">FlatPaper</a></span>
+</footer>
+
+  <div class="search-panel" aria-hidden="true">
+  <div class="search-backdrop js-search-close"></div>
+  <section class="search-dialog" role="dialog" aria-modal="true" aria-label="搜索文章">
+    <span class="tape tape--top-left" aria-hidden="true"></span>
+    <header class="search-head">
+      <h2><span class="green-dot"></span>搜索文章</h2>
+      <button class="icon-button js-search-close" type="button" aria-label="关闭搜索">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+
+      </button>
+    </header>
+    <label class="search-field">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+
+      <input id="flatpaper-search" class="search-input" type="search" placeholder="输入关键词，按 Esc 关闭" autocomplete="off">
+    </label>
+    <div class="search-results" data-empty="输入关键词后显示匹配的文章">
+      <p class="search-empty">输入关键词后显示匹配的文章</p>
+    </div>
+  </section>
+</div>
+
+<script type="application/json" id="flatpaper-post-index">
+[
+
+  {
+    "title": "如何成为一个更好的读者",
+    "url": "/2026/10/05/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A5%BD%E7%9A%84%E8%AF%BB%E8%80%85/",
+    "date": "2026-10-05",
+    "text": ""
+  },
+
+  {
+    "title": "以经典文学朗读为载体的学习方法论",
+    "url": "/2026/10/02/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA/%E4%BB%A5%E7%BB%8F%E5%85%B8%E6%96%87%E5%AD%A6%E6%9C%97%E8%AF%BB%E4%B8%BA%E8%BD%BD%E4%BD%93%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA/",
+    "date": "2026-10-02",
+    "text": "以经典文学朗读为载体的第二语言学习方法论—— 兼论”可理解输入—注意—强制输出—间隔巩固”四环模型的构建 摘要成人第二语言自学长期受困于四重结构性矛盾:输入材料难度失配、输出环节缺失、教师反馈成本高昂、学习动机难以维持。本文以一个公开的英语教学实践(以经典文学的逐句朗读与讲解为载体的长音频课程)为观察对象,结合第二语言习得领域的经典理论框架,尝试建构一套可自我执行、可自我评估的第二语言学习方法论。"
+  },
+
+  {
+    "title": "学习方法论",
+    "url": "/2026/09/04/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA/",
+    "date": "2026-09-04",
+    "text": "Mariana Vieira 方法论总结：柔性生产力实战手册 提炼自其 30 条最新视频转写精读（2026 年 9 月）。每条保留”原理 → 做法 → 适用边界”，可直接执行。完整考证见《从宿舍书桌到书稿：Mariana Vieira 内容体系研究》（3.6 万字论文）。 总纲：她到底在主张什么一句话：反对把生产力变成短跑，主张用低摩擦系统夺回时间，再把时间投入长周期创作。 她的核心诊断有三条： "
+  },
+
+  {
+    "title": "cloudflare用途总结",
+    "url": "/2026/08/31/cloudflare/cloudflare%E7%94%A8%E9%80%94%E6%80%BB%E7%BB%93/",
+    "date": "2026-08-31",
+    "text": "Cloudflare 完全指南：产品、用途、架构与最佳实践 版本：2026 综合版 ｜ 定位：面向开发者、运维工程师与架构师的 Cloudflare 全景用途总结说明：本文聚焦「Cloudflare 能做什么、怎么用、什么时候用」，按产品线与用途分类展开，配官方文档索引与选型建议，内容力求全面而克制。 目录 第 1 章 什么是 Cloudflare 第 2 章 核心价值与全局架构 第 3 章 CD"
+  },
+
+  {
+    "title": "codex命令费曼学习法详解",
+    "url": "/2026/08/06/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/codex%E5%91%BD%E4%BB%A4%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95%E8%AF%A6%E8%A7%A3/",
+    "date": "2026-08-06",
+    "text": "Codex CLI 命令汇总：费曼学习法版 写作原则： 先讲”它是什么”，再讲”怎么用”，最后给” cheat sheet “。目标读者： 听说过 Codex 但还没用过的人。核心隐喻： Codex 就像一个”外包程序员”，你只要用自然语言告诉它要做什么，它就会自己改代码、跑测试、提交 commit。 第一部分：Codex 到底是什么？一句话解释Codex 是 OpenAI 做的一个命令行 AI "
+  },
+
+  {
+    "title": "Hermes Agent Skills 精选费曼详解",
+    "url": "/2026/08/04/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/Hermes%20Agent%20Skills%20%E7%B2%BE%E9%80%89%E8%B4%B9%E6%9B%BC%E8%AF%A6%E8%A7%A3/",
+    "date": "2026-08-04",
+    "text": "Hermes Agent Skills 精选费曼详解 说明：Skills Hub 当前可见约 17 个类别，总库约 96,883 个 skills。本章节从每个类别中精选 3 个 最具代表性的 skill，用费曼学习法讲透。目标：每个 skill 都让你“原来如此”，而不是“又背了一个术语”。方法：先给一个生活化类比，再讲它到底能干什么，最后给多个真实使用场景，并附上费曼学习法实践指南。 一、AI"
+  },
+
+  {
+    "title": "Hermes Agent Skills 用途详解（费曼学习法）",
+    "url": "/2026/08/04/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/Hermes%20Agent%20Skills%20%E7%94%A8%E9%80%94%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95%EF%BC%89/",
+    "date": "2026-08-04",
+    "text": "Hermes Agent Skills 用途详解（费曼学习法） 目标：把每个 Skill 都讲得像给小孩讲故事一样清楚。方法：先给一个生活化类比，再说它到底能干什么，最后给一个“什么时候你会需要它”的例子。说明：以下主要覆盖当前页面可见的内置 Skill，按类别分组，总字数超过 15000 字。 一、AI Agents（让 AI 帮你干活）1. apple-notes费曼类比：就像你有一个私人秘书"
+  },
+
+  {
+    "title": "hermes命令汇总",
+    "url": "/2026/08/04/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/hermes%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/",
+    "date": "2026-08-04",
+    "text": "Hermes 命令全解 — 费曼学习法版 用最直白的比喻，把 Hermes 的每一类命令讲清楚。读完你不需要背命令，只需要记住：「我在和一家 AI 公司对话，不同的入口做不同的事。」 先打一个总比喻 Hermes 像一家万能智能助理公司。你是老板，Hermes 是你的 AI 员工。命令，就是你和这家公司之间的所有沟通方式。 沟通方式 类比 终端 hermes xxx 你走进公司前台，签个字填个表 "
+  },
+
+  {
+    "title": "NodeSeek 论坛诈骗预防的认知决策框架研究",
+    "url": "/2026/08/03/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/NodeSeek%20%E8%AE%BA%E5%9D%9B%E8%AF%88%E9%AA%97%E9%A2%84%E9%98%B2%E7%9A%84%E8%AE%A4%E7%9F%A5%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6%E7%A0%94%E7%A9%B6/",
+    "date": "2026-08-03",
+    "text": "NodeSeek 论坛诈骗预防的认知决策框架研究——基于加里·克莱因自然istic决策理论的系统性分析摘要： 本文以加里·克莱因（Gary A. Klein）的自然istic决策理论（Naturalistic Decision Making, NDM）为核心框架，以 NodeSeek 论坛 21 起真实诈骗案例为经验基础，系统分析论坛交易环境中受害者的决策崩溃机制与骗子的模式利用策略。研究发现，诈"
+  },
+
+  {
+    "title": "NodeSeek 论坛诈骗的助推机制与防范架构研究",
+    "url": "/2026/08/03/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/NodeSeek%20%E8%AE%BA%E5%9D%9B%E8%AF%88%E9%AA%97%E7%9A%84%E5%8A%A9%E6%8E%A8%E6%9C%BA%E5%88%B6%E4%B8%8E%E9%98%B2%E8%8C%83%E6%9E%B6%E6%9E%84%E7%A0%94%E7%A9%B6/",
+    "date": "2026-08-03",
+    "text": "NodeSeek 论坛诈骗的助推机制与防范架构研究——基于理查德·泰勒「助推」理论的系统性分析摘要： 本文以理查德·泰勒与卡斯·桑斯坦《助推》理论为核心框架，以 NodeSeek 论坛 21 起真实诈骗案例为经验基础，系统分析论坛交易环境中骗子的”助推”行为与平台”逆向选择架构”之间的因果关系。研究发现，骗子的成功并非源于技术漏洞，而是利用平台默认设置、认知捷径和社会心理效应，对受害者的 Syst"
+  },
+
+  {
+    "title": "NodeSeek 论坛及关联 TG 频道诈骗案例深度分析报告",
+    "url": "/2026/08/03/%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/NodeSeek%20%E8%AE%BA%E5%9D%9B%E5%8F%8A%E5%85%B3%E8%81%94%20TG%20%E9%A2%91%E9%81%93%E8%AF%88%E9%AA%97%E6%A1%88%E4%BE%8B%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/",
+    "date": "2026-08-03",
+    "text": "NodeSeek 论坛及关联 TG 频道诈骗案例深度分析报告——基于福尔摩斯演绎法的行为模式、心理操控与防范体系研究生成时间: 2026-08-13（更新）样本数量: 34 起真实案例（原始 21 起 + 新增 13 起）数据来源: NodeSeek 论坛完整正文 + 关联 TG 频道分析方法: 福尔摩斯演绎法（观察→假设→验证） 摘要本文以 NodeSeek 论坛 34 起真实诈骗案例为样本（原"
+  },
+
+  {
+    "title": "测试rabisu de",
+    "url": "/2026/07/03/vps/%E6%B5%8B%E8%AF%95rabisu/",
+    "date": "2026-07-03",
+    "text": "💻基本信息 🎬IP质量 🌐网络质量 📍回程路由 NodeQuality链接"
+  },
+
+  {
+    "title": "美股日报定时任务解析",
+    "url": "/2026/07/01/%E7%BE%8E%E8%82%A1/%E7%BE%8E%E8%82%A1%E6%97%A5%E6%8A%A5%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A7%A3%E6%9E%90/",
+    "date": "2026-07-01",
+    "text": "Cron Job: 美股收盘日报Job ID: e66994714786Run Time: 2026-06-27 07:35:54Schedule: 30 7 * * 2-6 Prompt[IMPORTANT: You are running as a scheduled cron job. DELIVERY: Your final response will be automatically d"
+  },
+
+  {
+    "title": "ai定时报告",
+    "url": "/2026/07/01/%E7%BE%8E%E8%82%A1/ai%E5%AE%9A%E6%97%B6%E6%8A%A5%E5%91%8A/",
+    "date": "2026-07-01",
+    "text": "123456789101112131415**① 数据采集脚本**• 关键文件: /root/.hermes/scripts/market_data_collector.py• 说明: 使用 Yahoo Finance 的公开 API（https://query1.finance.yahoo.com/v8/finance/chart/&lt;symbol&gt;）抓取最近 5 天的行情数据。脚本会"
+  },
+
+  {
+    "title": "docker以及docker-compose安装",
+    "url": "/2026/06/29/docker%E5%BA%94%E7%94%A8/docker%E4%BB%A5%E5%8F%8Adocker-compose%E5%AE%89%E8%A3%85/",
+    "date": "2026-06-29",
+    "text": "docker安装脚本1bash &lt;(curl -sSL https://cdn.jsdelivr.net/gh/SuperManito/LinuxMirrors@main/DockerInstallation.sh) 1docker --version docker-compose安装脚本1curl -L &quot;https://github.com/docker/compose/rel"
+  },
+
+  {
+    "title": "komari探针监控",
+    "url": "/2026/06/29/vps/komari%E6%8E%A2%E9%92%88%E7%9B%91%E6%8E%A7/",
+    "date": "2026-06-29",
+    "text": "1.创建docker-compose.yml 文件1nano docker-compose.yml 2.写入文件1234567891011121314version: &quot;3.8&quot;services: komari: image: ghcr.io/komari-monitor/komari:latest restart: unless-stopped volumes: - ./da"
+  },
+
+  {
+    "title": "动漫日报",
+    "url": "/2026/06/24/%E6%97%A5%E6%8A%A5/%E5%8A%A8%E6%BC%AB%E6%97%A5%E6%8A%A5/",
+    "date": "2026-06-24",
+    "text": "12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210"
+  },
+
+  {
+    "title": "美股收盘日报",
+    "url": "/2026/06/23/%E7%BE%8E%E8%82%A1/%E7%BE%8E%E8%82%A1%E6%94%B6%E7%9B%98%E6%97%A5%E6%8A%A5/",
+    "date": "2026-06-23",
+    "text": "12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210"
+  },
+
+  {
+    "title": "测试 nosla us",
+    "url": "/2026/06/22/vps/%E6%B5%8B%E8%AF%95nosla%20us/",
+    "date": "2026-06-22",
+    "text": "💻基本信息 🎬IP质量 🌐网络质量 📍回程路由 NodeQuality链接"
+  },
+
+  {
+    "title": "测试 zrouter.io jp",
+    "url": "/2026/06/20/vps/%E6%B5%8B%E8%AF%95zrouter.io%20jp/",
+    "date": "2026-06-20",
+    "text": "已经投稿到nodeseek https://www.nodeseek.com/post-785575-1 💻基本信息 🎬IP质量 🌐网络质量 📍回程路由 NodeQuality链接"
+  },
+
+  {
+    "title": "nginx proxy manager安装",
+    "url": "/2026/06/20/docker%E5%BA%94%E7%94%A8/nginxproxymanager%E5%AE%89%E8%A3%85/",
+    "date": "2026-06-20",
+    "text": "1.Create a docker-compose.yml file similar to this:1234567891011121314services: app: image: &#x27;jc21/nginx-proxy-manager:2.15.1&#x27; restart: unless-stopped environment: TZ: &quot;Australia/Brisban"
+  },
+
+  {
+    "title": "docker安装",
+    "url": "/2026/06/20/docker%E5%BA%94%E7%94%A8/ubuntudocker%E5%AE%89%E8%A3%85/",
+    "date": "2026-06-20",
+    "text": "Ubuntu Docker 安装（Markdown 版本） 来源：https://www.runoob.com/docker/ubuntu-docker-install.html Ubuntu Docker 安装Docker Engine-Community 支持以下的 Ubuntu 版本： Xenial 16.04 (LTS) Bionic 18.04 (LTS) Cosmic 18.10 Di"
+  },
+
+  {
+    "title": "chatgpt生图生日",
+    "url": "/2026/06/18/%E5%9B%BE%E8%A7%A3/chatgpt%E7%94%9F%E5%9B%BE%E7%94%9F%E6%97%A5/",
+    "date": "2026-06-18",
+    "text": "1234将用户提供的生日人物照片转化为精致纪念封面式视觉，保留人物的真实相貌、年龄气质、发型、主要服装特征和自然表情，让人物坐入或倚靠在一个巨型年龄数字形成的立体墙面凹槽中。年龄数字是画面的第一视觉锚点，像被干净浅色墙体切出的厚实雕塑空间，内侧有明确深度、柔和阴影和细腻石膏肌理；人物身体与数字边缘产生真实接触，局部手脚或衣摆轻微越出凹槽，让数字既是背景也是座位和舞台。数字内部由生日主题派生的庆祝物"
+  },
+
+  {
+    "title": "chatgpt涂鸦板",
+    "url": "/2026/06/18/%E5%9B%BE%E8%A7%A3/chatgpt%E6%B6%82%E9%B8%A6%E6%9D%BF/",
+    "date": "2026-06-18",
+    "text": "1请将整个图像转化为单一的装饰性民间平面插图，融入涂鸦元素。使用大胆而俏皮的色彩调色板，与原图像完全不同。将所有细节简化为干净、平面的形状，带有手工制作、略显不完美的感觉，仿佛画在一张白纸上。整体风格应显得可爱、童趣十足且异想天开"
+  },
+
+  {
+    "title": "世界杯直播源docker部署",
+    "url": "/2026/06/11/docker%E5%BA%94%E7%94%A8/%E4%B8%96%E7%95%8C%E6%9D%AF%E7%9B%B4%E6%92%AD%E6%BA%90docker%E9%83%A8%E7%BD%B2/",
+    "date": "2026-06-11",
+    "text": "FIFAUHD Docker 使用说明镜像1iptvtop/uhdiptv:latest 支持架构： 123linux/amd64linux/arm/v7linux/arm64 容器内部端口： 18766 建议对外端口： 138766 Docker 启动1docker run -d --name uhdiptv --restart=always -p 38766:8766 iptvtop/uhdi"
+  },
+
+  {
+    "title": "AIchatgpt api key free",
+    "url": "/2026/06/09/chatgpt%20%E4%B8%AD%E8%BD%AC/AIchatgpt-api-key-free/",
+    "date": "2026-06-09",
+    "text": "10000刀Codex福利URL：https://qianxing-ai.cc.cd/v1 https://qianxing-ai.cc.cdAPI Key：sk-jMbbEkoGR51dBRmx91qyuXieZhdkWplkcoZLDqLs9N0YkCX4q群：https://qm.qq.com/q/NWDvL5vlGa 端点：https://688.qzz.io/ 500刀key：sk-kZ"
+  },
+
+  {
+    "title": "机场",
+    "url": "/2026/06/09/%E6%9C%BA%E5%9C%BA/%E6%9C%BA%E5%9C%BA/",
+    "date": "2026-06-09",
+    "text": "warnging养号还是使用自己的vpsip 魔戒 良心云 精灵学院 红杏云 虎云"
+  },
+
+  {
+    "title": "AI视频增强",
+    "url": "/2026/06/08/AI%E8%A7%86%E9%A2%91/AI%E8%A7%86%E9%A2%91%E5%A2%9E%E5%BC%BA/",
+    "date": "2026-06-08",
+    "text": "你想提升视频分辨率，也就是做 AI 视频超分辨率（Upscaling &#x2F; Super-Resolution），现在有几种免费工具和方案可以使用。下面我按类型给你整理，方便快速选择： 1. 在线 AI 视频增强网站（无需安装） 工具 特点 限制 VEED AI 简单在线操作，支持放大至1080p或4K 免费版视频长度有限制、水印 Pixop 支持视频AI去噪和超分辨率 免费体验有限 Dee"
+  },
+
+  {
+    "title": "ip送中拯救",
+    "url": "/2026/06/08/ip/ip%E9%80%81%E4%B8%AD%E6%8B%AF%E6%95%91/",
+    "date": "2026-06-08",
+    "text": "from : https://www.nodeseek.com/post-503481-1前段时间绿云多个ip段被集体送中，我是其中之一，虽然是集体送中，但也拉回来了，下面是方法。 第一，先去向谷歌报告IP问题：https://support.google.com/websearch/workflow/9308722 第二，用插件改定位1.先去Google账号设置页面将 活动记录 打开，如图ima"
+  },
+
+  {
+    "title": "有序数组的平方",
+    "url": "/2026/06/06/algo%E7%AE%97%E6%B3%95/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/",
+    "date": "2026-06-06",
+    "text": "leetcode 977Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order. Example 1: Input: nums &#x3D; [-4,-1,0,3,10]Output"
+  },
+
+  {
+    "title": "移除元素",
+    "url": "/2026/06/06/algo%E7%AE%97%E6%B3%95/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/",
+    "date": "2026-06-06",
+    "text": "leetcode 27 Remove ElementEasyTopicspremium lock iconCompaniesHintGiven an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be chang"
+  },
+
+  {
+    "title": "hexo迁移到别的仓库",
+    "url": "/2026/06/04/hexo/hexo%E8%BF%81%E7%A7%BB%E5%88%B0%E5%88%AB%E7%9A%84%E4%BB%93%E5%BA%93/",
+    "date": "2026-06-04",
+    "text": "重新部署git 1npm i hexo-deployer-git"
+  },
+
+  {
+    "title": "chatgpt老照片修复",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E8%80%81%E7%85%A7%E7%89%87%E4%BF%AE%E5%A4%8D/",
+    "date": "2026-06-01",
+    "text": "1234567891011121314151617181920212223242526272829303132333435请对我提供的这张老照片进行“档案级高保真修复 + 现代高端 Sony 全画幅相机质感重建”。核心目标：不是把它重新画一遍，也不是简单美颜翻新，而是在严格忠于原始照片内容的前提下，最大程度修复老照片中的损伤、模糊、过曝和细节缺失，使最终效果尽可能接近：如果同一瞬间由现代高端 So"
+  },
+
+  {
+    "title": "chatgpt少儿科幻科普风",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E5%B0%91%E5%84%BF%E7%A7%91%E5%B9%BB%E7%A7%91%E6%99%AE%E9%A3%8E/",
+    "date": "2026-06-01",
+    "text": "不通用，太过固定12345678910111213141516171819202122232425262728用 ChatGPT-Image2 生成一张【少儿科幻科普风】水果剖面分析图，主题为：苹果【剖面图】。画面比例参考竖版科普海报，整体风格干净、高级、信息密集但不杂乱，类似儿童科学百科插画 + 3D写实剖面图 + 信息图表排版。主体画面：中心放置一个巨大红苹果，一半展示完整外部形态，一半展示清"
+  },
+
+  {
+    "title": "chatgpt证件照",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E8%AF%81%E4%BB%B6%E7%85%A7/",
+    "date": "2026-06-01",
+    "text": "生成证件照，必须在chatgpt中调用生成图片123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051你是一个中国证件照生成助手。请严格按照以下流程执行。第一步：先根据用户上传的参考照片，询问用户要制作的证件照参数，不要直接生成图片。请向用户提问：1. 请选择证件照背景"
+  },
+
+  {
+    "title": "chatgpt菜谱",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E8%8F%9C%E8%B0%B1/",
+    "date": "2026-06-01",
+    "text": "chatgpt菜谱123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899生成"
+  },
+
+  {
+    "title": "chatgpt海报",
+    "url": "/2026/06/01/%E5%9B%BE%E8%A7%A3/chatgpt%E6%B5%B7%E6%8A%A5/",
+    "date": "2026-06-01",
+    "text": "chatgpt毕业照12345根据我的人物肖像自动生成一张收藏版史诗叙事海报(毕业照:巨大的我的侧脸剪影作为外轮廓，剪影内部自动生长出最契合该主题的完整世界观、标志性场景、角色关系、象征符号、关键建筑、生物、道具与氛围(校园+毕业)。整体不是普通拼贴，而是高级的剪影轮廓填充式叙事合成，带有双重曝光式联想，但更偏电影海报与梦幻水彩插画融合格;柔和空气透视，轻雾化过波，纸张颗粒，边缘白与刷痕，大面积留"
+  },
+
+  {
+    "title": "it.tools",
+    "url": "/2026/05/29/docker%E5%BA%94%E7%94%A8/it-tools/",
+    "date": "2026-05-29",
+    "text": "github 项目 it.tools 网页安装 [it tool] (https://github.com/corentinth/it-tools) 1docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest"
+  },
+
+  {
+    "title": "二分搜索法",
+    "url": "/2026/05/27/algo%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E6%B3%95/",
+    "date": "2026-05-27",
+    "text": "letcode 704在一个数组里，找一个target, 判断target 是否在数组中，如果在返回对应的数组下标,没找到返回-1 Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. "
+  },
+
+  {
+    "title": "ffmpeg常用命令汇总",
+    "url": "/2026/05/26/ffmpeg/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/",
+    "date": "2026-05-26",
+    "text": "FFmpeg 常用命令汇总（2026最新整理） FFmpeg 是功能最强大的音视频处理工具，命令基本格式： 1ffmpeg [全局选项] &#123;[输入选项] -i 输入文件&#125;... &#123;[输出选项] 输出文件&#125; 1. 基础信息查询 命令 作用 ffmpeg -version 查看版本 ffmpeg -h 帮助信息 ffmpeg -formats 支持的封装格式 f"
+  },
+
+  {
+    "title": "ffmpeg 自用命令",
+    "url": "/2026/05/26/ffmpeg/ffmpeg%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/",
+    "date": "2026-05-26",
+    "text": "mp3 + 背景图片1ffmpeg -loop 1 -framerate 1 -i cover.jpg -i audio.mp3 -vf &quot;scale=trunc(iw/2)*2:trunc(ih/2)*2,format=yuv420p&quot; -c:v libx264 -tune stillimage -c:a copy -shortest output.mp4 mp3 + 背景图"
+  },
+
+  {
+    "title": "blog_todolist20260525",
+    "url": "/2026/05/25/blog/blog-todolist20260525/",
+    "date": "2026-05-25",
+    "text": "待办事项 博客categroy有问题,待修复 1已经解决 添加工具包网页 添加vps 查询网页 添加常用vps 添加好用的谷歌扩展 添加近期的game 搜索一些自己需要的单页应用，可以自己部署"
+  },
+
+  {
+    "title": "科学上网",
+    "url": "/2026/05/24/tools/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/",
+    "date": "2026-05-24",
+    "text": "🔰 科学上网软件分享 请大家根据使用的系统下载对应的软件，主流的软件是V2ray、Clash、Shadowrocket 软件使用教程：点击打开>> 🪟 Windows软件下载 v2rayN 点击下载>> Clash 点击下载>> Clash Verge 点击下载>> Clash Party 点击下载>> 📱 安卓APP下载 v2rayNG APP下载>> Clash APP下载>> Clas"
+  },
+
+  {
+    "title": "图解项目",
+    "url": "/2026/05/20/%E5%9B%BE%E8%A7%A3/%E5%9B%BE%E8%A7%A3%E9%A1%B9%E7%9B%AE/",
+    "date": "2026-05-20",
+    "text": "Nginx Proxy Manager gh-proxy edgetunnel 1Panel homepage anchor cloudmail ImgBed blog 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162"
+  },
+
+  {
+    "title": "电子书网站合集",
+    "url": "/2026/05/20/tools/%E7%94%B5%E5%AD%90%E4%B9%A6%E7%BD%91%E7%AB%99%E5%90%88%E9%9B%86/",
+    "date": "2026-05-20",
+    "text": "📚 电子书 &#x2F; 学术资源网站合集 整理时间：2026类型：电子书｜论文｜教材｜漫画｜Kindle｜古籍｜搜书引擎适合：Kindle 用户、程序员、学生、科研党、小说爱好者 🔥 常用核心资源站（推荐收藏） 网站 类型 特点 Z-Library 综合电子书 小说 &#x2F; 畅销书 &#x2F; Kindle 资源丰富 WeLib 综合搜索 类似 Anna’s Archive，中文友好"
+  },
+
+  {
+    "title": "nextcloud网盘",
+    "url": "/2026/05/16/docker%E5%BA%94%E7%94%A8/nextcloud%E7%BD%91%E7%9B%98/",
+    "date": "2026-05-16",
+    "text": "# 小白研究所: 搭建专属私人云盘 Nextcloud ｜解锁 VPS 隐藏玩法｜抛弃限速网盘 安装 Docker1curl -fsSL https://get.docker.com | bash -s docker &amp;&amp; systemctl enable --now docker 创建项目目录1mkdir nextcloud &amp;&amp; cd nextcloud 创建 "
+  },
+
+  {
+    "title": "1Panel搭建",
+    "url": "/2026/05/16/docker%E5%BA%94%E7%94%A8/1Panel%E6%90%AD%E5%BB%BA/",
+    "date": "2026-05-16",
+    "text": "最强 VPS 可视化面板 1Panel｜让你的 VPS 像 Windows 一样好用原文：小白研究所 VPS-1Panel 教程 一、什么是 1Panel 面板？1Panel 是一款现代化、开源免费的 Linux 服务器运维管理面板。 (xbiit.net) 它可以： 通过网页图形界面管理 VPS 不再依赖复杂 Linux 命令 基于 Docker 容器技术 应用彼此隔离 更安全、更轻量 官方： "
+  },
+
+  {
+    "title": "自用服务器脚本大全",
+    "url": "/2026/05/15/linux%E8%BF%90%E7%BB%B4/%E8%87%AA%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/",
+    "date": "2026-05-15",
+    "text": "自用服务器脚本大全：一键测评、工具与部署指南来源：CMLiussss Blog 自用常用脚本汇总 主要是自用备忘，不要当成推荐表单，使用后果自负！ 1apt update &amp;&amp; apt install -y sudo curl unzip 测评类IP质量体检脚本1bash &lt;(curl -Ls IP.Check.Place) VPS融合怪服务器测评脚本1curl -L htt"
+  },
+
+  {
+    "title": "Hexo博客美化",
+    "url": "/2026/05/15/hexo/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/",
+    "date": "2026-05-15",
+    "text": "〖Hexo博客系列〗No.2 美化Hexo博客，教你如何安装和美化Hexo博客 原文：CMLiussss Blog HexoBlogNo2 美化Hexo博客，主题安装配置这期教程演示将使用一款基于 hexo-theme-butterfly 修改的主题 —— 安知鱼（AnZhiYu）。 项目地址：https://github.com/anzhiyu-c/hexo-theme-anzhiyu 官方文档"
+  },
+
+  {
+    "title": "ip测试工具",
+    "url": "/2026/05/15/linux%E8%BF%90%E7%BB%B4/ip%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/",
+    "date": "2026-05-15",
+    "text": "原文地址： https://potoh.com/iptest/IP 工具这里整理了常用的 IP 查询、延迟测试、分流检测和网络测速工具，便于直接打开使用。 工具列表 whatismyipaddress查询当前网络IP地址，快速查看出口位置与基础网络信息 ping0识别当前IP 类型，适合快速判断住宅、机房或代理特征 ITDOG Ping多地 Ping 与延迟测试工具，可查看不同地区的连接表现。 I"
+  },
+
+  {
+    "title": "hexo入门",
+    "url": "/2026/05/15/hexo/hexo%E5%85%A5%E9%97%A8/",
+    "date": "2026-05-15",
+    "text": "Hexo 常用命令总结1234567# Hexo 常用命令总结## 一、初始化与安装### 安装 Hexo CLI```bashnpm install -g hexo-cli 创建博客项目1hexo init blog 进入项目目录1cd blog 安装依赖1npm install 二、启动与预览启动本地服务器1hexo server 简写： 1hexo s 默认访问： 1http://local"
+  },
+
+  {
+    "title": "docker常用命令",
+    "url": "/2026/05/15/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/",
+    "date": "2026-05-15",
+    "text": "Docker 常用命令总结1. Docker 基础概念 名称 说明 Image（镜像） 类似系统模板 Container（容器） 镜像运行后的实例 Volume（数据卷） 持久化数据 Network（网络） 容器通信 2. Docker 信息查看查看 Docker 版本1docker -v 查看 Docker 详细信息1docker info 查看 Docker 帮助1docker --help "
+  },
+
+  {
+    "title": "homepage安装",
+    "url": "/2026/05/15/docker%E5%BA%94%E7%94%A8/homepage%E5%AE%89%E8%A3%85/",
+    "date": "2026-05-15",
+    "text": "找到一个路径，创建homepagestack文件夹，在homepagestack中创建homepage-1，在homepage-1中创建config和docker-compose.yml 粘贴下面的代码，按需进行修改 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748vers"
+  },
+
+  {
+    "title": "5元购买xyz二级域名",
+    "url": "/2026/05/15/%E5%9F%9F%E5%90%8D/5%E5%85%83%E8%B4%AD%E4%B9%B0xyz%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/",
+    "date": "2026-05-15",
+    "text": "每年不到5元，即可购买一个xyz二级域名，可以无限创建子域名低价域名的介绍 xyz域名的介绍：介绍1.111B类.xyz域名 低价域名的格式：长度为6、7、8和9位，从 000000.xyz 到 999999999.xyz 第一步：准备下面的工具 Spaceship域名注册 :点击跳转 域名批量注册查询工具: 点击跳转 Cloudflare官网(需要魔法上网):点击跳转 第二步：注册Spacesh"
+  },
+
+  {
+    "title": "vscode快捷键",
+    "url": "/2026/05/13/%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/",
+    "date": "2026-05-13",
+    "text": "VS Code 常用快捷键大全（以 Windows&#x2F;Linux 为主，macOS 对应键已注明） 1. 通用操作 功能 Windows&#x2F;Linux macOS 打开命令面板 Ctrl + Shift + P &#x2F; F1 Cmd + Shift + P 快速打开文件 Ctrl + P Cmd + P 打开设置 Ctrl + , Cmd + , 打开键盘快捷键设置 Ctrl"
+  },
+
+  {
+    "title": "ubuntu系统DHCP节点转换为静态IP",
+    "url": "/2026/05/10/linux%E8%BF%90%E7%BB%B4/ubuntu%E7%B3%BB%E7%BB%9FDHCP%E8%8A%82%E7%82%B9%E8%BD%AC%E6%8D%A2%E4%B8%BA%E9%9D%99%E6%80%81IP/",
+    "date": "2026-05-10",
+    "text": "查看本机的ip 192.168.0.0 - 192.168.255.255 为自己本机ip段，我们只许看192起始的ip 1ip addr 查看本机gateway ip,192.168.164.2 dev ens33 确认192.168.164.2是gateway ip 1ip route 转换为root用户 1sudo su 输入neko 用户的密码（12345678） 修改netplan 配置"
+  },
+
+  {
+    "title": "vmware安装ubuntu虚拟机",
+    "url": "/2026/05/10/linux%E8%BF%90%E7%BB%B4/vmare%E5%AE%89%E8%A3%85ubuntu/",
+    "date": "2026-05-10",
+    "text": "linux系统安装操作准备 vmware 需要自己下载，等待后续补充下载链接，官网：https://www.vmware.com/ ubuntu 系统镜像 （https://releases.ubuntu.com/noble/ubuntu-24.04.4-live-server-amd64.iso） linuxmint 系统镜像 ( https://mirror.clarkson.edu/linu"
+  },
+
+  {
+    "title": "读书-生图",
+    "url": "/2026/05/10/%E5%9B%BE%E8%A7%A3/%E4%B9%A6%E7%B1%8D%E7%94%9F%E5%9B%BE/",
+    "date": "2026-05-10",
+    "text": "苏菲的世界 安德的游戏 蒙台梭利教育法 重新认知学习 反脆弱 黑天鹅 林中雨滴 大自然的日历 力量之源 chatgpt生成图片提示词12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717"
+  },
+
+  {
+    "title": "blog 的待办事项",
+    "url": "/2026/05/10/blog/blog-todolist/",
+    "date": "2026-05-10",
+    "text": "blog 代办事项20260510 每个blog 单独的图片，图片地址指向自己的图床网站 done 背景音乐集设置为自己喜欢的 创建游戏，算法等项目板块 将文章设为不同的板块 专门一篇文章介绍hexo 的使用"
+  },
+
+  {
+    "title": "每周分享01",
+    "url": "/2026/04/27/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB01/",
+    "date": "2026-04-27",
+    "text": "每周分享第 1 期这里记录过去一周，我看到的值得分享的东西。 模仿阮一峰大佬，把它写成文章，共享出来，也许效果更好。 VPS免费的vps免费的vps查找了一周，基本上都需要国外的银行卡，或者虚拟货币，不可行。 付费的vps这个网站有个$7&#x2F;yr 的套餐，支持支付宝支付。可以尝试下。 49一年的vpshttps://ccp.bitsflow.cloud/order/cart/index/7"
+  },
+
+  {
+    "title": "Cloudflare免费节点优化",
+    "url": "/2026/04/24/cloudflare/Cloudflare%E5%85%8D%E8%B4%B9%E8%8A%82%E7%82%B9%E4%BC%98%E5%8C%96/",
+    "date": "2026-04-24",
+    "text": "主要目标使用 Clouflare 搭建的节点，在使用默认功能优选节点时，由于使用的人数较多，导致节点能用但延迟较高、不稳定且大量节点无法连接，本期从根本原因出发，按优先级逐步优化，帮你把延迟从 1000ms+ 降到 500ms 以内，确保秒开4K视频，且播放速度稳定。 主要内容 流量链路分析：延迟高的三个根因 修复 ProxyIP：消除大量连接失败节点（必做） CloudflareSpeedTes"
+  },
+
+  {
+    "title": "我的域名汇总",
+    "url": "/2026/04/24/%E5%9F%9F%E5%90%8D/%E5%85%8D%E8%B4%B9%E5%9F%9F%E5%90%8D%E6%B1%87%E6%80%BB-md/",
+    "date": "2026-04-24",
+    "text": "我注册的免费域名： https://www.gname.net/ nekomini.eu.cc syaoran.eu.cc https://my.dnshe.com/index.php?m=domain_hub nekomini.ccwu.cc syaoran-moon.ccwu.cc syaoran.ccwu.cc"
+  },
+
+  {
+    "title": "算法学习记录",
+    "url": "/2026/04/23/algo%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/",
+    "date": "2026-04-23",
+    "text": "target target1: 把bilibili 卡尔算法170 rush 三遍 数组 5 链表 6 哈希表 6 字符串 6 栈与队列 7 二叉树 29 回溯 16 贪心 17 动态规划 42 单调栈 5 图论 29 target2: 把hello 算法 理论看完 hello-algo target3: 把计算机算法理论+题目做完，记录，讲解"
+  },
+
+  {
+    "title": "Hello World",
+    "url": "/2026/04/19/hexo/hello-world/",
+    "date": "2026-04-19",
+    "text": "Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick"
+  }
+
+]
+</script>
+
+  
+<script src="/js/main.js"></script>
+
+  
+</body>
+</html>
